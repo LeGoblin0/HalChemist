@@ -1,0 +1,920 @@
+fileFormatVersion: 2
+guid: ec8dd731b719d834ba28b6572ecfd4ca
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4951995975590832913
+    second: Boss_BeoBot_entrance_0
+  - first:
+      213: 1976158998815216552
+    second: Boss_BeoBot_entrance_1
+  - first:
+      213: 442172830917815742
+    second: Boss_BeoBot_entrance_2
+  - first:
+      213: -6732053218127146856
+    second: Boss_BeoBot_entrance_3
+  - first:
+      213: -8457999340452430348
+    second: Boss_BeoBot_entrance_4
+  - first:
+      213: 6937244740927736629
+    second: Boss_BeoBot_entrance_5
+  - first:
+      213: -183439879211297163
+    second: Boss_BeoBot_entrance_6
+  - first:
+      213: 5898486332785235733
+    second: Boss_BeoBot_entrance_7
+  - first:
+      213: -1309533593682838731
+    second: Boss_BeoBot_entrance_8
+  - first:
+      213: -2088054238112766736
+    second: Boss_BeoBot_entrance_9
+  - first:
+      213: -7151154990146970223
+    second: Boss_BeoBot_entrance_10
+  - first:
+      213: -8699266644981364043
+    second: Boss_BeoBot_entrance_11
+  - first:
+      213: -1630130759255225862
+    second: Boss_BeoBot_entrance_12
+  - first:
+      213: 1343301186936957874
+    second: Boss_BeoBot_entrance_13
+  - first:
+      213: 3617558055545583880
+    second: Boss_BeoBot_entrance_14
+  - first:
+      213: -5390730530789583883
+    second: Boss_BeoBot_entrance_15
+  - first:
+      213: 1091527979988936513
+    second: Boss_BeoBot_entrance_16
+  - first:
+      213: 4228138519284721178
+    second: Boss_BeoBot_entrance_17
+  - first:
+      213: -3391527488921824398
+    second: Boss_BeoBot_entrance_18
+  - first:
+      213: -984408322924967508
+    second: Boss_BeoBot_entrance_19
+  - first:
+      213: 2837265488633107270
+    second: Boss_BeoBot_entrance_20
+  - first:
+      213: 7520475969277222474
+    second: Boss_BeoBot_entrance_21
+  - first:
+      213: 4187776568284827851
+    second: Boss_BeoBot_entrance_22
+  - first:
+      213: 4913891998300829884
+    second: Boss_BeoBot_entrance_23
+  - first:
+      213: 536568609156677410
+    second: Boss_BeoBot_entrance_24
+  - first:
+      213: -5829171761769005076
+    second: Boss_BeoBot_entrance_25
+  - first:
+      213: -1589982817155569924
+    second: Boss_BeoBot_entrance_26
+  - first:
+      213: -4153602598812414843
+    second: Boss_BeoBot_entrance_27
+  - first:
+      213: -3708673387610758445
+    second: Boss_BeoBot_entrance_28
+  - first:
+      213: -1643301676389999007
+    second: Boss_BeoBot_entrance_29
+  - first:
+      213: 9163887759935949285
+    second: Boss_BeoBot_entrance_30
+  - first:
+      213: 4565145018873432211
+    second: Boss_BeoBot_entrance_31
+  - first:
+      213: -8084268593231066120
+    second: Boss_BeoBot_entrance_32
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 48
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11b614e5a1609b440800000000000000
+      internalID: 4951995975590832913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_1
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a39218a32abc6b10800000000000000
+      internalID: 1976158998815216552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_2
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebd6f24d8d9e22600800000000000000
+      internalID: 442172830917815742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_3
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 890918c1441f292a0800000000000000
+      internalID: -6732053218127146856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_4
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fd38d989662f9a80800000000000000
+      internalID: -8457999340452430348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_5
+      rect:
+        serializedVersion: 2
+        x: 2160
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53bc1f6365b064060800000000000000
+      internalID: 6937244740927736629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_6
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57658f9d66a447df0800000000000000
+      internalID: -183439879211297163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_7
+      rect:
+        serializedVersion: 2
+        x: 3024
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51719227112abd150800000000000000
+      internalID: 5898486332785235733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_8
+      rect:
+        serializedVersion: 2
+        x: 3456
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53bf71f722a93dde0800000000000000
+      internalID: -1309533593682838731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_9
+      rect:
+        serializedVersion: 2
+        x: 3888
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f42a81cbbdb503e0800000000000000
+      internalID: -2088054238112766736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_10
+      rect:
+        serializedVersion: 2
+        x: 4320
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19d1786cc6ef1cc90800000000000000
+      internalID: -7151154990146970223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_11
+      rect:
+        serializedVersion: 2
+        x: 4752
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ba4b7bb31ff54780800000000000000
+      internalID: -8699266644981364043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_12
+      rect:
+        serializedVersion: 2
+        x: 5184
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af9872516bc9069e0800000000000000
+      internalID: -1630130759255225862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bbecb9ff4d54a210800000000000000
+      internalID: 1343301186936957874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_14
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 809b52782e5243230800000000000000
+      internalID: 3617558055545583880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_15
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f31f60c4274035b0800000000000000
+      internalID: -5390730530789583883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_16
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 147e3a52ae2e52f00800000000000000
+      internalID: 1091527979988936513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_17
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a16ac17e49d5daa30800000000000000
+      internalID: 4228138519284721178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_18
+      rect:
+        serializedVersion: 2
+        x: 2160
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27397d8c7bfdee0d0800000000000000
+      internalID: -3391527488921824398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_19
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca98e1e88dda652f0800000000000000
+      internalID: -984408322924967508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_20
+      rect:
+        serializedVersion: 2
+        x: 3024
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 643937fededff5720800000000000000
+      internalID: 2837265488633107270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_21
+      rect:
+        serializedVersion: 2
+        x: 3456
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4e51a28c091e5860800000000000000
+      internalID: 7520475969277222474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_22
+      rect:
+        serializedVersion: 2
+        x: 3888
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc0525fd998fd1a30800000000000000
+      internalID: 4187776568284827851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_23
+      rect:
+        serializedVersion: 2
+        x: 4320
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb8fa5fccb6a13440800000000000000
+      internalID: 4913891998300829884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_24
+      rect:
+        serializedVersion: 2
+        x: 4752
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22fb862ae46427700800000000000000
+      internalID: 536568609156677410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_25
+      rect:
+        serializedVersion: 2
+        x: 5184
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cef350dba2f9a1fa0800000000000000
+      internalID: -5829171761769005076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf6a7784d0f3fe9e0800000000000000
+      internalID: -1589982817155569924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_27
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58c85af61707b56c0800000000000000
+      internalID: -4153602598812414843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_28
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 0
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d2248f0435288cc0800000000000000
+      internalID: -3708673387610758445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_29
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 0
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16e58f7f4d1d139e0800000000000000
+      internalID: -1643301676389999007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_30
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 0
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e948848d5bac2f70800000000000000
+      internalID: 9163887759935949285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_31
+      rect:
+        serializedVersion: 2
+        x: 2160
+        y: 0
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 398481e1537aa5f30800000000000000
+      internalID: 4565145018873432211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_entrance_32
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 0
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fb8d97fb88eecf80800000000000000
+      internalID: -8084268593231066120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

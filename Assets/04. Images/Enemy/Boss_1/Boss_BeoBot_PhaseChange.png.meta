@@ -1,0 +1,608 @@
+fileFormatVersion: 2
+guid: ccac928707a1b1d41bdb0052e61121f2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3225000920536435811
+    second: Boss_BeoBot_PhaseChange_0
+  - first:
+      213: -4050497318395827914
+    second: Boss_BeoBot_PhaseChange_1
+  - first:
+      213: -5245664828922520657
+    second: Boss_BeoBot_PhaseChange_2
+  - first:
+      213: 3878586840443233699
+    second: Boss_BeoBot_PhaseChange_3
+  - first:
+      213: 5261522334223571833
+    second: Boss_BeoBot_PhaseChange_4
+  - first:
+      213: -8672690624680224864
+    second: Boss_BeoBot_PhaseChange_5
+  - first:
+      213: 5186148049100235221
+    second: Boss_BeoBot_PhaseChange_6
+  - first:
+      213: 1346870962146722917
+    second: Boss_BeoBot_PhaseChange_7
+  - first:
+      213: -6293677751401806163
+    second: Boss_BeoBot_PhaseChange_8
+  - first:
+      213: 5255242608169382744
+    second: Boss_BeoBot_PhaseChange_9
+  - first:
+      213: -5388219508812974639
+    second: Boss_BeoBot_PhaseChange_10
+  - first:
+      213: -1586976978280102077
+    second: Boss_BeoBot_PhaseChange_11
+  - first:
+      213: -1775863512938472772
+    second: Boss_BeoBot_PhaseChange_12
+  - first:
+      213: 5915127413021279325
+    second: Boss_BeoBot_PhaseChange_13
+  - first:
+      213: -1475504141309872338
+    second: Boss_BeoBot_PhaseChange_14
+  - first:
+      213: 7085659240648749738
+    second: Boss_BeoBot_PhaseChange_15
+  - first:
+      213: 2559605507182841629
+    second: Boss_BeoBot_PhaseChange_16
+  - first:
+      213: 3540672771901479620
+    second: Boss_BeoBot_PhaseChange_17
+  - first:
+      213: 3252922743078204959
+    second: Boss_BeoBot_PhaseChange_18
+  - first:
+      213: 753033279738702008
+    second: Boss_BeoBot_PhaseChange_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 48
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36cc1ec104181cc20800000000000000
+      internalID: 3225000920536435811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_1
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 639285d362eb9c7c0800000000000000
+      internalID: -4050497318395827914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_2
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fab105d71a7a337b0800000000000000
+      internalID: -5245664828922520657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_3
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a5af178e2283d530800000000000000
+      internalID: 3878586840443233699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_4
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97b1e2dafaea40940800000000000000
+      internalID: 5261522334223571833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_5
+      rect:
+        serializedVersion: 2
+        x: 2160
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a71315a3d964a780800000000000000
+      internalID: -8672690624680224864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_6
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d1643b5c26e8f740800000000000000
+      internalID: 5186148049100235221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_7
+      rect:
+        serializedVersion: 2
+        x: 3024
+        y: 576
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5644b09010c01b210800000000000000
+      internalID: 1346870962146722917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da68ae03e6d58a8a0800000000000000
+      internalID: -6293677751401806163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_9
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 853fe640f4f5ee840800000000000000
+      internalID: 5255242608169382744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_10
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d57f5d97e23935b0800000000000000
+      internalID: -5388219508812974639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_11
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34744eea8dce9f9e0800000000000000
+      internalID: -1586976978280102077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_12
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cba99bd3b8dda57e0800000000000000
+      internalID: -1775863512938472772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_13
+      rect:
+        serializedVersion: 2
+        x: 2160
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d540f4eda01c61250800000000000000
+      internalID: 5915127413021279325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_14
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e277b901dc4f58be0800000000000000
+      internalID: -1475504141309872338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_15
+      rect:
+        serializedVersion: 2
+        x: 3024
+        y: 288
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa23556b981555260800000000000000
+      internalID: 7085659240648749738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1f44ccb5ab858320800000000000000
+      internalID: 2559605507182841629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_17
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cad513702ff22130800000000000000
+      internalID: 3540672771901479620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_18
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 0
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1637f60004b42d20800000000000000
+      internalID: 3252922743078204959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_BeoBot_PhaseChange_19
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 0
+        width: 432
+        height: 288
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b86fd637cf437a00800000000000000
+      internalID: 753033279738702008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
