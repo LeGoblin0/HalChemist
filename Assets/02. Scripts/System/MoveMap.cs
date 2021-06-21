@@ -52,7 +52,7 @@ public class MoveMap : MonoBehaviour
     {
         Ply.position = new Vector3(MovePos.GetChild(0).position.x, MovePos.GetChild(0).position.y, 0);
         Ply.GetComponent<Player>().Hand.position = new Vector3(MovePos.GetChild(0).position.x, MovePos.GetChild(0).position.y, 0);
-        Ply.GetComponent<Player>().MapMove = true;
+        //Ply.GetComponent<Player>().MapMove = true;
         Ply.GetComponent<Rigidbody2D>().velocity = ShootPly;
         cam.position = new Vector3(MovePos.GetChild(1).position.x, MovePos.GetChild(1).position.y, -10);
         cam.GetComponent<CamMove>().XLock = MovePos.parent.parent.gameObject.GetComponent<MapManager>().XLock;
@@ -60,7 +60,7 @@ public class MoveMap : MonoBehaviour
         MovePos.parent.parent.gameObject.GetComponent<MapManager>().MakeEEE();
         if (transform.parent.parent.gameObject.GetComponent<MapManager>().EEE != null)
             Destroy(transform.parent.parent.gameObject.GetComponent<MapManager>().EEE.gameObject);
-        Ply.GetComponent<Player>().MoveMap = true;
+        //Ply.GetComponent<Player>().MoveMap = true;
         Ply.GetComponent<Player>().DontMove = false;
         Ply.GetComponent<Player>().GodMove = false;
     }

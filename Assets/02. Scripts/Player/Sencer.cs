@@ -30,7 +30,7 @@ public class Sencer : MonoBehaviour
             if (down)
             {
                 ply.down = true;
-                ply.att = true;
+                ply.airAtt = true;
             }
         }
     }

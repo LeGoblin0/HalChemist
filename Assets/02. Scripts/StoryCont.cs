@@ -38,8 +38,8 @@ public class StoryCont : MonoBehaviour
         //Debug.Log(1);
         if (plyTr == null) plyTr = GameSystem.instance.Ply;
         if (ply == null) ply = plyTr.GetComponent<Player>();
-        ply.OnStory_left = false;
-        ply.OnStory_rigtht = false;
+        //ply.OnStory_left = false;
+        //ply.OnStory_rigtht = false;
         transform.parent.GetComponent<StoryOnOFf>().EndStory();
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -64,9 +64,9 @@ public class StoryCont : MonoBehaviour
             {
                 ply.ani.SetInteger("State", aniState);
             }
-            ply.OnStory_rigtht = MoveRight;
+            //ply.OnStory_rigtht = MoveRight;
 
-            ply.OnStory_left = Moveleft;
+            //ply.OnStory_left = Moveleft;
 
             if (EndStoryTime >= 0)
             {

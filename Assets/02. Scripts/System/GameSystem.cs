@@ -244,7 +244,7 @@ public class GameSystem : MonoBehaviour
         //{
         //    if (gameData.AllSavePoint[i] != 0) gameData.AllSavePoint[i] = 1;
         //}
-        Ply.GetComponent<Player>().FullHp();
+        //Ply.GetComponent<Player>().FullHp();
         gameData.SavePoint = ii;
         Save();
     }
@@ -330,7 +330,7 @@ public class GameSystem : MonoBehaviour
     {
         StSTop = !StSTop;
         StopUI.SetActive(StSTop);
-        Ply.GetComponent<Player>().StopGame = StSTop;
+        //Ply.GetComponent<Player>().StopGame = StSTop;
         Time.timeScale = StSTop ? 0 : 1;
     }
     public void SetHold(Hold me)

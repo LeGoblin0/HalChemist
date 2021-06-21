@@ -14,7 +14,7 @@ public class Cast : MapSyS
             if (GameSystem.instance.Ply.GetComponent<Player>().Hp < 3)
             {
                 GameSystem.instance.Ply.GetComponent<Player>().Hp++;
-                GameSystem.instance.Ply.GetComponent<Player>().HpSetUI();
+                //GameSystem.instance.Ply.GetComponent<Player>().HpSetUI();
             }
         }
     }
