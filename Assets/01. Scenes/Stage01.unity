@@ -304,7 +304,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 68a036a129cf89346b2a6f8a12a2a625, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -439,7 +439,12 @@ MonoBehaviour:
   left: 0
   down: 0
   airAtt: 0
+  Jump01: 0
+  MaxSpeed: 1.8
+  JumpPower: 8
+  gravityScale: 3
   AttSpeed: 1.8
+  AttCoolTime: 2
 --- !u!4 &31406102
 Transform:
   m_ObjectHideFlags: 0
@@ -40673,23 +40678,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924937d4451da1741bf23062801ed130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HadoGetTimeline: {fileID: 205473607}
-  PlayableDirector2: {fileID: 2056646843}
-  PlayableDirector3: {fileID: 2046954685}
-  PlayableDirector4: {fileID: 1500495928}
-  Player: {fileID: 31406097}
-  GetUp: {fileID: 2056646840}
-  Throw: {fileID: 2046954682}
-  Door: {fileID: 1500495925}
-  PlayerPos: {x: 0, y: 0}
-  HandoGetPos: {x: 0, y: 0}
-  GetUpPos: {x: 0, y: 0}
-  ThrowPos: {x: 0, y: 0}
-  DoorPos: {x: 0, y: 0}
-  Distance: 0
-  Distance2: 0
-  Distance3: 0
-  Distance4: 0
 --- !u!4 &1451636858
 Transform:
   m_ObjectHideFlags: 0
@@ -42027,7 +42015,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9698c1140970c64f9dfb404597c554a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plyani: {fileID: 0}
 --- !u!1 &1516945367
 GameObject:
   m_ObjectHideFlags: 0
@@ -45624,10 +45611,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e20f1ff5b5dfb428a52d4e4a2b7d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ply: {fileID: 31406101}
-  plyPos: {fileID: 31406102}
-  Speed: 5
-  Offset: {x: -1, y: 0.5, z: 0}
 --- !u!95 &1698223385
 Animator:
   serializedVersion: 3
@@ -57406,7 +57389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34e812c5e50fe944a8f6cb65d196d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ply: {fileID: 31406101}
 --- !u!50 &1104496973093096467
 Rigidbody2D:
   serializedVersion: 4

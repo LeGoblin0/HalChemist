@@ -31,6 +31,7 @@ public class Sencer : MonoBehaviour
             {
                 ply.down = true;
                 ply.airAtt = true;
+                ply.Jump01 = true;
             }
         }
     }
