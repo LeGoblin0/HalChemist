@@ -30,8 +30,6 @@ public class Player : Life
     }
 
 
-    [Header("움직임제한")]
-    public bool DontMove = false;
     [Header("무적모드")]
     public bool GodMove = false;
     [Header("스토리 실행")]
@@ -46,20 +44,24 @@ public class Player : Life
     public bool Jump01 = false;
 
 
-    [Header("이동 속도")]
+    [Header("움직임")]
+    public bool DontMove = false;
     public float MaxSpeed = 1.8f;
-    [Header("점프 파워")]
     public float JumpPower = 3;
-    [Header("낙하 파워")]
     public float gravityScale = 2;
     void PlySound(int i)
     {
         aus.PlayOneShot(SoundPly[i]);
     }
 
-    [Header("공격 속도")]
+    [Header("데쉬")]
+    public float DeshCoolTime = 2;
+    float nowDeshCoolTime = 0;
+    public float DeshSpeedd = 5;
+
+
+    [Header("공격")]
     public float AttSpeed = 1.8f;
-    [Header("공격 쿨타임")]
     public float AttCoolTime = 2f;
     [Tooltip("평타 쿨남은시간")]
     float nowAttTime = 0;
@@ -67,6 +69,9 @@ public class Player : Life
     [Tooltip("평타 불가시간")]
     float DontAttTime = 0;
 
+    [Header("피격")]
+    public float GodTime = 1.8f;
+    float nowGodTime = 1.8f;
 
     [Tooltip("플레이어가 보고 있는 방향 [1: 우 ]  [2: 좌 ]")]
     int PlyLook = 1;
@@ -119,11 +124,27 @@ public class Player : Life
                 ani.SetBool("RL", false);
             }
             rig.bodyType = RigidbodyType2D.Dynamic;
+            rig.gravityScale = gravityScale;
         }
         else
         {
 
         }
+        if (Input.GetKeyDown(KeyCode.Space) && nowDeshCoolTime <= 0)
+        {
+            if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || ani.GetCurrentAnimatorStateInfo(0).IsName("Run") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump"))
+            {
+                ani.SetTrigger("Desh01");
+                nowDeshCoolTime = DeshCoolTime;
+            }
+            else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Air_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_2"))
+            {
+                ani.SetTrigger("Desh02");
+                nowDeshCoolTime = DeshCoolTime;
+            }
+        }
+        if (nowDeshCoolTime >= 0) nowDeshCoolTime -= Time.deltaTime;
+        if (nowGodTime >= 0) nowGodTime -= Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.A) && DontAttTime <= 0) 
         {
@@ -207,6 +228,44 @@ public class Player : Life
                 rig.velocity = new Vector2(0, rig.velocity.y);
             }
         }
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Desh01"))
+        {
+            //rig.constraints = RigidbodyConstraints2D.FreezePositionY;
+            rig.velocity = new Vector2(DeshSpeedd * PlyLook, 0);
+            rig.gravityScale = 0;
+        }
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Desh02"))
+        {
+            rig.bodyType = RigidbodyType2D.Dynamic;
+            DontMove = false;
+            //rig.constraints = RigidbodyConstraints2D.FreezePositionY;
+            rig.velocity = new Vector2(-DeshSpeedd * PlyLook, 0);
+            rig.gravityScale = 0;
+            if (down)
+            {
+                ani.SetInteger("State", 0);
+            }
+            else
+            {
+                ani.SetInteger("State", 2);
+            }
+        }
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Hit"))
+        {
+            rig.bodyType = RigidbodyType2D.Dynamic;
+            DontMove = false;
+            //rig.constraints = RigidbodyConstraints2D.FreezePositionY;
+            rig.velocity = new Vector2(-1* PlyLook, 0);
+            rig.gravityScale = 0;
+            if (down)
+            {
+                ani.SetInteger("State", 0);
+            }
+            else
+            {
+                ani.SetInteger("State", 2);
+            }
+        }
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -214,6 +273,13 @@ public class Player : Life
     }
     protected void OnTriggerStay2D(Collider2D collision)
     {
+        if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set && nowGodTime <= 0)
+        {
+            //            Debug.Log(collision.name);
+            Hp -= collision.GetComponent<Att>().AttDamage;
+            nowGodTime = GodTime;
+            ani.SetTrigger("Hit");
+        }
     }
     public void EndDie()
     {
