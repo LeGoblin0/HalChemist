@@ -121,7 +121,7 @@ public class GameSystem : MonoBehaviour
             Vector3 GG = SavePos[gameData.SavePoint].transform.position;
             Sond(SavePos[gameData.SavePoint].BGSound);
             Ply.position = new Vector3(GG.x, GG.y, Ply.position.z);
-            Ply.GetComponent<Player>().Hand.position = new Vector3(GG.x, GG.y, Ply.GetComponent<Player>().Hand.position.z);
+            //Ply.GetComponent<Player>().Hand.position = new Vector3(GG.x, GG.y, Ply.GetComponent<Player>().Hand.position.z);
             if (SavePos[gameData.SavePoint].MovePos == null)
             {
                 SavePos[gameData.SavePoint].MovePos = SavePos[gameData.SavePoint].transform.parent.Find("MoveMap").GetChild(0);
@@ -262,6 +262,8 @@ public class GameSystem : MonoBehaviour
     public Transform BuddhaHand;
     public Transform CanversUI;
     public Transform StoryTr;
+
+    public GameObject[] AllSton;
     private void Awake()
     {
         //Time.timeScale = .1f;

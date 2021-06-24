@@ -11,8 +11,6 @@ public class Att : MonoBehaviour
     float nowTime = 0;
     void Start()
     {
-        tag = "Att";
-        nowTime = DesTime;
     }
     public GameObject attObj;
     public void Attnow()
@@ -24,6 +22,8 @@ public class Att : MonoBehaviour
         attObj.SetActive(false);
     }
     // Update is called once per frame
+    [HideInInspector]
+    public bool set2 = true;
     void Update()
     {
         if (DesTime != 0)
@@ -33,6 +33,12 @@ public class Att : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }
+        if (Set && set2) 
+        {
+            set2 = false;
+            tag = "Att";
+            nowTime = DesTime;
         }
     }
     public Life.State AttState = Life.State.일반;

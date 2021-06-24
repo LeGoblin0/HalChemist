@@ -16,7 +16,7 @@ public class StoneDieAni : MonoBehaviour
     {
         
     }
-
+    public int Code;
     public Sprite StonImg;
     private void OnDestroy()
     {

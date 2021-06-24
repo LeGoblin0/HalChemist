@@ -73,8 +73,18 @@ public class Player : Life
     public float GodTime = 1.8f;
     float nowGodTime = 1.8f;
 
+    [Header("원석")]
+    public int[] HaveStone;
+    int NowChoose = 0;
+    public int StackStone = 3;//스톤겹친갯수
+
+
     [Tooltip("플레이어가 보고 있는 방향 [1: 우 ]  [2: 좌 ]")]
     int PlyLook = 1;
+
+
+    [Header("시스템")]
+    public GameObject PutSton;
     private void FixedUpdate()
     {
 
@@ -82,9 +92,71 @@ public class Player : Life
 
     void Update()
     {
+        Ply_Move();
+        Ply_Desh();
+        Ply_Att();
+     
+        if (nowGodTime >= 0) nowGodTime -= Time.deltaTime;
 
+
+
+        AniMove();
+
+    }
+
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+    }
+    protected void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set && nowGodTime <= 0)
+        {
+            //            Debug.Log(collision.name);
+            Hp -= collision.GetComponent<Att>().AttDamage;
+            nowGodTime = GodTime;
+            ani.SetTrigger("Hit");
+        }
+        if (collision.tag == "Ston")
+        {
+            Debug.Log(0);
+            if (collision.GetComponent<StoneDieAni>() != null)
+            {
+                int Stonecode = collision.GetComponent<StoneDieAni>().Code;
+                for (int i = 1; i < HaveStone.Length; i++)
+                {
+                    if (HaveStone[i] / 1000 == Stonecode && HaveStone[i] % 1000 < StackStone) //코드가 같으면 최대 스텍갯수가 적으면
+                    {
+                        HaveStone[i]++;
+                        Destroy(collision.gameObject);
+                        return;
+                    }
+                }
+                for (int i = 1; i < HaveStone.Length; i++)
+                {
+                    if (HaveStone[i] == 0) //비어있으면
+                    {
+                        HaveStone[i] = (Stonecode * 1000 + 1);
+                        Destroy(collision.gameObject);
+                        return;
+                    }
+                }
+            }
+        }
+    }
+    public void Pick_Stone(Collider2D collision)
+    {
+       
+    }
+    void Ply_Move()
+    {
         if (!DontMove)
         {
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                PutSton.SetActive(true);
+            }
+            else PutSton.SetActive(false);
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 if (down) ani.SetInteger("State", 1);
@@ -123,51 +195,58 @@ public class Player : Life
             {
                 ani.SetBool("RL", false);
             }
-            rig.bodyType = RigidbodyType2D.Dynamic;
             rig.gravityScale = gravityScale;
         }
         else
         {
 
         }
+        transform.GetChild(0).localScale = new Vector3(PlyLook, 1, 1);
+    }
+    void Ply_Desh()
+    {
+
         if (Input.GetKeyDown(KeyCode.Space) && nowDeshCoolTime <= 0)
         {
             if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || ani.GetCurrentAnimatorStateInfo(0).IsName("Run") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump"))
             {
                 ani.SetTrigger("Desh01");
                 nowDeshCoolTime = DeshCoolTime;
+                DontMove = true;
             }
-            else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Air_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_2"))
+            else if ((ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Air_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_2")) && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= .5f)
             {
                 ani.SetTrigger("Desh02");
                 nowDeshCoolTime = DeshCoolTime;
+                DontMove = true;
             }
         }
         if (nowDeshCoolTime >= 0) nowDeshCoolTime -= Time.deltaTime;
-        if (nowGodTime >= 0) nowGodTime -= Time.deltaTime;
+    }
+    void Ply_Att()
+    {
 
-        if (Input.GetKeyDown(KeyCode.A) && DontAttTime <= 0) 
+        if (Input.GetKeyDown(KeyCode.A) && DontAttTime <= 0)
         {
-            if (down && nowAttTime <= 0 && !DontMove) 
+            if (down && nowAttTime <= 0 && !DontMove)
             {
                 DontMove = true;
                 ani.SetInteger("State", 4);
                 nowAttTime = AttCoolTime;
                 ani.SetFloat("AttSpeed", AttSpeed);
-                rig.bodyType = RigidbodyType2D.Static;
+
             }
             else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= .5f)
             {
                 ani.SetInteger("State", 5);
             }
-            else if (!down && airAtt) 
+            else if (!down && airAtt)
             {
                 DontMove = true;
                 airAtt = false;
                 ani.SetFloat("AttSpeed", AttSpeed);
                 ani.SetInteger("State", 4);
                 nowAttTime = AttCoolTime;
-                rig.bodyType = RigidbodyType2D.Static;
             }
         }
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= .95f && ani.GetInteger("State") != 5)
@@ -176,38 +255,18 @@ public class Player : Life
         }
         if (nowAttTime > 0) nowAttTime -= Time.deltaTime;
         if (DontAttTime > 0) DontAttTime -= Time.deltaTime;
-
-
-        transform.GetChild(0).localScale = new Vector3(PlyLook, 1, 1);
-        AniMove();
-
-    }
-
-    public void STop(int i)
-    {
-        if(i==0) rig.bodyType = RigidbodyType2D.Dynamic;
-        if(i==1) rig.bodyType = RigidbodyType2D.Static;
-    }
-    public void JumpU()
-    {
-        rig.bodyType = RigidbodyType2D.Dynamic;
-        rig.velocity = new Vector2(rig.velocity.x, JumpPower);
-    }
-    void DontMoveSet(int dd)
-    {
-        if (dd == 0) DontMove = false;
-        else if (dd == 1) DontMove = true;
-    }
-    void SetAniState(int aa)
-    {
-        ani.SetInteger("State", aa);
     }
     /// <summary>
     /// 애니메이션 행동
     /// </summary>
     void AniMove()
     {
-        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle"))
+
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_2") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Air_Att_1"))
+        {
+            rig.velocity = Vector2.zero;
+        }
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle"))
         {
             rig.velocity = new Vector2(0, rig.velocity.y);
         }
@@ -218,7 +277,7 @@ public class Player : Life
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump"))
         {
-            if((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)))
+            if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)))
             {
                 ani.SetFloat("RunSpeed", MaxSpeed * 1.2f);
                 rig.velocity = new Vector2(MaxSpeed * PlyLook, rig.velocity.y);
@@ -236,7 +295,6 @@ public class Player : Life
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Desh02"))
         {
-            rig.bodyType = RigidbodyType2D.Dynamic;
             DontMove = false;
             //rig.constraints = RigidbodyConstraints2D.FreezePositionY;
             rig.velocity = new Vector2(-DeshSpeedd * PlyLook, 0);
@@ -252,10 +310,9 @@ public class Player : Life
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Hit"))
         {
-            rig.bodyType = RigidbodyType2D.Dynamic;
             DontMove = false;
             //rig.constraints = RigidbodyConstraints2D.FreezePositionY;
-            rig.velocity = new Vector2(-1* PlyLook, 0);
+            rig.velocity = new Vector2(-1 * PlyLook, 0);
             rig.gravityScale = 0;
             if (down)
             {
@@ -268,19 +325,27 @@ public class Player : Life
         }
     }
 
-    protected override void OnTriggerEnter2D(Collider2D collision)
+
+    public void SSSS()
     {
+        rig.velocity = Vector2.zero;
+        DontMove = true;
     }
-    protected void OnTriggerStay2D(Collider2D collision)
+    public void JumpU()
     {
-        if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set && nowGodTime <= 0)
-        {
-            //            Debug.Log(collision.name);
-            Hp -= collision.GetComponent<Att>().AttDamage;
-            nowGodTime = GodTime;
-            ani.SetTrigger("Hit");
-        }
+        rig.velocity = new Vector2(rig.velocity.x, JumpPower);
     }
+    void DontMoveSet(int dd)
+    {
+        if (dd == 0) DontMove = false;
+        else if (dd == 1) DontMove = true;
+    }
+    void SetAniState(int aa)
+    {
+        ani.SetInteger("State", aa);
+    }
+  
+
     public void EndDie()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);//죽으면 씬 다시로드

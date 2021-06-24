@@ -51,7 +51,7 @@ public class MoveMap : MonoBehaviour
     void gogoMap()
     {
         Ply.position = new Vector3(MovePos.GetChild(0).position.x, MovePos.GetChild(0).position.y, 0);
-        Ply.GetComponent<Player>().Hand.position = new Vector3(MovePos.GetChild(0).position.x, MovePos.GetChild(0).position.y, 0);
+        //Ply.GetComponent<Player>().Hand.position = new Vector3(MovePos.GetChild(0).position.x, MovePos.GetChild(0).position.y, 0);
         //Ply.GetComponent<Player>().MapMove = true;
         Ply.GetComponent<Rigidbody2D>().velocity = ShootPly;
         cam.position = new Vector3(MovePos.GetChild(1).position.x, MovePos.GetChild(1).position.y, -10);

@@ -14,6 +14,7 @@ TagManager:
   - TrapGround
   - TurnPoint
   - Timeline_HandoGet
+  - Ston
   layers:
   - Default
   - TransparentFX
@@ -41,7 +42,7 @@ TagManager:
   - OnlyPlyHit
   - OnlyEnyHit
   - ObjLayer
-  - 
+  - Ston
   - 
   - 
   - 

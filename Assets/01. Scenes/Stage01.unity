@@ -216,6 +216,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -440,14 +441,17 @@ MonoBehaviour:
   airAtt: 0
   Jump01: 0
   DontMove: 0
-  MaxSpeed: 3
-  JumpPower: 8
+  MaxSpeed: 5
+  JumpPower: 9
   gravityScale: 3
   DeshCoolTime: 1.8
-  DeshSpeedd: 5
+  DeshSpeedd: 10
   AttSpeed: 1.8
-  AttCoolTime: 2
+  AttCoolTime: 0.7
   GodTime: 1.8
+  HaveStone: 000000000000000000000000
+  StackStone: 3
+  PutSton: {fileID: 1827289203}
 --- !u!4 &31406102
 Transform:
   m_ObjectHideFlags: 0
@@ -463,7 +467,7 @@ Transform:
   - {fileID: 1393602477}
   - {fileID: 745084683}
   - {fileID: 542667999}
-  - {fileID: 1698223383}
+  - {fileID: 1827289205}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5462,6 +5466,9 @@ MonoBehaviour:
   BuddhaHand: {fileID: 0}
   CanversUI: {fileID: 1310690248}
   StoryTr: {fileID: 251781736}
+  AllSton:
+  - {fileID: 4551014918239076006, guid: 5ef1951f891350c42b16a55be8d414d3, type: 3}
+  - {fileID: 4551014918239076006, guid: 92c7ed4c2733ff74fa2194405868bb40, type: 3}
   StopUI: {fileID: 675508354}
 --- !u!4 &195425859
 Transform:
@@ -9142,6 +9149,7 @@ MonoBehaviour:
   AttDamage: 100
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -9531,6 +9539,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -9702,6 +9711,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -9999,6 +10009,7 @@ MonoBehaviour:
   AttDamage: 100
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -10558,6 +10569,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 6
   GroundDes: 0
   Set: 1
@@ -12204,6 +12216,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -13405,6 +13418,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -14178,6 +14192,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -19916,6 +19931,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -22760,6 +22776,7 @@ MonoBehaviour:
   AttDamage: 100
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -22837,6 +22854,7 @@ MonoBehaviour:
   AttDamage: 100
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -23232,6 +23250,7 @@ MonoBehaviour:
   AttDamage: 100
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -23309,6 +23328,7 @@ MonoBehaviour:
   AttDamage: 100
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -23720,6 +23740,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -24352,6 +24373,7 @@ MonoBehaviour:
   AttDamage: 100
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -24716,6 +24738,7 @@ MonoBehaviour:
   AttDamage: 100
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -24999,6 +25022,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -28893,6 +28917,7 @@ MonoBehaviour:
   AttDamage: 100
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -29471,6 +29496,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -30122,6 +30148,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -33124,6 +33151,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 6
   GroundDes: 0
   Set: 1
@@ -33923,6 +33951,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -34517,6 +34546,7 @@ MonoBehaviour:
   AttDamage: 100
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -38268,6 +38298,7 @@ Transform:
   - {fileID: 4145209612738655944}
   - {fileID: 1177417578}
   - {fileID: 366164453}
+  - {fileID: 1698223383}
   m_Father: {fileID: 31406102}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -38997,6 +39028,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 0
@@ -39368,6 +39400,7 @@ MonoBehaviour:
   AttDamage: 100
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -41371,6 +41404,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -42672,6 +42706,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -45694,16 +45729,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1698223383}
-  - component: {fileID: 1698223384}
   - component: {fileID: 1698223385}
-  - component: {fileID: 1698223386}
   m_Layer: 17
   m_Name: PlayerHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1698223383
 Transform:
   m_ObjectHideFlags: 0
@@ -45711,27 +45744,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698223382}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.993, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.99300003, y: 0.70199966, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1864527210}
   - {fileID: 1399184301}
-  m_Father: {fileID: 31406102}
-  m_RootOrder: 4
+  m_Father: {fileID: 1357194269}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1698223384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1698223382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3e20f1ff5b5dfb428a52d4e4a2b7d9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1698223385
 Animator:
   serializedVersion: 3
@@ -45751,23 +45772,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1698223386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1698223382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d8f5e8ba042e884c9bed96194f4bfce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MinDis: 5
-  MaxDis: 15
-  Sound2D: 1
-  SSS:
-  - {fileID: 8300000, guid: eacfe7cd5ad7015498954db92c2c8c77, type: 3}
 --- !u!1 &1701830267
 GameObject:
   m_ObjectHideFlags: 0
@@ -46854,6 +46858,7 @@ MonoBehaviour:
   AttDamage: 100
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -48742,6 +48747,63 @@ Transform:
   m_Father: {fileID: 905214683}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1827289203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1827289205}
+  - component: {fileID: 1827289204}
+  m_Layer: 26
+  m_Name: StonPut
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!61 &1827289204
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827289203}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5}
+  m_EdgeRadius: 0
+--- !u!4 &1827289205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827289203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 31406102}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1827332403
 GameObject:
   m_ObjectHideFlags: 0
@@ -50545,6 +50607,7 @@ MonoBehaviour:
   AttDamage: 100
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -52996,6 +53059,7 @@ MonoBehaviour:
   AttDamage: 4
   DesTime: 0.5
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 1
   Set: 0
@@ -54540,6 +54604,7 @@ MonoBehaviour:
   AttDamage: 5
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 3
   GroundDes: 0
   Set: 1
@@ -56654,6 +56719,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -57892,6 +57958,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 6
   GroundDes: 0
   Set: 1
@@ -57911,6 +57978,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1

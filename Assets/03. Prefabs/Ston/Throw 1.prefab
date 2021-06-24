@@ -145,9 +145,9 @@ GameObject:
   - component: {fileID: 6677181744304395526}
   - component: {fileID: 7762760942523097191}
   - component: {fileID: 6433856627901902694}
-  m_Layer: 9
+  m_Layer: 26
   m_Name: Throw 1
-  m_TagString: Untagged
+  m_TagString: Ston
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

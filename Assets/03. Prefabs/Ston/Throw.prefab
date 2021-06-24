@@ -144,9 +144,9 @@ GameObject:
   - component: {fileID: 8699961694073559050}
   - component: {fileID: 3283118295324651002}
   - component: {fileID: -6230510661622103784}
-  m_Layer: 9
+  m_Layer: 26
   m_Name: Throw
-  m_TagString: Untagged
+  m_TagString: Ston
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,9 +182,11 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 3
   GroundDes: 0
   Set: 0
+  DieAni: 0
 --- !u!114 &4551014918239076005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,5 +271,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DieObj: {fileID: 4870061418998596664, guid: 112af9cb21be7c84884f2974d9d5e3bd, type: 3}
+  Code: 1
   StonImg: {fileID: -4629194268841963549, guid: 2e49bdb9163ac4542a9daa286515d953,
     type: 3}
