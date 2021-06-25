@@ -183,6 +183,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 0
@@ -321,5 +322,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DieObj: {fileID: 8067755592219803995, guid: e108c2f77731a2d408148535708550dd, type: 3}
+  Code: 1
   StonImg: {fileID: -4659953815487972196, guid: 2e49bdb9163ac4542a9daa286515d953,
     type: 3}

@@ -32,7 +32,12 @@ public class Sencer : MonoBehaviour
                 ply.down = true;
                 ply.airAtt = true;
                 ply.Jump01 = true;
+
             }
+        }
+        if (collision.tag == "Att" && down)
+        {
+            ply.PutStonePly(collision);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

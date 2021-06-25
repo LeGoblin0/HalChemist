@@ -13,6 +13,7 @@ public class Player : Life
     [HideInInspector]
     [Tooltip("0 : 기본 \n1:뛰기\n2:점프")]
     public Animator ani;
+    public Animator Handani;
 
 
     [Header("핸도 위치")]
@@ -25,8 +26,12 @@ public class Player : Life
         ani = GetComponent<Animator>();
         cam = Camera.main;
         tag = "Player";
+        Handani = Hand.GetComponent<Animator>();
 
         rig.gravityScale = gravityScale;
+        HaveStone[0] = 1;
+        StoneUI();
+
     }
 
 
@@ -49,6 +54,8 @@ public class Player : Life
     public float MaxSpeed = 1.8f;
     public float JumpPower = 3;
     public float gravityScale = 2;
+    bool DontKeyStayMove = false;
+
     void PlySound(int i)
     {
         aus.PlayOneShot(SoundPly[i]);
@@ -75,8 +82,14 @@ public class Player : Life
 
     [Header("원석")]
     public int[] HaveStone;
-    int NowChoose = 0;
+    [HideInInspector]
+    public int NowChoose = 0;
     public int StackStone = 3;//스톤겹친갯수
+    Transform ThrowStone;//던진 스톤 정보 
+    public float ThrowPower = 5;
+    public float DesTimeStone = 5;
+    public Transform StoneUITr;
+    public float BaseStoneCoolTime = 5;
 
 
     [Tooltip("플레이어가 보고 있는 방향 [1: 우 ]  [2: 좌 ]")]
@@ -95,7 +108,8 @@ public class Player : Life
         Ply_Move();
         Ply_Desh();
         Ply_Att();
-     
+
+        Ply_Throw();
         if (nowGodTime >= 0) nowGodTime -= Time.deltaTime;
 
 
@@ -129,6 +143,7 @@ public class Player : Life
                     {
                         HaveStone[i]++;
                         Destroy(collision.gameObject);
+                        StoneUI();
                         return;
                     }
                 }
@@ -138,6 +153,7 @@ public class Player : Life
                     {
                         HaveStone[i] = (Stonecode * 1000 + 1);
                         Destroy(collision.gameObject);
+                        StoneUI();
                         return;
                     }
                 }
@@ -148,11 +164,12 @@ public class Player : Life
     {
        
     }
+  
     void Ply_Move()
     {
         if (!DontMove)
         {
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.DownArrow) && down) 
             {
                 PutSton.SetActive(true);
             }
@@ -165,6 +182,7 @@ public class Player : Life
                     ani.SetInteger("State", 2);
                 }
                 PlyLook = 1;
+                DontKeyStayMove = false;
             }
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
@@ -174,6 +192,7 @@ public class Player : Life
                     ani.SetInteger("State", 2);
                 }
                 PlyLook = -1;
+                DontKeyStayMove = false;
             }
             else if (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
             {
@@ -275,7 +294,7 @@ public class Player : Life
             ani.SetFloat("RunSpeed", MaxSpeed * 1.2f);
             rig.velocity = new Vector2(MaxSpeed * PlyLook, rig.velocity.y);
         }
-        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump"))
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump") && !DontKeyStayMove) 
         {
             if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)))
             {
@@ -325,7 +344,83 @@ public class Player : Life
         }
     }
 
+    int Tcode;
+    void Ply_Throw()
+    {
+        if (Input.GetKey(KeyCode.S))
+        {
+            if (!Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Att") && ThrowStone == null && HaveStone[NowChoose] > 0)
+            {
+                Handani.SetTrigger("Att");
+                Tcode = HaveStone[NowChoose] / 1000;
+                --HaveStone[NowChoose];
+                if (HaveStone[NowChoose] % 1000 == 0) HaveStone[NowChoose] = 0;
+                if (NowChoose == 0) Invoke("REStone", BaseStoneCoolTime);
+                StoneUI();
+            }
+            else if (!Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Att") && ThrowStone != null)
+            {
+                ThrowStone.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            NowChoose++;
+            if (HaveStone.Length <= NowChoose) NowChoose = 0;
+        }
+    }
+    void REStone()
+    {
+        HaveStone[0] = 1;
+        StoneUI();
+    }
+    public void MakeStone()
+    {
+        ThrowStone = Instantiate(GameSystem.instance.AllSton[Tcode]).transform;
+        ThrowStone.position = Hand.position;
+        ThrowStone.parent = Hand;
+        ThrowStone.GetComponent<Rigidbody2D>().gravityScale = 0;
+    }
+    public void TStone()
+    {
+        ThrowStone.parent = null;
+        ThrowStone.gameObject.layer = 8;
+        ThrowStone.GetComponent<Att>().Set = true;
+        ThrowStone.GetComponent<Att>().GroundDes = true;
+        ThrowStone.GetComponent<Rigidbody2D>().velocity = new Vector2(PlyLook * ThrowPower, 0);
+        Destroy(ThrowStone.gameObject, DesTimeStone);
+    }
 
+    void StoneUI()
+    {
+        for (int i = 0; i < HaveStone.Length; i++)
+        {
+            if (StoneUITr.GetChild(0).childCount <= i)
+            {
+                Instantiate(StoneUITr.GetChild(0).GetChild(0), StoneUITr.GetChild(0));
+            }
+            StoneUITr.GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().sprite = GameSystem.instance.AllSton[HaveStone[i] / 1000].GetComponent<StoneDieAni>().StonImg;
+            if (HaveStone[i] == 0)
+            {
+                StoneUITr.GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                StoneUITr.GetChild(0).GetChild(i).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = "";
+            }
+            else
+            {
+                StoneUITr.GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                StoneUITr.GetChild(0).GetChild(i).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = (HaveStone[i] % 1000) + "";
+            }
+        }
+    }
+
+    public void PutStonePly(Collider2D collision = null)
+    {
+        if (rig.velocity.y < 0)
+        {
+            DontKeyStayMove = true;
+            rig.velocity = new Vector2(transform.position.x - collision.transform.position.x, transform.position.y - collision.transform.position.y+.5f).normalized * JumpPower;
+        }
+    }
     public void SSSS()
     {
         rig.velocity = Vector2.zero;
