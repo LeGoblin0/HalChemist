@@ -9,6 +9,7 @@ public class Player : Life
     Rigidbody2D rig;
     Camera cam;
     AudioSource aus;
+    CapsuleCollider2D col;
     public AudioClip[] SoundPly;
     [HideInInspector]
     [Tooltip("0 : 기본 \n1:뛰기\n2:점프")]
@@ -27,7 +28,7 @@ public class Player : Life
         cam = Camera.main;
         tag = "Player";
         Handani = Hand.GetComponent<Animator>();
-
+        col = GetComponent<CapsuleCollider2D>();
         rig.gravityScale = gravityScale;
         HaveStone[0] = 1;
         StoneUI();
@@ -169,12 +170,21 @@ public class Player : Life
     {
         if (!DontMove)
         {
-            if (Input.GetKey(KeyCode.DownArrow) && down) 
+            if (Input.GetKey(KeyCode.DownArrow) && down)
             {
+                ani.SetInteger("State", 3);
                 PutSton.SetActive(true);
+
+                col.offset = new Vector2(col.offset.x, 0.2747405f);
+                col.size = new Vector2(col.size.x, 0.5542418f);
             }
-            else PutSton.SetActive(false);
-            if (Input.GetKey(KeyCode.RightArrow))
+            else if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                col.offset = new Vector2(col.offset.x, 0.4747405f);
+                col.size = new Vector2(col.size.x, 0.9542418f);
+                PutSton.SetActive(false);
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
             {
                 if (down) ani.SetInteger("State", 1);
                 else
@@ -244,7 +254,7 @@ public class Player : Life
     }
     void Ply_Att()
     {
-
+        if (!ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Run") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump_00")) return;
         if (Input.GetKeyDown(KeyCode.A) && DontAttTime <= 0)
         {
             if (down && nowAttTime <= 0 && !DontMove)
@@ -281,7 +291,8 @@ public class Player : Life
     void AniMove()
     {
 
-        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_2") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Air_Att_1"))
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_2") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Air_Att_1")
+            || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down01") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down02"))
         {
             rig.velocity = Vector2.zero;
         }
