@@ -254,7 +254,7 @@ public class Player : Life
     }
     void Ply_Att()
     {
-        if (!ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Run") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump_00")) return;
+        //if (!ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Run") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump_00")) return;
         if (Input.GetKeyDown(KeyCode.A) && DontAttTime <= 0)
         {
             if (down && nowAttTime <= 0 && !DontMove)
@@ -372,6 +372,7 @@ public class Player : Life
             else if (!Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Att") && ThrowStone != null)
             {
                 ThrowStone.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                ThrowStone = null;
             }
         }
         if (Input.GetKeyDown(KeyCode.E))
