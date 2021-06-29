@@ -10,10 +10,12 @@ public class Hand : MonoBehaviour
         ply = transform.parent.parent.GetComponent<Player>();
     }
 
-    // Update is called once per frame
+    public Vector3 offset;
+    public float Speed = 3;
     void Update()
     {
-        
+        transform.GetChild(0).position += (new Vector3(offset.x * ply.transform.GetChild(0).localScale.x, offset.y, offset.z) + ply.transform.position - transform.GetChild(0).position) * Speed * Time.deltaTime;
+        transform.GetChild(1).position += (new Vector3(offset.x * ply.transform.GetChild(0).localScale.x, offset.y, offset.z) + ply.transform.position - transform.GetChild(0).position) * Speed * Time.deltaTime;
     }
     public void MakeStone()
     {

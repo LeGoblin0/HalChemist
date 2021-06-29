@@ -101,7 +101,7 @@ public class Player : Life
     public GameObject PutSton;
     private void FixedUpdate()
     {
-
+        AniMove();
     }
 
     void Update()
@@ -115,7 +115,7 @@ public class Player : Life
 
 
 
-        AniMove();
+        
 
     }
 
@@ -170,11 +170,19 @@ public class Player : Life
     {
         if (!DontMove)
         {
+            if (down && !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump"))
+            {
+                ani.SetFloat("AirTime", 0);
+            }
+            else
+            {
+                ani.SetFloat("AirTime", ani.GetFloat("AirTime") + Time.deltaTime);
+            }
             if (Input.GetKey(KeyCode.DownArrow) && down)
             {
                 ani.SetInteger("State", 3);
                 PutSton.SetActive(true);
-
+                this.Hand.GetComponent<Hand>().offset = new Vector3(-1, 0f, 0);
                 col.offset = new Vector2(col.offset.x, 0.2747405f);
                 col.size = new Vector2(col.size.x, 0.5542418f);
             }
@@ -183,6 +191,7 @@ public class Player : Life
                 col.offset = new Vector2(col.offset.x, 0.4747405f);
                 col.size = new Vector2(col.size.x, 0.9542418f);
                 PutSton.SetActive(false);
+                this.Hand.GetComponent<Hand>().offset = new Vector3(-1, .5f, 0);
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
@@ -295,8 +304,14 @@ public class Player : Life
             || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down01") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down02"))
         {
             rig.velocity = Vector2.zero;
+            rig.gravityScale = 0;
+            return;
         }
-        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle"))
+        else
+        {
+            rig.gravityScale = gravityScale;
+        }
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle"))
         {
             rig.velocity = new Vector2(0, rig.velocity.y);
         }
@@ -356,9 +371,11 @@ public class Player : Life
     }
 
     int Tcode;
+    bool StopStone = false;
+    float StopStoneTime = 0;
     void Ply_Throw()
     {
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             if (!Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Att") && ThrowStone == null && HaveStone[NowChoose] > 0)
             {
@@ -368,12 +385,23 @@ public class Player : Life
                 if (HaveStone[NowChoose] % 1000 == 0) HaveStone[NowChoose] = 0;
                 if (NowChoose == 0) Invoke("REStone", BaseStoneCoolTime);
                 StoneUI();
+                StopStone = true;
+                StopStoneTime = 0;
             }
-            else if (!Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Att") && ThrowStone != null)
-            {
-                ThrowStone.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                ThrowStone = null;
-            }
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            StopStone = false;
+        }
+        if (StopStone)
+        {
+            StopStoneTime += Time.deltaTime;
+        }
+        if (StopStone && StopStoneTime>.5f && !Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Att") && ThrowStone != null)
+        {
+            ThrowStone.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            ThrowStone = null;
+            StopStone = false;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
