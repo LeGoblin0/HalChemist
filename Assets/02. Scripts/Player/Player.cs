@@ -99,6 +99,11 @@ public class Player : Life
 
     [Header("시스템")]
     public GameObject PutSton;
+
+    [Header("대화문")]
+    public DialogManager manager;
+    GameObject scanObject;
+    
     private void FixedUpdate()
     {
         AniMove();
@@ -112,10 +117,11 @@ public class Player : Life
 
         Ply_Throw();
         if (nowGodTime >= 0) nowGodTime -= Time.deltaTime;
+        Dialog();
 
 
 
-        
+
 
     }
 
@@ -407,6 +413,14 @@ public class Player : Life
         {
             NowChoose++;
             if (HaveStone.Length <= NowChoose) NowChoose = 0;
+        }
+    }
+    void Dialog()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            manager.Action(scanObject);
+            Debug.Log("대화문");
         }
     }
     void REStone()
