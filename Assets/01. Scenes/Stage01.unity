@@ -17371,6 +17371,7 @@ GameObject:
   - component: {fileID: 647178808}
   - component: {fileID: 647178810}
   - component: {fileID: 647178809}
+  - component: {fileID: 647178811}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -17438,6 +17439,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 647178807}
   m_CullTransparentMesh: 0
+--- !u!114 &647178811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647178807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749ab61aa571ab24c93b9a1cd355cc1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharPerSeconds: 15
 --- !u!1 &647669657
 GameObject:
   m_ObjectHideFlags: 0
@@ -34702,7 +34716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60155951d8164b746a08bf4af239f0dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TalkText: {fileID: 647178809}
+  talk: {fileID: 647178811}
   scanObject: {fileID: 0}
   talkPanel: {fileID: 1396080337}
   isAction: 0
