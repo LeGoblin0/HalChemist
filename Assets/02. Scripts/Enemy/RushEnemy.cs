@@ -32,7 +32,10 @@ public class RushEnemy : Enemy01
         }
         rig.gravityScale = 1;
 
-
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+        {
+            rig.velocity = new Vector3(-3 * flip, rig.velocity.y, 0);
+        }
     }
     bool gogo = false;
     float nowSpeed;
@@ -65,7 +68,7 @@ public class RushEnemy : Enemy01
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
-        if(collision.gameObject.tag == "TurnPoint")
+        if(collision.gameObject.tag == "TurnPoint"&& !ani.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
         {
             flip *= -1;
             transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);

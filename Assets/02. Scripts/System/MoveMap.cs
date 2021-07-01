@@ -40,7 +40,6 @@ public class MoveMap : MonoBehaviour
         {
             GameSystem.instance.CanversUI.GetChild(1).GetComponent<Animator>().SetTrigger("On");
             Ply.GetComponent<Player>().DontMove = true;
-            Ply.GetComponent<Player>().GodMove = true;
             Invoke("gogoMap", 0.2f);
             if (BGChange >= 0)
             {
@@ -62,6 +61,5 @@ public class MoveMap : MonoBehaviour
             Destroy(transform.parent.parent.gameObject.GetComponent<MapManager>().EEE.gameObject);
         //Ply.GetComponent<Player>().MoveMap = true;
         Ply.GetComponent<Player>().DontMove = false;
-        Ply.GetComponent<Player>().GodMove = false;
     }
 }

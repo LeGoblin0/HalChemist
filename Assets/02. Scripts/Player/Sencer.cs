@@ -35,7 +35,7 @@ public class Sencer : MonoBehaviour
 
             }
         }
-        if (collision.tag == "Att" && down)
+        if (collision.tag == "Att" && down && collision.GetComponent<StoneDieAni>() != null) 
         {
             ply.PutStonePly(collision);
         }

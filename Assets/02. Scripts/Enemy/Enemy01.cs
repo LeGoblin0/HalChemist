@@ -31,7 +31,7 @@ public class Enemy01 : Life
         if (Die) return;
         if (HHIITime > 0) 
         {
-            if (transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>() != null) transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            if (transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>() != null) transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1)*.7f;
             HHIITime -= Time.deltaTime;
         }
         else
@@ -73,7 +73,8 @@ public class Enemy01 : Life
     {
         //죽은상태에서 벽에 충돌   부메랑처럼 돌아오는 적은 이 함수 상속받아서 충돌시 플레이어에게 가는 함수 작성함
     }
-    float HHIITime = 0;
+    public float HHIITime = 0;
+    public bool HitAni = true;
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         //base.OnTriggerEnter2D(collision);
@@ -81,7 +82,12 @@ public class Enemy01 : Life
         if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set)
         {
             Hp -= collision.GetComponent<Att>().AttDamage;
-            if (Hp != 0) HHIITime = .2f;
+            if (Hp != 0)
+            {
+                HHIITime = .2f;
+                if(HitAni) ani.SetTrigger("Hit");
+            }
+            
         }
     }
 }

@@ -434,7 +434,6 @@ MonoBehaviour:
   ani: {fileID: 0}
   Handani: {fileID: 0}
   Hand: {fileID: 1698223383}
-  GodMove: 0
   OnStory: 0
   right: 0
   left: 0
@@ -450,6 +449,8 @@ MonoBehaviour:
   AttSpeed: 1.8
   AttCoolTime: 0.7
   GodTime: 1.8
+  ThrowF: {x: -7, y: 4}
+  HitThrowTime: 3
   HaveStone: 000000000000000000000000
   NowChoose: 0
   StackStone: 3
@@ -12204,6 +12205,8 @@ MonoBehaviour:
   DieItem: []
   DieAniTime: 0
   NoDie: 1
+  HHIITime: 0
+  HitAni: 1
   attCoolTime: 3
   SlowParsent: 0.7
   SlowTime: 5
@@ -43007,6 +43010,8 @@ MonoBehaviour:
   - {fileID: 2946834589767785212, guid: 88583f290592f23459e246394e0d71d7, type: 3}
   DieAniTime: 1.5
   NoDie: 0
+  HHIITime: 0
+  HitAni: 1
   Speed: 10
   SturnTime: 4
   MoveN: 0

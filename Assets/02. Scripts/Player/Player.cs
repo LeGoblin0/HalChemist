@@ -33,11 +33,11 @@ public class Player : Life
         HaveStone[0] = 1;
         StoneUI();
 
+
+        ani.SetFloat("HitThrowTime", HitThrowTime);
     }
 
 
-    [Header("무적모드")]
-    public bool GodMove = false;
     [Header("스토리 실행")]
     public bool OnStory = false;
 
@@ -80,6 +80,8 @@ public class Player : Life
     [Header("피격")]
     public float GodTime = 1.8f;
     float nowGodTime = 1.8f;
+    public Vector2 ThrowF = new Vector2(-7, 4);
+    public float HitThrowTime = .6f;
 
     [Header("원석")]
     public int[] HaveStone;
@@ -120,7 +122,15 @@ public class Player : Life
         Dialog();
 
 
-
+        if (nowGodTime > 0)
+        {
+            if (((int)(nowGodTime * 10)) % 10 % 2 == 0)
+            {
+                transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .5f);
+            }
+            else transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        }
+        else transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
 
 
     }
@@ -131,12 +141,17 @@ public class Player : Life
     }
     protected void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set && nowGodTime <= 0)
+        if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set && nowGodTime <= 0 )
         {
             //            Debug.Log(collision.name);
             Hp -= collision.GetComponent<Att>().AttDamage;
             nowGodTime = GodTime;
             ani.SetTrigger("Hit");
+            DontMove = true;
+            rig.velocity = new Vector2(ThrowF.x * PlyLook, ThrowF.y);
+            //Debug.Log(rig.velocity);
+            //Debug.Log(new Vector2(ThrowF.x * PlyLook, ThrowF.y));
+            
         }
         if (collision.tag == "Ston")
         {
@@ -166,10 +181,6 @@ public class Player : Life
                 }
             }
         }
-    }
-    public void Pick_Stone(Collider2D collision)
-    {
-       
     }
   
     void Ply_Move()
@@ -250,7 +261,7 @@ public class Player : Life
     void Ply_Desh()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space) && nowDeshCoolTime <= 0)
+        if (Input.GetKeyDown(KeyCode.Space) && nowDeshCoolTime <= 0) 
         {
             if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || ani.GetCurrentAnimatorStateInfo(0).IsName("Run") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump"))
             {
@@ -305,7 +316,8 @@ public class Player : Life
     /// </summary>
     void AniMove()
     {
-
+          
+        
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_2") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Air_Att_1")
             || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down01") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down02"))
         {
@@ -359,21 +371,7 @@ public class Player : Life
                 ani.SetInteger("State", 2);
             }
         }
-        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Hit"))
-        {
-            DontMove = false;
-            //rig.constraints = RigidbodyConstraints2D.FreezePositionY;
-            rig.velocity = new Vector2(-1 * PlyLook, 0);
-            rig.gravityScale = 0;
-            if (down)
-            {
-                ani.SetInteger("State", 0);
-            }
-            else
-            {
-                ani.SetInteger("State", 2);
-            }
-        }
+       
     }
 
     int Tcode;
@@ -493,7 +491,16 @@ public class Player : Life
     {
         ani.SetInteger("State", aa);
     }
-  
+    public void EndMyHit()
+    {
+        DontMove = false;
+        DontKeyStayMove = true;
+        if (down) ani.SetInteger("State", 1);
+        else
+        {
+            ani.SetInteger("State", 2);
+        }
+    }
 
     public void EndDie()
     {
