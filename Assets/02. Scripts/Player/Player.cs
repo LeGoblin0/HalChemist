@@ -418,7 +418,6 @@ public class Player : Life
         if (Input.GetKeyDown(KeyCode.G))
         {
             manager.Action(scanObject);
-            Debug.Log("대화문");
         }
     }
     void REStone()
