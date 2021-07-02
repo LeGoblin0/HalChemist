@@ -128,8 +128,8 @@ public class GameSystem : MonoBehaviour
             }
             GG = SavePos[gameData.SavePoint].MovePos.GetChild(1).position;
             Camera.main.transform.position = new Vector3(GG.x, GG.y, Camera.main.transform.position.z);
-            Camera.main.GetComponent<CamMove>().XLock = SavePos[gameData.SavePoint].MovePos.parent.parent.GetComponent<MapManager>().XLock;
-            Camera.main.GetComponent<CamMove>().YLock = SavePos[gameData.SavePoint].MovePos.parent.parent.GetComponent<MapManager>().YLock;
+
+
 
             return gameData;
         }

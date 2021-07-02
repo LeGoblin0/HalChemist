@@ -9,7 +9,7 @@ public class Player : Life
     Rigidbody2D rig;
     Camera cam;
     AudioSource aus;
-    CapsuleCollider2D col;
+    BoxCollider2D col;
     public AudioClip[] SoundPly;
     [HideInInspector]
     [Tooltip("0 : 기본 \n1:뛰기\n2:점프")]
@@ -28,7 +28,7 @@ public class Player : Life
         cam = Camera.main;
         tag = "Player";
         Handani = Hand.GetComponent<Animator>();
-        col = GetComponent<CapsuleCollider2D>();
+        col = GetComponent<BoxCollider2D>();
         rig.gravityScale = gravityScale;
         HaveStone[0] = 1;
         StoneUI();

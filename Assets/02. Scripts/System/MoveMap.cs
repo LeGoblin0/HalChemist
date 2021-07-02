@@ -11,7 +11,7 @@ public class MoveMap : MonoBehaviour
         gameObject.layer = 12;
         gameObject.tag = "Ground";
         Ply = GameSystem.instance.Ply;
-        cam = Camera.main.transform;
+        cam = GameObject.Find("CM vcam1").GetComponent<Cinemachine.CinemachineConfiner>();
         //gameObject.layer = 23;
         if (MovePos == null) 
         {
@@ -22,13 +22,13 @@ public class MoveMap : MonoBehaviour
         Debug.DrawLine(aa, MovePos.position + (Vector3)MovePos.GetComponent<Collider2D>().offset, Color.yellow, 10000);
     }
     Transform Ply;
-    Transform cam;
     //public Transform MovePos.GetChild(0);
     //public Transform MovePos.GetChild(1);
     public Transform MovePos;
 
 
     public Vector3 ShootPly;
+    Cinemachine.CinemachineConfiner cam;
     // Update is called once per frame
     void Update()
     {
@@ -53,13 +53,12 @@ public class MoveMap : MonoBehaviour
         //Ply.GetComponent<Player>().Hand.position = new Vector3(MovePos.GetChild(0).position.x, MovePos.GetChild(0).position.y, 0);
         //Ply.GetComponent<Player>().MapMove = true;
         Ply.GetComponent<Rigidbody2D>().velocity = ShootPly;
-        cam.position = new Vector3(MovePos.GetChild(1).position.x, MovePos.GetChild(1).position.y, -10);
-        cam.GetComponent<CamMove>().XLock = MovePos.parent.parent.gameObject.GetComponent<MapManager>().XLock;
-        cam.GetComponent<CamMove>().YLock = MovePos.parent.parent.gameObject.GetComponent<MapManager>().YLock;
         MovePos.parent.parent.gameObject.GetComponent<MapManager>().MakeEEE();
         if (transform.parent.parent.gameObject.GetComponent<MapManager>().EEE != null)
             Destroy(transform.parent.parent.gameObject.GetComponent<MapManager>().EEE.gameObject);
         //Ply.GetComponent<Player>().MoveMap = true;
         Ply.GetComponent<Player>().DontMove = false;
+
+        cam.m_BoundingShape2D= MovePos.parent.parent.GetChild(0).GetComponent<PolygonCollider2D>();
     }
 }
