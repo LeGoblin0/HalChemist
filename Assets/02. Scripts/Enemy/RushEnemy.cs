@@ -73,6 +73,19 @@ public class RushEnemy : Enemy01
             flip *= -1;
             transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
         }
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+        {
+            if (transform.position.x > GameSystem.instance.Ply.position.x)
+            {
+                flip = -1;
+                transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
+            }
+            else
+            {
+                flip = +1;
+                transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
+            }
+        }
         
     }
     bool First = true;
