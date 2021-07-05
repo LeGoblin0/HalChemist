@@ -23,6 +23,7 @@ public class Enemy01 : Life
 
     [Header("사망하면 떨구는 아이템")]
     public Transform[] DieItem;
+    public int MoneyDie = 0;
     [Header("사망 애니메이션 시간")]
     public float DieAniTime;
     public bool NoDie = false;
@@ -55,6 +56,14 @@ public class Enemy01 : Life
                         aa.position = transform.position + new Vector3(0, 0, 1f);
                         aa.parent = transform.parent;
                     }
+                }
+                for(int i = 0; i < MoneyDie; i++)
+                {
+                    Transform aa = Instantiate(GameSystem.instance.MoneyPre);
+                    aa.position = transform.position + new Vector3(0, 0, 1f);
+                    aa.parent = transform.parent;
+                    aa.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(0, 1f), Random.Range(0, 1f)) * 5;
+                    Destroy(aa.gameObject, 5);
                 }
                 if (GetComponent<Rigidbody2D>() != null) GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 gameObject.layer = 19;

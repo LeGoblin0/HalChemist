@@ -181,8 +181,21 @@ public class Player : Life
                 }
             }
         }
+
+        if (collision.tag == "Money")
+        {
+            Destroy(collision.gameObject);
+            Money++;
+            LookMoney();
+        }
     }
-  
+
+    public Text MoneyInt;
+    public int Money;
+    void LookMoney()
+    {
+        MoneyInt.text = Money + "";
+    }
     void Ply_Move()
     {
         if (!DontMove)

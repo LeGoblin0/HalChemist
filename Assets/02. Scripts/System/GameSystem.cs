@@ -263,7 +263,9 @@ public class GameSystem : MonoBehaviour
     public Transform CanversUI;
     public Transform StoryTr;
 
+    public Transform MoneyPre;
     public GameObject[] AllSton;
+
     private void Awake()
     {
         //Time.timeScale = .1f;

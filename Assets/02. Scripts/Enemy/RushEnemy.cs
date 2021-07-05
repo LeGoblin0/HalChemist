@@ -34,7 +34,7 @@ public class RushEnemy : Enemy01
 
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
         {
-            rig.velocity = new Vector3(-3 * flip, rig.velocity.y, 0);
+            rig.velocity = new Vector3(-5 * flip, rig.velocity.y, 0);
         }
     }
     bool gogo = false;

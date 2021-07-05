@@ -312,14 +312,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69dcd2c8b08cece40aadb9e5cf8c896f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 10
+  Hp: 5
   state: 0
   ani: {fileID: 0}
   SenserPly: 0
   DieItem:
   - {fileID: 719797484792284287, guid: 92c7ed4c2733ff74fa2194405868bb40, type: 3}
+  MoneyDie: 10
   DieAniTime: 0.5
   NoDie: 0
+  MoneyInt: {fileID: 0}
+  Money: 0
   HHIITime: 0
   HitAni: 1
   Speed: 1
