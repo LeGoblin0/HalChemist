@@ -10,6 +10,7 @@ public class Enemy01 : Life
         gameObject.layer = 11;
         gameObject.tag = "Att";//없어도 되는내용 적 레이어하고 테그를 Enemy로 바꿀것
         if (GetComponent<Animator>() != null) ani = GetComponent<Animator>();
+        ani.SetFloat("HitSpeed", HitAniSpeed);
         
     }
     protected bool Die = false;//죽으면 참이됨 죽었을떄 1번만 발생하도록 해주는 변수
@@ -82,8 +83,12 @@ public class Enemy01 : Life
     {
         //죽은상태에서 벽에 충돌   부메랑처럼 돌아오는 적은 이 함수 상속받아서 충돌시 플레이어에게 가는 함수 작성함
     }
+
+    [Header("히트관련")]
     public float HHIITime = 0;
     public bool HitAni = true;
+    public float HitAniSpeed=10f;
+    public float HitAniknockBack=1;
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         //base.OnTriggerEnter2D(collision);

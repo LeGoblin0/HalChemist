@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RushEnemy : Enemy01
 {
+    [Space]
     public float Speed;
     public float RushTime = .8f;
     public float RushSpeed = 5;
@@ -34,7 +35,7 @@ public class RushEnemy : Enemy01
 
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
         {
-            rig.velocity = new Vector3(-5 * flip, rig.velocity.y, 0);
+            rig.velocity = new Vector3(-HitAniknockBack * flip, rig.velocity.y, 0);
         }
     }
     bool gogo = false;

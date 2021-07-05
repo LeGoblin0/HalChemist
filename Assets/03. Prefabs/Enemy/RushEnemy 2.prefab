@@ -321,10 +321,10 @@ MonoBehaviour:
   MoneyDie: 10
   DieAniTime: 0.5
   NoDie: 0
-  MoneyInt: {fileID: 0}
-  Money: 0
   HHIITime: 0
   HitAni: 1
+  HitAniSpeed: 10
+  HitAniknockBack: 1
   Speed: 1
   RushTime: 0.8
   RushSpeed: 5

@@ -185,14 +185,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69dcd2c8b08cece40aadb9e5cf8c896f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 1
+  Hp: 5
   state: 0
   ani: {fileID: 0}
   SenserPly: 0
   DieItem:
   - {fileID: 719797484792284287, guid: 5ef1951f891350c42b16a55be8d414d3, type: 3}
+  MoneyDie: 0
   DieAniTime: 0.5
   NoDie: 0
+  HHIITime: 0
+  HitAni: 1
   Speed: 1
   RushTime: 0.8
   RushSpeed: 3
@@ -232,6 +235,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -267,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8f5e8ba042e884c9bed96194f4bfce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MisDis: 3.27
+  MinDis: 5
   MaxDis: 1.6
   Sound2D: 0
   SSS:
