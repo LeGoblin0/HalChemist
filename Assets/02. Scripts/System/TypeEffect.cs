@@ -8,6 +8,8 @@ public class TypeEffect : MonoBehaviour
 {
     public int CharPerSeconds;
     string targetMsg;
+    bool isAnim;
+
     Text msgText;
     int index;
     float interval;
@@ -17,14 +19,24 @@ public class TypeEffect : MonoBehaviour
     }
     public void SetMsg(string msg)
     {
-        targetMsg = msg;
-        EffectStart();
+        if (isAnim)
+        {
+            msgText.text = targetMsg;
+            CancelInvoke();
+            EffectEnd();
+        }
+        else
+        {
+            targetMsg = msg;
+            EffectStart();
+        }
     }
     void EffectStart()
     {
         msgText.text = "";
         index = 0;
         interval = 1.0f / CharPerSeconds;
+        isAnim = true;
         Invoke("Effecting", interval);
     }
     void Effecting()
@@ -40,6 +52,6 @@ public class TypeEffect : MonoBehaviour
     }
     void EffectEnd()
     {
-
+        isAnim = false;
     }
 }
