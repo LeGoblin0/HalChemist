@@ -111,6 +111,12 @@ public class Player : Life
         AniMove();
     }
 
+
+    bool GGGodMod;
+    void GGGGG()
+    {
+        GetComponent<Collider2D>().enabled = true;
+    }
     void Update()
     {
         Ply_Move();
@@ -118,7 +124,17 @@ public class Player : Life
         Ply_Att();
 
         Ply_Throw();
-        if (nowGodTime >= 0) nowGodTime -= Time.deltaTime;
+        if (nowGodTime >= 0)
+        {
+            nowGodTime -= Time.deltaTime;
+            GGGodMod = true;
+        }
+        else if(GGGodMod)
+        {
+            GGGodMod = false;
+            GetComponent<Collider2D>().enabled = false;
+            Invoke("GGGGG", 0);
+        }
         Dialog();
 
 
@@ -153,7 +169,7 @@ public class Player : Life
             //Debug.Log(new Vector2(ThrowF.x * PlyLook, ThrowF.y));
             
         }
-        if (collision.tag == "Ston")
+        if (collision.tag == "Ston" && ThrowStone != collision.transform) 
         {
             Debug.Log(0);
             if (collision.GetComponent<StoneDieAni>() != null)
@@ -441,8 +457,8 @@ public class Player : Life
     public void MakeStone()
     {
         ThrowStone = Instantiate(GameSystem.instance.AllSton[Tcode]).transform;
-        ThrowStone.position = Hand.position;
-        ThrowStone.parent = Hand;
+        ThrowStone.position = Hand.GetChild(0).position + new Vector3(0, 0.5f, 0);
+        ThrowStone.parent = Hand.GetChild(0);
         ThrowStone.GetComponent<Rigidbody2D>().gravityScale = 0;
     }
     public void TStone()

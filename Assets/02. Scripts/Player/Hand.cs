@@ -14,8 +14,7 @@ public class Hand : MonoBehaviour
     public float Speed = 3;
     void Update()
     {
-        transform.GetChild(0).position += (new Vector3(offset.x * ply.transform.GetChild(0).localScale.x, offset.y, offset.z) + ply.transform.position - transform.GetChild(0).position) * Speed * Time.deltaTime;
-        transform.GetChild(1).position += (new Vector3(offset.x * ply.transform.GetChild(0).localScale.x, offset.y, offset.z) + ply.transform.position - transform.GetChild(0).position) * Speed * Time.deltaTime;
+        transform.position += (new Vector3(offset.x * ply.transform.GetChild(0).localScale.x, offset.y, offset.z) + ply.transform.position - transform.position) * Speed * Time.deltaTime;
     }
     public void MakeStone()
     {
