@@ -100,6 +100,7 @@ public class Enemy01 : Life
             {
                 HHIITime = .2f;
                 if(HitAni) ani.SetTrigger("Hit");
+
             }
             
         }

@@ -68,13 +68,31 @@ public class RushEnemy : Enemy01
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
-        if(collision.gameObject.tag == "TurnPoint"&& !ani.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+        if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set)
+        {
+            Hp -= collision.GetComponent<Att>().AttDamage;
+            if (Hp != 0)
+            {
+                HHIITime = .2f;
+                if (HitAni) ani.SetTrigger("Hit");
+                if (transform.position.x > GameSystem.instance.Ply.position.x)
+                {
+                    flip = -1;
+                    transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
+                }
+                else
+                {
+                    flip = +1;
+                    transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
+                }
+            }
+
+        }
+        if (collision.gameObject.tag == "TurnPoint"&& !ani.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
         {
             flip *= -1;
             transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
         }
-        
     }
     bool First = true;
     private void OnCollisionEnter2D(Collision2D collision)
