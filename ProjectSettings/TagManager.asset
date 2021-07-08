@@ -15,7 +15,7 @@ TagManager:
   - TurnPoint
   - Timeline_HandoGet
   - Ston
-  - Money
+  - Item
   layers:
   - Default
   - TransparentFX

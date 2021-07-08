@@ -101,7 +101,12 @@ public class GameSystem : MonoBehaviour
 
             for (int i = 0; i < MapObjS.Length; i++)
             {
-                if (gameData.MapObj[i] != 0) MapObjS[i].MapTrue();
+
+                if (gameData.MapObj[i] != 0)
+                {
+                    MapObjS[i].SaveOn = true;
+                    MapObjS[i].MapTrue();
+                }
             }
             for (int i = 0; i < SavePos.Length; i++)
             {
@@ -127,7 +132,8 @@ public class GameSystem : MonoBehaviour
                 SavePos[gameData.SavePoint].MovePos = SavePos[gameData.SavePoint].transform.parent.Find("MoveMap").GetChild(0);
             }
             GG = SavePos[gameData.SavePoint].MovePos.GetChild(1).position;
-            Camera.main.transform.position = new Vector3(GG.x, GG.y, Camera.main.transform.position.z);
+
+            cam.m_BoundingShape2D = SavePos[gameData.SavePoint].transform.parent.GetChild(0).GetComponent<PolygonCollider2D>();
 
 
 
@@ -246,6 +252,12 @@ public class GameSystem : MonoBehaviour
         //}
         //Ply.GetComponent<Player>().FullHp();
         gameData.SavePoint = ii;
+
+
+        for (int j = 0; j < savePointObj.Count; j++)
+        {
+            savePointObj[j].makeClone();
+        }
         Save();
     }
     public void MapSSS(int i)
@@ -263,8 +275,21 @@ public class GameSystem : MonoBehaviour
     public Transform CanversUI;
     public Transform StoryTr;
 
-    public Transform MoneyPre;
+    public Transform[] ItemPre;
     public GameObject[] AllSton;
+
+    public List<SaveResetObj2> savePointObj;
+
+    public void AddSetObj(SaveResetObj2 me)
+    {
+        if (savePointObj == null) savePointObj = new List<SaveResetObj2>();
+        savePointObj.Add(me);
+        me.saveCode = savePointObj.Count - 1;
+        Destroy(me.GetComponent<SaveResetObj>());
+        me.gameObject.SetActive(false);
+        me.makeClone();
+    }
+    Cinemachine.CinemachineConfiner cam;
 
     private void Awake()
     {
@@ -307,6 +332,7 @@ public class GameSystem : MonoBehaviour
         {
             StoryTr.GetChild(i).GetComponent<StoryOnOFf>().Codess = i;
         }
+        cam = GameObject.Find("CM vcam1").GetComponent<Cinemachine.CinemachineConfiner>();
 
         Screen.SetResolution(1920, 1080, true);
         Load();

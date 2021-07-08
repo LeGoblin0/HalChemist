@@ -24,7 +24,12 @@ public class AttEfff : MonoBehaviour
             Transform aa = Instantiate(EEE[Random.Range(0, EEE.Length)]);
             aa.transform.position = new Vector3(collision.transform.position.x + Random.Range(-OffSetRandom, OffSetRandom), collision.transform.position.y + Random.Range(-OffSetRandom, OffSetRandom), 0);
             Destroy(aa.gameObject, 3);
-
+            Time.timeScale = .2f;
+            Invoke("TTT", .05f);
         }
+    }
+    void TTT()
+    {
+        Time.timeScale = 1;
     }
 }

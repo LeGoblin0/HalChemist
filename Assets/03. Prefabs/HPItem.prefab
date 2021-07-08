@@ -69,9 +69,9 @@ GameObject:
   - component: {fileID: 744062933583107848}
   - component: {fileID: 6644925398807198556}
   - component: {fileID: 3717544906984323016}
-  - component: {fileID: 3322835113688304932}
+  - component: {fileID: 855711796156892946}
   m_Layer: 12
-  m_Name: Money
+  m_Name: HPItem
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,7 +189,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3322835113688304932
+--- !u!114 &855711796156892946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,4 +201,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2489290cfeb9f494284be298aba35009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemCodeNum: 0
+  ItemCodeNum: 1

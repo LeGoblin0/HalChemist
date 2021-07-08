@@ -60,7 +60,7 @@ public class Enemy01 : Life
                 }
                 for(int i = 0; i < MoneyDie; i++)
                 {
-                    Transform aa = Instantiate(GameSystem.instance.MoneyPre);
+                    Transform aa = Instantiate(GameSystem.instance.ItemPre[0]);
                     aa.position = transform.position + new Vector3(0, 0, 1f);
                     aa.parent = transform.parent;
                     aa.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(0, 1f), Random.Range(0, 1f)) * 5;
@@ -100,7 +100,6 @@ public class Enemy01 : Life
             {
                 HHIITime = .2f;
                 if(HitAni) ani.SetTrigger("Hit");
-
             }
             
         }

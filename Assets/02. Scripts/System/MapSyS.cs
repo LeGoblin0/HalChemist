@@ -9,6 +9,8 @@ public class MapSyS : MonoBehaviour
     public GameObject[] MapObj;
     public Life.State state;
 
+    public bool SaveOn = false;
+
     [Header("충돌해도 실행")]
     public bool All = false;
     public bool AllSS = false;
@@ -16,6 +18,12 @@ public class MapSyS : MonoBehaviour
     private void Start()
     {
         if (AllSS) gameObject.layer = 12;
+        if (MapObj == null)
+        {
+            MapObj = new GameObject[1];
+            MapObj[0] = gameObject;
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

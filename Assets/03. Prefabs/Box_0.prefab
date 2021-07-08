@@ -135,6 +135,7 @@ MonoBehaviour:
   MapObj:
   - {fileID: 2584513412095911915}
   state: 6
+  SaveOn: 0
   All: 1
   AllSS: 0
   Loop: 0
@@ -247,8 +248,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8f5e8ba042e884c9bed96194f4bfce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MisDis: 5
+  MinDis: 5
   MaxDis: 15
+  Sound2D: 1
   SSS:
   - {fileID: 8300000, guid: 66ce0dd242dba914f967bd7f552245ca, type: 3}
   - {fileID: 8300000, guid: 09eb373d1e6168c4782419833843a23d, type: 3}

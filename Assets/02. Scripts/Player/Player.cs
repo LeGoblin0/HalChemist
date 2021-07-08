@@ -171,7 +171,7 @@ public class Player : Life
         }
         if (collision.tag == "Ston" && ThrowStone != collision.transform) 
         {
-            Debug.Log(0);
+            //Debug.Log(0);
             if (collision.GetComponent<StoneDieAni>() != null)
             {
                 int Stonecode = collision.GetComponent<StoneDieAni>().Code;
@@ -198,11 +198,19 @@ public class Player : Life
             }
         }
 
-        if (collision.tag == "Money")
+        if (collision.tag == "Item")
         {
-            Destroy(collision.gameObject);
-            Money++;
-            LookMoney();
+            if (collision.GetComponent<ItemCode>().ItemCodeNum == 0)
+            {
+                Destroy(collision.gameObject);
+                Money++;
+                LookMoney();
+            }
+            else if (collision.GetComponent<ItemCode>().ItemCodeNum == 1)
+            {
+                Destroy(collision.gameObject);
+                Hp++;
+            }
         }
     }
 
