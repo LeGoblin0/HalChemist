@@ -280,6 +280,7 @@ public class GameSystem : MonoBehaviour
 
     public List<SaveResetObj2> savePointObj;
 
+    public Material EnemyMaterial;
     public void AddSetObj(SaveResetObj2 me)
     {
         if (savePointObj == null) savePointObj = new List<SaveResetObj2>();

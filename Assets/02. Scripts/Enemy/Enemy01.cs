@@ -5,13 +5,18 @@ using UnityEngine;
 public class Enemy01 : Life
 {
     public Animator ani;
+    protected SpriteRenderer ImgRander;
     protected virtual void Start()//protected override void Start() 상속받아서 이렇게 작성
     {
         gameObject.layer = 11;
         gameObject.tag = "Att";//없어도 되는내용 적 레이어하고 테그를 Enemy로 바꿀것
         if (GetComponent<Animator>() != null) ani = GetComponent<Animator>();
         ani.SetFloat("HitSpeed", HitAniSpeed);
-        
+        if (transform.GetComponent<SpriteRenderer>()!=null) ImgRander= transform.GetComponent<SpriteRenderer>() ;
+        else if (transform.GetChild(0).GetComponent<SpriteRenderer>()!=null) ImgRander= transform.GetChild(0).GetComponent<SpriteRenderer>() ;
+        else if (transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>()!=null) ImgRander= transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>() ;
+
+        if (ImgRander != null) ImgRander.material = GameSystem.instance.EnemyMaterial;
     }
     protected bool Die = false;//죽으면 참이됨 죽었을떄 1번만 발생하도록 해주는 변수
 
@@ -33,12 +38,12 @@ public class Enemy01 : Life
         if (Die) return;
         if (HHIITime > 0) 
         {
-            if (transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>() != null) transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1)*.7f;
+            ImgRander.material.SetFloat("_HitCol", 0.55f);
             HHIITime -= Time.deltaTime;
         }
         else
         {
-            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            ImgRander.material.SetFloat("_HitCol", 0);
         }
         Dieset();//체력다되면 사망
     }

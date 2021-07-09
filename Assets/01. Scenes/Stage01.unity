@@ -7355,6 +7355,7 @@ MonoBehaviour:
   - {fileID: 4551014918239076006, guid: 5ef1951f891350c42b16a55be8d414d3, type: 3}
   - {fileID: 4551014918239076006, guid: 92c7ed4c2733ff74fa2194405868bb40, type: 3}
   savePointObj: []
+  EnemyMaterial: {fileID: 2100000, guid: c207f4b08ff324d4e9e49bc8e1c6e4c9, type: 2}
   StopUI: {fileID: 675508354}
 --- !u!4 &195425859
 Transform:
