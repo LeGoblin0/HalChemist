@@ -105,12 +105,15 @@ public class Player : Life
     [Header("대화문")]
     public DialogManager manager;
     GameObject scanObject;
+
+    Vector3 dirVec;
     
     private void FixedUpdate()
     {
         AniMove();
-    }
+        NpcCheck();
 
+    }
 
     bool GGGodMod;
     void GGGGG()
@@ -124,6 +127,7 @@ public class Player : Life
         Ply_Att();
 
         Ply_Throw();
+        InputTest();
         if (nowGodTime >= 0)
         {
             nowGodTime -= Time.deltaTime;
@@ -135,8 +139,10 @@ public class Player : Life
             GetComponent<Collider2D>().enabled = false;
             Invoke("GGGGG", 0);
         }
-        Dialog();
-
+       
+        
+            
+        
 
         if (nowGodTime > 0)
         {
@@ -148,10 +154,39 @@ public class Player : Life
         }
         else transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
 
-
+        
     }
-
-
+    void NpcCheck()
+    {
+        Debug.DrawRay(rig.position, dirVec * 0.7f, new Color(0, 1, 0));
+        RaycastHit2D rayHit = Physics2D.Raycast(rig.position, dirVec * 0.7f, LayerMask.GetMask("ObjLayer"));
+        if (rayHit.collider != null)
+        {
+            scanObject = rayHit.collider.gameObject;
+        }
+        else
+        {
+            scanObject = null;
+        }
+       
+    }
+    void InputTest()
+    {
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            dirVec = Vector3.right;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            dirVec = Vector3.left;
+        }
+        if (Input.GetKeyDown(KeyCode.G) && scanObject != null)
+        {
+            Debug.Log("This is :" + scanObject.name);
+            // manager.Action(scanObject);
+        }
+    }
+    
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
     }
@@ -450,13 +485,7 @@ public class Player : Life
             if (HaveStone.Length <= NowChoose) NowChoose = 0;
         }
     }
-    void Dialog()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            manager.Action(scanObject);
-        }
-    }
+  
     void REStone()
     {
         HaveStone[0] = 1;
