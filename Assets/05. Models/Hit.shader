@@ -9,9 +9,10 @@
         Tags { "RenderType"="Opaque"   "Queue" = "Transparent" }
         LOD 200
 
+        cull off
+
         CGPROGRAM
         #pragma surface surf Standard fullforwardshadows alpha:fade
-
 
         sampler2D _MainTex;
         float _HitCol = 0;
