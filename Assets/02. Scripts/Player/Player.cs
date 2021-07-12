@@ -164,8 +164,8 @@ public class Player : Life
     }
     void NpcCheck()
     {
-        Debug.DrawRay(rig.position, dirVec * 0.7f, new Color(0, 1, 0));
-        RaycastHit2D rayHit = Physics2D.Raycast(rig.position, dirVec * 0.7f, LayerMask.GetMask("ObjLayer"));
+        Debug.DrawRay(rig.position, dirVec * 1.4f, new Color(0, 1, 0));
+        RaycastHit2D rayHit = Physics2D.Raycast(rig.position, dirVec * 1.4f,2, LayerMask.GetMask("ObjLayer"));
         if (rayHit.collider != null)
         {
             scanObject = rayHit.collider.gameObject;
@@ -188,7 +188,7 @@ public class Player : Life
         }
         if (Input.GetKeyDown(KeyCode.G) && scanObject != null)
         {
-            Debug.Log("This is :" + scanObject.name);
+            Debug.Log("This is : " + scanObject.name);
             // manager.Action(scanObject);
         }
     }
