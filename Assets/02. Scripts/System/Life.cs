@@ -6,6 +6,7 @@ public class Life : MonoBehaviour
 {
 
     [Header("체력")]
+    public float MaxHP = 1;
     public float Hp = 1;
     protected virtual void  OnTriggerEnter2D(Collider2D collision)
     {

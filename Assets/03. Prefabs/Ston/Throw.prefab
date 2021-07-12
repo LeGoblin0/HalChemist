@@ -272,5 +272,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DieObj: {fileID: 4870061418998596664, guid: 112af9cb21be7c84884f2974d9d5e3bd, type: 3}
   Code: 2
-  StonImg: {fileID: -4629194268841963549, guid: 2e49bdb9163ac4542a9daa286515d953,
-    type: 3}
+  StonImg: {fileID: 21300000, guid: c23d5dae13b2e604ab7772bed06f102c, type: 3}

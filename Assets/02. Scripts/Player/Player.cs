@@ -22,6 +22,8 @@ public class Player : Life
 
     void Start()
     {
+        Hp = MaxHP;
+
         rig = GetComponent<Rigidbody2D>();
         aus = GetComponent<AudioSource>();
         ani = GetComponent<Animator>();
@@ -32,8 +34,8 @@ public class Player : Life
         rig.gravityScale = gravityScale;
         HaveStone[0] = 1;
         StoneUI();
-
-
+        HPUI();
+        
         ani.SetFloat("HitThrowTime", HitThrowTime);
     }
 
@@ -101,6 +103,7 @@ public class Player : Life
 
     [Header("시스템")]
     public GameObject PutSton;
+    public Transform HPUITr;
 
     [Header("대화문")]
     public DialogManager manager;
@@ -165,9 +168,11 @@ public class Player : Life
             ani.SetTrigger("Hit");
             DontMove = true;
             rig.velocity = new Vector2(ThrowF.x * PlyLook, ThrowF.y);
+
+            HPUI();
             //Debug.Log(rig.velocity);
             //Debug.Log(new Vector2(ThrowF.x * PlyLook, ThrowF.y));
-            
+
         }
         if (collision.tag == "Ston" && ThrowStone != collision.transform) 
         {
@@ -209,7 +214,9 @@ public class Player : Life
             else if (collision.GetComponent<ItemCode>().ItemCodeNum == 1)
             {
                 Destroy(collision.gameObject);
-                Hp++;
+                
+                if (Hp < MaxHP) Hp++;
+                HPUI();
             }
         }
     }
@@ -485,7 +492,7 @@ public class Player : Life
         {
             if (StoneUITr.GetChild(0).childCount <= i)
             {
-                Instantiate(StoneUITr.GetChild(0).GetChild(0), StoneUITr.GetChild(0));
+                Instantiate(StoneUITr.GetChild(0).GetChild(1), StoneUITr.GetChild(0));
             }
             StoneUITr.GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().sprite = GameSystem.instance.AllSton[HaveStone[i] / 1000].GetComponent<StoneDieAni>().StonImg;
             if (HaveStone[i] == 0)
@@ -498,6 +505,18 @@ public class Player : Life
                 StoneUITr.GetChild(0).GetChild(i).GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 1);
                 StoneUITr.GetChild(0).GetChild(i).GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = (HaveStone[i] % 1000) + "";
             }
+        }
+    }
+    void HPUI()
+    {
+        for(int i = HPUITr.childCount; i < MaxHP; i++)
+        {
+            Instantiate(HPUITr.GetChild(0), HPUITr);
+        }
+        for(int i = 0; i < MaxHP; i++)
+        {
+            if (i < Hp) HPUITr.GetChild(i).GetChild(0).gameObject.SetActive(true);
+            else HPUITr.GetChild(i).GetChild(0).gameObject.SetActive(false);
         }
     }
 
