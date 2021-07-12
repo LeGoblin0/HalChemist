@@ -105,6 +105,9 @@ public class Player : Life
     public GameObject PutSton;
     public Transform HPUITr;
 
+    [Header("카메라")]
+    public CamSh camsh;
+
     [Header("대화문")]
     public DialogManager manager;
     GameObject scanObject;
@@ -203,6 +206,8 @@ public class Player : Life
             ani.SetTrigger("Hit");
             DontMove = true;
             rig.velocity = new Vector2(ThrowF.x * PlyLook, ThrowF.y);
+
+            camsh.CamMove(.5f);
 
             HPUI();
             //Debug.Log(rig.velocity);
