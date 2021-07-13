@@ -68,7 +68,7 @@ public class Enemy01 : Life
                     Transform aa = Instantiate(GameSystem.instance.ItemPre[0]);
                     aa.position = transform.position + new Vector3(0, 0, 1f);
                     aa.parent = transform.parent;
-                    aa.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(0, 1f), Random.Range(0, 1f)) * 5;
+                    aa.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(0, 1f), Random.Range(0, 1f)) * 5 * transform.GetChild(0).localScale.x;
                     Destroy(aa.gameObject, 5);
                 }
                 if (GetComponent<Rigidbody2D>() != null) GetComponent<Rigidbody2D>().velocity = Vector2.zero;

@@ -133,6 +133,7 @@ public class GameSystem : MonoBehaviour
             }
             GG = SavePos[gameData.SavePoint].MovePos.GetChild(1).position;
 
+            SavePos[gameData.SavePoint].transform.parent.gameObject.SetActive(true);
             cam.m_BoundingShape2D = SavePos[gameData.SavePoint].transform.parent.GetChild(0).GetComponent<PolygonCollider2D>();
 
 
@@ -336,10 +337,16 @@ public class GameSystem : MonoBehaviour
         cam = GameObject.Find("CM vcam1").GetComponent<Cinemachine.CinemachineConfiner>();
 
         Screen.SetResolution(1920, 1080, true);
+
+        for (int i = 0; i < MapPar.childCount; i++)
+        {
+            MapPar.GetChild(i).gameObject.SetActive(false);
+        }
         Load();
         //Load1();
         //alls = new List<SoundCont>();
     }
+    public Transform MapPar;
     public int GiveMonster(int i)
     {
         return gameData.Dest[i];

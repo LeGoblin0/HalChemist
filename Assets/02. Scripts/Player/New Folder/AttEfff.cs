@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class AttEfff : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [Header("카메라")]
+    CamSh camsh;
     void Start()
     {
-        
+        camsh = transform.parent.parent.GetComponent<Player>().camsh;
     }
 
     // Update is called once per frame
@@ -26,6 +27,7 @@ public class AttEfff : MonoBehaviour
             Destroy(aa.gameObject, 3);
             Time.timeScale = .2f;
             Invoke("TTT", .05f);
+            camsh.CamMove(.5f);
         }
     }
     void TTT()

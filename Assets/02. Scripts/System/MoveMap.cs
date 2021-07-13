@@ -59,6 +59,9 @@ public class MoveMap : MonoBehaviour
         //Ply.GetComponent<Player>().MoveMap = true;
         Ply.GetComponent<Player>().DontMove = false;
 
+        MovePos.parent.parent.gameObject.SetActive(true);
+        transform.parent.parent.gameObject.SetActive(false);
+
         cam.m_BoundingShape2D= MovePos.parent.parent.GetChild(0).GetComponent<PolygonCollider2D>();
     }
 }

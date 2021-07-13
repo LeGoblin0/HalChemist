@@ -80,21 +80,30 @@ public class Player : Life
     float DontAttTime = 0;
 
     [Header("피격")]
+    [Tooltip("무적모드")]
     public float GodTime = 1.8f;
     float nowGodTime = 1.8f;
+    [Tooltip("넉백 파워")]
     public Vector2 ThrowF = new Vector2(-7, 4);
+    [Tooltip("넉백 시간")]
     public float HitThrowTime = .6f;
 
     [Header("원석")]
     public int[] HaveStone;
     [HideInInspector]
     public int NowChoose = 0;
+    [Tooltip("스톤 겹치는 수량")]
     public int StackStone = 3;//스톤겹친갯수
     Transform ThrowStone;//던진 스톤 정보 
+    [Tooltip("던질파워")]
     public float ThrowPower = 5;
+    [Tooltip("던지고 없어지는 시간")]
     public float DesTimeStone = 5;
     public Transform StoneUITr;
+    [Tooltip("기본 원석 생성 주기")]
     public float BaseStoneCoolTime = 5;
+    [Tooltip("던질때 회전")]
+    public float ThrowRollPower = 720;
 
 
     [Tooltip("플레이어가 보고 있는 방향 [1: 우 ]  [2: 좌 ]")]
@@ -506,7 +515,7 @@ public class Player : Life
     public void MakeStone()
     {
         ThrowStone = Instantiate(GameSystem.instance.AllSton[Tcode]).transform;
-        ThrowStone.position = Hand.GetChild(0).position + new Vector3(0, 0.5f, 0);
+        ThrowStone.position = Hand.GetChild(0).position + new Vector3(0, 0.5f, -.1f);
         ThrowStone.parent = Hand.GetChild(0);
         ThrowStone.GetComponent<Rigidbody2D>().gravityScale = 0;
     }
@@ -517,6 +526,10 @@ public class Player : Life
         ThrowStone.GetComponent<Att>().Set = true;
         ThrowStone.GetComponent<Att>().GroundDes = true;
         ThrowStone.GetComponent<Rigidbody2D>().velocity = new Vector2(PlyLook * ThrowPower, 0);
+        ThrowStone.GetComponent<Rigidbody2D>().freezeRotation = false;
+        ThrowStone.GetComponent<Rigidbody2D>().angularVelocity = ThrowRollPower * PlyLook;
+
+
         Destroy(ThrowStone.gameObject, DesTimeStone);
     }
 
