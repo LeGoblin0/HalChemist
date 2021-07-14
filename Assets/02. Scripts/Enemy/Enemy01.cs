@@ -22,7 +22,7 @@ public class Enemy01 : Life
 
     [Header("센서에 플레이어 감지")]
     public bool SenserPly = false;
-    public virtual void GroundSen(bool Right=false)
+    public virtual void GroundSen(bool Out=false)
     {
 
     }

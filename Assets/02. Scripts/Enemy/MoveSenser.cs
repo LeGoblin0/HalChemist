@@ -30,22 +30,23 @@ public class MoveSenser : MonoBehaviour
     }
     public int groundNum = 1;
     int a = 1;
+
+    public bool On_1 = false;
+    public bool On_2 = false;
+    public bool On_3 = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (a <= 0)
+        if (--a <= 0 && On_1) 
         {
             Invoke("Oncol", .1f);
             col.enabled = false;
-            enemy.GroundSen();
+            enemy.GroundSen(On_3);
             a = groundNum;
         }
-        else a--;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Invoke("Oncol", .1f);
-        col.enabled = false;
-        enemy.GroundSen();
+        if(On_2)        enemy.GroundSen(On_3);
     }
     void Oncol()
     {

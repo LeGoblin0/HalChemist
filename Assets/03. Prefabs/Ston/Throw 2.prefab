@@ -117,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -118269465721977666, guid: 8d6c6e85050ed1f4aa29a633beb17697,
+  m_Sprite: {fileID: -4949847218110858534, guid: d24896518823316449e75883a4ce06af,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -234,7 +234,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 6200000, guid: e78699f6dcc1dfd42afe6202cdc19f88, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -271,5 +271,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DieObj: {fileID: 4870061418998596664, guid: 112af9cb21be7c84884f2974d9d5e3bd, type: 3}
-  Code: 3
+  Code: 2
   StonImg: {fileID: 21300000, guid: c23d5dae13b2e604ab7772bed06f102c, type: 3}

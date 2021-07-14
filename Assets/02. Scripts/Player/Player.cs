@@ -529,8 +529,18 @@ public class Player : Life
         ThrowStone.GetComponent<Rigidbody2D>().freezeRotation = false;
         ThrowStone.GetComponent<Rigidbody2D>().angularVelocity = ThrowRollPower * PlyLook;
 
+        int codes = ThrowStone.GetComponent<StoneDieAni>().Code;
+        if (codes == 3)
+        {
+            ThrowStone.GetComponent<Att>().GroundDes = false;
+            ThrowStone.GetComponent<Att>().HitNum = 2;
+            ThrowStone.GetComponent<Att>().HitDesT = true;
+        }
+        else
+        {
+            Destroy(ThrowStone.gameObject, DesTimeStone);
+        }
 
-        Destroy(ThrowStone.gameObject, DesTimeStone);
     }
 
     void StoneUI()

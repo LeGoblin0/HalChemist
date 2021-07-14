@@ -8,6 +8,9 @@ public class Att : MonoBehaviour
     public int AttDamage = 1;
     [Header("몇초뒤 삭제  0이면 삭제 안됨")]
     public float DesTime = 0;
+    [Header("관통")]
+    public bool HitDesT = false;
+    public int HitNum = 1;
     float nowTime = 0;
     void Start()
     {
@@ -67,6 +70,11 @@ public class Att : MonoBehaviour
         if (Set && (collision.tag == "Att") && GetComponent<Enemy01>() != null)
         {
             GetComponent<Enemy01>().DieHit();
+            HitNum--;
+            if (HitNum <= 0 && HitDesT)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

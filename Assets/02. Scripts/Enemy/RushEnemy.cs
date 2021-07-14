@@ -6,7 +6,7 @@ public class RushEnemy : Enemy01
 {
     [Space]
     public float Speed;
-    public float RushTime = .8f;
+    public float RushTime = 0;
     public float RushSpeed = 5;
 
     Rigidbody2D rig;
@@ -24,12 +24,19 @@ public class RushEnemy : Enemy01
         if (First) return;
         base.Update();//체력감소하면 사망
 
-        rig.velocity = new Vector3(nowSpeed * flip, rig.velocity.y, 0);
-        if (SenserPly && !gogo)  //플레이어와 충돌시 러쉬
+        if (SenserPly)  //플레이어와 충돌시 러쉬
         {
-            gogo = true;
             ani.SetInteger("state", 1);
-            Invoke("stop", RushTime);
+            RushTime = 1;
+            //Invoke("stop", RushTime);
+        }
+        else
+        {
+            RushTime -= Time.deltaTime;
+            if (RushTime <= 0)
+            {
+                ani.SetInteger("state", 0);
+            }
         }
         rig.gravityScale = 1;
 
@@ -37,33 +44,32 @@ public class RushEnemy : Enemy01
         {
             rig.velocity = new Vector3(-HitAniknockBack * flip, rig.velocity.y, 0);
         }
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            rig.velocity = new Vector3(Speed * flip, rig.velocity.y, 0);
+        }
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Notice"))
+        {
+            //rig.velocity = new Vector3(Speed * flip, rig.velocity.y, 0);
+        }
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Desh"))
+        {
+            rig.velocity = new Vector3(RushSpeed * flip, rig.velocity.y, 0);
+        }
     }
-    bool gogo = false;
-    float nowSpeed;
     int flip = -1;
-    public void Rush1()
+    public override void GroundSen(bool Out = false)
     {
-        nowSpeed = 0;
-    }
-    public void Rush2()
-    {
-        nowSpeed = RushSpeed;
-    }
-    public void Rush3()
-    {
-        nowSpeed = Speed;
-    }
-    void stop() //러시 멈춤
-    {
-        ani.SetInteger("state", 0);
-        gogo = false;
-    }
-
-    public override void GroundSen(bool Right = false)
-    {
-        base.GroundSen(Right);
-        flip *= -1;
-        transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
+        base.GroundSen(Out);
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            flip *= -1;
+            transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
+        }
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Desh") && Out)
+        {
+            ani.SetTrigger("Hit");
+        }
 
     }
     protected override void OnTriggerEnter2D(Collider2D collision)
