@@ -40289,6 +40289,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundNum: 1
+  On_1: 0
+  On_2: 0
+  On_3: 0
 --- !u!50 &1205554747
 Rigidbody2D:
   serializedVersion: 4
