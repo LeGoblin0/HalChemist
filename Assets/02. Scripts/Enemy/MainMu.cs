@@ -110,8 +110,6 @@ public class MainMu : MonoBehaviour
     {
         Initialize();
         gameData = new GameData();
-        gameData.AllSavePoint = new int[1000]; gameData.AllSavePoint[0] = 1;
-        gameData.AllSavePoint = new int[1000]; gameData.AllSavePoint[1] = 1;
         gameData.MapObj = new int[1000];
         gameData.Dest = new int[1000];
 

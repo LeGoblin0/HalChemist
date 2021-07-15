@@ -101,17 +101,11 @@ public class GameSystem : MonoBehaviour
 
             for (int i = 0; i < MapObjS.Length; i++)
             {
-
-                if (gameData.MapObj[i] != 0)
+                if (MapObjS[i] != null && gameData.MapObj[i] != 0)
                 {
                     MapObjS[i].SaveOn = true;
                     MapObjS[i].MapTrue();
                 }
-            }
-            for (int i = 0; i < SavePos.Length; i++)
-            {
-                if (gameData.AllSavePoint[i] != 0) SavePos[i].NowState = gameData.AllSavePoint[i];
-                //Debug.Log(i + "   " + gameData.AllSavePoint[i]);
             }
             for (int i = StoryTr.childCount - 1; i >= 0; i--)
             {
@@ -120,7 +114,6 @@ public class GameSystem : MonoBehaviour
             }
 
             MonsterSSS();
-
 
             //Ply.GetComponent<Player>().EndDie();
             Vector3 GG = SavePos[gameData.SavePoint].transform.position;
@@ -136,7 +129,7 @@ public class GameSystem : MonoBehaviour
             SavePos[gameData.SavePoint].transform.parent.gameObject.SetActive(true);
             cam.m_BoundingShape2D = SavePos[gameData.SavePoint].transform.parent.GetChild(0).GetComponent<PolygonCollider2D>();
 
-
+            SavePos[gameData.SavePoint].GetComponent<Animator>().SetTrigger("On");//세이브 폰인트 설정
 
             return gameData;
         }
@@ -145,10 +138,8 @@ public class GameSystem : MonoBehaviour
             //파일이 없으면 새로생성
             ResetMap();
 
-
             return gameData;
         }
-        
     }//파일에서 데이터를 추출하는 함수
     public class SystemSave
     {
@@ -210,9 +201,6 @@ public class GameSystem : MonoBehaviour
     public void ResetMap()
     {
         gameData = new GameData();
-        gameData.AllSavePoint = new int[1000];
-        gameData.AllSavePoint[0] = 1;
-        gameData.AllSavePoint[1] = 1;
         gameData.MapObj = new int[1000];
         gameData.Dest = new int[1000];
         gameData.Story = new bool[1000];
@@ -224,9 +212,6 @@ public class GameSystem : MonoBehaviour
     public void ResetMap01()
     {
         gameData = new GameData();
-        gameData.AllSavePoint = new int[1000];
-        gameData.AllSavePoint[0] = 1;
-        gameData.AllSavePoint[1] = 1;
         gameData.MapObj = new int[1000];
         gameData.Dest = new int[1000];
         gameData.Story = new bool[1000];
@@ -236,22 +221,13 @@ public class GameSystem : MonoBehaviour
     {
         return SavePos[gameData.SavePoint].transform.position;
     }
-    public void SaveSET(int i)
-    {
-        gameData.AllSavePoint[i] = 1;
-        Save();
-    }
-    public int SaveMeNow(int i)
-    {
-        return gameData.AllSavePoint[i];
-    }
     public void ChangeSave(int ii)
     {
-        //for (int i = 0; i < SaveTran.childCount; i++)
-        //{
-        //    if (gameData.AllSavePoint[i] != 0) gameData.AllSavePoint[i] = 1;
-        //}
-        //Ply.GetComponent<Player>().FullHp();
+        for (int i = 0; i < SavePos.Length; i++)
+        {
+            if (SavePos[i] != null) SavePos[i].GetComponent<Animator>().SetInteger("State", 1);
+        }
+        Ply.GetComponent<Player>().SaveHp();
         gameData.SavePoint = ii;
 
 

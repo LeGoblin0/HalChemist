@@ -7,7 +7,6 @@ namespace DataInfo
     [System.Serializable]
     public class GameData
     {
-        public int[] AllSavePoint;
         public int SavePoint;
         public int[] MapObj;
         public int[] Dest;

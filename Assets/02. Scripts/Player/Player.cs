@@ -20,6 +20,11 @@ public class Player : Life
     [Header("핸도 위치")]
     public Transform Hand;
 
+    public void SaveHp()
+    {
+        Hp = MaxHP;
+        HPUI();
+    }
     void Start()
     {
         Hp = MaxHP;
@@ -137,12 +142,19 @@ public class Player : Life
     }
     void Update()
     {
+        //Debug.Log(SaveTrtr);
         Ply_Move();
         Ply_Desh();
         Ply_Att();
 
         Ply_Throw();
         InputTest();
+
+        if (Input.GetKey(KeyCode.DownArrow) && SaveTrtr != null) 
+        {
+            SaveTrtr.SaveOn();
+        }
+
         if (nowGodTime >= 0)
         {
             nowGodTime -= Time.deltaTime;
@@ -205,6 +217,7 @@ public class Player : Life
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
     }
+    public SaveTrTr SaveTrtr;
     protected void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set && nowGodTime <= 0 )
@@ -263,10 +276,24 @@ public class Player : Life
             else if (collision.GetComponent<ItemCode>().ItemCodeNum == 1)
             {
                 Destroy(collision.gameObject);
-                
+
                 if (Hp < MaxHP) Hp++;
                 HPUI();
             }
+        }
+
+        if (collision.tag == "Save" && collision.GetComponent<SaveTrTr>() != null) 
+        {
+            SaveTrtr = collision.GetComponent<SaveTrTr>();
+        }
+
+
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Save" && SaveTrtr != null)
+        {
+            SaveTrtr = null;
         }
     }
 

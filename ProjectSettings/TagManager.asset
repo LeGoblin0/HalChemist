@@ -16,6 +16,7 @@ TagManager:
   - Timeline_HandoGet
   - Ston
   - Item
+  - Save
   layers:
   - Default
   - TransparentFX
