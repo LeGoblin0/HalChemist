@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 3283118295324651002}
   - component: {fileID: -6230510661622103784}
   m_Layer: 26
-  m_Name: Throw
+  m_Name: Throw 2
   m_TagString: Ston
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,6 +181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttDamage: 1
   DesTime: 0
+  HitDesT: 0
+  HitNum: 1
   attObj: {fileID: 0}
   set2: 1
   AttState: 3
@@ -233,7 +235,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

@@ -515,6 +515,7 @@ public class Player : Life
     public void MakeStone()
     {
         ThrowStone = Instantiate(GameSystem.instance.AllSton[Tcode]).transform;
+        ThrowStone.GetComponent<Animator>().SetInteger("Set", 1);
         ThrowStone.position = Hand.GetChild(0).position + new Vector3(0, 0.5f, -.1f);
         ThrowStone.parent = Hand.GetChild(0);
         ThrowStone.GetComponent<Rigidbody2D>().gravityScale = 0;

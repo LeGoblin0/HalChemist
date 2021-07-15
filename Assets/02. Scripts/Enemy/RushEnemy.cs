@@ -27,7 +27,7 @@ public class RushEnemy : Enemy01
         if (SenserPly)  //플레이어와 충돌시 러쉬
         {
             ani.SetInteger("state", 1);
-            RushTime = 1;
+            RushTime = 99999999;
             //Invoke("stop", RushTime);
         }
         else
@@ -94,7 +94,7 @@ public class RushEnemy : Enemy01
             }
 
         }
-        if (collision.gameObject.tag == "TurnPoint"&& !ani.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+        if (collision.gameObject.tag == "TurnPoint" && !ani.GetCurrentAnimatorStateInfo(0).IsName("Hit")) 
         {
             flip *= -1;
             transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);

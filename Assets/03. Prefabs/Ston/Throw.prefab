@@ -181,6 +181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttDamage: 1
   DesTime: 0
+  HitDesT: 0
+  HitNum: 1
   attObj: {fileID: 0}
   set2: 1
   AttState: 3
@@ -232,8 +234,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_AngularDrag: 0
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: e78699f6dcc1dfd42afe6202cdc19f88, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1

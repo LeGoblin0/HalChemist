@@ -12,9 +12,10 @@ public class Enemy01 : Life
         gameObject.tag = "Att";//없어도 되는내용 적 레이어하고 테그를 Enemy로 바꿀것
         if (GetComponent<Animator>() != null) ani = GetComponent<Animator>();
         ani.SetFloat("HitSpeed", HitAniSpeed);
-        if (transform.GetComponent<SpriteRenderer>()!=null) ImgRander= transform.GetComponent<SpriteRenderer>() ;
-        else if (transform.GetChild(0).GetComponent<SpriteRenderer>()!=null) ImgRander= transform.GetChild(0).GetComponent<SpriteRenderer>() ;
-        else if (transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>()!=null) ImgRander= transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>() ;
+
+        if (transform.GetComponent<SpriteRenderer>() != null) ImgRander = transform.GetComponent<SpriteRenderer>();
+        else if (transform.GetChild(0).GetComponent<SpriteRenderer>() != null) ImgRander = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        else if (transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>() != null) ImgRander = transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
 
         if (ImgRander != null) ImgRander.material = GameSystem.instance.EnemyMaterial;
     }
@@ -54,13 +55,14 @@ public class Enemy01 : Life
             if (!Die)
             {
                 Die = true;
-                if (DieItem.Length > 0)
+                if (DieItem != null && DieItem.Length > 0) 
                 {
                     for (int i = 0; i < DieItem.Length; i++)
                     {
                         Transform aa = Instantiate(DieItem[i]);
                         aa.position = transform.position + new Vector3(0, 0, 1f);
                         aa.parent = transform.parent;
+                        if (aa.GetComponent<Rigidbody2D>() != null) aa.GetComponent<Rigidbody2D>().sharedMaterial = null;
                     }
                 }
                 for(int i = 0; i < MoneyDie; i++)

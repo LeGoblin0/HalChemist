@@ -7,12 +7,14 @@ public class FlyEnemy : Enemy01
     [Header("플레이어 위치 받아옴")]
     Transform Player;
     public float Speed;
+    Rigidbody2D rig;
 
     // Start is called before the first frame update
     protected override void Start()
     {
-        ani = GetComponent<Animator>();
+        base.Start();
         Player = GameSystem.instance.Ply;
+        rig = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -20,9 +22,11 @@ public class FlyEnemy : Enemy01
     protected override void Update()
     {
         base.Update();
+        //Debug.Log(SenserPly);
         if (SenserPly)
         {
-            transform.position = Vector3.MoveTowards(transform.position, Player.position, Speed * Time.deltaTime);
+            rig.velocity = (Player.position - transform.position).normalized * Speed;
+            //Debug.Log(rig.velocity);
         }
         
     }
