@@ -24,7 +24,7 @@ public class SaveTrTr : MonoBehaviour
         if (GameSystem.instance.SaveNow() == ObjCode)
         {
             ani.SetInteger("State", 1);
-            Debug.Log(0);
+            //Debug.Log(0);
         }
         else ani.SetInteger("State", 0);
     }

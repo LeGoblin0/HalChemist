@@ -118,7 +118,8 @@ MonoBehaviour:
   state: 0
   ani: {fileID: 0}
   SenserPly: 0
-  DieItem: []
+  DieItem:
+  - {fileID: 719797484792284287, guid: 92c7ed4c2733ff74fa2194405868bb40, type: 3}
   MoneyDie: 0
   DieAniTime: 0
   NoDie: 0

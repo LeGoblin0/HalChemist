@@ -181,6 +181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttDamage: 1
   DesTime: 0
+  HitDesT: 0
+  HitNum: 1
   attObj: {fileID: 0}
   set2: 1
   AttState: 0
@@ -315,7 +317,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4551014918239076006}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66d358ed769cab544985e2a5e4f5a81f, type: 3}
   m_Name: 

@@ -181,8 +181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttDamage: 1
   DesTime: 0
-  HitDesT: 0
-  HitNum: 1
+  HitDesT: 1
+  HitNum: 2
   attObj: {fileID: 0}
   set2: 1
   AttState: 3

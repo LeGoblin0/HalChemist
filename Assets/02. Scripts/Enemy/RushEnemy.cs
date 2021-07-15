@@ -54,10 +54,19 @@ public class RushEnemy : Enemy01
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Desh"))
         {
-            rig.velocity = new Vector3(RushSpeed * flip, rig.velocity.y, 0);
+            if (GroundKnckBackTime > 0)
+            {
+                rig.velocity = new Vector3(-GroundKnckBackSpeed * flip, rig.velocity.y, 0);
+                GroundKnckBackTime -= Time.deltaTime;
+            }
+            else rig.velocity = new Vector3(RushSpeed * flip, rig.velocity.y, 0);
         }
     }
     int flip = -1;
+
+    float GroundKnckBackTime = 0;
+    public float GroundKnckBackTimeMax = .5f;
+    public float GroundKnckBackSpeed = 3;
     public override void GroundSen(bool Out = false)
     {
         base.GroundSen(Out);
@@ -68,7 +77,8 @@ public class RushEnemy : Enemy01
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Desh") && Out)
         {
-            ani.SetTrigger("Hit");
+            //ani.SetTrigger("Hit");
+            GroundKnckBackTime = GroundKnckBackTimeMax;
         }
 
     }

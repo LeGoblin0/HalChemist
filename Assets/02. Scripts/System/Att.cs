@@ -67,9 +67,9 @@ public class Att : MonoBehaviour
             }
             else Destroy(gameObject);
         }
-        if (Set && (collision.tag == "Att") && GetComponent<Enemy01>() != null)
+        if (Set && (collision.tag == "Att") && collision.GetComponent<Enemy01>() != null)
         {
-            GetComponent<Enemy01>().DieHit();
+            collision.GetComponent<Enemy01>().DieHit();
             HitNum--;
             if (HitNum <= 0 && HitDesT)
             {

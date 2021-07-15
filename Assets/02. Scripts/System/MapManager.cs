@@ -28,6 +28,7 @@ public class MapManager : MonoBehaviour
         EEE = Instantiate(EnemySetPre);
         EEE.position = transform.position;
         EEE.gameObject.SetActive(true);
+        EEE.name = "NowMapEnemy";
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

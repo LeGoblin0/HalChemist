@@ -516,6 +516,7 @@ public class Player : Life
         if (Input.GetKeyUp(KeyCode.S))
         {
             StopStone = false;
+            ThrowStone = null;
         }
         if (StopStone)
         {
@@ -524,6 +525,7 @@ public class Player : Life
         if (StopStone && StopStoneTime>.5f && !Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Att") && ThrowStone != null)
         {
             ThrowStone.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            Destroy(ThrowStone.gameObject, DesTimeStone);
             ThrowStone = null;
             StopStone = false;
         }
@@ -549,7 +551,7 @@ public class Player : Life
     }
     public void TStone()
     {
-        ThrowStone.parent = null;
+        ThrowStone.parent = GameObject.Find("NowMapEnemy").transform;
         ThrowStone.gameObject.layer = 8;
         ThrowStone.GetComponent<Att>().Set = true;
         ThrowStone.GetComponent<Att>().GroundDes = true;
