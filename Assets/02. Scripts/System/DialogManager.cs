@@ -15,35 +15,36 @@ public class DialogManager : MonoBehaviour
 
     public void Action(GameObject scanObj)
     {
-        if (isAction) //Exit Action
-        {
-            isAction = false;
-            talkPanel.SetActive(false);
-        }
-        else //Enter Action
-        {
-            isAction = true;
-            talkPanel.SetActive(true);
-            scanObject = scanObj;
-            ObjData objData = scanObject.GetComponent<ObjData>();
-            Talk(objData.id, objData.isNpc);
-            //talk.SetMsg("이 오브젝트는" + scanObject.name + "입니다.");
+       
+        scanObject = scanObj;
+        ObjData objData = scanObject.GetComponent<ObjData>();
+        Talk(objData.id, objData.isNpc);
 
-        }
+        talkPanel.SetActive(isAction);
+
+        talk.SetMsg("이 오브젝트는" + scanObject.name + "입니다.");
+
+
         talkPanel.SetActive(isAction);
     }
     void Talk(int id, bool isNpc)
     {
         string talkData = talkManager.GetTalk(id, talkIndex);
-
+        if(talkData == null)
+        {
+            isAction = false;
+            return;
+        }
         if (isNpc)
         {
-            talkText.text = talkData;
+            talk.SetMsg(talkData);
         }
 
         else
         {
-            talkText.text = talkData;
+            talk.SetMsg(talkData);
         }
+        isAction = true;
+        talkIndex++;
     }
 }
