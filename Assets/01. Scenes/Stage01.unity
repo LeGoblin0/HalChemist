@@ -21360,7 +21360,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.27
-  m_Text: "\uD560\uCF00\uBBF8\uC2A4\uD2B8\n\uD560\uCF00\uBBF8\uC2A4\uD2B8"
+  m_Text: "\uD560\uCF00\uBBF8\uC2A4\uD2B8"
 --- !u!222 &647178810
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -40512,7 +40512,6 @@ MonoBehaviour:
   talk: {fileID: 647178811}
   scanObject: {fileID: 0}
   talkPanel: {fileID: 1396080337}
-  talkText: {fileID: 0}
   isAction: 0
   talkIndex: 0
 --- !u!4 &1209932159
