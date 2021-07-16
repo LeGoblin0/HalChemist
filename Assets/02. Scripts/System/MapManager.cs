@@ -25,6 +25,7 @@ public class MapManager : MonoBehaviour
     public bool YLock;
     public void MakeEEE()
     {
+        if (EEE != null) Destroy(EEE.gameObject);
         EEE = Instantiate(EnemySetPre);
         EEE.position = transform.position;
         EEE.gameObject.SetActive(true);

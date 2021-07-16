@@ -18,10 +18,15 @@ public class StoneDieAni : MonoBehaviour
     }
     public int Code;
     public Sprite StonImg;
+
+    public bool DieSet = false;
     private void OnDestroy()
     {
-        Transform aa = Instantiate(DieObj);
-        aa.position = transform.position;
-        Destroy(aa.gameObject,.5f);
+        if (DieSet)
+        {
+            Transform aa = Instantiate(DieObj);
+            aa.position = transform.position;
+            Destroy(aa.gameObject, .5f);
+        }
     }
 }

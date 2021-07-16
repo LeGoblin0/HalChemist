@@ -503,20 +503,19 @@ public class Player : Life
         {
             if (!Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Att") && ThrowStone == null && HaveStone[NowChoose] > 0)
             {
+                StopStone = true;
                 Handani.SetTrigger("Att");
                 Tcode = HaveStone[NowChoose] / 1000;
                 --HaveStone[NowChoose];
                 if (HaveStone[NowChoose] % 1000 == 0) HaveStone[NowChoose] = 0;
                 if (NowChoose == 0) Invoke("REStone", BaseStoneCoolTime);
                 StoneUI();
-                StopStone = true;
                 StopStoneTime = 0;
             }
         }
         if (Input.GetKeyUp(KeyCode.S))
         {
             StopStone = false;
-            ThrowStone = null;
         }
         if (StopStone)
         {
@@ -529,6 +528,11 @@ public class Player : Life
             ThrowStone = null;
             StopStone = false;
         }
+        else if(Hand.GetChild(0).childCount==0 && !StopStone)
+        {
+            ThrowStone = null;
+        }
+       
         if (Input.GetKeyDown(KeyCode.E))
         {
             NowChoose++;
@@ -544,11 +548,13 @@ public class Player : Life
     public void MakeStone()
     {
         ThrowStone = Instantiate(GameSystem.instance.AllSton[Tcode]).transform;
+        if (ThrowStone.GetComponent<StoneDieAni>() != null) ThrowStone.GetComponent<StoneDieAni>().DieSet = true;
         ThrowStone.GetComponent<Animator>().SetInteger("Set", 1);
         ThrowStone.position = Hand.GetChild(0).position + new Vector3(0, 0.5f, -.1f);
         ThrowStone.parent = Hand.GetChild(0);
         ThrowStone.GetComponent<Rigidbody2D>().gravityScale = 0;
     }
+
     public void TStone()
     {
         ThrowStone.parent = GameObject.Find("NowMapEnemy").transform;
@@ -570,6 +576,7 @@ public class Player : Life
         {
             Destroy(ThrowStone.gameObject, DesTimeStone);
         }
+
 
     }
 

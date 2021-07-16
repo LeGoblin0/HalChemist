@@ -24,6 +24,7 @@ public class GameSystem : MonoBehaviour
         aus.Play();
     }
     private string dataPath;//파일저장위치
+    
     public void Initialize()// 저장경로 파일명
     {
         if (!Directory.Exists(Application.persistentDataPath + "SavesDir/"))
@@ -129,7 +130,8 @@ public class GameSystem : MonoBehaviour
             SavePos[gameData.SavePoint].transform.parent.gameObject.SetActive(true);
             cam.m_BoundingShape2D = SavePos[gameData.SavePoint].transform.parent.GetChild(0).GetComponent<PolygonCollider2D>();
 
-            SavePos[gameData.SavePoint].GetComponent<Animator>().SetTrigger("On");//세이브 폰인트 설정
+            SavePos[gameData.SavePoint].GetComponent<Animator>().SetTrigger("On");//세이브 폰인트 이미지 설정
+            SavePos[gameData.SavePoint].transform.parent.GetComponent<MapManager>().MakeEEE();
 
             return gameData;
         }
