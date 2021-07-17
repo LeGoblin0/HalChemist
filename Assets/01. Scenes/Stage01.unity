@@ -21382,6 +21382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharPerSeconds: 15
+  targetMsg: 
 --- !u!1 &647669657
 GameObject:
   m_ObjectHideFlags: 0
@@ -40514,6 +40515,7 @@ MonoBehaviour:
   talkPanel: {fileID: 1396080337}
   isAction: 0
   talkIndex: 0
+  talkText: {fileID: 647178809}
 --- !u!4 &1209932159
 Transform:
   m_ObjectHideFlags: 0

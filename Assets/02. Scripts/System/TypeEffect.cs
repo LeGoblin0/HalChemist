@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TypeEffect : MonoBehaviour
 {
     public int CharPerSeconds;
-    string targetMsg;
+    public string targetMsg;
     bool isAnim;
 
     Text msgText;

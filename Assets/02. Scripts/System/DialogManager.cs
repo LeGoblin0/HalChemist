@@ -11,33 +11,21 @@ public class DialogManager : MonoBehaviour
     public GameObject talkPanel;
     public bool isAction;
     public int talkIndex;
-
+    public Text talkText;
     public void Action(GameObject scanObj)
     {
-        if (isAction)
-        {
-            isAction = false;
-            talkPanel.SetActive(false);
-        }
-        else
-        {
-            isAction = true;
-            talkPanel.SetActive(true);
-            scanObject = scanObj;
-            ObjData objData = scanObject.GetComponent<ObjData>();
-            Talk(objData.id, objData.isNpc);
-            
-        }
-        
-
-
-        //talk.SetMsg("이 오브젝트는" + scanObject.name + "입니다.");
+        talkPanel.SetActive(true);
+        scanObject = scanObj;
+        ObjData objData = scanObject.GetComponent<ObjData>();
+        Talk(objData.id, objData.isNpc);
+        talkPanel.SetActive(isAction);
     }
     void Talk(int id, bool isNpc)
     {
         string talkData = talkManager.GetTalk(id, talkIndex);
         if(talkData == null)
         {
+            talkPanel.SetActive(false);
             isAction = false;
             talkIndex = 0;
             return;
@@ -46,12 +34,14 @@ public class DialogManager : MonoBehaviour
         {
             talk.SetMsg(talkData.Split(':')[0]);
         }
-
         else
         {
             talk.SetMsg(talkData);
         }
         isAction = true;
+        talkPanel.SetActive(false);
         talkIndex++;
+
+
     }
 }
