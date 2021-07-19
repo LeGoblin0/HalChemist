@@ -104,8 +104,8 @@ public class GameSystem : MonoBehaviour
             {
                 if (MapObjS[i] != null && gameData.MapObj[i] != 0)
                 {
-                    MapObjS[i].SaveOn = true;
-                    MapObjS[i].MapTrue();
+                    //MapObjS[i].SaveOn = true;
+                    MapObjS[i].MapTrue(gameData.MapObj[i]);
                 }
             }
             for (int i = StoryTr.childCount - 1; i >= 0; i--)
@@ -239,10 +239,14 @@ public class GameSystem : MonoBehaviour
         }
         Save();
     }
-    public void MapSSS(int i)
+    public void MapSSS(int i,int ii)
     {
-        gameData.MapObj[i] = 1;
+        gameData.MapObj[i] = ii;
         Save();
+    }
+    public int MapSSS(int i)
+    {
+        return gameData.MapObj[i];
     }
     public SaveTrTr[] SavePos;
     public MapSyS[] MapObjS;

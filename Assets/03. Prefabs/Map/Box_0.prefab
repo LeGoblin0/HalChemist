@@ -141,7 +141,7 @@ MonoBehaviour:
   Loop: 0
   Flip: 1
   ItemCode: 0
-  ItemNum: 1
+  ItemNum: 000000000300000003000000030000000a000000
 --- !u!212 &2584513412095911447
 SpriteRenderer:
   m_ObjectHideFlags: 0
