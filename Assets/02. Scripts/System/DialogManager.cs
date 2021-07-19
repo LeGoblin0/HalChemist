@@ -29,7 +29,6 @@ public class DialogManager : MonoBehaviour
         {
             talkPanel.SetActive(false);
             isAction = false;
-            Debug.Log(questManager.CheckQuest(id));
             talkIndex = 0;
             return;
         }
