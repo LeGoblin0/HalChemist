@@ -269,9 +269,13 @@ public class Player : Life
         {
             if (collision.GetComponent<ItemCode>().ItemCodeNum == 0)
             {
-                Destroy(collision.gameObject);
-                Money++;
-                LookMoney();
+                if(Money<=9999)
+                {
+                    Destroy(collision.gameObject);
+                    Money++;
+
+                    LookMoney();
+                }
             }
             else if (collision.GetComponent<ItemCode>().ItemCodeNum == 1)
             {

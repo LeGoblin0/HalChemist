@@ -1,31 +1,28 @@
 fileFormatVersion: 2
-guid: 1567669bea1b33e4592fac735707ee43
+guid: ffa0bbb76e433e7439163876586d189a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4204065831789253915
-    second: goldBox_0
+      213: -7210068395758818666
+    second: item_money_0
   - first:
-      213: -6174470950180256281
-    second: goldBox_1
+      213: 5090868541356578020
+    second: item_money_1
   - first:
-      213: -5757604465304346873
-    second: goldBox_2
+      213: -5848255986372775961
+    second: item_money_2
   - first:
-      213: 5953387476674505153
-    second: goldBox_3
+      213: -6031898650568405912
+    second: item_money_3
   - first:
-      213: -3670905360763060949
-    second: goldBox_4
+      213: -4820770263777516379
+    second: item_money_4
   - first:
-      213: 2652761211117195572
-    second: goldBox_5
+      213: 6270098693446439099
+    second: item_money_5
   - first:
-      213: -4644134310336245881
-    second: goldBox_6
-  - first:
-      213: -6962437004350425394
-    second: goldBox_7
+      213: -5855373449392583174
+    second: item_money_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -135,13 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: goldBox_0
+      name: item_money_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
-        height: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +146,125 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b15d7249997d75a30800000000000000
-      internalID: 4204065831789253915
+      spriteID: 69a6680aef0b0fb90800000000000000
+      internalID: -7210068395758818666
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goldBox_1
+      name: item_money_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e415cd37f566a640800000000000000
+      internalID: 5090868541356578020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: item_money_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7efe2b07a22d6dea0800000000000000
+      internalID: -5848255986372775961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: item_money_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86c46bbb2246a4ca0800000000000000
+      internalID: -6031898650568405912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: item_money_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a466c39cfe291db0800000000000000
+      internalID: -4820770263777516379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: item_money_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb014819a8dd30750800000000000000
+      internalID: 6270098693446439099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: item_money_6
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 96
-        height: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,134 +272,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e58982726fdf4aa0800000000000000
-      internalID: -6174470950180256281
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: goldBox_2
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 70fd4507e31e810b0800000000000000
-      internalID: -5757604465304346873
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: goldBox_3
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c9617d1e5eae9250800000000000000
-      internalID: 5953387476674505153
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: goldBox_4
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b2df3af06035e0dc0800000000000000
-      internalID: -3670905360763060949
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: goldBox_5
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 431539e344080d420800000000000000
-      internalID: 2652761211117195572
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: goldBox_6
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 78f443f4378bc8fb0800000000000000
-      internalID: -4644134310336245881
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: goldBox_7
-      rect:
-        serializedVersion: 2
-        x: 672
-        y: 0
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ec678a0ee64706f90800000000000000
-      internalID: -6962437004350425394
+      spriteID: afd83b1fed88dbea0800000000000000
+      internalID: -5855373449392583174
       vertices: []
       indices: 
       edges: []

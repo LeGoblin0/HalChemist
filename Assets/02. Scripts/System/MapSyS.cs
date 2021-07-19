@@ -40,20 +40,55 @@ public class MapSyS : MonoBehaviour
         }
     }
     bool End = false;
+
+    bool FF = true;
+    bool Onset = false;
     public virtual void MapTrue()
     {
+        if (MapObj == null)
+        {
+            MapObj = new GameObject[1];
+            MapObj[0] = gameObject;
+        }
         for (int i = 0; MapObj != null &&i< MapObj.Length; i++) 
         {
             if (MapObj[i] != null && MapObj[i].GetComponent<Animator>() != null) 
             {
-                MapObj[i].GetComponent<Animator>().SetTrigger("On");
+                if (FF) MapObj[i].GetComponent<Animator>().SetInteger("State", 2);
+                else MapObj[i].GetComponent<Animator>().SetInteger("State", 1);
+                Onset = true;
+                FF = true;
+                //Debug.Log(0);
             }
         }
         End = true;
     }
     public virtual void SpeO()
     {
+        FF = false;
         MapTrue();
         
+    }
+    private void OnEnable()
+    {
+        if (Onset)
+        {
+            if (MapObj == null)
+            {
+                MapObj = new GameObject[1];
+                MapObj[0] = gameObject;
+            }
+            for (int i = 0; MapObj != null && i < MapObj.Length; i++)
+            {
+                if (MapObj[i] != null && MapObj[i].GetComponent<Animator>() != null)
+                {
+                    if (FF) MapObj[i].GetComponent<Animator>().SetInteger("State", 2);
+                    else MapObj[i].GetComponent<Animator>().SetInteger("State", 1);
+                    Onset = true;
+                    FF = true;
+                    //Debug.Log(0);
+                }
+            }
+        }
     }
 }
