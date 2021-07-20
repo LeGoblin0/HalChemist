@@ -23,15 +23,19 @@ public class DialogManager : MonoBehaviour
     }
     void Talk(int id, bool isNpc)
     {
+        //Set Talk Data
         int questTalkIndex = questManager.GetQuestTalkIndex(id);
         string talkData = talkManager.GetTalk(id+questTalkIndex, talkIndex);
-        if(talkData == null)
+        //End Talk
+        if (talkData == null)
         {
             talkPanel.SetActive(false);
             isAction = false;
             talkIndex = 0;
+            Debug.Log(questManager.CheckQuest(id));
             return;
         }
+        //Continue Talk
         if (isNpc)
         {
             talk.SetMsg(talkData);
