@@ -26,11 +26,17 @@ public class MoveMap : MonoBehaviour
     //public Transform MovePos.GetChild(1);
     Transform MovePos;
     public MoveMap GoMap;
-    public void DrowLine(int Time = 10)
+    [ContextMenu("맵 연결 확인(단일)")]
+    public void DrowLine()
     {
+        if (MovePos == null)
+        {
+            if (GoMap != null) MovePos = GoMap.transform;
+            else MovePos = transform;
+        }
         Vector3 aa = (Vector2)transform.position + GetComponent<Collider2D>().offset;
-        if (MovePos == transform) Debug.DrawLine(aa, aa + Vector3.one * 5, Color.red, Time);
-        Debug.DrawLine(aa, MovePos.position + (Vector3)MovePos.GetComponent<Collider2D>().offset, Color.yellow, Time);
+        if (MovePos == transform) Debug.DrawLine(aa, aa + Vector3.one * 5, Color.red, .1f);
+        Debug.DrawLine(aa, MovePos.position , Color.yellow, .1f);
 
     }
 

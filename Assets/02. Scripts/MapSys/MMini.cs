@@ -22,7 +22,7 @@ public class MMini : MonoBehaviour
     [ContextMenu("맵 연결 확인")]
     public void DrowLine()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 3; i < transform.childCount; i++)
         {
             if (transform.GetChild(i).GetChild(1) != null)
             {
