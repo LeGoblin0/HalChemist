@@ -19,6 +19,7 @@ TagManager:
   - Save
   - EndMap
   - TrapSavePoint
+  - TrainSet
   layers:
   - Default
   - TransparentFX

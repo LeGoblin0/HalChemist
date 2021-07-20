@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1083432327253623864}
   - component: {fileID: 6933515773139980895}
   m_Layer: 11
-  m_Name: JumpEnemy
+  m_Name: yantleman
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
