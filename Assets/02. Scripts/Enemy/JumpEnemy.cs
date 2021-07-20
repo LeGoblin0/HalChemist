@@ -27,12 +27,14 @@ public class JumpEnemy : Enemy01
         rig.velocity = new Vector2(0, JumpPower);
         ani.SetInteger("State", 1);
     }
-
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.tag == "Ground")
+        if (collision.gameObject.tag == "Ground")
         {
             ani.SetInteger("State", 0);
         }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
     }
 }

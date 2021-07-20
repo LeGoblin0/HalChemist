@@ -36,7 +36,7 @@ public class MoveSenser : MonoBehaviour
     public bool On_3 = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (--a <= 0 && On_1) 
+        if (--a <= 0 && On_1 && collision.tag == "Ground") 
         {
             Invoke("Oncol", .1f);
             col.enabled = false;
@@ -46,7 +46,7 @@ public class MoveSenser : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(On_2)        enemy.GroundSen(On_3);
+        if (On_2 && collision.tag == "Ground") enemy.GroundSen(On_3);
     }
     void Oncol()
     {

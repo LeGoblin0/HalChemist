@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f765e2a023900243aa21002f839dcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 3
-  Hp: 3
+  MaxHP: 1
+  Hp: 1
   state: 0
   ani: {fileID: 0}
   SenserPly: 0

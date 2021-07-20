@@ -213,10 +213,32 @@ public class Player : Life
             manager.Action(scanObject);
         }
     }
-    
+
+    Vector3 trapsavepoint;
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        //Debug.Log(collision.tag);
+        if (collision.tag == "TrapSavePoint")
+        {
+            trapsavepoint = transform.position+new Vector3(0,0.2f);
+        }
+        if (collision.tag == "TrapGround")
+        {
+            GoTrapSavePoint();
+        }
     }
+
+    void GoTrapSavePoint()
+    {
+        if (Hp > 1)
+        {
+            GameSystem.instance.CanversUI.GetChild(1).GetComponent<Animator>().SetTrigger("On");
+            transform.position = trapsavepoint;
+        }
+        else Hp--;
+    }
+
+
     public SaveTrTr SaveTrtr;
     protected void OnTriggerStay2D(Collider2D collision)
     {
@@ -528,6 +550,7 @@ public class Player : Life
         if (StopStone && StopStoneTime>.5f && !Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Att") && ThrowStone != null)
         {
             ThrowStone.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            ThrowStone.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
             Destroy(ThrowStone.gameObject, DesTimeStone);
             ThrowStone = null;
             StopStone = false;

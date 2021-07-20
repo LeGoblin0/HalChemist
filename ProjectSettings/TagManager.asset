@@ -17,6 +17,8 @@ TagManager:
   - Ston
   - Item
   - Save
+  - EndMap
+  - TrapSavePoint
   layers:
   - Default
   - TransparentFX

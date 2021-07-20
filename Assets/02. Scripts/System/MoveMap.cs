@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class MoveMap : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -9,23 +10,29 @@ public class MoveMap : MonoBehaviour
     void Start()
     {
         gameObject.layer = 12;
-        gameObject.tag = "Ground";
+        gameObject.tag = "EndMap";
         Ply = GameSystem.instance.Ply;
         cam = GameObject.Find("CM vcam1").GetComponent<Cinemachine.CinemachineConfiner>();
         //gameObject.layer = 23;
+        if (GoMap != null) MovePos = GoMap.transform;
         if (MovePos == null) 
         {
             MovePos = transform;
         }
-        Vector3 aa = (Vector2)transform.position + GetComponent<Collider2D>().offset;
-        if (MovePos == transform) Debug.DrawLine(aa, aa + Vector3.one * 5, Color.red, 10000);
-        Debug.DrawLine(aa, MovePos.position + (Vector3)MovePos.GetComponent<Collider2D>().offset, Color.yellow, 10000);
+        if (GetComponent<SpriteRenderer>() != null) Destroy(GetComponent<SpriteRenderer>());
     }
     Transform Ply;
     //public Transform MovePos.GetChild(0);
     //public Transform MovePos.GetChild(1);
-    public Transform MovePos;
+    Transform MovePos;
+    public MoveMap GoMap;
+    public void DrowLine(int Time = 10)
+    {
+        Vector3 aa = (Vector2)transform.position + GetComponent<Collider2D>().offset;
+        if (MovePos == transform) Debug.DrawLine(aa, aa + Vector3.one * 5, Color.red, Time);
+        Debug.DrawLine(aa, MovePos.position + (Vector3)MovePos.GetComponent<Collider2D>().offset, Color.yellow, Time);
 
+    }
 
     public Vector3 ShootPly;
     Cinemachine.CinemachineConfiner cam;

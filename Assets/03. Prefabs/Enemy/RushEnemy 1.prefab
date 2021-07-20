@@ -205,6 +205,8 @@ MonoBehaviour:
   Speed: 1
   RushTime: 0.8
   RushSpeed: 3
+  GroundKnckBackTimeMax: 0.5
+  GroundKnckBackSpeed: 3
 --- !u!50 &3439980955837341084
 Rigidbody2D:
   serializedVersion: 4

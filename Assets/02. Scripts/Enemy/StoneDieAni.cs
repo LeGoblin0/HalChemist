@@ -29,4 +29,12 @@ public class StoneDieAni : MonoBehaviour
             Destroy(aa.gameObject, .5f);
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "EndMap")
+        {
+            transform.position = new Vector3(-1000, -1000);
+            Destroy(gameObject);
+        }
+    }
 }
