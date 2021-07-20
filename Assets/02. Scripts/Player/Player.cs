@@ -234,8 +234,9 @@ public class Player : Life
         {
             GameSystem.instance.CanversUI.GetChild(1).GetComponent<Animator>().SetTrigger("On");
             transform.position = trapsavepoint;
+            Hp--; HPUI();
         }
-        else Hp--;
+        else { Hp--; HPUI(); }
     }
 
 
