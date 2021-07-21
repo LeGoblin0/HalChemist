@@ -9331,7 +9331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &251781736
 Transform:
   m_ObjectHideFlags: 0
@@ -61636,6 +61636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questId: 10
+  questActionIndex: 0
 --- !u!4 &1605728430
 Transform:
   m_ObjectHideFlags: 0
