@@ -13,6 +13,12 @@ public class DialogManager : MonoBehaviour
     public bool isAction;
     public int talkIndex;
     public Text talkText;
+
+    public void Start()
+    {
+        Debug.Log(questManager.CheckQuest());
+    }
+
     public void Action(GameObject scanObj)
     {
         talkPanel.SetActive(true);
@@ -47,7 +53,5 @@ public class DialogManager : MonoBehaviour
         isAction = true;
         talkPanel.SetActive(false);
         talkIndex++;
-
-
     }
 }

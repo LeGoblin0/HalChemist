@@ -209,7 +209,7 @@ public class Player : Life
         }
         if (Input.GetKeyDown(KeyCode.G) && scanObject != null)
         {
-            Debug.Log("This is : " + scanObject.name);
+           // Debug.Log("This is : " + scanObject.name);
             manager.Action(scanObject);
         }
     }
