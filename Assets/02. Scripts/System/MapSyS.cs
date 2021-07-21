@@ -12,8 +12,11 @@ public class MapSyS : MonoBehaviour
     public bool SaveOn = false;
 
     [Header("충돌해도 실행")]
+    [Tooltip("일반공격 제외 모두")]
     public bool All = false;
+    [Tooltip("플레이어 충돌")]
     public bool AllSS = false;
+    [Header("반복 실행")]
     public bool Loop = false;
 
     protected SpriteRenderer ImgRander;
@@ -37,13 +40,16 @@ public class MapSyS : MonoBehaviour
     {
         int aniNum = GameSystem.instance.MapSSS(ObjCode);
         if (End && !Loop) return;
-        if(AllSS && collision.tag == "Player")
+        //Debug.Log(collision.tag);
+        //Debug.Log(collision.GetComponent<Att>().AttState);
+        if (AllSS && collision.tag == "Player")
         {
             if (ObjCode >= 0) { aniNum++; GameSystem.instance.MapSSS(ObjCode, aniNum); }
             SpeO();
         }
-        else if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set && (collision.GetComponent<Att>().AttState == state || (All && collision.GetComponent<Att>().AttState != Life.State.일반공격))) 
+        else if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set && (collision.GetComponent<Att>().AttState == state || (All && (collision.GetComponent<Att>().AttState != Life.State.일반공격))))
         {
+
             if (ObjCode >= 0) { aniNum++; GameSystem.instance.MapSSS(ObjCode, aniNum); }
             SpeO();
         }

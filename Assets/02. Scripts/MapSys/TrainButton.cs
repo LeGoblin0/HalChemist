@@ -6,10 +6,32 @@ public class TrainButton : MonoBehaviour
 {
     Animator ani;
     public Train[] TranGo;
-
+    public bool XRight;
+    [Tooltip("참 = 하->상 좌->우")]
+    public bool ForceTrue;
     void Start()
     {
         ani = GetComponent<Animator>();
+        if ((int)(transform.eulerAngles.z + .5f + 720) % 360 == 0)
+        {
+            XRight = false;
+            ForceTrue = false;
+        }
+        else if ((int)(transform.eulerAngles.z + .5f + 720) % 360 == 90)
+        {
+            XRight = true;
+            ForceTrue = true;
+        }
+        else if ((int)(transform.eulerAngles.z + .5f + 720) % 360 == 180)
+        {
+            XRight = false;
+            ForceTrue = true;
+        }
+        else if ((int)(transform.eulerAngles.z + .5f + 720) % 360 == 270)
+        {
+            XRight = true;
+            ForceTrue = false;
+        }
     }
     bool PutNow = true;
     public void PutBut()
@@ -34,9 +56,18 @@ public class TrainButton : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!PutNow && collision.GetComponent<Rigidbody2D>() != null && collision.GetComponent<Rigidbody2D>().velocity.y < -1f) 
+        if (!PutNow && collision.GetComponent<Rigidbody2D>() != null ) 
         {
-            PutBut();
+            if (XRight&& ((ForceTrue && collision.GetComponent<Rigidbody2D>().velocity.x > 6f) || (!ForceTrue && collision.GetComponent<Rigidbody2D>().velocity.x < -6f)))
+            {
+                PutBut();
+                //Debug.Log(0);
+            }
+            else if(!XRight && ((ForceTrue && collision.GetComponent<Rigidbody2D>().velocity.y > 1f) || (!ForceTrue && collision.GetComponent<Rigidbody2D>().velocity.y <-1f)))
+            {
+                PutBut();
+                //Debug.Log(1);
+            }
         }
     }
 }
