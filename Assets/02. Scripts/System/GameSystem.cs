@@ -320,7 +320,7 @@ public class GameSystem : MonoBehaviour
 
         Screen.SetResolution(1920, 1080, true);
 
-        for (int i = 2; i < MapPar.childCount; i++)
+        for (int i = 3; i < MapPar.childCount; i++)
         {
             MapPar.GetChild(i).gameObject.SetActive(false);
         }
