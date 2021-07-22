@@ -123,7 +123,7 @@ public class GameSystem : MonoBehaviour
             //Ply.GetComponent<Player>().Hand.position = new Vector3(GG.x, GG.y, Ply.GetComponent<Player>().Hand.position.z);
             if (SavePos[gameData.SavePoint].MovePos == null)
             {
-                SavePos[gameData.SavePoint].MovePos = SavePos[gameData.SavePoint].transform.parent.Find("MoveMap").GetChild(0);
+                SavePos[gameData.SavePoint].MovePos = SavePos[gameData.SavePoint].transform.parent.GetChild(1).GetChild(0);
             }
             GG = SavePos[gameData.SavePoint].MovePos.GetChild(1).position;
 

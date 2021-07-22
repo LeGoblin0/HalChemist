@@ -6,6 +6,7 @@ public class TrainButton : MonoBehaviour
 {
     Animator ani;
     public Train[] TranGo;
+    public int TranGoNum = 0;
     public bool XRight;
     [Tooltip("참 = 하->상 좌->우")]
     public bool ForceTrue;
@@ -34,13 +35,16 @@ public class TrainButton : MonoBehaviour
         }
     }
     bool PutNow = true;
+    public bool OnTouch = true;
+    [ContextMenu("버튼 누르기")]
     public void PutBut()
     {
         PutNow = true;
         ani.SetInteger("State", 1);
         for (int i = 0; i < TranGo.Length; i++)
         {
-            TranGo[i].GoTrain();
+            if (OnTouch) TranGo[i].GoTrain();
+            else TranGo[i].GoTrain(TranGoNum);
         }
     }
     public void OutBut()

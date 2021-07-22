@@ -33,6 +33,12 @@ public class Sencer : MonoBehaviour
                 ply.airAtt = true;
                 ply.Jump01 = true;
 
+
+                if (collision.transform.parent != null && collision.transform.parent.GetComponent<Train>() != null)
+                {
+                    ply.TrainNow = collision.transform.parent.GetComponent<Rigidbody2D>();
+                }
+
             }
         }
         if (collision.tag == "Att" && down && collision.GetComponent<StoneDieAni>() != null && down && collision.GetComponent<Rigidbody2D>().constraints == RigidbodyConstraints2D.FreezePosition) 
@@ -46,7 +52,15 @@ public class Sencer : MonoBehaviour
         {
             if (right) ply.right = false;
             if (left) ply.left = false;
-            if (down) ply.down = false;
+            if (down)
+            {
+                ply.down = false;
+
+                if (collision.transform.parent != null && collision.transform.parent.GetComponent<Train>() != null)
+                {
+                    ply.TrainNow = null;
+                }
+            }
         }
     }
 }

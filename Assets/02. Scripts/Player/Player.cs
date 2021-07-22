@@ -313,7 +313,10 @@ public class Player : Life
         {
             SaveTrtr = collision.GetComponent<SaveTrTr>();
         }
-
+        //if (collision.transform.parent != null && collision.transform.parent.GetComponent<Train>() != null)
+        //{
+        //    TrainNow = collision.transform.parent.GetComponent<Rigidbody2D>();
+        //}
 
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -322,6 +325,10 @@ public class Player : Life
         {
             SaveTrtr = null;
         }
+        //if (collision.transform.parent != null && collision.transform.parent.GetComponent<Train>() != null)
+        //{
+        //    TrainNow = null;
+        //}
     }
 
     public Text MoneyInt;
@@ -458,6 +465,7 @@ public class Player : Life
         if (nowAttTime > 0) nowAttTime -= Time.deltaTime;
         if (DontAttTime > 0) DontAttTime -= Time.deltaTime;
     }
+    public Rigidbody2D TrainNow;
     /// <summary>
     /// 애니메이션 행동
     /// </summary>
@@ -478,7 +486,9 @@ public class Player : Life
         }
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle"))
         {
-            rig.velocity = new Vector2(0, rig.velocity.y);
+            //Debug.Log(0);
+            if(TrainNow!=null) rig.velocity = TrainNow.velocity;
+            else rig.velocity = new Vector2(0, rig.velocity.y);
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Run"))
         {
