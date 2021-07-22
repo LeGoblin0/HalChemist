@@ -8,7 +8,7 @@ public class TypeEffect : MonoBehaviour
 {
     public int CharPerSeconds;
     public string targetMsg;
-    bool isAnim;
+    public bool isAnim;
 
     Text msgText;
     int index;
