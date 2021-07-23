@@ -104,7 +104,8 @@ MonoBehaviour:
   GoNow: 1
   But:
   - {fileID: 0}
-  Speed: 1
+  Speed: 3
+  GoNum: 0
 --- !u!50 &3055552521054420238
 Rigidbody2D:
   serializedVersion: 4
@@ -216,7 +217,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5, y: 0.6649604}
+  m_Offset: {x: 0.5, y: 0.738379}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -227,7 +228,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 0.67007923}
+  m_Size: {x: 3, y: 0.523242}
   m_EdgeRadius: 0
 --- !u!50 &8116216189728809394
 Rigidbody2D:

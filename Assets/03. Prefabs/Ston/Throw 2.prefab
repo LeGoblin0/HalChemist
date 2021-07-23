@@ -213,7 +213,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 4551014918239076006}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e78699f6dcc1dfd42afe6202cdc19f88, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -275,3 +275,4 @@ MonoBehaviour:
   DieObj: {fileID: 4870061418998596664, guid: 112af9cb21be7c84884f2974d9d5e3bd, type: 3}
   Code: 2
   StonImg: {fileID: 21300000, guid: c23d5dae13b2e604ab7772bed06f102c, type: 3}
+  DieSet: 0

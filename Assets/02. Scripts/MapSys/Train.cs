@@ -9,7 +9,7 @@ public class Train : MonoBehaviour
     public TrainButton[] But;
 
     public float Speed = 3;
-
+    float NowSpeed = 0;
     Rigidbody2D rig;
     Animator ani;
     void Start()
@@ -25,7 +25,9 @@ public class Train : MonoBehaviour
         {
             if (((Vector2)(transform.position - last.position)).sqrMagnitude > 0.001)
             {
-                rig.velocity = -(transform.position - last.position).normalized * Speed / 2;
+                if (NowSpeed > 1f) NowSpeed -= Time.deltaTime;
+                else NowSpeed = 1f;
+                rig.velocity = -(transform.position - last.position).normalized * NowSpeed;
             }
             else
             {
@@ -35,11 +37,14 @@ public class Train : MonoBehaviour
                 transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));//정확한 좌표에 정지
                 //Debug.Log(transform.position);
                 last = null;
+                NowSpeed = 0;
             }
         }
         else if (GoNow)
         {
-            rig.velocity = GoSet[GoNum] * Speed;
+            if (NowSpeed < Speed) NowSpeed += Time.deltaTime;
+            else NowSpeed = Speed;
+            rig.velocity = GoSet[GoNum] * NowSpeed;
             //Debug.Log(GoSet[GoNum]+"   "+GoNum);
         }
         else

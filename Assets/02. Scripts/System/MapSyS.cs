@@ -70,6 +70,8 @@ public class MapSyS : MonoBehaviour
             if (MapObj[i] != null && MapObj[i].GetComponent<Animator>() != null) 
             {
                 MapObj[i].GetComponent<Animator>().SetInteger("State", aniNum);
+                MapObj[i].GetComponent<Animator>().SetTrigger("On");
+
                 Onset = true;
                 //Debug.Log(0);
             }

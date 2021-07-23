@@ -63,6 +63,8 @@ public class Player : Life
     public float JumpPower = 3;
     public float gravityScale = 2;
     bool DontKeyStayMove = false;
+    public float DownMaxSpeed = 4;
+    public float LongJumpTime = .3f;
 
     void PlySound(int i)
     {
@@ -133,6 +135,10 @@ public class Player : Life
         AniMove();
         NpcCheck();
 
+        if (rig.velocity.y < -DownMaxSpeed) 
+        {
+            rig.velocity = new Vector2(rig.velocity.x, -DownMaxSpeed);
+        }
     }
 
     bool GGGodMod;
@@ -337,6 +343,7 @@ public class Player : Life
     {
         MoneyInt.text = Money + "";
     }
+    float DownKey = 0;
     void Ply_Move()
     {
         if (!DontMove)
@@ -354,13 +361,13 @@ public class Player : Life
                 ani.SetInteger("State", 3);
                 PutSton.SetActive(true);
                 this.Hand.GetComponent<Hand>().offset = new Vector3(-1, 0f, 0);
-                col.offset = new Vector2(col.offset.x, 0.2747405f);
-                col.size = new Vector2(col.size.x, 0.5542418f);
+                col.offset = new Vector2(col.offset.x, 0.2907405f);
+                col.size = new Vector2(col.size.x, 0.5342418f);
             }
             else if (Input.GetKeyUp(KeyCode.DownArrow))
             {
-                col.offset = new Vector2(col.offset.x, 0.4747405f);
-                col.size = new Vector2(col.size.x, 0.9542418f);
+                col.offset = new Vector2(col.offset.x, 0.4846133f);
+                col.size = new Vector2(col.size.x, 0.9344962f);
                 PutSton.SetActive(false);
                 this.Hand.GetComponent<Hand>().offset = new Vector3(-1, .5f, 0);
             }
@@ -399,6 +406,7 @@ public class Player : Life
                 DontAttTime = .2f;
                 Jump01 = false;
                 DontMove = true;
+                DownKey = LongJumpTime;
             }
             else
             {
@@ -411,6 +419,10 @@ public class Player : Life
 
         }
         transform.GetChild(0).localScale = new Vector3(PlyLook, 1, 1);
+        if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            DownKey = 0;
+        }
     }
     void Ply_Desh()
     {
@@ -435,7 +447,7 @@ public class Player : Life
     void Ply_Att()
     {
         //if (!ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Run") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump_00")) return;
-        if (Input.GetKeyDown(KeyCode.A) && DontAttTime <= 0)
+        if (Input.GetKeyDown(KeyCode.A) && DontAttTime <= 0 && !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down01") && !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down02"))
         {
             if (down && nowAttTime <= 0 && !DontMove)
             {
@@ -473,11 +485,17 @@ public class Player : Life
     {
           
         
-        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_2") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Air_Att_1")
-            || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down01") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down02"))
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Air_Att_1"))
         {
             rig.velocity = Vector2.zero;
             rig.gravityScale = 0;
+            return;
+        }
+        else if(ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_2") 
+            || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down01") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down02"))
+        {
+            if (TrainNow != null) rig.velocity = TrainNow.velocity;
+            else rig.velocity = Vector2.zero;
             return;
         }
         else
@@ -497,6 +515,11 @@ public class Player : Life
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump") && !DontKeyStayMove) 
         {
+            if (DownKey > 0)
+            {
+                DownKey -= Time.deltaTime;
+                rig.velocity = new Vector2(rig.velocity.x, JumpPower);
+            }
             if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)))
             {
                 ani.SetFloat("RunSpeed", MaxSpeed * 1.2f);
@@ -600,8 +623,11 @@ public class Player : Life
         ThrowStone.GetComponent<Att>().Set = true;
         ThrowStone.GetComponent<Att>().GroundDes = true;
         ThrowStone.GetComponent<Rigidbody2D>().velocity = new Vector2(PlyLook * ThrowPower, 0);
-        ThrowStone.GetComponent<Rigidbody2D>().freezeRotation = false;
-        ThrowStone.GetComponent<Rigidbody2D>().angularVelocity = ThrowRollPower * PlyLook;
+
+        ThrowStone.gameObject.AddComponent<StoneThrow>().Speed = ThrowPower;
+
+        //ThrowStone.GetComponent<Rigidbody2D>().freezeRotation = false;
+        //ThrowStone.GetComponent<Rigidbody2D>().angularVelocity = ThrowRollPower * PlyLook;
 
         int codes = ThrowStone.GetComponent<StoneDieAni>().Code;
         if (codes == 3)
@@ -667,6 +693,7 @@ public class Player : Life
     }
     public void JumpU()
     {
+
         rig.velocity = new Vector2(rig.velocity.x, JumpPower);
     }
     void DontMoveSet(int dd)
