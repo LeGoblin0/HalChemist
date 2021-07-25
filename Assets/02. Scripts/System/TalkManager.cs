@@ -23,8 +23,8 @@ public class TalkManager : MonoBehaviour
 
         //Quest Talk
         talkData.Add(10 + 1000, new string[] { "안녕? 난 박스걸이야", "내가 박스안에 갇혀버려서 부탁하나만 해도 될까?","저 쪽에 있는 열쇠좀 주워줄래?" });
-        talkData.Add(20 + 2000, new string[] { "수상한 열쇠를 주웠다."});
-        talkData.Add(21 + 1000, new string[] { "열쇠 가져다 줘서 고마워!" });
+        talkData.Add(11 + 2000, new string[] { "수상한 열쇠를 주웠다."});
+        talkData.Add(20 + 1000, new string[] { "열쇠 가져다 줘서 고마워!" });
 
     }
     public string GetTalk(int id, int talkIndex)

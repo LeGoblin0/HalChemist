@@ -17,8 +17,8 @@ public class QuestManager : MonoBehaviour
 
     void GenerateData()
     {
-        questList.Add(10, new QuestData("박스걸과 대화하기", new int[] { 1000}));
-        questList.Add(20, new QuestData("열쇠를 주워다 주기", new int[] { 2000,1000 }));
+        questList.Add(10, new QuestData("박스걸과 대화하기", new int[] { 1000, 2000 }));
+        questList.Add(20, new QuestData("열쇠를 주워다 주기", new int[] { 1000 }));
         questList.Add(30, new QuestData("퀘스트 완료", new int[] { 0 }));
     }
 
@@ -44,12 +44,13 @@ public class QuestManager : MonoBehaviour
         questId += 10;
         questActionIndex = 0;
     }
+    //퀘스트 구현
     void ControlObject()
     {
         switch (questId)
         {
-            case 20:
-                if (questActionIndex == 1)
+            case 10:
+                if (questActionIndex == 2)
                     questObject[0].SetActive(false);
                 break;
         }
