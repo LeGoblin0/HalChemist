@@ -10,6 +10,8 @@ public class Train : MonoBehaviour
 
     public float Speed = 3;
     float NowSpeed = 0;
+    public bool AcSpeedOff = false;
+    public float LastSpeed = 1;
     Rigidbody2D rig;
     Animator ani;
     void Start()
@@ -25,8 +27,8 @@ public class Train : MonoBehaviour
         {
             if (((Vector2)(transform.position - last.position)).sqrMagnitude > 0.001)
             {
-                if (NowSpeed > 1f) NowSpeed -= Time.deltaTime;
-                else NowSpeed = 1f;
+                if (NowSpeed > 1f && !AcSpeedOff) NowSpeed -= Time.deltaTime;
+                else NowSpeed = LastSpeed;
                 rig.velocity = -(transform.position - last.position).normalized * NowSpeed;
             }
             else
@@ -42,7 +44,7 @@ public class Train : MonoBehaviour
         }
         else if (GoNow)
         {
-            if (NowSpeed < Speed) NowSpeed += Time.deltaTime;
+            if (NowSpeed < Speed && !AcSpeedOff) NowSpeed += Time.deltaTime;
             else NowSpeed = Speed;
             rig.velocity = GoSet[GoNum] * NowSpeed;
             //Debug.Log(GoSet[GoNum]+"   "+GoNum);
@@ -51,7 +53,7 @@ public class Train : MonoBehaviour
         {
             ani.SetInteger("State", 0);
             rig.bodyType = RigidbodyType2D.Static;
-            for (int i = 0; i < But.Length; i++)
+            for (int i = 0; But != null && i < But.Length; i++)
             {
                 But[i].OutBut();
             }
@@ -73,11 +75,11 @@ public class Train : MonoBehaviour
             transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));//정확한 좌표에 정지
             ani.SetInteger("State", 0);
             rig.bodyType = RigidbodyType2D.Static;
-            for (int i = 0; i < But.Length; i++)
+            last = null;
+            for (int i = 0; But != null && i < But.Length; i++)
             {
                 But[i].OutBut();
             }
-            last = null;
         }
     }
     public void GoTrain()
@@ -95,11 +97,11 @@ public class Train : MonoBehaviour
             transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));//정확한 좌표에 정지
             ani.SetInteger("State", 0);
             rig.bodyType = RigidbodyType2D.Static;
-            for (int i = 0; i < But.Length; i++)
+            last = null;
+            for (int i = 0; But != null && i < But.Length; i++)
             {
                 But[i].OutBut();
             }
-            last = null;
         }
     }
 

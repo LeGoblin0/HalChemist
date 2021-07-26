@@ -34,7 +34,7 @@ public class TrainButton : MonoBehaviour
             ForceTrue = false;
         }
     }
-    bool PutNow = true;
+    public bool PutNow = true;
     public bool OnTouch = true;
     [ContextMenu("버튼 누르기")]
     public void PutBut()
