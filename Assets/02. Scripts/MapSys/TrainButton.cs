@@ -72,11 +72,28 @@ public class TrainButton : MonoBehaviour
             if (XRight&& ((ForceTrue && collision.GetComponent<Rigidbody2D>().velocity.x > 6f) || (!ForceTrue && collision.GetComponent<Rigidbody2D>().velocity.x < -6f)))
             {
                 PutBut();
+                return;
                 //Debug.Log(0);
             }
             else if(!XRight && ((ForceTrue && collision.GetComponent<Rigidbody2D>().velocity.y > 1f) || (!ForceTrue && collision.GetComponent<Rigidbody2D>().velocity.y <-1f)))
             {
                 PutBut();
+                return;
+                //Debug.Log(1);
+            }
+        }
+        if (!PutNow && collision.GetComponent<Att>() != null)
+        {
+            if (XRight && ((ForceTrue && collision.GetComponent<Att>().AttArrow == 4) || (!ForceTrue && collision.GetComponent<Att>().AttArrow == 3)))
+            {
+                PutBut();
+                return;
+                //Debug.Log(0);
+            }
+            else if (!XRight && ((ForceTrue && collision.GetComponent<Att>().AttArrow == 0) || (!ForceTrue && collision.GetComponent<Att>().AttArrow == 1)))
+            {
+                PutBut();
+                return;
                 //Debug.Log(1);
             }
         }

@@ -64,6 +64,7 @@ public class Player : Life
     public float gravityScale = 2;
     bool DontKeyStayMove = false;
     public float DownMaxSpeed = 4;
+    [Range(0,1f)]
     public float LongJumpTime = .3f;
 
     void PlySound(int i)
@@ -343,7 +344,6 @@ public class Player : Life
     {
         MoneyInt.text = Money + "";
     }
-    float DownKey = 0;
     void Ply_Move()
     {
         if (!DontMove)
@@ -406,7 +406,7 @@ public class Player : Life
                 DontAttTime = .2f;
                 Jump01 = false;
                 DontMove = true;
-                DownKey = LongJumpTime;
+                NowJumpPower = JumpPower;
             }
             else
             {
@@ -421,7 +421,9 @@ public class Player : Life
         transform.GetChild(0).localScale = new Vector3(PlyLook, 1, 1);
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
-            DownKey = 0;
+            if (rig.velocity.y > 0) rig.velocity = new Vector2(rig.velocity.x, rig.velocity.y * LongJumpTime);
+            else NowJumpPower = JumpPower * LongJumpTime;
+            
         }
     }
     void Ply_Desh()
@@ -455,7 +457,8 @@ public class Player : Life
                 ani.SetInteger("State", 4);
                 nowAttTime = AttCoolTime;
                 ani.SetFloat("AttSpeed", AttSpeed);
-
+                transform.GetChild(0).GetChild(0).GetComponent<Att>().AttArrow = transform.GetChild(0).localScale.x == 1 ? 4 : 3;
+                transform.GetChild(0).GetChild(1).GetComponent<Att>().AttArrow = transform.GetChild(0).localScale.x == 1 ? 4 : 3;
             }
             else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= .5f)
             {
@@ -515,11 +518,6 @@ public class Player : Life
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump") && !DontKeyStayMove) 
         {
-            if (DownKey > 0)
-            {
-                DownKey -= Time.deltaTime;
-                rig.velocity = new Vector2(rig.velocity.x, JumpPower);
-            }
             if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)))
             {
                 ani.SetFloat("RunSpeed", MaxSpeed * 1.2f);
@@ -691,10 +689,11 @@ public class Player : Life
         rig.velocity = Vector2.zero;
         DontMove = true;
     }
+    float NowJumpPower;
     public void JumpU()
     {
 
-        rig.velocity = new Vector2(rig.velocity.x, JumpPower);
+        rig.velocity = new Vector2(rig.velocity.x, NowJumpPower);
     }
     void DontMoveSet(int dd)
     {

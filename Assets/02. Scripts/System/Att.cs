@@ -11,6 +11,8 @@ public class Att : MonoBehaviour
     [Header("관통")]
     public bool HitDesT = false;
     public int HitNum = 1;
+    [Tooltip("-1=없음 0=상 1=하 2=좌 3=우")]
+    public int AttArrow = -1;
     float nowTime = 0;
     void Start()
     {

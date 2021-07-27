@@ -109,7 +109,7 @@ public class MapSyS : MonoBehaviour
                 {
                     MapObj[i].GetComponent<Animator>().SetInteger("State", aniNum);
                     Onset = true;
-                    Debug.Log(aniNum);
+                    //Debug.Log(aniNum);
                 }
             }
         }
