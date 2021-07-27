@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHP: 1
-  Hp: 5
+  Hp: 3
   state: 0
   ani: {fileID: 0}
   SenserPly: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   RushTime: 0.8
   RushSpeed: 3
   GroundKnckBackTimeMax: 0.5
-  GroundKnckBackSpeed: 3
+  GroundKnckBackSpeed: 5
 --- !u!50 &3439980955837341084
 Rigidbody2D:
   serializedVersion: 4
@@ -246,6 +246,7 @@ MonoBehaviour:
   DesTime: 0
   HitDesT: 0
   HitNum: 1
+  AttArrow: -1
   attObj: {fileID: 0}
   set2: 1
   AttState: 0
