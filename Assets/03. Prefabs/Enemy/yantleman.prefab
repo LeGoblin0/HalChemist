@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHP: 5
-  Hp: 5
+  Hp: 3
   state: 0
   ani: {fileID: 0}
   SenserPly: 0
@@ -146,6 +146,7 @@ MonoBehaviour:
   DesTime: 0
   HitDesT: 0
   HitNum: 1
+  AttArrow: -1
   attObj: {fileID: 0}
   set2: 1
   AttState: 0
