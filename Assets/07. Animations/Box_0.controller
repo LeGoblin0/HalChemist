@@ -8,9 +8,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 3
+  - m_ConditionMode: 6
     m_ConditionEvent: State
-    m_EventTreshold: 99
+    m_EventTreshold: 100
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 9009318643710667436}
   m_Solo: 0
@@ -204,6 +204,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 3
     m_ConditionEvent: State
     m_EventTreshold: 2
+  - m_ConditionMode: 7
+    m_ConditionEvent: State
+    m_EventTreshold: 100
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5519124044043723078}
   m_Solo: 0

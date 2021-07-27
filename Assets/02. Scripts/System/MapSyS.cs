@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapSyS : MonoBehaviour
 {
-    [HideInInspector]
+    //[HideInInspector]
     public int ObjCode = -1;
     public GameObject[] MapObj;
     public Life.State state;
@@ -73,9 +73,15 @@ public class MapSyS : MonoBehaviour
                 MapObj[i].GetComponent<Animator>().SetTrigger("On");
 
                 Onset = true;
-                //Debug.Log(0);
+                //Debug.Log(aniNum);
             }
         }
+    }
+    public void SpSp()
+    {
+        int aniNum = GameSystem.instance.MapSSS(ObjCode);
+        if (ObjCode >= 0) { aniNum++; if (aniNum > 100) aniNum = 100; GameSystem.instance.MapSSS(ObjCode, aniNum); }
+        SpeO();
     }
     public virtual void SpeO()
     {
@@ -84,6 +90,11 @@ public class MapSyS : MonoBehaviour
     }
     private void OnEnable()
     {
+        SetAni();
+    }
+    public void SetAni()
+    {
+
         if (Onset)
         {
             int aniNum = GameSystem.instance.MapSSS(ObjCode);
@@ -98,7 +109,7 @@ public class MapSyS : MonoBehaviour
                 {
                     MapObj[i].GetComponent<Animator>().SetInteger("State", aniNum);
                     Onset = true;
-                    //Debug.Log(0);
+                    Debug.Log(aniNum);
                 }
             }
         }

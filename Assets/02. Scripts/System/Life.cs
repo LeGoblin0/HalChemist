@@ -16,7 +16,7 @@ public class Life : MonoBehaviour
             Hp -= collision.GetComponent<Att>().AttDamage;
         }
     }
-    public enum State { 일반, 경직, 기절, 감전, 느려짐, 속박 ,일반공격}
+    public enum State { 없음=-1,일반, 경직, 기절, 감전, 느려짐, 속박 ,일반공격}
     [Header("상태")]
     public State state = State.일반;
 }
