@@ -204,23 +204,7 @@ public class Player : Life
         }
        
     }
-    void InputTest()
-    {
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            dirVec = Vector3.right;
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            dirVec = Vector3.left;
-        }
-        if (Input.GetKeyDown(KeyCode.G) && scanObject != null)
-        {
-           // Debug.Log("This is : " + scanObject.name);
-            manager.Action(scanObject);
-        }
-    }
-
+   
     Vector3 trapsavepoint;
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -486,8 +470,6 @@ public class Player : Life
     /// </summary>
     void AniMove()
     {
-          
-        
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Air_Att_1"))
         {
             rig.velocity = Vector2.zero;
@@ -550,6 +532,22 @@ public class Player : Life
             }
         }
        
+    }
+    void InputTest()
+    {
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            dirVec = Vector3.right;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            dirVec = Vector3.left;
+        }
+        if (Input.GetKeyDown(KeyCode.G) && scanObject != null)
+        {
+           // DontMove = true;
+            manager.Action(scanObject);
+        }
     }
 
     int Tcode;

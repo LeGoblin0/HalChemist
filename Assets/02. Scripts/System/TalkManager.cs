@@ -18,7 +18,7 @@ public class TalkManager : MonoBehaviour
         //Talk Data
         //BoxGirl 1000
         //Key 100
-        talkData.Add(1000, new string[] { "택배는 역시 로켓 배송이야", "택배 도착했을때가 제일 짜릿해" });
+        talkData.Add(1000, new string[] {"택배는 역시 로켓 배송이야", "택배 도착했을때가 제일 짜릿해" });
         talkData.Add(2000, new string[] {"수상하게 생긴 열쇠다."});
 
         //Quest Talk

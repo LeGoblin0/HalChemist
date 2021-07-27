@@ -43,6 +43,7 @@ public class QuestManager : MonoBehaviour
     {
         questId += 10;
         questActionIndex = 0;
+        GameSystem.instance.Ply.GetComponent<Player>().DontMove = false;
     }
     //퀘스트 구현
     public void ControlObject()
