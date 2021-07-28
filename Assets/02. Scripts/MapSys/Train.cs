@@ -52,6 +52,7 @@ public class Train : MonoBehaviour
         else
         {
             ani.SetInteger("State", 0);
+            transform.position = new Vector3(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));//정확한 좌표에 정지
             rig.bodyType = RigidbodyType2D.Static;
             for (int i = 0; But != null && i < But.Length; i++)
             {

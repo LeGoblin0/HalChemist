@@ -105,7 +105,7 @@ public class GameSystem : MonoBehaviour
                 if (MapObjS[i] != null && gameData.MapObj[i] != 0)
                 {
                     //MapObjS[i].SaveOn = true;
-                    MapObjS[i].MapTrue(gameData.MapObj[i]);
+                    MapObjS[i].MapTrue();
                 }
             }
             for (int i = StoryTr.childCount - 1; i >= 0; i--)

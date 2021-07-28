@@ -346,12 +346,12 @@ public class Player : Life
                 PutSton.SetActive(true);
                 this.Hand.GetComponent<Hand>().offset = new Vector3(-1, 0f, 0);
                 col.offset = new Vector2(col.offset.x, 0.2907405f);
-                col.size = new Vector2(col.size.x, 0.5342418f);
+                col.size = new Vector2(col.size.x, 0.5742418f);
             }
             else if (Input.GetKeyUp(KeyCode.DownArrow))
             {
-                col.offset = new Vector2(col.offset.x, 0.4846133f);
-                col.size = new Vector2(col.size.x, 0.9344962f);
+                col.offset = new Vector2(col.offset.x, 0.476059f);
+                col.size = new Vector2(col.size.x, 0.9516047f);
                 PutSton.SetActive(false);
                 this.Hand.GetComponent<Hand>().offset = new Vector3(-1, .5f, 0);
             }

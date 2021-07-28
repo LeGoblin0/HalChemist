@@ -7,6 +7,8 @@ public class MapSyS : MonoBehaviour
     //[HideInInspector]
     public int ObjCode = -1;
     public GameObject[] MapObj;
+    public MapSyS[] MapTTT;
+    public float MapTTTTime = 0;
     public Life.State state;
 
     public bool SaveOn = false;
@@ -57,7 +59,7 @@ public class MapSyS : MonoBehaviour
     bool End = false;
 
     bool Onset = false;
-    public virtual void MapTrue(int a = 1)
+    public virtual void MapTrue()
     {
         if (MapObj == null)
         {
@@ -65,15 +67,29 @@ public class MapSyS : MonoBehaviour
             MapObj[0] = gameObject;
         }
         int aniNum = GameSystem.instance.MapSSS(ObjCode);
-        for (int i = 0; MapObj != null &&i< MapObj.Length; i++) 
+        for (int i = 0; MapObj != null && i < MapObj.Length; i++)
         {
-            if (MapObj[i] != null && MapObj[i].GetComponent<Animator>() != null) 
+            if (MapObj[i] != null && MapObj[i].GetComponent<Animator>() != null)
             {
                 MapObj[i].GetComponent<Animator>().SetInteger("State", aniNum);
                 MapObj[i].GetComponent<Animator>().SetTrigger("On");
 
                 Onset = true;
-                //Debug.Log(aniNum);
+                //Debug.Log(name);
+            }
+        }
+        if (!OneTimeSet) Invoke("AniCont", MapTTTTime);
+    }
+    bool OneTimeSet = false;
+    public void AniCont()
+    {
+        OneTimeSet = true;
+        for (int i = 0; MapTTT != null && i < MapTTT.Length; i++)
+        {
+            if (MapTTT[i] != null)
+            {
+                MapTTT[i].SpSp();
+                //Debug.Log(MapTTT[i]);
             }
         }
     }
@@ -109,7 +125,7 @@ public class MapSyS : MonoBehaviour
                 {
                     MapObj[i].GetComponent<Animator>().SetInteger("State", aniNum);
                     Onset = true;
-                    //Debug.Log(aniNum);
+                    //Debug.Log(ObjCode+"   "+aniNum);
                 }
             }
         }
