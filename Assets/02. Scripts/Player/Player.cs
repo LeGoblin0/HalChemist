@@ -190,20 +190,7 @@ public class Player : Life
 
         
     }
-    void NpcCheck()
-    {
-        Debug.DrawRay(rig.position, dirVec * 0.7f, new Color(0, 1, 0));
-        RaycastHit2D rayHit = Physics2D.Raycast(rig.position, dirVec, 0.7f, LayerMask.GetMask("ObjLayer"));
-        if (rayHit.collider != null)
-        {
-            scanObject = rayHit.collider.gameObject;
-        }
-        else
-        {
-            scanObject = null;
-        }
-       
-    }
+   
    
     Vector3 trapsavepoint;
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -533,19 +520,36 @@ public class Player : Life
         }
        
     }
+    void NpcCheck()
+    {
+        Debug.DrawRay(rig.position, dirVec * 0.7f, new Color(0, 1, 0));
+        
+        RaycastHit2D rayHit = Physics2D.Raycast(rig.position, dirVec, 0.7f, LayerMask.GetMask("ObjLayer"));
+        if (rayHit.collider != null)
+        {
+            scanObject = rayHit.collider.gameObject;
+        }
+        else
+        {
+            scanObject = null;
+        }
+        
+    }
     void InputTest()
     {
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (!DontMove)
         {
-            dirVec = Vector3.right;
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            dirVec = Vector3.left;
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                dirVec = Vector3.right;
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                dirVec = Vector3.left;
+            }
         }
         if (Input.GetKeyDown(KeyCode.G) && scanObject != null)
         {
-           // DontMove = true;
             manager.Action(scanObject);
         }
     }
