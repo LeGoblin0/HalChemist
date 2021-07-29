@@ -62,7 +62,11 @@ public class Enemy01 : Life
                         Transform aa = Instantiate(DieItem[i]);
                         aa.position = transform.position + new Vector3(0, 0, 1f);
                         aa.parent = transform.parent;
-                        if (aa.GetComponent<Rigidbody2D>() != null) aa.GetComponent<Rigidbody2D>().sharedMaterial = null;
+                        if (aa.GetComponent<Rigidbody2D>() != null)
+                        {
+                            aa.GetComponent<Rigidbody2D>().sharedMaterial = null;
+                            aa.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(0, 3f), Random.Range(0, 4f));
+                        }
                     }
                 }
                 for(int i = 0; i < MoneyDie; i++)

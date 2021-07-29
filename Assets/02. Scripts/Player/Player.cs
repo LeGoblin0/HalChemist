@@ -76,7 +76,10 @@ public class Player : Life
     public float DeshCoolTime = 2;
     float nowDeshCoolTime = 0;
     public float DeshSpeedd = 5;
-
+    public Transform PlyDeshPre;
+    public float ImgDeshTime = .1f;
+    public float ImgDestorTime = 0.1f;
+    float ImgDeshNowTime = 0;
 
     [Header("공격")]
     public float AttSpeed = 1.8f;
@@ -119,7 +122,6 @@ public class Player : Life
 
 
     [Header("시스템")]
-    public GameObject PutSton;
     public Transform HPUITr;
 
     [Header("카메라")]
@@ -156,11 +158,7 @@ public class Player : Life
 
         Ply_Throw();
         InputTest();
-
-        if (Input.GetKey(KeyCode.DownArrow) && SaveTrtr != null) 
-        {
-            SaveTrtr.SaveOn();
-        }
+        ObjSet();
 
         if (nowGodTime >= 0)
         {
@@ -173,9 +171,21 @@ public class Player : Life
             GetComponent<Collider2D>().enabled = false;
             Invoke("GGGGG", 0);
         }
-       
-        
-            
+
+
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Desh01") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Desh02")) 
+        {
+            ImgDeshNowTime -= Time.deltaTime;
+            if (ImgDeshNowTime <= 0)
+            {
+                ImgDeshNowTime = ImgDeshTime;
+                Transform aa = Instantiate(PlyDeshPre);
+                aa.GetComponent<SpriteRenderer>().sprite = transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                aa.localScale = transform.GetChild(0).localScale;
+                aa.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.1f);
+                Destroy(aa.gameObject, ImgDestorTime);
+            }
+        }
         
 
         if (nowGodTime > 0)
@@ -190,7 +200,42 @@ public class Player : Life
 
         
     }
-   
+    public GameObject NowChooseObj;
+    public void ObjSet()
+    {
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+
+            if (NowChooseObj.GetComponent<StoneDieAni>() != null)
+            {
+                int Stonecode = NowChooseObj.GetComponent<StoneDieAni>().Code;
+                for (int i = 1; i < HaveStone.Length; i++)
+                {
+                    if (HaveStone[i] / 1000 == Stonecode && HaveStone[i] % 1000 < StackStone) //코드가 같으면 최대 스텍갯수가 적으면
+                    {
+                        HaveStone[i]++;
+                        Destroy(NowChooseObj.gameObject);
+                        StoneUI();
+                        return;
+                    }
+                }
+                for (int i = 1; i < HaveStone.Length; i++)
+                {
+                    if (HaveStone[i] == 0) //비어있으면
+                    {
+                        HaveStone[i] = (Stonecode * 1000 + 1);
+                        Destroy(NowChooseObj.gameObject);
+                        StoneUI();
+                        return;
+                    }
+                }
+            }
+            else if (NowChooseObj.tag == "Save" && NowChooseObj.GetComponent<SaveTrTr>() != null)
+            {
+                NowChooseObj.GetComponent<SaveTrTr>().SaveOn();
+            }
+        }
+    }
    
     Vector3 trapsavepoint;
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -218,7 +263,7 @@ public class Player : Life
     }
 
 
-    public SaveTrTr SaveTrtr;
+
     protected void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set && nowGodTime <= 0 )
@@ -237,32 +282,19 @@ public class Player : Life
             //Debug.Log(new Vector2(ThrowF.x * PlyLook, ThrowF.y));
 
         }
-        if (collision.tag == "Ston" && ThrowStone != collision.transform) 
+        if (ThrowStone != collision.transform && collision.gameObject.layer == 26)  
         {
-            //Debug.Log(0);
-            if (collision.GetComponent<StoneDieAni>() != null)
+            if (NowChooseObj != null)
             {
-                int Stonecode = collision.GetComponent<StoneDieAni>().Code;
-                for (int i = 1; i < HaveStone.Length; i++)
+                if (NowChooseObj.transform.childCount >= 1 && NowChooseObj.transform.GetChild(0).GetComponent<SpriteOutline>() != null)
                 {
-                    if (HaveStone[i] / 1000 == Stonecode && HaveStone[i] % 1000 < StackStone) //코드가 같으면 최대 스텍갯수가 적으면
-                    {
-                        HaveStone[i]++;
-                        Destroy(collision.gameObject);
-                        StoneUI();
-                        return;
-                    }
+                    NowChooseObj.transform.GetChild(0).GetComponent<SpriteOutline>().outlineSize = 0;
                 }
-                for (int i = 1; i < HaveStone.Length; i++)
-                {
-                    if (HaveStone[i] == 0) //비어있으면
-                    {
-                        HaveStone[i] = (Stonecode * 1000 + 1);
-                        Destroy(collision.gameObject);
-                        StoneUI();
-                        return;
-                    }
-                }
+            }
+            NowChooseObj = collision.gameObject;
+            if (NowChooseObj.transform.childCount >= 1 && NowChooseObj.transform.GetChild(0).GetComponent<SpriteOutline>() != null)
+            {
+                NowChooseObj.transform.GetChild(0).GetComponent<SpriteOutline>().outlineSize = 1;
             }
         }
 
@@ -287,10 +319,6 @@ public class Player : Life
             }
         }
 
-        if (collision.tag == "Save" && collision.GetComponent<SaveTrTr>() != null) 
-        {
-            SaveTrtr = collision.GetComponent<SaveTrTr>();
-        }
         //if (collision.transform.parent != null && collision.transform.parent.GetComponent<Train>() != null)
         //{
         //    TrainNow = collision.transform.parent.GetComponent<Rigidbody2D>();
@@ -299,14 +327,14 @@ public class Player : Life
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Save" && SaveTrtr != null)
+        if (collision.gameObject == NowChooseObj)
         {
-            SaveTrtr = null;
+            if (NowChooseObj.transform.childCount >= 1 && NowChooseObj.transform.GetChild(0).GetComponent<SpriteOutline>() != null)
+            {
+                NowChooseObj.transform.GetChild(0).GetComponent<SpriteOutline>().outlineSize = 0;
+            }
+            NowChooseObj = null;
         }
-        //if (collision.transform.parent != null && collision.transform.parent.GetComponent<Train>() != null)
-        //{
-        //    TrainNow = null;
-        //}
     }
 
     public Text MoneyInt;
@@ -330,7 +358,6 @@ public class Player : Life
             if (Input.GetKey(KeyCode.DownArrow) && down)
             {
                 ani.SetInteger("State", 3);
-                PutSton.SetActive(true);
                 this.Hand.GetComponent<Hand>().offset = new Vector3(-1, 0f, 0);
                 col.offset = new Vector2(col.offset.x, 0.2907405f);
                 col.size = new Vector2(col.size.x, 0.5742418f);
@@ -339,7 +366,6 @@ public class Player : Life
             {
                 col.offset = new Vector2(col.offset.x, 0.476059f);
                 col.size = new Vector2(col.size.x, 0.9516047f);
-                PutSton.SetActive(false);
                 this.Hand.GetComponent<Hand>().offset = new Vector3(-1, .5f, 0);
             }
             else if (Input.GetKey(KeyCode.RightArrow))
