@@ -53,6 +53,7 @@ public class QuestManager : MonoBehaviour
             case 10:
                 if (questActionIndex == 2)
                     questObject[0].SetActive(false);
+                //GameSystem.instance.StorySave(questActionIndex);
                 break;
         }
     }

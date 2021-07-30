@@ -81,6 +81,11 @@ public class GameSystem : MonoBehaviour
         gameData.Dest[co] = 1;
         Save();
     }
+    public void QuestSave(int questActionIndex)
+    {
+        gameData.Quest[questActionIndex] = questActionIndex;
+        Save();
+    }
     public void StorySave(int code)
     {
         //Debug.Log(code);

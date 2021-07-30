@@ -13,7 +13,7 @@ namespace DataInfo
         public bool[] Story;
         public int BGSound;
         public int Sound;
-
+        public int[] Quest;
     }
 
 
