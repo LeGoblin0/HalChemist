@@ -8,6 +8,7 @@ public class FlyEnemy : Enemy01
     Transform Player;
     public float Speed;
     Rigidbody2D rig;
+    public float STime = 1;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -23,10 +24,14 @@ public class FlyEnemy : Enemy01
     {
         base.Update();
         //Debug.Log(SenserPly);
-        if (SenserPly)
+        if (SenserPly && STime<=0)
         {
             rig.velocity = (Player.position - transform.position).normalized * Speed;
             //Debug.Log(rig.velocity);
+        }
+        if(STime>0)
+        {
+            STime -= Time.deltaTime;
         }
         
     }

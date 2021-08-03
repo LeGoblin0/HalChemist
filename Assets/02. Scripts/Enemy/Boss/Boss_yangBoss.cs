@@ -143,6 +143,21 @@ public class Boss_yangBoss : Enemy01
             rig.gravityScale = 1;
         }
     }
+    public Transform EEE;
+    public Transform EEEPos;
+    public void ShootEEE()
+    {
+        Transform a;
+        a = Instantiate(EEE);
+        a.position = EEEPos.position;
+        a.GetComponent<Rigidbody2D>().velocity = new Vector2(2 * transform.GetChild(0).localScale.x, 0);
+        a = Instantiate(EEE);
+        a.position = EEEPos.position;
+        a.GetComponent<Rigidbody2D>().velocity = new Vector2(2 * transform.GetChild(0).localScale.x, 2);
+        a = Instantiate(EEE);
+        a.position = EEEPos.position;
+        a.GetComponent<Rigidbody2D>().velocity = new Vector2(2 * transform.GetChild(0).localScale.x, 4);
+    }
     public void AniIdle()
     {
         NowTime = IdleTime;
