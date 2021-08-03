@@ -6,8 +6,10 @@ public class Att : MonoBehaviour
 {
     [Header("공격력")]
     public int AttDamage = 1;
-    [Header("몇초뒤 삭제  0이면 삭제 안됨")]
+    [Header("몇초뒤 삭제  0이면 삭제 안됨-시작타이머")]
     public float DesTime = 0;
+    [Header("몇초뒤 삭제  0이면 삭제 안됨-충돌등 타이머")]
+    public float DesDesTime = 0;
     [Header("관통")]
     public bool HitDesT = false;
     public int HitNum = 1;
@@ -55,10 +57,13 @@ public class Att : MonoBehaviour
     public bool DieAni = false;
     public void DDD()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, DesDesTime);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Enemy01 nowhit = collision.GetComponent<Enemy01>();
+        if (nowhit == null && collision.transform.parent != null) nowhit = collision.transform.parent.GetComponent<Enemy01>();
+        if (nowhit == null && collision.transform.parent != null && collision.transform.parent.parent != null) nowhit = collision.transform.parent.parent.GetComponent<Enemy01>();
         if (DesTime == 0 && Set && GroundDes && (collision.tag == "Ground" || collision.tag == "Att")) 
         {
             if (DieAni)
@@ -67,15 +72,15 @@ public class Att : MonoBehaviour
                 if (GetComponent<Collider2D>() != null) Destroy(GetComponent<Collider2D>());
                 if (GetComponent<Rigidbody2D>() != null) GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
-            else Destroy(gameObject);
+            else Destroy(gameObject, DesDesTime);
         }
-        if (Set && (collision.tag == "Att") && collision.GetComponent<Enemy01>() != null)
+        if (Set && (collision.tag == "Att") && nowhit != null)
         {
-            collision.GetComponent<Enemy01>().DieHit();
+            nowhit.DieHit();
             HitNum--;
             if (HitNum <= 0 && HitDesT)
             {
-                Destroy(gameObject);
+                Destroy(gameObject, DesDesTime);
             }
         }
     }

@@ -16,6 +16,12 @@ public class Boss_yangBoss : Enemy01
         base.Start();
         rig = GetComponent<Rigidbody2D>();
         ply = GameSystem.instance.Ply;
+        BigHitHp = new int[(int)(BigHitTime * 20)];
+        for (int i = 0; i < BigHitHp.Length; i++)
+        {
+            BigHitHp[i] = Hp;
+        }
+        InvokeRepeating("ChackBigHit", 1f, 0.05f);
     }
 
     public float IdleTime = 3;
@@ -23,8 +29,38 @@ public class Boss_yangBoss : Enemy01
     public float JumpPower = 6;
     public float JumpTime = 1;
     public float JumpDownPower = 6;
+    public float BigHitTime = .2f;
+    public int BigHitPower = 4;
+    int[] BigHitHp;
+    int bighitnum = 0;
     public Vector2 PlyXPos;
     float NowTime = 5;
+    public GameObject[] HitCol;
+    public void ChangeCol(int a)
+    {
+        for(int i = 0; i < HitCol.Length; i++)
+        {
+            if (i == a)
+            {
+                HitCol[i].SetActive(true);
+                continue;
+            }
+
+            HitCol[i].SetActive(false);
+
+        }
+    }
+    void ChackBigHit()
+    {
+        //Debug.Log(BigHitHp[bighitnum] - BigHitHp[(bighitnum + 1) % BigHitHp.Length]+"     "+ BigHitPower);
+        //Debug.Log((bighitnum + 1) % BigHitHp.Length + "  " + bighitnum);
+        if (BigHitHp[bighitnum] - BigHitHp[(bighitnum + 1) % BigHitHp.Length] >= BigHitPower) 
+        {
+            StunOn();
+        }
+        BigHitHp[bighitnum] = Hp;
+        bighitnum = (bighitnum + 1) % BigHitHp.Length;
+    }
     protected override void Update()
     {
         base.Update();
@@ -98,8 +134,14 @@ public class Boss_yangBoss : Enemy01
     }
     public void StunOn()
     {
-        NowTime = StunTime;
-        ani.SetTrigger("Hit");
+        //Debug.Log(0);
+        if (!ani.GetCurrentAnimatorStateInfo(0).IsName("Stun_1") && !ani.GetCurrentAnimatorStateInfo(0).IsName("Stun_2") && !ani.GetCurrentAnimatorStateInfo(0).IsName("Stun_3"))
+        {
+            //Debug.Log(1);
+            NowTime = StunTime;
+            ani.SetTrigger("Hit");
+            rig.gravityScale = 1;
+        }
     }
     public void AniIdle()
     {

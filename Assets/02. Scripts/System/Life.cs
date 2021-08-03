@@ -6,8 +6,8 @@ public class Life : MonoBehaviour
 {
 
     [Header("체력")]
-    public float MaxHP = 1;
-    public float Hp = 1;
+    public int MaxHP = 1;
+    public int Hp = 1;
     protected virtual void  OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Att" && collision.GetComponent<Att>()!=null && collision.GetComponent<Att>().Set)

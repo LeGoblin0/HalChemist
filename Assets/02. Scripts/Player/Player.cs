@@ -206,7 +206,7 @@ public class Player : Life
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
 
-            if (NowChooseObj.GetComponent<StoneDieAni>() != null)
+            if (NowChooseObj != null && NowChooseObj.GetComponent<StoneDieAni>() != null)
             {
                 int Stonecode = NowChooseObj.GetComponent<StoneDieAni>().Code;
                 for (int i = 1; i < HaveStone.Length; i++)
@@ -230,7 +230,7 @@ public class Player : Life
                     }
                 }
             }
-            else if (NowChooseObj.tag == "Save" && NowChooseObj.GetComponent<SaveTrTr>() != null)
+            else if (NowChooseObj != null && NowChooseObj.tag == "Save" && NowChooseObj.GetComponent<SaveTrTr>() != null) 
             {
                 NowChooseObj.GetComponent<SaveTrTr>().SaveOn();
             }

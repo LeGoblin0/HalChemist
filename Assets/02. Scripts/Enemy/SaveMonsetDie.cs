@@ -9,4 +9,8 @@ public class SaveMonsetDie : MonoBehaviour
     {
         
     }
+    public void SaveMonster()
+    {
+        GameSystem.instance.DieMonset(Code);
+    }
 }
