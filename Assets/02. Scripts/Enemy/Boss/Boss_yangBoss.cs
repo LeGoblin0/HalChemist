@@ -66,10 +66,6 @@ public class Boss_yangBoss : Enemy01
     }
     private void FixedUpdate()
     {
-        if (transform.position.y < -1.05f)
-        {
-            transform.position = new Vector3(transform.position.x, -1, transform.position.z);
-        }
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
             if (NowTime <= 0)

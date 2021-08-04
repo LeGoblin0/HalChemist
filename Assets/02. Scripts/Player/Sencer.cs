@@ -20,6 +20,8 @@ public class Sencer : MonoBehaviour
     public bool right;
     public bool left;
     public bool down;
+
+    Transform DownObj;
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Ground"|| collision.tag == "Enemy")
@@ -33,7 +35,7 @@ public class Sencer : MonoBehaviour
                 ply.airAtt = true;
                 ply.Jump01 = true;
 
-
+                DownObj = collision.transform;
                 if (collision.transform.parent != null && collision.transform.parent.GetComponent<Train>() != null)
                 {
                     ply.TrainNow = collision.transform.parent.GetComponent<Rigidbody2D>();
@@ -54,11 +56,14 @@ public class Sencer : MonoBehaviour
             if (left) ply.left = false;
             if (down)
             {
-                ply.down = false;
-
-                if (collision.transform.parent != null && collision.transform.parent.GetComponent<Train>() != null)
+                if (DownObj == collision.transform)
                 {
-                    ply.TrainNow = null;
+                    ply.down = false;
+
+                    if (collision.transform.parent != null && collision.transform.parent.GetComponent<Train>() != null)
+                    {
+                        ply.TrainNow = null;
+                    }
                 }
             }
         }

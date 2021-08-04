@@ -24,7 +24,7 @@ public class MMini : MonoBehaviour
     {
         for (int i = 3; i < transform.childCount; i++)
         {
-            if (transform.GetChild(i).GetChild(1) != null)
+            if (transform.GetChild(i).childCount>0&& transform.GetChild(i).GetChild(1) != null)
             {
                 for (int j = 0; j < transform.GetChild(i).GetChild(1).childCount; j++)
                 {
