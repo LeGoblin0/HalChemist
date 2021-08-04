@@ -289,12 +289,14 @@ public class Player : Life
                 if (NowChooseObj.transform.childCount >= 1 && NowChooseObj.transform.GetChild(0).GetComponent<SpriteOutline>() != null)
                 {
                     NowChooseObj.transform.GetChild(0).GetComponent<SpriteOutline>().outlineSize = 0;
+                    NowChooseObj.transform.position = new Vector3(NowChooseObj.transform.position.x, NowChooseObj.transform.position.y, NowChooseObj.transform.position.z + 0.1f);
                 }
             }
             NowChooseObj = collision.gameObject;
             if (NowChooseObj.transform.childCount >= 1 && NowChooseObj.transform.GetChild(0).GetComponent<SpriteOutline>() != null)
             {
                 NowChooseObj.transform.GetChild(0).GetComponent<SpriteOutline>().outlineSize = 1;
+                NowChooseObj.transform.position = new Vector3(NowChooseObj.transform.position.x, NowChooseObj.transform.position.y, NowChooseObj.transform.position.z - 0.1f);
             }
         }
 
@@ -332,6 +334,7 @@ public class Player : Life
             if (NowChooseObj.transform.childCount >= 1 && NowChooseObj.transform.GetChild(0).GetComponent<SpriteOutline>() != null)
             {
                 NowChooseObj.transform.GetChild(0).GetComponent<SpriteOutline>().outlineSize = 0;
+                NowChooseObj.transform.position = new Vector3(NowChooseObj.transform.position.x, NowChooseObj.transform.position.y, NowChooseObj.transform.position.z + 0.1f);
             }
             NowChooseObj = null;
         }
