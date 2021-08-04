@@ -275,7 +275,7 @@ public class Player : Life
             DontMove = true;
             rig.velocity = new Vector2(ThrowF.x * PlyLook, ThrowF.y);
 
-            camsh.CamMove(.5f);
+            camsh.CamMove(.2f);
 
             HPUI();
             //Debug.Log(rig.velocity);

@@ -22,6 +22,7 @@ public class Boss_yangBoss : Enemy01
             BigHitHp[i] = Hp;
         }
         InvokeRepeating("ChackBigHit", 1f, 0.05f);
+        camsh = ply.GetComponent<Player>().camsh;
     }
 
     public float IdleTime = 3;
@@ -50,6 +51,8 @@ public class Boss_yangBoss : Enemy01
 
         }
     }
+    [Header("카메라")]
+    CamSh camsh;
     void ChackBigHit()
     {
         //Debug.Log(BigHitHp[bighitnum] - BigHitHp[(bighitnum + 1) % BigHitHp.Length]+"     "+ BigHitPower);
@@ -61,10 +64,12 @@ public class Boss_yangBoss : Enemy01
         BigHitHp[bighitnum] = Hp;
         bighitnum = (bighitnum + 1) % BigHitHp.Length;
     }
-    protected override void Update()
+    private void FixedUpdate()
     {
-        base.Update();
-        NowTime -= Time.deltaTime;
+        if (transform.position.y < -1.05f)
+        {
+            transform.position = new Vector3(transform.position.x, -1, transform.position.z);
+        }
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
             if (NowTime <= 0)
@@ -75,7 +80,7 @@ public class Boss_yangBoss : Enemy01
                     NowTime = JumpTime;
                     PlyXPos = ply.position;
                 }
-                ani.SetInteger("State",a);
+                ani.SetInteger("State", a);
             }
             else
             {
@@ -121,7 +126,7 @@ public class Boss_yangBoss : Enemy01
         {
             float plyXX = ply.position.x;
             if (plyXX < 225) plyXX = 224;
-            else if(plyXX>239) plyXX = 239;
+            else if (plyXX > 239) plyXX = 239;
             PlyXPos = new Vector2(plyXX - transform.position.x, -1 - transform.position.y).normalized;
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Att2_4"))
@@ -130,6 +135,12 @@ public class Boss_yangBoss : Enemy01
             rig.velocity = PlyXPos * JumpDownPower;
             //Debug.Log(PlyXPos);
         }
+    }
+    protected override void Update()
+    {
+        base.Update();
+        NowTime -= Time.deltaTime;
+     
 
     }
     public void StunOn()
@@ -141,6 +152,7 @@ public class Boss_yangBoss : Enemy01
             NowTime = StunTime;
             ani.SetTrigger("Hit");
             rig.gravityScale = 1;
+            camsh.CamMove(.2f);
         }
     }
     public Transform EEE;
@@ -150,12 +162,15 @@ public class Boss_yangBoss : Enemy01
         Transform a;
         a = Instantiate(EEE);
         a.position = EEEPos.position;
+        a.parent = transform.parent;
         a.GetComponent<Rigidbody2D>().velocity = new Vector2(2 * transform.GetChild(0).localScale.x, 0);
         a = Instantiate(EEE);
         a.position = EEEPos.position;
+        a.parent = transform.parent;
         a.GetComponent<Rigidbody2D>().velocity = new Vector2(2 * transform.GetChild(0).localScale.x, 2);
         a = Instantiate(EEE);
         a.position = EEEPos.position;
+        a.parent = transform.parent;
         a.GetComponent<Rigidbody2D>().velocity = new Vector2(2 * transform.GetChild(0).localScale.x, 4);
     }
     public void AniIdle()

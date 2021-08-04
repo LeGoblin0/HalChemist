@@ -33,6 +33,7 @@ public class MapManager : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Debug.Log(collision);
         if (collision.gameObject.tag == "Player")
         {
             if (MiniMapTr == null)

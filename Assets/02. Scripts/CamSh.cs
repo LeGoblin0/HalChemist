@@ -7,7 +7,8 @@ public class CamSh : MonoBehaviour
     Cinemachine.CinemachineVirtualCamera setting;
     Cinemachine.CinemachineConfiner bgSetting;
     public Transform Cam;
-
+    public bool Sub;
+    public Cinemachine.CinemachineConfiner bgSettingset;
     public float Power = 1;
     
     Transform ply;
@@ -29,6 +30,10 @@ public class CamSh : MonoBehaviour
     }
     void Update()
     {
+        if (Sub)
+        {
+            bgSetting.m_BoundingShape2D = bgSettingset.m_BoundingShape2D;
+        }
         if (MoveTrue == 0)
         {
         }
