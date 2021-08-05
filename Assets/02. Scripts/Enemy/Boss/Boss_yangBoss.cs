@@ -149,13 +149,14 @@ public class Boss_yangBoss : Enemy01
      
 
     }
-    public Sprite[] diesprite;
     public float SlowTime = .2f;
     public void DDD()
     {
+        if (transform.position.y > -.8f)
+        {
+            ani.SetInteger("State", 21);
+        }
         rig.bodyType = RigidbodyType2D.Kinematic;
-        if (transform.position.y > -1.2f) transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = diesprite[0];
-        else transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = diesprite[1];
         Time.timeScale = SlowTime;
         transform.GetChild(0).GetComponent<SpriteRenderer>().material = First;
     }
