@@ -6,6 +6,9 @@ public class Enemy01 : Life
 {
     public Animator ani;
     protected SpriteRenderer ImgRander;
+    public bool YSet = true;
+
+    protected Material First;
     protected virtual void Start()//protected override void Start() 상속받아서 이렇게 작성
     {
         gameObject.layer = 11;
@@ -17,7 +20,17 @@ public class Enemy01 : Life
         else if (transform.GetChild(0).GetComponent<SpriteRenderer>() != null) ImgRander = transform.GetChild(0).GetComponent<SpriteRenderer>();
         else if (transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>() != null) ImgRander = transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
 
-        if (ImgRander != null) ImgRander.material = GameSystem.instance.EnemyMaterial;
+        if (ImgRander != null)
+        {
+            First = ImgRander.material;
+            ImgRander.material = GameSystem.instance.EnemyMaterial;
+        }
+
+
+        if (YSet)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 4);
+        }
     }
     protected bool Die = false;//죽으면 참이됨 죽었을떄 1번만 발생하도록 해주는 변수
 
@@ -60,7 +73,7 @@ public class Enemy01 : Life
                     for (int i = 0; i < DieItem.Length; i++)
                     {
                         Transform aa = Instantiate(DieItem[i]);
-                        aa.position = transform.position + new Vector3(0, 0, 1f);
+                        aa.position = new Vector3(transform.position.x, transform.position.y, 2);
                         aa.parent = transform.parent;
                         if (aa.GetComponent<Rigidbody2D>() != null)
                         {
@@ -72,7 +85,7 @@ public class Enemy01 : Life
                 for(int i = 0; i < MoneyDie; i++)
                 {
                     Transform aa = Instantiate(GameSystem.instance.ItemPre[0]);
-                    aa.position = transform.position + new Vector3(0, 0, 1f);
+                    aa.position = new Vector3(transform.position.x, transform.position.y, 2);
                     aa.parent = transform.parent;
                     aa.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(0, 1f), Random.Range(0, 1f)) * 5 * transform.GetChild(0).localScale.x;
                     Destroy(aa.gameObject, 5);

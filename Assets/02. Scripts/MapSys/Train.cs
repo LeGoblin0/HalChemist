@@ -14,10 +14,16 @@ public class Train : MonoBehaviour
     public float LastSpeed = 1;
     Rigidbody2D rig;
     Animator ani;
+
+    public bool YSet = true;
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
+        if (YSet)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 6);
+        }
     }
 
     // Update is called once per frame

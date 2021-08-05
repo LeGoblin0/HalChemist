@@ -105,6 +105,8 @@ MonoBehaviour:
   But:
   - {fileID: 0}
   Speed: 3
+  AcSpeedOff: 0
+  LastSpeed: 1
   GoNum: 0
 --- !u!50 &3055552521054420238
 Rigidbody2D:

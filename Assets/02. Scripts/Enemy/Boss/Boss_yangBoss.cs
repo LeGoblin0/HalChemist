@@ -35,7 +35,7 @@ public class Boss_yangBoss : Enemy01
     int[] BigHitHp;
     int bighitnum = 0;
     public Vector2 PlyXPos;
-    float NowTime = 5;
+    float NowTime = 5f;
     public GameObject[] HitCol;
     public void ChangeCol(int a)
     {
@@ -66,6 +66,7 @@ public class Boss_yangBoss : Enemy01
     }
     private void FixedUpdate()
     {
+        if (Stop) return;
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
             if (NowTime <= 0)
@@ -132,12 +133,35 @@ public class Boss_yangBoss : Enemy01
             //Debug.Log(PlyXPos);
         }
     }
+    bool Stop = true;
+
     protected override void Update()
     {
+        //Debug.Log(Stop + "   " + SenserPly);
+        if (SenserPly && Stop)
+        {
+            Stop = false;
+            PlyXPos = new Vector2(0, -1);
+        }
+        if (Stop) return;
         base.Update();
         NowTime -= Time.deltaTime;
      
 
+    }
+    public Sprite[] diesprite;
+    public float SlowTime = .2f;
+    public void DDD()
+    {
+        rig.bodyType = RigidbodyType2D.Kinematic;
+        if (transform.position.y > -1.2f) transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = diesprite[0];
+        else transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = diesprite[1];
+        Time.timeScale = SlowTime;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().material = First;
+    }
+    public void DDD2()
+    {
+        Time.timeScale = 1;
     }
     public void StunOn()
     {

@@ -11,6 +11,7 @@ public class TrainButton : MonoBehaviour
     public bool XRight;
     [Tooltip("참 = 하->상 좌->우")]
     public bool ForceTrue;
+    public bool YSet = true;
     void Start()
     {
         ani = GetComponent<Animator>();
@@ -33,6 +34,10 @@ public class TrainButton : MonoBehaviour
         {
             XRight = true;
             ForceTrue = false;
+        }
+        if (YSet)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 6);
         }
     }
     public bool PutNow = true;

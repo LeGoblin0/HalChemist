@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7204756758052264279}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 110, y: 1, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -98,7 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c355b3f2a2caa8e43b6a74ae150c8915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TranGo: []
+  TranGo:
+  - {fileID: 0}
+  MapObj: []
+  TranGoNum: 0
+  XRight: 0
+  ForceTrue: 0
+  PutNow: 1
+  OnTouch: 1
 --- !u!95 &4953179714298786125
 Animator:
   serializedVersion: 3
@@ -169,7 +176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7204756758528767971}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7204756758052264278}

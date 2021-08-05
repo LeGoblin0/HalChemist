@@ -21,6 +21,7 @@ public class MapSyS : MonoBehaviour
     [Header("반복 실행")]
     public bool Loop = false;
 
+    
     protected SpriteRenderer ImgRander;
     private void Start()
     {
