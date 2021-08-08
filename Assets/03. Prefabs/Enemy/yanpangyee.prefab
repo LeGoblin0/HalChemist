@@ -192,6 +192,7 @@ MonoBehaviour:
   Hp: 3
   state: 0
   ani: {fileID: 0}
+  YSet: 1
   SenserPly: 0
   DieItem:
   - {fileID: 719797484792284287, guid: 92c7ed4c2733ff74fa2194405868bb40, type: 3}
@@ -202,7 +203,7 @@ MonoBehaviour:
   NoDie: 0
   HHIITime: 0
   HitAni: 1
-  HitAniSpeed: 10
+  HitAniSpeed: 15
   HitAniknockBack: 1
   Speed: 1
   RushTime: 0.8
