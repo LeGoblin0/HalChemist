@@ -202,7 +202,7 @@ MonoBehaviour:
   AttArrow: -1
   attObj: {fileID: 0}
   set2: 1
-  AttState: 3
+  AttState: 7
   GroundDes: 0
   Set: 0
   DieAni: 0

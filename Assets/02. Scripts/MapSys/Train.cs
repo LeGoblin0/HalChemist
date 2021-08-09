@@ -35,7 +35,7 @@ public class Train : MonoBehaviour
             {
                 if (NowSpeed > 1f && !AcSpeedOff) NowSpeed -= Time.deltaTime;
                 else NowSpeed = LastSpeed;
-                rig.velocity = -(transform.position - last.position).normalized * NowSpeed;
+                rig.velocity = -((Vector2)(transform.position - last.position)).normalized * NowSpeed;
             }
             else
             {

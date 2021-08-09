@@ -74,6 +74,7 @@ public class TrainButton : MonoBehaviour
     {
         if (!PutNow && collision.GetComponent<Rigidbody2D>() != null ) 
         {
+            //Debug.Log(PutNow+"   "+ collision.GetComponent<Rigidbody2D>().velocity.x);
             if (XRight&& ((ForceTrue && collision.GetComponent<Rigidbody2D>().velocity.x > 6f) || (!ForceTrue && collision.GetComponent<Rigidbody2D>().velocity.x < -6f)))
             {
                 PutBut();
