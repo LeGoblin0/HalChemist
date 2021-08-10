@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Player : Life
 {
     Rigidbody2D rig;
-    Camera cam;
     AudioSource aus;
     BoxCollider2D col;
     public AudioClip[] SoundPly;
@@ -25,17 +24,20 @@ public class Player : Life
         Hp = MaxHP;
         HPUI();
     }
+    private void Awake()
+    {
+        cam = Camera.main.GetComponent<Mcam>();
+        rig = GetComponent<Rigidbody2D>();
+        aus = GetComponent<AudioSource>();
+        ani = GetComponent<Animator>();
+        Handani = Hand.GetComponent<Animator>();
+        col = GetComponent<BoxCollider2D>();
+    }
     void Start()
     {
         Hp = MaxHP;
 
-        rig = GetComponent<Rigidbody2D>();
-        aus = GetComponent<AudioSource>();
-        ani = GetComponent<Animator>();
-        cam = Camera.main;
         tag = "Player";
-        Handani = Hand.GetComponent<Animator>();
-        col = GetComponent<BoxCollider2D>();
         rig.gravityScale = gravityScale;
         HaveStone[0] = 1;
         StoneUI();
@@ -125,7 +127,8 @@ public class Player : Life
     public Transform HPUITr;
 
     [Header("카메라")]
-    public CamSh camsh;
+    [HideInInspector]
+    public Mcam cam;
 
     [Header("대화문")]
     public DialogManager manager;
@@ -275,7 +278,6 @@ public class Player : Life
             DontMove = true;
             rig.velocity = new Vector2(ThrowF.x * PlyLook, ThrowF.y);
 
-            camsh.CamMove(.2f);
 
             HPUI();
             //Debug.Log(rig.velocity);

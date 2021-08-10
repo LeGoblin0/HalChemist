@@ -176,12 +176,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda507a4ccab2f24dac74d46b589d551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHP: 1
   Hp: 1
-  me: 2
-  DieDes: {fileID: 6035356491580940818}
-  Die: 0
-  HHH: 40
-  AttT: 1
+  state: 0
+  ani: {fileID: 0}
+  YSet: 1
+  SenserPly: 0
+  DieItem: []
+  MoneyDie: 0
+  DieAniTime: 0
+  NoDie: 0
+  HHIITime: 0
+  HitAni: 1
+  HitAniSpeed: 10
+  HitAniknockBack: 1
   ShootTime: 3
   ShootVec: {x: 0, y: 0}
   ShootSpeed: 0
@@ -298,7 +306,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -327,6 +335,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

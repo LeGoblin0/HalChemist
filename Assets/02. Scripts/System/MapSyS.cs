@@ -21,6 +21,7 @@ public class MapSyS : MonoBehaviour
     [Header("반복 실행")]
     public bool Loop = false;
 
+    public bool YSet = true;
     
     protected SpriteRenderer ImgRander;
     private void Start()
@@ -38,6 +39,7 @@ public class MapSyS : MonoBehaviour
 
         if (ImgRander != null) ImgRander.material = GameSystem.instance.EnemyMaterial;
 
+        if (YSet) transform.position = new Vector3(transform.position.x, transform.position.y, 6);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -22,7 +22,7 @@ public class Boss_yangBoss : Enemy01
             BigHitHp[i] = Hp;
         }
         InvokeRepeating("ChackBigHit", 1f, 0.05f);
-        camsh = ply.GetComponent<Player>().camsh;
+        cam = Camera.main.GetComponent<Mcam>();
     }
 
     public float IdleTime = 3;
@@ -52,7 +52,7 @@ public class Boss_yangBoss : Enemy01
         }
     }
     [Header("카메라")]
-    CamSh camsh;
+    Mcam cam;
     void ChackBigHit()
     {
         //Debug.Log(BigHitHp[bighitnum] - BigHitHp[(bighitnum + 1) % BigHitHp.Length]+"     "+ BigHitPower);
@@ -123,8 +123,8 @@ public class Boss_yangBoss : Enemy01
         {
             float plyXX = ply.position.x;
             if (plyXX < 225) plyXX = 224;
-            else if (plyXX > 239) plyXX = 239;
-            PlyXPos = new Vector2(plyXX - transform.position.x, -1 - transform.position.y).normalized;
+            else if (plyXX > 238) plyXX = 238;
+            PlyXPos = new Vector2(plyXX - transform.position.x, -2 - transform.position.y).normalized;
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Att2_4"))
         {
@@ -173,7 +173,7 @@ public class Boss_yangBoss : Enemy01
             NowTime = StunTime;
             ani.SetTrigger("Hit");
             rig.gravityScale = 1;
-            camsh.CamMove(.2f);
+            //camsh.CamMove(.2f); //흔들림 효과
         }
     }
     public Transform EEE;
@@ -185,14 +185,17 @@ public class Boss_yangBoss : Enemy01
         a.position = EEEPos.position;
         a.parent = transform.parent;
         a.GetComponent<Rigidbody2D>().velocity = new Vector2(2 * transform.GetChild(0).localScale.x, 0);
+        a.GetChild(0).GetComponent<BoxCollider2D>().size = Vector2.one * 100;
         a = Instantiate(EEE);
         a.position = EEEPos.position;
         a.parent = transform.parent;
         a.GetComponent<Rigidbody2D>().velocity = new Vector2(2 * transform.GetChild(0).localScale.x, 2);
+        a.GetChild(0).GetComponent<BoxCollider2D>().size = Vector2.one * 100;
         a = Instantiate(EEE);
         a.position = EEEPos.position;
         a.parent = transform.parent;
         a.GetComponent<Rigidbody2D>().velocity = new Vector2(2 * transform.GetChild(0).localScale.x, 4);
+        a.GetChild(0).GetComponent<BoxCollider2D>().size = Vector2.one * 100;
     }
     public void AniIdle()
     {

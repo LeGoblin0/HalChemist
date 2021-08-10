@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_Size: {x: 9, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &538420644633181220
@@ -154,13 +154,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c2b57b6f46ef542893bb7c6541a360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHP: 1
   Hp: 10
   state: 0
   ani: {fileID: 0}
+  YSet: 1
   SenserPly: 0
   DieItem: []
+  MoneyDie: 0
   DieAniTime: 0
   NoDie: 1
+  HHIITime: 0
+  HitAni: 1
+  HitAniSpeed: 10
+  HitAniknockBack: 1
   attCoolTime: 3
   SlowParsent: 0.7
   SlowTime: 5
@@ -182,7 +189,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttDamage: 1
   DesTime: 0
+  DesDesTime: 0
+  HitDesT: 0
+  HitNum: 1
+  AttArrow: -1
   attObj: {fileID: 0}
+  set2: 1
   AttState: 0
   GroundDes: 0
   Set: 1
@@ -259,8 +271,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8f5e8ba042e884c9bed96194f4bfce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MisDis: 5
+  MinDis: 5
   MaxDis: 15
+  Sound2D: 1
   SSS:
   - {fileID: 8300000, guid: d97d2802299238542b76640a875c1942, type: 3}
 --- !u!1 &538420645689696101
@@ -313,7 +326,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -343,7 +356,7 @@ SpriteRenderer:
   m_Size: {x: 3, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &538420645689696103
@@ -511,6 +524,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundNum: 1
+  On_1: 0
+  On_2: 0
+  On_3: 0
 --- !u!61 &3714950092123823892
 BoxCollider2D:
   m_ObjectHideFlags: 0

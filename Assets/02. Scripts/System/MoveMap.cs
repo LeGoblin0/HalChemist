@@ -12,7 +12,7 @@ public class MoveMap : MonoBehaviour
         gameObject.layer = 12;
         gameObject.tag = "EndMap";
         Ply = GameSystem.instance.Ply;
-        cam = GameObject.Find("CM vcam1").GetComponent<Cinemachine.CinemachineConfiner>();
+        cam = Camera.main.transform;
         //gameObject.layer = 23;
         if (GoMap != null) MovePos = GoMap.transform;
         if (MovePos == null) 
@@ -37,11 +37,12 @@ public class MoveMap : MonoBehaviour
         Vector3 aa = (Vector2)transform.position + GetComponent<Collider2D>().offset;
         if (MovePos == transform) Debug.DrawLine(aa, aa + Vector3.one * 5, Color.red, .1f);
         Debug.DrawLine(aa, MovePos.position , Color.yellow, .1f);
+        Debug.DrawLine(MovePos.position, MovePos.GetChild(0).position , Color.white, .1f);
 
     }
 
     public Vector3 ShootPly;
-    Cinemachine.CinemachineConfiner cam;
+    Transform cam;
     // Update is called once per frame
     void Update()
     {
@@ -75,6 +76,6 @@ public class MoveMap : MonoBehaviour
         MovePos.parent.parent.gameObject.SetActive(true);
         transform.parent.parent.gameObject.SetActive(false);
 
-        cam.m_BoundingShape2D= MovePos.parent.parent.GetChild(0).GetComponent<PolygonCollider2D>();
+        cam.position = new Vector3(Ply.position.x, Ply.position.y, cam.position.z);
     }
 }

@@ -130,10 +130,12 @@ public class GameSystem : MonoBehaviour
             {
                 SavePos[gameData.SavePoint].MovePos = SavePos[gameData.SavePoint].transform.parent.GetChild(1).GetChild(0);
             }
-            GG = SavePos[gameData.SavePoint].MovePos.GetChild(1).position;
+            //GG = SavePos[gameData.SavePoint].MovePos.GetChild(1).position;
 
+            cam.transform.position = new Vector3(Ply.position.x, Ply.position.y, cam.transform.position.z);
             SavePos[gameData.SavePoint].transform.parent.gameObject.SetActive(true);
-            cam.m_BoundingShape2D = SavePos[gameData.SavePoint].transform.parent.GetChild(0).GetComponent<PolygonCollider2D>();
+            //cam.m_BoundingShape2D = SavePos[gameData.SavePoint].transform.parent.GetChild(0).GetComponent<PolygonCollider2D>();
+            
 
             SavePos[gameData.SavePoint].GetComponent<Animator>().SetTrigger("On");//세이브 폰인트 이미지 설정
             SavePos[gameData.SavePoint].transform.parent.GetComponent<MapManager>().MakeEEE();
@@ -279,7 +281,8 @@ public class GameSystem : MonoBehaviour
         me.gameObject.SetActive(false);
         me.makeClone();
     }
-    Cinemachine.CinemachineConfiner cam;
+    //Cinemachine.CinemachineConfiner cam;
+    Mcam cam;
 
     private void Awake()
     {
@@ -322,7 +325,8 @@ public class GameSystem : MonoBehaviour
         {
             StoryTr.GetChild(i).GetComponent<StoryOnOFf>().Codess = i;
         }
-        cam = GameObject.Find("CM vcam1").GetComponent<Cinemachine.CinemachineConfiner>();
+        //cam = GameObject.Find("CM vcam1").GetComponent<Cinemachine.CinemachineConfiner>();
+        cam = Camera.main.GetComponent<Mcam>();
 
         Screen.SetResolution(1920, 1080, true);
 

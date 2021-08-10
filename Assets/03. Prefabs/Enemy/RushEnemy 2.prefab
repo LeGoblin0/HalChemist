@@ -124,6 +124,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundNum: 1
+  On_1: 0
+  On_2: 0
+  On_3: 0
 --- !u!61 &50965650148726059
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -316,6 +319,7 @@ MonoBehaviour:
   Hp: 5
   state: 0
   ani: {fileID: 0}
+  YSet: 1
   SenserPly: 0
   DieItem:
   - {fileID: 719797484792284287, guid: 92c7ed4c2733ff74fa2194405868bb40, type: 3}
@@ -329,6 +333,8 @@ MonoBehaviour:
   Speed: 1
   RushTime: 0.8
   RushSpeed: 5
+  GroundKnckBackTimeMax: 0.5
+  GroundKnckBackSpeed: 3
 --- !u!50 &4926100851047313216
 Rigidbody2D:
   serializedVersion: 4
@@ -364,6 +370,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttDamage: 1
   DesTime: 0
+  DesDesTime: 0
+  HitDesT: 0
+  HitNum: 1
+  AttArrow: -1
   attObj: {fileID: 0}
   set2: 1
   AttState: 0
@@ -458,7 +468,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

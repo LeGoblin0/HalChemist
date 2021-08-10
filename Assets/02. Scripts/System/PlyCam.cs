@@ -16,38 +16,22 @@ public class PlyCam : MonoBehaviour
     {
         gameObject.layer = 21;
         //ScreenX=
-        ScreenX = setting.GetComponentInChildren<CinemachineFramingTransposer>().m_ScreenX;
-        ScreenY = setting.GetComponentInChildren<CinemachineFramingTransposer>().m_ScreenY;
-        DeapZoneWidth = setting.GetComponentInChildren<CinemachineFramingTransposer>().m_DeadZoneWidth;
-        DeapZoneHeight = setting.GetComponentInChildren<CinemachineFramingTransposer>().m_DeadZoneHeight;
+        //ScreenX = setting.GetComponentInChildren<CinemachineFramingTransposer>().m_ScreenX;
+        //ScreenY = setting.GetComponentInChildren<CinemachineFramingTransposer>().m_ScreenY;
+        //DeapZoneWidth = setting.GetComponentInChildren<CinemachineFramingTransposer>().m_DeadZoneWidth;
+        //DeapZoneHeight = setting.GetComponentInChildren<CinemachineFramingTransposer>().m_DeadZoneHeight;
 
     }
     
-    public Cinemachine.CinemachineVirtualCamera setting;
-    public Cinemachine.CinemachineConfiner bgSetting;
-    float ScreenX;
-    float ScreenY;
-    float DeapZoneWidth;
-    float DeapZoneHeight;
+    //public Cinemachine.CinemachineVirtualCamera setting;
+    //public Cinemachine.CinemachineConfiner bgSetting;
+    //float ScreenX;
+    //float ScreenY;
+    //float DeapZoneWidth;
+    //float DeapZoneHeight;
 
     private void Update()
     {
-        if (Hold_X)
-        {
-            setting.GetComponentInChildren<CinemachineFramingTransposer>().m_DeadZoneWidth = 0;
-        }
-        else
-        {
-            setting.GetComponentInChildren<CinemachineFramingTransposer>().m_DeadZoneWidth = DeapZoneWidth;
-        }
-        if (Hold_Y)
-        {
-            setting.GetComponentInChildren<CinemachineFramingTransposer>().m_DeadZoneHeight = 0;
-        }
-        else
-        {
-            setting.GetComponentInChildren<CinemachineFramingTransposer>().m_DeadZoneHeight = DeapZoneHeight;
-        }
     }
     private void FixedUpdate()
     {
@@ -55,14 +39,20 @@ public class PlyCam : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Hold_X = false;
-        Hold_Y = false;
-        Smap = null;
+        if (Smap == collision.transform)
+        {
+            Hold_X = false;
+            Hold_Y = false;
+            Smap = null;
+        }
     }
     Transform Smap;
     private void OnTriggerStay2D(Collider2D collision)
     {
         //Debug.Log(collision);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.GetComponent<MapCam>() != null)
         {
             Hold_X = collision.GetComponent<MapCam>().Hold_X;
