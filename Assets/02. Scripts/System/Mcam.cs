@@ -6,7 +6,7 @@ public class Mcam : MonoBehaviour
 {
     BoxCollider2D col;
     const int MAPPIXEL = 48;
-    Transform ply;
+    public Transform Target;
     Rigidbody2D rig;
     private void Awake()
     {
@@ -18,11 +18,11 @@ public class Mcam : MonoBehaviour
     void Start()
     {
         
-        ply = GameSystem.instance.Ply;
+       
     }
     private void FixedUpdate()
     {
-        Vector2 dir = ply.position - transform.position;
+        Vector2 dir = Target.position - transform.position;
         rig.velocity = dir * CamSpeed;
 
     }

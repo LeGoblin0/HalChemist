@@ -81,11 +81,11 @@ public class Boss_yangBoss : Enemy01
             }
             else
             {
-                if (transform.position.x <= 225)
+                if (transform.position.x <= 227)
                 {
                     transform.GetChild(0).localScale = new Vector3(1, 1, 1);
                 }
-                else if (transform.position.x >= 238)
+                else if (transform.position.x >= 237)
                 {
                     transform.GetChild(0).localScale = new Vector3(-1, 1, 1);
                 }
@@ -122,7 +122,7 @@ public class Boss_yangBoss : Enemy01
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Att2_3"))
         {
             float plyXX = ply.position.x;
-            if (plyXX < 225) plyXX = 224;
+            if (plyXX < 226) plyXX = 226;
             else if (plyXX > 238) plyXX = 238;
             PlyXPos = new Vector2(plyXX - transform.position.x, -2 - transform.position.y).normalized;
         }

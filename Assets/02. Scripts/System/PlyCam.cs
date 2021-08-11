@@ -33,12 +33,14 @@ public class PlyCam : MonoBehaviour
     private void Update()
     {
     }
+    public Transform PlyCamTr;
     private void FixedUpdate()
     {
-        transform.position = new Vector3(Hold_X ? Smap.position.x : ply.position.x, Hold_Y ? Smap.position.y : ply.position.y, 0);
+        PlyCamTr.position = new Vector3(Hold_X ? Smap.position.x : ply.position.x, Hold_Y ? Smap.position.y : ply.position.y, 0);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        //Debug.Log(collision.name);
         if (Smap == collision.transform)
         {
             Hold_X = false;
@@ -46,7 +48,7 @@ public class PlyCam : MonoBehaviour
             Smap = null;
         }
     }
-    Transform Smap;
+    public Transform Smap;
     private void OnTriggerStay2D(Collider2D collision)
     {
         //Debug.Log(collision);
