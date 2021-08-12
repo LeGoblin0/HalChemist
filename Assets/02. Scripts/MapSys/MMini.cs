@@ -21,6 +21,8 @@ public class MMini : MonoBehaviour
     public Transform MMM;
     public Transform MMMp;
 
+    public Transform SetBG;
+
     [ContextMenu("맵 연결 확인")]
     public void DrowLine()
     {
