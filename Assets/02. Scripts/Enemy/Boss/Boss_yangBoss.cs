@@ -10,6 +10,7 @@ public class Boss_yangBoss : Enemy01
     public float RushSpeed = 5;
     Transform ply;
     Rigidbody2D rig;
+    public GameObject brokerG;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -132,6 +133,12 @@ public class Boss_yangBoss : Enemy01
             rig.velocity = PlyXPos * JumpDownPower;
             //Debug.Log(PlyXPos);
         }
+        //죽었을때 브로커 G 등장
+        if(Hp <= 0)
+        {
+            brokerG.SetActive(true);
+        }
+        
     }
     bool Stop = true;
 
