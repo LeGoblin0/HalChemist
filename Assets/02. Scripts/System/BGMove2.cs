@@ -15,6 +15,6 @@ public class BGMove2 : MonoBehaviour
     {
         int yyy = (int)(cam.position.y / 2) * 2;
         if (yyy > -13) yyy = -13;
-        transform.position = new Vector3((int)(cam.position.x / 2) * 2, yyy, transform.position.z);
+        transform.position = new Vector3((int)(cam.position.x / 2) * 2, (int)(yyy / 2) * 2, transform.position.z);
     }
 }
