@@ -34,9 +34,11 @@ public class PlyCam : MonoBehaviour
     {
     }
     public Transform PlyCamTr;
+    public Vector3 offset;
     private void FixedUpdate()
     {
-        PlyCamTr.position = new Vector3(Hold_X ? Smap.position.x : ply.position.x, Hold_Y ? Smap.position.y : ply.position.y, 0);
+        Vector3 plyoffset = ply.position + offset;
+        PlyCamTr.position = new Vector3(Hold_X ? Smap.position.x : plyoffset.x, Hold_Y ? Smap.position.y : plyoffset.y, 0);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
