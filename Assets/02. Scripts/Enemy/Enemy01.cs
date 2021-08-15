@@ -50,14 +50,17 @@ public class Enemy01 : Life
     protected virtual void Update()//protected override void Update() 상속받아서 이렇게 작성
     {
         if (Die) return;
-        if (HHIITime > 0) 
+        if (HitWhite)
         {
-            ImgRander.material.SetFloat("_HitCol", 0.55f);
-            HHIITime -= Time.deltaTime;
-        }
-        else
-        {
-            ImgRander.material.SetFloat("_HitCol", 0);
+            if (HHIITime > 0)
+            {
+                ImgRander.material.SetFloat("_HitCol", 0.55f);
+                HHIITime -= Time.deltaTime;
+            }
+            else
+            {
+                ImgRander.material.SetFloat("_HitCol", 0);
+            }
         }
         Dieset();//체력다되면 사망
     }
@@ -113,6 +116,7 @@ public class Enemy01 : Life
     public bool HitAni = true;
     public float HitAniSpeed=10f;
     public float HitAniknockBack=1;
+    public bool HitWhite = true;
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         //base.OnTriggerEnter2D(collision);

@@ -30,7 +30,7 @@ public class MMini : MonoBehaviour
         {
             if (transform.GetChild(i).childCount>0&& transform.GetChild(i).GetChild(1) != null)
             {
-                for (int j = 0; j < transform.GetChild(i).GetChild(1).childCount; j++)
+                for (int j = 0; j < transform.GetChild(i).GetChild(0).childCount; j++)
                 {
                     transform.GetChild(i).GetChild(1).GetChild(j).GetComponent<MoveMap>().DrowLine();
                 }

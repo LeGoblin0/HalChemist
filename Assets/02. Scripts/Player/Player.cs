@@ -206,7 +206,7 @@ public class Player : Life
     public GameObject NowChooseObj;
     public void ObjSet()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (!OnStory && Input.GetKeyDown(KeyCode.DownArrow))
         {
 
             if (NowChooseObj != null && NowChooseObj.GetComponent<StoneDieAni>() != null)
@@ -360,20 +360,20 @@ public class Player : Life
             {
                 ani.SetFloat("AirTime", ani.GetFloat("AirTime") + Time.deltaTime);
             }
-            if (Input.GetKey(KeyCode.DownArrow) && down)
+            if (!OnStory && Input.GetKey(KeyCode.DownArrow) && down)
             {
                 ani.SetInteger("State", 3);
                 this.Hand.GetComponent<Hand>().offset = new Vector3(-1, 0f, 0);
                 col.offset = new Vector2(col.offset.x, 0.2907405f);
                 col.size = new Vector2(col.size.x, 0.5742418f);
             }
-            else if (Input.GetKeyUp(KeyCode.DownArrow))
+            else if (!OnStory && Input.GetKeyUp(KeyCode.DownArrow))
             {
                 col.offset = new Vector2(col.offset.x, 0.476059f);
                 col.size = new Vector2(col.size.x, 0.9516047f);
                 this.Hand.GetComponent<Hand>().offset = new Vector3(-1, .5f, 0);
             }
-            else if (Input.GetKey(KeyCode.RightArrow))
+            else if (!OnStory && Input.GetKey(KeyCode.RightArrow))
             {
                 if (down) ani.SetInteger("State", 1);
                 else
@@ -383,7 +383,7 @@ public class Player : Life
                 PlyLook = 1;
                 DontKeyStayMove = false;
             }
-            else if (Input.GetKey(KeyCode.LeftArrow))
+            else if (!OnStory && Input.GetKey(KeyCode.LeftArrow))
             {
                 if (down) ani.SetInteger("State", 1);
                 else
@@ -401,7 +401,7 @@ public class Player : Life
                     ani.SetInteger("State", 2);
                 }
             }
-            if (Input.GetKeyDown(KeyCode.UpArrow) && down)
+            if (!OnStory && Input.GetKeyDown(KeyCode.UpArrow) && down)
             {
                 ani.SetBool("RL", true);
                 ani.SetInteger("State", 2);
@@ -421,7 +421,7 @@ public class Player : Life
 
         }
         transform.GetChild(0).localScale = new Vector3(PlyLook, 1, 1);
-        if (Input.GetKeyUp(KeyCode.UpArrow))
+        if (!OnStory && Input.GetKeyUp(KeyCode.UpArrow))
         {
             if (rig.velocity.y > 0) rig.velocity = new Vector2(rig.velocity.x, rig.velocity.y * LongJumpTime);
             else NowJumpPower = JumpPower * LongJumpTime;
@@ -431,7 +431,7 @@ public class Player : Life
     void Ply_Desh()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space) && nowDeshCoolTime <= 0) 
+        if (!OnStory && Input.GetKeyDown(KeyCode.Space) && nowDeshCoolTime <= 0) 
         {
             if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || ani.GetCurrentAnimatorStateInfo(0).IsName("Run") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump"))
             {
@@ -451,7 +451,7 @@ public class Player : Life
     void Ply_Att()
     {
         //if (!ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Run") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump_00")) return;
-        if (Input.GetKeyDown(KeyCode.A) && DontAttTime <= 0 && !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down01") && !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down02"))
+        if (!OnStory && Input.GetKeyDown(KeyCode.A) && DontAttTime <= 0 && !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down01") && !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down02"))
         {
             if (down && nowAttTime <= 0 && !DontMove)
             {
@@ -590,7 +590,7 @@ public class Player : Life
     float StopStoneTime = 0;
     void Ply_Throw()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if (!OnStory && Input.GetKeyDown(KeyCode.S))
         {
             if (!Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Att") && ThrowStone == null && HaveStone[NowChoose] > 0)
             {
@@ -625,7 +625,7 @@ public class Player : Life
             ThrowStone = null;
         }
        
-        if (Input.GetKeyDown(KeyCode.E))
+        if (!OnStory && Input.GetKeyDown(KeyCode.E))
         {
             NowChoose++;
             if (HaveStone.Length <= NowChoose) NowChoose = 0;

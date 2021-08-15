@@ -128,11 +128,13 @@ public class GameSystem : MonoBehaviour
             //Ply.GetComponent<Player>().Hand.position = new Vector3(GG.x, GG.y, Ply.GetComponent<Player>().Hand.position.z);
             if (SavePos[gameData.SavePoint].MovePos == null)
             {
-                SavePos[gameData.SavePoint].MovePos = SavePos[gameData.SavePoint].transform.parent.GetChild(1).GetChild(0);
+                SavePos[gameData.SavePoint].MovePos = SavePos[gameData.SavePoint].transform.parent.GetChild(0).GetChild(0);
             }
             //GG = SavePos[gameData.SavePoint].MovePos.GetChild(1).position;
 
-            cam.transform.position = new Vector3(Ply.position.x, Ply.position.y, cam.transform.position.z);
+            //cam.transform.position = new Vector3(Ply.position.x, Ply.position.y, cam.transform.position.z);
+            Invoke("CamsetTr", .1f);
+            Debug.Log(cam.transform.position);
             SavePos[gameData.SavePoint].transform.parent.gameObject.SetActive(true);
             //cam.m_BoundingShape2D = SavePos[gameData.SavePoint].transform.parent.GetChild(0).GetComponent<PolygonCollider2D>();
             
@@ -150,6 +152,10 @@ public class GameSystem : MonoBehaviour
             return gameData;
         }
     }//파일에서 데이터를 추출하는 함수
+    void CamsetTr()
+    {
+        cam.transform.position = new Vector3(Ply.position.x, Ply.position.y, cam.transform.position.z);
+    }
     public class SystemSave
     {
         public int BGSound = 100;
