@@ -393,7 +393,7 @@ public class Player : Life
                 PlyLook = -1;
                 DontKeyStayMove = false;
             }
-            else if (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+            else if (OnStory||(!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)))
             {
                 if (down) ani.SetInteger("State", 0);
                 else
