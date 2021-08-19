@@ -47,7 +47,7 @@ public class DialogManager : MonoBehaviour
         if (talkData == null)
         {
             talkPanel.SetActive(false);
-            GameSystem.instance.Ply.GetComponent<Player>().DontMove = false;
+            GameSystem.instance.Ply.GetComponent<Player>().OnStory = false;
             isAction = false;
             talkIndex = 0;
             Debug.Log(questManager.CheckQuest(id));
@@ -62,7 +62,7 @@ public class DialogManager : MonoBehaviour
         {
             talk.SetMsg(talkData);
         }
-        GameSystem.instance.Ply.GetComponent<Player>().DontMove = true;
+        GameSystem.instance.Ply.GetComponent<Player>().OnStory = true;
         isAction = true;
         talkPanel.SetActive(false);
         talkIndex++;

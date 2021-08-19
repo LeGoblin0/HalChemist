@@ -5,6 +5,7 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
     public int questId;
+    public int subQuestId;
     public int questActionIndex;
     public GameObject[] questObject;
     Dictionary<int, QuestData> questList;
@@ -45,7 +46,7 @@ public class QuestManager : MonoBehaviour
     {
         questId += 10;
         questActionIndex = 0;
-        GameSystem.instance.Ply.GetComponent<Player>().DontMove = false;
+        GameSystem.instance.Ply.GetComponent<Player>().OnStory = false;
     }
     //퀘스트 구현
     public void ControlObject()
