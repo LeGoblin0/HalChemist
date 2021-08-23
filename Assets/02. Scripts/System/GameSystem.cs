@@ -56,6 +56,19 @@ public class GameSystem : MonoBehaviour
             }
         }
     }
+    public bool GiveMoneyBag()
+    {
+        return gameData.LostMoneyBag;
+    }
+    public void GiveMoneyBag(bool a)
+    {
+        gameData.LostMoneyBag = a;
+        Save();
+    }
+    public int[] MoneyInt()
+    {
+        return gameData.Money;
+    }
     public void Save()
     {
         BinaryFormatter bf = new BinaryFormatter();//바이러니 포맷을위해생성
@@ -120,7 +133,7 @@ public class GameSystem : MonoBehaviour
             }
 
             MonsterSSS();
-
+            if (gameData.Money == null) gameData.Money = new int[2];
             //Ply.GetComponent<Player>().EndDie();
             Vector3 GG = SavePos[gameData.SavePoint].transform.position;
             Sond(SavePos[gameData.SavePoint].BGSound);
@@ -134,7 +147,7 @@ public class GameSystem : MonoBehaviour
 
             //cam.transform.position = new Vector3(Ply.position.x, Ply.position.y, cam.transform.position.z);
             Invoke("CamsetTr", .1f);
-            Debug.Log(cam.transform.position);
+            //Debug.Log(cam.transform.position);
             SavePos[gameData.SavePoint].transform.parent.gameObject.SetActive(true);
             //cam.m_BoundingShape2D = SavePos[gameData.SavePoint].transform.parent.GetChild(0).GetComponent<PolygonCollider2D>();
             
@@ -236,8 +249,12 @@ public class GameSystem : MonoBehaviour
     {
         return SavePos[gameData.SavePoint].transform.position;
     }
-    public void ChangeSave(int ii)
+    public bool ChangeSave(int ii)
     {
+        if (gameData.SavePoint == ii)
+        {
+            return false;
+        }
         for (int i = 0; i < SavePos.Length; i++)
         {
             if (SavePos[i] != null) SavePos[i].GetComponent<Animator>().SetInteger("State", 1);
@@ -251,6 +268,7 @@ public class GameSystem : MonoBehaviour
             savePointObj[j].makeClone();
         }
         Save();
+        return true;
     }
     public void MapSSS(int i,int ii)
     {
@@ -355,6 +373,20 @@ public class GameSystem : MonoBehaviour
     }
     bool StSTop = false;
     public GameObject StopUI;
+
+    public void GiveStone(int[] ss)
+    {
+        gameData.Stone = new int[ss.Length];
+        for (int i = 0; i < ss.Length; i++)
+        {
+            gameData.Stone[i] = ss[i];
+        }
+        Save();
+    }
+    public int[] GiveStone()
+    {
+        return gameData.Stone;
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) 
@@ -383,6 +415,6 @@ public class GameSystem : MonoBehaviour
     }
     private void OnDisable()
     {
-        Save();
+        //Save();
     }
 }

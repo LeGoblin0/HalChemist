@@ -32,8 +32,8 @@ public class SaveTrTr : MonoBehaviour
 
     public Transform MovePos;
 
-    public void SaveOn()
+    public bool SaveOn()
     {
-        GameSystem.instance.ChangeSave(ObjCode);
+        return GameSystem.instance.ChangeSave(ObjCode);
     }
 }
