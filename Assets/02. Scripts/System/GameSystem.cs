@@ -234,15 +234,18 @@ public class GameSystem : MonoBehaviour
         gameData.Story = new bool[1000];
         gameData.BGSound = 100;
         gameData.Sound = 100;
+        gameData.Money = new int[2];
+
+        gameData.SavePoint=0;
+        gameData.LostMoneyBag = false;
+        gameData.Stone = null;
+        Save();
 
     }
     [ContextMenu("게임초기화")]
     public void ResetMap01()
     {
-        gameData = new GameData();
-        gameData.MapObj = new int[1000];
-        gameData.Dest = new int[1000];
-        gameData.Story = new bool[1000];
+        ResetMap();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public Vector3 DiePos()

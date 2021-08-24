@@ -261,6 +261,7 @@ public class Player : Life
             }
             else if (NowChooseObj != null && NowChooseObj.tag == "Save" && NowChooseObj.GetComponent<SaveTrTr>() != null) 
             {
+                if (Money2 > 0) MonyBagAni.SetTrigger("On");
                 int[] ss = new int[HaveStone.Length];
                 for(int i = 0; i < ss.Length; i++)
                 {
@@ -272,7 +273,6 @@ public class Player : Life
 
                     MoneyBagImg.sprite = MoneyBag[GameSystem.instance.GiveMoneyBag() ? 1 : 0];
                 }
-                if (Money2 > 0) MonyBagAni.SetTrigger("On");
                 Money += Money2;
                 Money2 = 0;
                 LookMoney();
@@ -614,7 +614,7 @@ public class Player : Life
     public void DieDie()
     {
         GameSystem.instance.GiveMoneyBag(true);
-
+        saveMoneyInt[0] = Money;
         saveMoneyInt[1] = 0;
         PlySave(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

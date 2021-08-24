@@ -65,6 +65,39 @@ TextureImporter:
   - first:
       213: 1480502737479387629
     second: mapB_tile_20
+  - first:
+      213: -7097488895431221421
+    second: mapB_tile_21
+  - first:
+      213: 3958874987763035148
+    second: mapB_tile_22
+  - first:
+      213: 6074924809033185351
+    second: mapB_tile_23
+  - first:
+      213: 8094015565991497305
+    second: mapB_tile_24
+  - first:
+      213: -3270480246851208201
+    second: mapB_tile_25
+  - first:
+      213: 7728871348911905858
+    second: mapB_tile_26
+  - first:
+      213: -3609922960599889076
+    second: mapB_tile_27
+  - first:
+      213: 5858007410826574998
+    second: mapB_tile_28
+  - first:
+      213: -8270062681244103635
+    second: mapB_tile_29
+  - first:
+      213: -3529576243909708298
+    second: mapB_tile_30
+  - first:
+      213: -8294959675916473547
+    second: mapB_tile_31
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -178,22 +211,14 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
-        width: 48
-        height: 48
+        y: 144
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -24, y: 24}
-        - {x: -24, y: 7}
-        - {x: 24, y: 7}
-        - {x: 24, y: 24}
-      physicsShape:
-      - - {x: -24, y: 23}
-        - {x: -24, y: 7}
-        - {x: 24, y: 7}
-        - {x: 24, y: 23}
+      outline: []
+      physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: a2d21c152ce7b1fa0800000000000000
@@ -206,10 +231,10 @@ TextureImporter:
       name: mapB_tile_1
       rect:
         serializedVersion: 2
-        x: 192
-        y: 192
-        width: 48
-        height: 48
+        x: 24
+        y: 144
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,10 +252,10 @@ TextureImporter:
       name: mapB_tile_2
       rect:
         serializedVersion: 2
-        x: 240
-        y: 192
-        width: 48
-        height: 48
+        x: 48
+        y: 144
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -248,23 +273,15 @@ TextureImporter:
       name: mapB_tile_3
       rect:
         serializedVersion: 2
-        x: 0
+        x: 72
         y: 144
-        width: 48
-        height: 48
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -24, y: 24}
-        - {x: -24, y: 7}
-        - {x: 24, y: 7}
-        - {x: 24, y: 24}
-      physicsShape:
-      - - {x: -24, y: 23}
-        - {x: -24, y: 7}
-        - {x: 24, y: 7}
-        - {x: 24, y: 23}
+      outline: []
+      physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: f0951cbc96c753050800000000000000
@@ -277,27 +294,15 @@ TextureImporter:
       name: mapB_tile_4
       rect:
         serializedVersion: 2
-        x: 48
+        x: 120
         y: 144
-        width: 48
-        height: 48
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -24, y: 24}
-        - {x: -24, y: 8}
-        - {x: -23, y: 7}
-        - {x: 23, y: 7}
-        - {x: 24, y: 8}
-        - {x: 24, y: 24}
-      physicsShape:
-      - - {x: -24, y: 23}
-        - {x: -24, y: 8}
-        - {x: -23, y: 7}
-        - {x: 23, y: 7}
-        - {x: 24, y: 8}
-        - {x: 24, y: 23}
+      outline: []
+      physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: d8dbd2d59ac44b220800000000000000
@@ -310,23 +315,15 @@ TextureImporter:
       name: mapB_tile_5
       rect:
         serializedVersion: 2
-        x: 96
+        x: 144
         y: 144
-        width: 48
-        height: 48
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -24, y: 24}
-        - {x: -24, y: 7}
-        - {x: 24, y: 7}
-        - {x: 24, y: 24}
-      physicsShape:
-      - - {x: -24, y: 23}
-        - {x: -24, y: 7}
-        - {x: 24, y: 7}
-        - {x: 24, y: 23}
+      outline: []
+      physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 5cc3c046f29257420800000000000000
@@ -340,22 +337,14 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
-        width: 48
-        height: 48
+        y: 120
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -24, y: 24}
-        - {x: -24, y: -24}
-        - {x: 24, y: -24}
-        - {x: 24, y: 24}
-      physicsShape:
-      - - {x: -24, y: 24}
-        - {x: -24, y: -24}
-        - {x: 24, y: -24}
-        - {x: 24, y: 24}
+      outline: []
+      physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 510a20609fccd7910800000000000000
@@ -368,23 +357,15 @@ TextureImporter:
       name: mapB_tile_7
       rect:
         serializedVersion: 2
-        x: 48
-        y: 96
-        width: 48
-        height: 48
+        x: 24
+        y: 120
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -24, y: 24}
-        - {x: -24, y: -24}
-        - {x: 24, y: -24}
-        - {x: 24, y: 24}
-      physicsShape:
-      - - {x: -24, y: 24}
-        - {x: -24, y: -24}
-        - {x: 24, y: -24}
-        - {x: 24, y: 24}
+      outline: []
+      physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 953585e19f2c1ca00800000000000000
@@ -397,23 +378,15 @@ TextureImporter:
       name: mapB_tile_8
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
-        width: 48
-        height: 48
+        x: 48
+        y: 120
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -24, y: 24}
-        - {x: -24, y: -24}
-        - {x: 24, y: -24}
-        - {x: 24, y: 24}
-      physicsShape:
-      - - {x: -24, y: 24}
-        - {x: -24, y: -24}
-        - {x: 24, y: -24}
-        - {x: 24, y: 24}
+      outline: []
+      physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 2c6f43e9770065890800000000000000
@@ -426,10 +399,10 @@ TextureImporter:
       name: mapB_tile_9
       rect:
         serializedVersion: 2
-        x: 192
-        y: 96
-        width: 48
-        height: 48
+        x: 72
+        y: 120
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -447,10 +420,10 @@ TextureImporter:
       name: mapB_tile_10
       rect:
         serializedVersion: 2
-        x: 240
-        y: 96
-        width: 48
-        height: 48
+        x: 120
+        y: 120
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -468,10 +441,10 @@ TextureImporter:
       name: mapB_tile_11
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
-        width: 48
-        height: 48
+        x: 144
+        y: 120
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -489,10 +462,10 @@ TextureImporter:
       name: mapB_tile_12
       rect:
         serializedVersion: 2
-        x: 48
-        y: 48
-        width: 48
-        height: 48
+        x: 0
+        y: 96
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -510,10 +483,10 @@ TextureImporter:
       name: mapB_tile_13
       rect:
         serializedVersion: 2
-        x: 96
-        y: 48
-        width: 48
-        height: 48
+        x: 24
+        y: 96
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -531,19 +504,15 @@ TextureImporter:
       name: mapB_tile_14
       rect:
         serializedVersion: 2
-        x: 192
-        y: 48
-        width: 48
-        height: 48
+        x: 48
+        y: 96
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -22, y: -23}
-        - {x: 22, y: -23}
-        - {x: 23, y: -22.18208}
-        - {x: 23, y: 22}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: c05c36122e1a47230800000000000000
@@ -556,19 +525,15 @@ TextureImporter:
       name: mapB_tile_15
       rect:
         serializedVersion: 2
-        x: 240
-        y: 48
-        width: 48
-        height: 48
+        x: 72
+        y: 96
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -23, y: 22}
-        - {x: -23, y: -22.182068}
-        - {x: -22, y: -23}
-        - {x: 22, y: -23}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: b78695e94923471d0800000000000000
@@ -582,9 +547,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 48
-        height: 48
+        y: 72
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -602,10 +567,10 @@ TextureImporter:
       name: mapB_tile_17
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
-        width: 48
-        height: 48
+        x: 24
+        y: 72
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -623,10 +588,10 @@ TextureImporter:
       name: mapB_tile_18
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
-        height: 48
+        x: 48
+        y: 72
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -644,19 +609,15 @@ TextureImporter:
       name: mapB_tile_19
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 48
-        height: 48
+        x: 72
+        y: 72
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 21.740005, y: 22.999996}
-        - {x: -22, y: 23}
-        - {x: 23, y: -22}
-        - {x: 23, y: 22}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: b0da722ef28acaa80800000000000000
@@ -669,23 +630,272 @@ TextureImporter:
       name: mapB_tile_20
       rect:
         serializedVersion: 2
-        x: 240
-        y: 0
-        width: 48
-        height: 48
+        x: 120
+        y: 72
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de9c37c456dcb8410800000000000000
+      internalID: 1480502737479387629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mapB_tile_21
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 72
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35fda862477a08d90800000000000000
+      internalID: -7097488895431221421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mapB_tile_22
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 72
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0c6bcb83dfb0f630800000000000000
+      internalID: 3958874987763035148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mapB_tile_23
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 24
+        width: 24
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -21.972107, y: 23}
-        - {x: -23, y: 22}
-        - {x: -23, y: -22}
-        - {x: 22, y: 23}
+      - - {x: -11, y: -12}
+        - {x: 12, y: -12}
+        - {x: 12, y: 11}
       tessellationDetail: 0
       bones: []
-      spriteID: de9c37c456dcb8410800000000000000
-      internalID: 1480502737479387629
+      spriteID: 74871af6de77e4450800000000000000
+      internalID: 6074924809033185351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mapB_tile_24
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 24
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95ec769f548b35070800000000000000
+      internalID: 8094015565991497305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mapB_tile_25
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 24
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fb70811b8bec92d0800000000000000
+      internalID: -3270480246851208201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mapB_tile_26
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 24
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24c9692ea87724b60800000000000000
+      internalID: 7728871348911905858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mapB_tile_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -11, y: -12}
+        - {x: 12, y: -12}
+        - {x: 12, y: 11}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4bcaea813af6edc0800000000000000
+      internalID: -3609922960599889076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mapB_tile_28
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -12, y: 12}
+        - {x: -12, y: -12}
+        - {x: 12, y: -12}
+        - {x: 12, y: 12}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69c7cedf3b2db4150800000000000000
+      internalID: 5858007410826574998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mapB_tile_29
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -12, y: 12}
+        - {x: -12, y: -12}
+        - {x: 12, y: -12}
+        - {x: 12, y: 12}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2c0b3edec5da3d80800000000000000
+      internalID: -8270062681244103635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mapB_tile_30
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -12, y: 12}
+        - {x: -12, y: -12}
+        - {x: 12, y: -12}
+        - {x: 12, y: 12}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f5ba1e4b1d640fc0800000000000000
+      internalID: -3529576243909708298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mapB_tile_31
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 0
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -12, y: 12}
+        - {x: -12, y: -12}
+        - {x: 12, y: -12}
+        - {x: 12, y: 12}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53b2fc29f1262ec80800000000000000
+      internalID: -8294959675916473547
       vertices: []
       indices: 
       edges: []
