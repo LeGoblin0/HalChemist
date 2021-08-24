@@ -32,7 +32,7 @@ public class MMini : MonoBehaviour
             {
                 for (int j = 0; j < transform.GetChild(i).GetChild(0).childCount; j++)
                 {
-                    transform.GetChild(i).GetChild(1).GetChild(j).GetComponent<MoveMap>().DrowLine();
+                    transform.GetChild(i).GetChild(0).GetChild(j).GetComponent<MoveMap>().DrowLine();
                 }
             }
         }
