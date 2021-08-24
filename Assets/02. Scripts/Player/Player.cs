@@ -39,28 +39,13 @@ public class Player : Life
 
         tag = "Player";
         rig.gravityScale = gravityScale;
-
-
-        HaveStone = GameSystem.instance.GiveStone();
-        if (HaveStone == null) HaveStone = new int[MaxStoneNum];
         HaveStone[0] = 1;
         StoneUI();
         HPUI();
         
         ani.SetFloat("HitThrowTime", HitThrowTime);
-
-        saveMoneyInt = GameSystem.instance.MoneyInt();
-        Money = saveMoneyInt[0];
-        Money2 = saveMoneyInt[1];
-        LookMoney();
-
-        MoneyBagImg.sprite = MoneyBag[GameSystem.instance.GiveMoneyBag() ? 1 : 0];
     }
 
-    public Sprite[] MoneyBag;
-    public Image MoneyBagImg;
-
-    public int[] saveMoneyInt;
 
     [Header("스토리 실행")]
     public bool OnStory = false;
@@ -118,7 +103,6 @@ public class Player : Life
 
     [Header("원석")]
     public int[] HaveStone;
-    public int MaxStoneNum = 3;
     [HideInInspector]
     public int NowChoose = 0;
     [Tooltip("스톤 겹치는 수량")]
@@ -154,7 +138,6 @@ public class Player : Life
     
     private void FixedUpdate()
     {
-        if (NowDie) return;
         AniMove();
         NpcCheck();
 
@@ -169,17 +152,8 @@ public class Player : Life
     {
         GetComponent<Collider2D>().enabled = true;
     }
-    bool NowDie = false;
     void Update()
     {
-        if (NowDie) return;
-        if (Hp <= 0)
-        {
-            ani.SetTrigger("Die");
-            rig.bodyType = RigidbodyType2D.Static;
-            Time.timeScale = 1;
-            NowDie = true;
-        }
         //Debug.Log(SaveTrtr);
         Ply_Move();
         Ply_Desh();
@@ -261,6 +235,7 @@ public class Player : Life
             }
             else if (NowChooseObj != null && NowChooseObj.tag == "Save" && NowChooseObj.GetComponent<SaveTrTr>() != null) 
             {
+<<<<<<< HEAD
                 if (Money2 > 0) MonyBagAni.SetTrigger("On");
                 int[] ss = new int[HaveStone.Length];
                 for(int i = 0; i < ss.Length; i++)
@@ -277,21 +252,11 @@ public class Player : Life
                 Money2 = 0;
                 LookMoney();
                 PlySave();
+=======
+                NowChooseObj.GetComponent<SaveTrTr>().SaveOn();
+>>>>>>> parent of ed61b37 (죽음세이브)
             }
         }
-    }
-    public Animator MonyBagAni;
-    public void PlySave( bool moneySave=true)
-    {
-        if (moneySave)
-        {
-            saveMoneyInt[0] = Money;
-            saveMoneyInt[1] = Money2;
-        }
-
-        GameSystem.instance.GiveStone(HaveStone);
-
-        GameSystem.instance.Save();
     }
    
     Vector3 trapsavepoint;
@@ -364,7 +329,7 @@ public class Player : Life
                 {
                     Destroy(collision.gameObject);
                     Money++;
-                    if (!GameSystem.instance.GiveMoneyBag()) Money2++;
+
                     LookMoney();
                 }
             }
@@ -398,15 +363,9 @@ public class Player : Life
 
     public Text MoneyInt;
     public int Money;
-
-    public bool LostMoney2;
-    public int Money2;
-    public Text MoneyInt2;
-
     void LookMoney()
     {
         MoneyInt.text = Money + "";
-        MoneyInt2.text = Money2 + "";
     }
     void Ply_Move()
     {
@@ -611,6 +570,7 @@ public class Player : Life
         }
        
     }
+<<<<<<< HEAD
     public void DieDie()
     {
         GameSystem.instance.GiveMoneyBag(true);
@@ -619,6 +579,8 @@ public class Player : Life
         PlySave(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+=======
+>>>>>>> parent of ed61b37 (죽음세이브)
     void NpcCheck()
     {
         Debug.DrawRay(rig.position, dirVec * 0.7f, new Color(0, 1, 0));
