@@ -198,13 +198,14 @@ MonoBehaviour:
   - {fileID: 719797484792284287, guid: 92c7ed4c2733ff74fa2194405868bb40, type: 3}
   - {fileID: 719797484792284287, guid: 92c7ed4c2733ff74fa2194405868bb40, type: 3}
   - {fileID: 719797484792284287, guid: 92c7ed4c2733ff74fa2194405868bb40, type: 3}
-  MoneyDie: 0
+  MoneyDie: 10
   DieAniTime: 0.5
   NoDie: 0
   HHIITime: 0
   HitAni: 1
   HitAniSpeed: 15
   HitAniknockBack: 1
+  HitWhite: 1
   Speed: 1
   RushTime: 0.8
   RushSpeed: 3
