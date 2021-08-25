@@ -59,6 +59,18 @@ public class MapSyS : MonoBehaviour
             SpeO();
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        int aniNum = GameSystem.instance.MapSSS(ObjCode);
+        if (End && !Loop) return;
+        //Debug.Log(collision.tag);
+        //Debug.Log(collision.GetComponent<Att>().AttState);
+        if (AllSS && collision.gameObject.tag == "Player")
+        {
+            if (ObjCode >= 0) { aniNum++; GameSystem.instance.MapSSS(ObjCode, aniNum); }
+            SpeO();
+        }
+    }
     bool End = false;
 
     bool Onset = false;
@@ -135,7 +147,8 @@ public class MapSyS : MonoBehaviour
     }
     public void EndAni()
     {
-        GameSystem.instance.MapSSS(ObjCode, 100);
+        //Debug.Log(ObjCode + "  " + name);
         End = true; SaveOn = true;
+        GameSystem.instance.MapSSS(ObjCode, 100);
     }
 }
