@@ -189,6 +189,8 @@ public class Player : Life
 
         if (Hp <= 0)
         {
+
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
             ani.SetTrigger("Die");
             rig.bodyType = RigidbodyType2D.Static;
             Time.timeScale = 1;
@@ -648,7 +650,6 @@ public class Player : Life
     }
     public void DieDie()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         GameSystem.instance.GiveMoneyBag(true);
         saveMoneyInt[0] = Money;
         saveMoneyInt[1] = 0;
