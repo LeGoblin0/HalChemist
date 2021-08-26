@@ -15,4 +15,25 @@ public class ItemCode : MonoBehaviour
     {
         
     }
+    public bool DieAni = false;
+    public void Eat()
+    {
+        if (DieAni)
+        {
+            if (GetComponent<Animator>() != null)
+            {
+                GetComponent<Animator>().SetTrigger("On");
+                Destroy(GetComponent<Rigidbody2D>());
+                Destroy(GetComponent<Collider2D>());
+
+                return;
+            }
+
+        }
+        DDD();
+    }
+    public void DDD()
+    {
+        Destroy(gameObject);
+    }
 }

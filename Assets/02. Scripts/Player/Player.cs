@@ -35,6 +35,7 @@ public class Player : Life
     }
     void Start()
     {
+        MaxHP = GameSystem.instance.GiveMaxHp();
         Hp = MaxHP;
 
         tag = "Player";
@@ -173,6 +174,17 @@ public class Player : Life
     void Update()
     {
         if (NowDie) return;
+
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_2")
+            || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down01") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down02"))
+        {
+            if (TrainNow != null)
+            {
+                transform.position = new Vector3(transform.position.x, TrainNow.transform.position.y+1, transform.position.z);
+            }
+        }
+        
+
         if (Hp <= 0)
         {
             ani.SetTrigger("Die");
@@ -358,11 +370,11 @@ public class Player : Life
 
         if (collision.tag == "Item")
         {
+            collision.GetComponent<ItemCode>().Eat();
             if (collision.GetComponent<ItemCode>().ItemCodeNum == 0)
             {
                 if(Money<=9999)
                 {
-                    Destroy(collision.gameObject);
                     Money++;
                     if (!GameSystem.instance.GiveMoneyBag()) Money2++;
                     LookMoney();
@@ -370,9 +382,16 @@ public class Player : Life
             }
             else if (collision.GetComponent<ItemCode>().ItemCodeNum == 1)
             {
-                Destroy(collision.gameObject);
 
                 if (Hp < MaxHP) Hp++;
+                HPUI();
+            }
+            else if (collision.GetComponent<ItemCode>().ItemCodeNum == 2)
+            {
+
+                Hp++;
+                MaxHP++;
+                GameSystem.instance.GiveMaxHp(MaxHP);
                 HPUI();
             }
         }
@@ -424,13 +443,13 @@ public class Player : Life
             {
                 ani.SetInteger("State", 3);
                 this.Hand.GetComponent<Hand>().offset = new Vector3(-1, 0f, 0);
-                col.offset = new Vector2(col.offset.x, 0.2907405f);
+                col.offset = new Vector2(col.offset.x, 0.3257405f);
                 col.size = new Vector2(col.size.x, 0.5742418f);
             }
             else if (!OnStory && Input.GetKeyUp(KeyCode.DownArrow))
             {
-                col.offset = new Vector2(col.offset.x, 0.476059f);
-                col.size = new Vector2(col.size.x, 0.9516047f);
+                col.offset = new Vector2(col.offset.x, .4846133f);
+                col.size = new Vector2(col.size.x, 0.9344962f);
                 this.Hand.GetComponent<Hand>().offset = new Vector3(-1, .5f, 0);
             }
             else if (!OnStory && Input.GetKey(KeyCode.RightArrow))
@@ -557,8 +576,9 @@ public class Player : Life
         else if(ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_2") 
             || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down01") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down02"))
         {
-            if (TrainNow != null) rig.velocity = TrainNow.velocity;
-            else rig.velocity = Vector2.zero;
+            rig.velocity = Vector2.zero;
+            rig.gravityScale = 1;
+            
             return;
         }
         else
@@ -567,9 +587,9 @@ public class Player : Life
         }
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle"))
         {
-            //Debug.Log(0);
-            if(TrainNow!=null) rig.velocity = TrainNow.velocity;
-            else rig.velocity = new Vector2(0, rig.velocity.y);
+            rig.velocity = new Vector2(0, rig.velocity.y);
+            rig.gravityScale = 1;
+            
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Run"))
         {
@@ -613,6 +633,7 @@ public class Player : Life
     }
     public void DieDie()
     {
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         GameSystem.instance.GiveMoneyBag(true);
         saveMoneyInt[0] = Money;
         saveMoneyInt[1] = 0;
@@ -772,8 +793,8 @@ public class Player : Life
         }
         for(int i = 0; i < MaxHP; i++)
         {
-            if (i < Hp) HPUITr.GetChild(i).GetChild(0).gameObject.SetActive(true);
-            else HPUITr.GetChild(i).GetChild(0).gameObject.SetActive(false);
+            if (i < Hp) HPUITr.GetChild(i).GetComponent<Animator>().SetInteger("State", 1);
+            else HPUITr.GetChild(i).GetComponent<Animator>().SetInteger("State", 0);
         }
     }
 

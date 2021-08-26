@@ -236,6 +236,8 @@ public class GameSystem : MonoBehaviour
         gameData.Sound = 100;
         gameData.Money = new int[2];
 
+        gameData.MaxHp = 3;
+
         gameData.SavePoint=0;
         gameData.LostMoneyBag = false;
         gameData.Stone = null;
@@ -277,6 +279,15 @@ public class GameSystem : MonoBehaviour
     {
         gameData.MapObj[i] = ii;
         Save();
+    }
+    public int GiveMaxHp(int a = -1)
+    {
+        if (a > 0)
+        {
+            gameData.MaxHp = a;
+            Save();
+        }
+        return gameData.MaxHp;
     }
     public int MapSSS(int i)
     {

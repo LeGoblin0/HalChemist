@@ -131,7 +131,7 @@ MonoBehaviour:
   HitAniSpeed: 10
   HitAniknockBack: 1
   HitWhite: 1
-  JumpPower: 15
+  JumpPower: 5
 --- !u!114 &7158760557386396054
 MonoBehaviour:
   m_ObjectHideFlags: 0

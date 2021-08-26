@@ -56,14 +56,14 @@ public class Sencer : MonoBehaviour
             if (left) ply.left = false;
             if (down)
             {
+                if (collision.transform.parent != null && collision.transform.parent.GetComponent<Train>() != null)
+                {
+                    ply.TrainNow = null;
+                }
                 if (DownObj == collision.transform)
                 {
                     ply.down = false;
 
-                    if (collision.transform.parent != null && collision.transform.parent.GetComponent<Train>() != null)
-                    {
-                        ply.TrainNow = null;
-                    }
                 }
             }
         }

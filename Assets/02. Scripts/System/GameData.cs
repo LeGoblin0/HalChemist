@@ -18,6 +18,8 @@ namespace DataInfo
         public bool LostMoneyBag;
         public int[] Money;
         public int[] Stone;
+
+        public int MaxHp;
     }
 
 
