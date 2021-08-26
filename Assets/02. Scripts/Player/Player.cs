@@ -171,6 +171,8 @@ public class Player : Life
         GetComponent<Collider2D>().enabled = true;
     }
     bool NowDie = false;
+
+    
     void Update()
     {
         if (NowDie) return;
@@ -576,9 +578,15 @@ public class Player : Life
         else if(ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_2") 
             || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down01") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down02"))
         {
-            rig.velocity = Vector2.zero;
-            rig.gravityScale = 1;
-            
+            if (TrainNow != null)
+            {
+                rig.velocity = TrainNow.velocity;
+            }
+            else
+            {
+                rig.velocity = Vector2.zero;
+                rig.gravityScale = 1;
+            }
             return;
         }
         else
@@ -587,8 +595,15 @@ public class Player : Life
         }
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle"))
         {
-            rig.velocity = new Vector2(0, rig.velocity.y);
-            rig.gravityScale = 1;
+            if (TrainNow != null)
+            {
+                rig.velocity = TrainNow.velocity;
+            }
+            else
+            {
+                rig.velocity = new Vector2(0, rig.velocity.y);
+                rig.gravityScale = 1;
+            }
             
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Run"))
