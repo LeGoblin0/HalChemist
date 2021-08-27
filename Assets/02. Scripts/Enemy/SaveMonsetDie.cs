@@ -11,6 +11,8 @@ public class SaveMonsetDie : MonoBehaviour
     }
     public void SaveMonster()
     {
+        if (Off) gameObject.SetActive(false);
         GameSystem.instance.DieMonset(Code);
     }
+    public bool Off = false;
 }

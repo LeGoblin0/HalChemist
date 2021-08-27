@@ -191,16 +191,19 @@ public class Boss_yangBoss : Enemy01
         a = Instantiate(EEE);
         a.position = EEEPos.position;
         a.parent = transform.parent;
+        a.transform.position = a.transform.position + new Vector3(0, 0, -.1f);
         a.GetComponent<Rigidbody2D>().velocity = new Vector2(2 * transform.GetChild(0).localScale.x, 0);
         a.GetChild(0).GetComponent<BoxCollider2D>().size = Vector2.one * 100;
         a = Instantiate(EEE);
         a.position = EEEPos.position;
         a.parent = transform.parent;
+        a.transform.position = a.transform.position + new Vector3(0, 0, -.1f);
         a.GetComponent<Rigidbody2D>().velocity = new Vector2(2 * transform.GetChild(0).localScale.x, 2);
         a.GetChild(0).GetComponent<BoxCollider2D>().size = Vector2.one * 100;
         a = Instantiate(EEE);
         a.position = EEEPos.position;
         a.parent = transform.parent;
+        a.transform.position = a.transform.position + new Vector3(0, 0, -.1f);
         a.GetComponent<Rigidbody2D>().velocity = new Vector2(2 * transform.GetChild(0).localScale.x, 4);
         a.GetChild(0).GetComponent<BoxCollider2D>().size = Vector2.one * 100;
     }
