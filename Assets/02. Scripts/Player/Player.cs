@@ -248,7 +248,7 @@ public class Player : Life
     public GameObject NowChooseObj;
     public void ObjSet()
     {
-        if (!OnStory && Input.GetKeyDown(KeyCode.DownArrow))
+        if (!OnStory && Input.GetKeyDown(KeyCode.G))
         {
 
             if (NowChooseObj != null && NowChooseObj.GetComponent<StoneDieAni>() != null)
