@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 3831669259951125644}
   - component: {fileID: 1692913084141520993}
   - component: {fileID: 2752554191467082960}
+  - component: {fileID: 6263199817317853134}
   m_Layer: 12
   m_Name: healthCase
   m_TagString: Item
@@ -85,7 +86,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5205856770547266134}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.56, y: -1.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -224,3 +225,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6263199817317853134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5205856770547266134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77279028f47e94e4f89d9eba63a70a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Code: 0
