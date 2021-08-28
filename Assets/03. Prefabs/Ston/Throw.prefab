@@ -197,6 +197,7 @@ MonoBehaviour:
   AttDamage: 2
   DesTime: 0
   DesDesTime: 0
+  SelfDesTime: 5
   HitDesT: 1
   HitNum: 2
   AttArrow: -1
