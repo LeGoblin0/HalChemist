@@ -750,6 +750,7 @@ public class Player : Life
         ThrowStone.position = Hand.GetChild(0).position + new Vector3(0, 0.5f, -.1f);
         ThrowStone.parent = Hand.GetChild(0);
         ThrowStone.GetComponent<Rigidbody2D>().gravityScale = 0;
+        if (ThrowStone.GetComponent<Att>() != null && ThrowStone.GetComponent<Att>().SelfDesTime != 0) ThrowStone.GetComponent<Att>().SelfDie();
     }
 
     public void TStone()

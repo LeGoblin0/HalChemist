@@ -10,6 +10,8 @@ public class Att : MonoBehaviour
     public float DesTime = 0;
     [Header("몇초뒤 삭제  0이면 삭제 안됨-충돌등 타이머")]
     public float DesDesTime = 0;
+    [Header("몇초뒤 삭제  0이면 삭제 안됨-수동 타이머")]
+    public float SelfDesTime = 0;
     [Header("관통")]
     public bool HitDesT = false;
     public int HitNum = 1;
@@ -23,6 +25,10 @@ public class Att : MonoBehaviour
     public void Attnow()
     {
         attObj.SetActive(true);
+    }
+    public void SelfDie()
+    {
+        Invoke("DDD", SelfDesTime);
     }
     public void Attnow2()
     {
