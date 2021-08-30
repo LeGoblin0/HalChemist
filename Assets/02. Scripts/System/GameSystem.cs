@@ -12,6 +12,7 @@ public class GameSystem : MonoBehaviour
     // Start is called before the first frame update
     AudioSource aus;
     public AudioClip[] BGClip;
+    public StoryStart[] Story;
     public void Sond(int i)
     {
         if (aus == null) aus = GetComponent<AudioSource>();
@@ -129,7 +130,7 @@ public class GameSystem : MonoBehaviour
             for (int i = StoryTr.childCount - 1; i >= 0; i--)
             {
                 if (gameData.Story == null) { gameData.Story = new bool[1000]; Save(); }
-                if (gameData.Story[i]) Destroy(StoryTr.GetChild(i).gameObject);
+                if (gameData.Story[i]) StoryTr.GetChild(i).gameObject.SetActive(false);
             }
 
             MonsterSSS();
@@ -359,10 +360,12 @@ public class GameSystem : MonoBehaviour
                 MapObjS[i].ObjCode = i;
             }
         }
-        for (int i = 0; i < StoryTr.childCount; i++)
+        for (int i = 0; StoryTr != null && i < StoryTr.childCount; i++) 
         {
-            StoryTr.GetChild(i).GetComponent<StoryOnOFf>().Codess = i;
+            if (StoryTr.GetChild(i) != null) StoryTr.GetChild(i).GetComponent<StoryStart>().StoryCode = i;
         }
+
+
         //cam = GameObject.Find("CM vcam1").GetComponent<Cinemachine.CinemachineConfiner>();
         cam = Camera.main.GetComponent<Mcam>();
 

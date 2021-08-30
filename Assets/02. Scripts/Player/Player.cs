@@ -44,6 +44,15 @@ public class Player : Life
 
         HaveStone = GameSystem.instance.GiveStone();
         if (HaveStone == null) HaveStone = new int[MaxStoneNum];
+        if (HaveStone.Length < MaxStoneNum)
+        {
+            int[] aa = HaveStone;
+            HaveStone = new int[MaxStoneNum];
+            for (int i = 0; i < aa.Length; i++) 
+            {
+                HaveStone[i] = aa[i];
+            }
+        }
         HaveStone[0] = 1;
         StoneUI();
         HPUI();
@@ -65,6 +74,12 @@ public class Player : Life
 
     [Header("스토리 실행")]
     public bool OnStory = false;
+    public bool Story_LeftMove = false;
+    public bool Story_RightMove = false;
+    public bool Story_Jump = false;
+    public bool Story_Down = false;
+    public bool Story_DownUp = false;
+    public bool Story_Desh = false;
 
 
     [Header("센서")]
@@ -152,7 +167,6 @@ public class Player : Life
     GameObject scanObject;
 
     Vector3 dirVec;
-    
     private void FixedUpdate()
     {
         if (NowDie) return;
@@ -443,20 +457,26 @@ public class Player : Life
             {
                 ani.SetFloat("AirTime", ani.GetFloat("AirTime") + Time.deltaTime);
             }
-            if (!OnStory && Input.GetKey(KeyCode.DownArrow) && down)
+            if (((!OnStory && Input.GetKey(KeyCode.DownArrow)) || (OnStory && Story_Down && !Story_DownUp)) && down) 
             {
+                if (OnStory) Story_DownUp = false;
                 ani.SetInteger("State", 3);
                 this.Hand.GetComponent<Hand>().offset = new Vector3(-1, 0f, 0);
                 col.offset = new Vector2(col.offset.x, 0.3257405f);
                 col.size = new Vector2(col.size.x, 0.5742418f);
             }
-            else if (!OnStory && Input.GetKeyUp(KeyCode.DownArrow))
+            else if ((OnStory && Story_DownUp) || (Input.GetKeyUp(KeyCode.DownArrow) && !OnStory)) 
             {
+                if (OnStory)
+                {
+                    Story_DownUp = false;
+                    Story_Down = false;
+                }
                 col.offset = new Vector2(col.offset.x, .4846133f);
                 col.size = new Vector2(col.size.x, 0.9344962f);
                 this.Hand.GetComponent<Hand>().offset = new Vector3(-1, .5f, 0);
             }
-            else if (!OnStory && Input.GetKey(KeyCode.RightArrow))
+            else if ((!OnStory && Input.GetKey(KeyCode.RightArrow)) || (OnStory && Story_RightMove))
             {
                 if (down) ani.SetInteger("State", 1);
                 else
@@ -466,7 +486,7 @@ public class Player : Life
                 PlyLook = 1;
                 DontKeyStayMove = false;
             }
-            else if (!OnStory && Input.GetKey(KeyCode.LeftArrow))
+            else if ((!OnStory && Input.GetKey(KeyCode.LeftArrow)) || (OnStory && Story_LeftMove)) 
             {
                 if (down) ani.SetInteger("State", 1);
                 else
@@ -484,8 +504,9 @@ public class Player : Life
                     ani.SetInteger("State", 2);
                 }
             }
-            if (!OnStory && Input.GetKeyDown(KeyCode.UpArrow) && down)
+            if (((!OnStory && Input.GetKeyDown(KeyCode.UpArrow)) || (OnStory && Story_Jump)) && down) 
             {
+                if (OnStory) Story_Jump = false;
                 ani.SetBool("RL", true);
                 ani.SetInteger("State", 2);
                 DontAttTime = .2f;
@@ -514,8 +535,9 @@ public class Player : Life
     void Ply_Desh()
     {
 
-        if (!OnStory && Input.GetKeyDown(KeyCode.Space) && nowDeshCoolTime <= 0) 
+        if ((!OnStory && Input.GetKeyDown(KeyCode.Space) && nowDeshCoolTime <= 0) || (OnStory && Story_Desh))  
         {
+            if (OnStory) Story_Desh = false;
             if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || ani.GetCurrentAnimatorStateInfo(0).IsName("Run") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump"))
             {
                 ani.SetTrigger("Desh01");
@@ -684,7 +706,7 @@ public class Player : Life
                 dirVec = Vector3.left;
             }
         }
-        if (Input.GetKeyDown(KeyCode.G) && scanObject != null)
+        if (!OnStory && Input.GetKeyDown(KeyCode.G) && scanObject != null)
         {
             manager.Action(scanObject);
         }
