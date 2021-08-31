@@ -78,7 +78,7 @@ public class Boss_yangBoss : Enemy01
             transform.GetChild(0).localScale = new Vector3(-1, 1, 1);
         }
         ContN--;
-        if (ContN == 0) Invoke("Deshjump", 0f);
+        if (ContN == 0) Invoke("Deshjump", .35f);
         ani.SetInteger("State", 1);
         ani.SetInteger("ContN", ContN);
     }
@@ -86,6 +86,7 @@ public class Boss_yangBoss : Enemy01
     {
         ani.SetTrigger("Jump");
     }
+    int a = 0;
     private void FixedUpdate()
     {
         if (Stop) return;
@@ -93,7 +94,6 @@ public class Boss_yangBoss : Enemy01
         {
             if (NowTime <= 0)
             {
-                int a = 1;
                 if (ContN <= 0) a = Random.Range(1, 4);
                 if (a == 3)
                 {
@@ -156,6 +156,30 @@ public class Boss_yangBoss : Enemy01
             float plyXX = ply.position.x;
             if (plyXX < 226) plyXX = 226;
             else if (plyXX > 238) plyXX = 238;
+            if (transform.position.x > 232 && ContN == 1)
+            {
+                plyXX = 226;
+            }
+            if (transform.position.x <= 232 && ContN == 1)
+            {
+                plyXX = 238;
+            }
+
+            if (transform.position.x <= 227)
+            {
+                transform.GetChild(0).localScale = new Vector3(1, 1, 1);
+            }
+            else if (transform.position.x >= 237)
+            {
+                transform.GetChild(0).localScale = new Vector3(-1, 1, 1);
+            }
+            else if (transform.position.x < plyXX)
+            {
+                transform.GetChild(0).localScale = new Vector3(1, 1, 1);
+            }
+            else transform.GetChild(0).localScale = new Vector3(-1, 1, 1);
+
+
             PlyXPos = new Vector2(plyXX - transform.position.x, -2 - transform.position.y).normalized;
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Att2_4"))
@@ -240,8 +264,14 @@ public class Boss_yangBoss : Enemy01
     }
     public void AniIdle()
     {
-        if (ContN > 0) NowTime = IdleTime;
-        else NowTime = .1f;
+        ContN--;
+        if (ContN <= 0) NowTime = IdleTime;
+        else
+        {
+            NowTime = .1f;
+            //Debug.Log(ContN);
+        }
+        
         rig.gravityScale = 1;
         rig.velocity = Vector2.zero;
         ani.SetInteger("State", 0);

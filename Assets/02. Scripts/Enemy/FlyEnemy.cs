@@ -23,7 +23,7 @@ public class FlyEnemy : Enemy01
     {
         if (SenserPly && STime <= 0)
         {
-            Debug.Log(!UDS && !RLS);
+            //Debug.Log(!UDS && !RLS);
             if (!UDS && !RLS) rig.velocity = (Player.position - transform.position).normalized * Speed;
             else
             {
