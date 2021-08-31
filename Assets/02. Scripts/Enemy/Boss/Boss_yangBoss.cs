@@ -11,7 +11,8 @@ public class Boss_yangBoss : Enemy01
     Transform ply;
     Rigidbody2D rig;
     public GameObject brokerG;
-    // Start is called before the first frame update
+
+
     protected override void Start()
     {
         base.Start();
@@ -38,7 +39,7 @@ public class Boss_yangBoss : Enemy01
     public Vector2 PlyXPos;
     float NowTime = 5f;
     public GameObject[] HitCol;
-    public void ChangeCol(int a)
+    public void ChangeCol(int a)//콜라이더 바꾸는 함수
     {
         for(int i = 0; i < HitCol.Length; i++)
         {
@@ -65,6 +66,26 @@ public class Boss_yangBoss : Enemy01
         BigHitHp[bighitnum] = Hp;
         bighitnum = (bighitnum + 1) % BigHitHp.Length;
     }
+    int ContN = 0;
+    public void Turn()
+    {
+        if (transform.position.x <= 227)
+        {
+            transform.GetChild(0).localScale = new Vector3(1, 1, 1);
+        }
+        else if (transform.position.x >= 237)
+        {
+            transform.GetChild(0).localScale = new Vector3(-1, 1, 1);
+        }
+        ContN--;
+        if (ContN == 0) Invoke("Deshjump", 0f);
+        ani.SetInteger("State", 1);
+        ani.SetInteger("ContN", ContN);
+    }
+    void Deshjump()
+    {
+        ani.SetTrigger("Jump");
+    }
     private void FixedUpdate()
     {
         if (Stop) return;
@@ -72,13 +93,23 @@ public class Boss_yangBoss : Enemy01
         {
             if (NowTime <= 0)
             {
-                int a = Random.Range(1, 4);
+                int a = 1;
+                if (ContN <= 0) a = Random.Range(1, 4);
                 if (a == 3)
                 {
                     NowTime = JumpTime;
                     PlyXPos = ply.position;
                 }
+                else if (a == 2 && ContN <= 0) 
+                {
+                    ContN = 4;
+                }
+                else if (a == 1)
+                {
+                    ContN = 3;
+                }
                 ani.SetInteger("State", a);
+                ani.SetInteger("ContN", ContN);
             }
             else
             {
@@ -104,7 +135,7 @@ public class Boss_yangBoss : Enemy01
                 ani.SetInteger("State", 5);
             }
         }
-        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2"))
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2")|| ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2-1"))
         {
             rig.velocity = new Vector2(transform.GetChild(0).localScale.x, 0) * RushSpeed;
             rig.gravityScale = 1;
@@ -209,7 +240,8 @@ public class Boss_yangBoss : Enemy01
     }
     public void AniIdle()
     {
-        NowTime = IdleTime;
+        if (ContN > 0) NowTime = IdleTime;
+        else NowTime = .1f;
         rig.gravityScale = 1;
         rig.velocity = Vector2.zero;
         ani.SetInteger("State", 0);
@@ -231,9 +263,18 @@ public class Boss_yangBoss : Enemy01
             }
 
         }
-        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2") && collision.tag == "TurnPoint") 
+        if ((ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2") || ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2-1")) && collision.tag == "TurnPoint") 
         {
             ani.SetInteger("State", 4);
+
+            if (transform.position.x <= 227)
+            {
+                transform.GetChild(0).localScale = new Vector3(1, 1, 1);
+            }
+            else if (transform.position.x >= 237)
+            {
+                transform.GetChild(0).localScale = new Vector3(-1, 1, 1);
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
