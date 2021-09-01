@@ -162,15 +162,15 @@ public class Boss_yangBoss : Enemy01
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Att2_3"))
         {
             float plyXX = ply.position.x;
-            if (plyXX < 226) plyXX = 226;
-            else if (plyXX > 238) plyXX = 238;
+            if (plyXX < 226.5f) plyXX = 226.5f;
+            else if (plyXX > 237.5f) plyXX = 237.5f;
             if (transform.position.x > 232 && ContN == 1)
             {
-                plyXX = 226;
+                plyXX = 226.5f;
             }
             if (transform.position.x <= 232 && ContN == 1)
             {
-                plyXX = 238;
+                plyXX = 237.5f;
             }
 
             if (transform.position.x <= 227)
@@ -196,8 +196,13 @@ public class Boss_yangBoss : Enemy01
             rig.velocity = PlyXPos * JumpDownPower;
             //Debug.Log(PlyXPos);
         }
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Att2_5")|| ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_3-1"))
+        {
+            rig.velocity = Vector2.zero;
+            //Debug.Log(PlyXPos);
+        }
         //죽었을때 브로커 G 등장
-        if(Hp <= 0)
+        if (Hp <= 0)
         {
             brokerG.SetActive(true);
         }
