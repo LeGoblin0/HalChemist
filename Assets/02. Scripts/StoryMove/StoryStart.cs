@@ -5,8 +5,12 @@ using UnityEngine;
 public class StoryStart : MonoBehaviour
 {
     int nowStory = 0;
+    [HideInInspector]
     public int StoryCode = -1;
+    [Header("시작할떄 스토리 지연시간")]
+    public float DelT = 0;
 
+    [Header("반복")]
     public bool Loop = false;
     Player ply;
     private void Start()
@@ -19,7 +23,7 @@ public class StoryStart : MonoBehaviour
         if (collision.tag == "Player")
         {
             ply.OnStory = true;
-            NextStory();
+            Invoke("NextStory", DelT);
             GetComponent<Collider2D>().enabled = false;
         }
     }
@@ -33,6 +37,10 @@ public class StoryStart : MonoBehaviour
             ply.OnStory = false;
 
             if (StoryCode >= 0) GameSystem.instance.StorySave(StoryCode);
+
+
+            ply.OnStory = false;
+
 
             if (!Loop) gameObject.SetActive(false);
             GetComponent<Collider2D>().enabled = true;

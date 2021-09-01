@@ -32,6 +32,9 @@ public class Boss_yangBoss : Enemy01
     public float JumpPower = 6;
     public float JumpTime = 1;
     public float JumpDownPower = 6;
+    public float DeshJumpPower=6;
+    public float DeshJumpTimeDel= .35f;
+    public float DeshGravityScale = 1;
     public float BigHitTime = .2f;
     public int BigHitPower = 4;
     int[] BigHitHp;
@@ -39,6 +42,11 @@ public class Boss_yangBoss : Enemy01
     public Vector2 PlyXPos;
     float NowTime = 5f;
     public GameObject[] HitCol;
+    public void DeshJump()
+    {
+        rig.gravityScale = DeshGravityScale;
+        rig.velocity = new Vector2(0, DeshJumpPower);
+    }
     public void ChangeCol(int a)//콜라이더 바꾸는 함수
     {
         for(int i = 0; i < HitCol.Length; i++)
@@ -78,7 +86,7 @@ public class Boss_yangBoss : Enemy01
             transform.GetChild(0).localScale = new Vector3(-1, 1, 1);
         }
         ContN--;
-        if (ContN == 0) Invoke("Deshjump", .35f);
+        if (ContN == 0) Invoke("Deshjump", DeshJumpTimeDel);
         ani.SetInteger("State", 1);
         ani.SetInteger("ContN", ContN);
     }
@@ -94,7 +102,7 @@ public class Boss_yangBoss : Enemy01
         {
             if (NowTime <= 0)
             {
-                if (ContN <= 0) a = Random.Range(1, 4);
+                if (ContN <= 0) a =  Random.Range(1, 4);
                 if (a == 3)
                 {
                     NowTime = JumpTime;
@@ -107,6 +115,7 @@ public class Boss_yangBoss : Enemy01
                 else if (a == 1)
                 {
                     ContN = 3;
+                    rig.gravityScale = 1;
                 }
                 ani.SetInteger("State", a);
                 ani.SetInteger("ContN", ContN);
@@ -135,10 +144,9 @@ public class Boss_yangBoss : Enemy01
                 ani.SetInteger("State", 5);
             }
         }
-        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2")|| ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2-1"))
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2") || ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2-1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2-2"))
         {
-            rig.velocity = new Vector2(transform.GetChild(0).localScale.x, 0) * RushSpeed;
-            rig.gravityScale = 1;
+            rig.velocity = new Vector2(transform.GetChild(0).localScale.x * RushSpeed, rig.velocity.y);
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Att2_2"))
         {
@@ -196,7 +204,6 @@ public class Boss_yangBoss : Enemy01
         
     }
     bool Stop = true;
-
     protected override void Update()
     {
         //Debug.Log(Stop + "   " + SenserPly);
@@ -293,7 +300,7 @@ public class Boss_yangBoss : Enemy01
             }
 
         }
-        if ((ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2") || ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2-1")) && collision.tag == "TurnPoint") 
+        if ((ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2") || ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2-2") || ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2-3")) && collision.tag == "TurnPoint") 
         {
             ani.SetInteger("State", 4);
 
@@ -309,10 +316,15 @@ public class Boss_yangBoss : Enemy01
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Att2_4") && collision.gameObject.tag == "Ground") 
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Att2_4") && collision.gameObject.tag == "Ground")
         {
             rig.gravityScale = 1;
             rig.velocity = Vector2.zero;
+            ani.SetInteger("State", 7);
+        }
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Att1_2-2") && collision.gameObject.tag == "Ground")
+        {
+            rig.gravityScale = 1;
             ani.SetInteger("State", 7);
         }
     }

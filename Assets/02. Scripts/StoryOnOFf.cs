@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class StoryOnOFf : MonoBehaviour
 {
+    [HideInInspector]
     public int Codess = -1;
-    public float EndDTime = .2f;
+    [Header("시작할떄 스토리 지연시간")]
+    public float DelT = 0;
     void Start()
     {
         
@@ -17,6 +19,7 @@ public class StoryOnOFf : MonoBehaviour
         
     }
     int NowStory = 0;
+    [Header("스토리 반복 여부 세이브하면 소용 없음")]
     public bool Loop = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,8 +27,8 @@ public class StoryOnOFf : MonoBehaviour
         {
             GameSystem.instance.Ply.GetComponent<Player>().OnStory = true;
             GameSystem.instance.Ply.GetComponent<Player>().DontMove = false;
-            Destroy(GetComponent<Collider2D>());
-            OpenStory();
+            GetComponent<Collider2D>().enabled = false;
+            Invoke("OpenStory", DelT);
         }
     }
     void OpenStory()
@@ -33,17 +36,17 @@ public class StoryOnOFf : MonoBehaviour
        //Debug.Log(NowStory + "  " + transform.childCount);
         if (NowStory >= transform.childCount)
         {
-            Invoke("SSEnd", EndDTime);
+            SSEnd();
             return;
         }
         transform.GetChild(NowStory).gameObject.SetActive(true);
     }
-    public void EndStory()
+    public void EndStory(float DelTime=0)
     {
      
         transform.GetChild(NowStory).gameObject.SetActive(false);
         NowStory++;
-        OpenStory();
+        Invoke("OpenStory", DelTime);
 
     }
     private void OnDestroy()
@@ -60,6 +63,11 @@ public class StoryOnOFf : MonoBehaviour
             GameSystem.instance.Ply.GetComponent<Player>().OnStory = false;
         }
         if(!Loop) Destroy(gameObject);
+        else
+        {
+            NowStory = 0;
+            GetComponent<Collider2D>().enabled = true;
+        }
         return;
     }
 }
