@@ -29,7 +29,7 @@ public class Sencer : MonoBehaviour
             if (right) ply.right = true;
             if (left) ply.left = true;
 
-            if (down)
+            if (down&& collision.GetComponent<SSSSMMM>()==null)//sssmmm경사로는 땅아님 
             {
                 ply.down = true;
                 ply.airAtt = true;

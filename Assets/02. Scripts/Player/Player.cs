@@ -149,6 +149,8 @@ public class Player : Life
     public float BaseStoneCoolTime = 5;
     [Tooltip("던질때 회전")]
     public float ThrowRollPower = 720;
+    [Tooltip("추가탄 속도")]
+    public float StoneShootPower = 3;
 
 
     [Tooltip("플레이어가 보고 있는 방향 [1: 우 ]  [2: 좌 ]")]
@@ -264,8 +266,19 @@ public class Player : Life
     {
         if (!OnStory && Input.GetKeyDown(KeyCode.G))
         {
-
-            if (NowChooseObj != null && NowChooseObj.GetComponent<StoneDieAni>() != null)
+            if (ShootStone != null) 
+            {
+                Vector2 go = -(ShootStone.parent.parent.position - ShootStone.position);
+                ShootStone.parent = null;
+                Debug.Log(go);
+                ShootStone.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                ShootStone.GetComponent<Rigidbody2D>().velocity = go.normalized * StoneShootPower;
+                ShootStone.GetComponent<Collider2D>().enabled = true;
+                ShootStone.GetComponent<StoneDieAni>().DieSet = true;
+                ShootStone.GetComponent<StoneDieAni>().enabled = true;
+                ShootStone = null;
+            }
+            else if (NowChooseObj != null && NowChooseObj.GetComponent<StoneDieAni>() != null)
             {
                 int Stonecode = NowChooseObj.GetComponent<StoneDieAni>().Code;
                 for (int i = 1; i < HaveStone.Length; i++)
@@ -637,7 +650,7 @@ public class Player : Life
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump") && !DontKeyStayMove) 
         {
-            if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)))
+            if ((OnStory && (Story_RightMove || Story_LeftMove)) || (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))) 
             {
                 ani.SetFloat("RunSpeed", MaxSpeed * 1.2f);
                 rig.velocity = new Vector2(MaxSpeed * PlyLook, rig.velocity.y);
@@ -715,6 +728,8 @@ public class Player : Life
     int Tcode;
     bool StopStone = false;
     float StopStoneTime = 0;
+
+    Transform ShootStone;
     void Ply_Throw()
     {
         if (!OnStory && Input.GetKeyDown(KeyCode.S))
@@ -767,6 +782,11 @@ public class Player : Life
     public void MakeStone()
     {
         ThrowStone = Instantiate(GameSystem.instance.AllSton[Tcode]).transform;
+
+        if (Tcode == 4)
+        {
+            ShootStone = ThrowStone.GetChild(0).GetChild(0);
+        }
         if (ThrowStone.GetComponent<StoneDieAni>() != null) ThrowStone.GetComponent<StoneDieAni>().DieSet = true;
         ThrowStone.GetComponent<Animator>().SetInteger("Set", 1);
         ThrowStone.position = Hand.GetChild(0).position + new Vector3(0, 0.5f, -.1f);
@@ -785,8 +805,8 @@ public class Player : Life
 
         ThrowStone.gameObject.AddComponent<StoneThrow>().Speed = ThrowPower;
 
-        //ThrowStone.GetComponent<Rigidbody2D>().freezeRotation = false;
-        //ThrowStone.GetComponent<Rigidbody2D>().angularVelocity = ThrowRollPower * PlyLook;
+        ThrowStone.GetComponent<Rigidbody2D>().freezeRotation = false;
+        ThrowStone.GetComponent<Rigidbody2D>().angularVelocity = ThrowRollPower * PlyLook;
 
         int codes = ThrowStone.GetComponent<StoneDieAni>().Code;
         if (codes == 3)
