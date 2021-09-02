@@ -140,17 +140,17 @@ public class Player : Life
     [Tooltip("스톤 겹치는 수량")]
     public int StackStone = 3;//스톤겹친갯수
     Transform ThrowStone;//던진 스톤 정보 
-    [Tooltip("던질파워")]
-    public float ThrowPower = 5;
-    [Tooltip("던지고 없어지는 시간")]
-    public float DesTimeStone = 5;
+    //[Tooltip("던질파워")]
+    //public float ThrowPower = 5;
+    //[Tooltip("던지고 없어지는 시간")]
+    //public float DesTimeStone = 5;
     public Transform StoneUITr;
     [Tooltip("기본 원석 생성 주기")]
     public float BaseStoneCoolTime = 5;
-    [Tooltip("던질때 회전")]
-    public float ThrowRollPower = 720;
-    [Tooltip("추가탄 속도")]
-    public float StoneShootPower = 3;
+    //[Tooltip("던질때 회전")]
+    //public float ThrowRollPower = 720;
+    //[Tooltip("추가탄 속도")]
+    //public float StoneShootPower = 3;
 
 
     [Tooltip("플레이어가 보고 있는 방향 [1: 우 ]  [2: 좌 ]")]
@@ -272,7 +272,7 @@ public class Player : Life
                 ShootStone.parent = null;
                 Debug.Log(go);
                 ShootStone.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                ShootStone.GetComponent<Rigidbody2D>().velocity = go.normalized * StoneShootPower;
+                ShootStone.GetComponent<Rigidbody2D>().velocity = go.normalized * ShootStone.GetComponent<StoneDieAni>().ThrowSpeed;
                 ShootStone.GetComponent<Collider2D>().enabled = true;
                 ShootStone.GetComponent<StoneDieAni>().DieSet = true;
                 ShootStone.GetComponent<StoneDieAni>().enabled = true;
@@ -758,7 +758,7 @@ public class Player : Life
         {
             ThrowStone.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             ThrowStone.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
-            Destroy(ThrowStone.gameObject, DesTimeStone);
+            Destroy(ThrowStone.gameObject, ThrowStone.GetComponent<StoneDieAni>().SpDesTime);
             ThrowStone = null;
             StopStone = false;
         }
@@ -801,12 +801,12 @@ public class Player : Life
         ThrowStone.gameObject.layer = 8;
         ThrowStone.GetComponent<Att>().Set = true;
         ThrowStone.GetComponent<Att>().GroundDes = true;
-        ThrowStone.GetComponent<Rigidbody2D>().velocity = new Vector2(PlyLook * ThrowPower, 0);
+        ThrowStone.GetComponent<Rigidbody2D>().velocity = new Vector2(PlyLook * ThrowStone.GetComponent<StoneDieAni>().ThrowSpeed, 0);
 
-        ThrowStone.gameObject.AddComponent<StoneThrow>().Speed = ThrowPower;
+        ThrowStone.gameObject.AddComponent<StoneThrow>().Speed = ThrowStone.GetComponent<StoneDieAni>().ThrowSpeed;
 
         ThrowStone.GetComponent<Rigidbody2D>().freezeRotation = false;
-        ThrowStone.GetComponent<Rigidbody2D>().angularVelocity = ThrowRollPower * PlyLook;
+        ThrowStone.GetComponent<Rigidbody2D>().angularVelocity = ThrowStone.GetComponent<StoneDieAni>().RollSpeed * PlyLook;
 
         int codes = ThrowStone.GetComponent<StoneDieAni>().Code;
         if (codes == 3)
@@ -814,10 +814,6 @@ public class Player : Life
             ThrowStone.GetComponent<Att>().GroundDes = false;
             ThrowStone.GetComponent<Att>().HitNum = 2;
             ThrowStone.GetComponent<Att>().HitDesT = true;
-        }
-        else
-        {
-            Destroy(ThrowStone.gameObject, DesTimeStone);
         }
 
 

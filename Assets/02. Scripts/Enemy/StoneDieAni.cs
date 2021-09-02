@@ -5,6 +5,15 @@ using UnityEngine;
 public class StoneDieAni : MonoBehaviour
 {
     // Start is called before the first frame update
+    [Header("날라가는 속도")]
+    public float ThrowSpeed=6;
+    [Header("회전 속도")]
+    public float RollSpeed=720;
+
+    [Header("스핀 제거 시간")]
+    public float SpDesTime = 5;
+    [Header("다용도 변수")]
+    public float StoneSpecialNum;
     void Start()
     {
 
