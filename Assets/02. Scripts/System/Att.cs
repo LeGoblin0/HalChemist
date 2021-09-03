@@ -61,6 +61,7 @@ public class Att : MonoBehaviour
     public bool Set = false;
 
     public bool DieAni = false;
+    public bool DieCollDes = true;
     public void DDD()
     {
         Destroy(gameObject, DesDesTime);
@@ -76,7 +77,7 @@ public class Att : MonoBehaviour
             {
                 if (GetComponent<Animator>() != null) GetComponent<Animator>().SetTrigger("Die");
                 if (GetComponent<Collider2D>() != null) Destroy(GetComponent<Collider2D>());
-                if (GetComponent<Rigidbody2D>() != null) GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                if (GetComponent<Rigidbody2D>() != null) GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             }
             else Destroy(gameObject, DesDesTime);
         }

@@ -67,7 +67,7 @@ public class Enemy01 : Life
     protected void Dieset()
     {
         if (Hp <= 0)
-        { 
+        {
             if (!Die)
             {
                 Die = true;
