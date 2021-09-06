@@ -83,7 +83,7 @@ public class fishlime : Enemy01
         {
             Attss = true;
             TT -= Time.deltaTime;
-            if (TT > MoveStopTime) transform.GetChild(0).position += new Vector3(-transform.GetChild(0).position.x + ply.position.x, 0).normalized * Time.deltaTime * MoveSpeed;
+            if (TT > MoveStopTime&& ani.GetCurrentAnimatorStateInfo(0).IsName("FishLime02")) transform.GetChild(0).position += new Vector3(-transform.GetChild(0).position.x + ply.position.x, 0).normalized * Time.deltaTime * MoveSpeed;
         }
         else if (Attss)
         {
