@@ -193,6 +193,7 @@ MonoBehaviour:
   GroundDes: 0
   Set: 0
   DieAni: 0
+  DieCollDes: 1
 --- !u!114 &4551014918239076005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d358ed769cab544985e2a5e4f5a81f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThrowSpeed: 3
+  ThrowSpeed: 10
   RollSpeed: 720
   SpDesTime: 3
   StoneSpecialNum: 0
