@@ -309,7 +309,7 @@ MonoBehaviour:
   HitAniSpeed: 10
   HitAniknockBack: 1
   HitWhite: 1
-  Speed: 1
+  Speed: 0
   KnockBack: 1
   KnockPower: 2
   STime: 1
