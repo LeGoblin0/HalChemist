@@ -65,7 +65,7 @@ public class Enemy01 : Life
         }
         Dieset();//체력다되면 사망
     }
-    protected void Dieset()
+    protected virtual void Dieset()
     {
         if (Hp <= 0)
         {
