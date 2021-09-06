@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHP: 1
-  Hp: 5
+  Hp: 3
   state: 0
   ani: {fileID: 0}
   YSet: 1
@@ -274,7 +274,7 @@ MonoBehaviour:
   HitAniSpeed: 10
   HitAniknockBack: 1
   HitWhite: 1
-  MoveSpeed: 1
+  MoveSpeed: 3
   MoveTime: 2
   MoveStopTime: 0.5
   col:

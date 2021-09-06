@@ -110,6 +110,7 @@ MonoBehaviour:
   GroundDes: 1
   Set: 0
   DieAni: 0
+  DieCollDes: 1
 --- !u!114 &2892320407157724409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,8 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d358ed769cab544985e2a5e4f5a81f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThrowSpeed: 3
-  RollSpeed: 360
+  ThrowSpeed: 6
+  RollSpeed: 560
   SpDesTime: 5
   StoneSpecialNum: 0
   DieObj: {fileID: 4870061418998596664, guid: 3c55902b5376f1b4b97a4b814fa6d10a, type: 3}
@@ -458,6 +459,7 @@ MonoBehaviour:
   GroundDes: 1
   Set: 1
   DieAni: 0
+  DieCollDes: 1
 --- !u!114 &8959552533788301716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,7 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d358ed769cab544985e2a5e4f5a81f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThrowSpeed: 6
+  ThrowSpeed: 15
   RollSpeed: 720
   SpDesTime: 5
   StoneSpecialNum: 0

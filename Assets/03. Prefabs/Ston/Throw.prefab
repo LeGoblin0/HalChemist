@@ -290,6 +290,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d358ed769cab544985e2a5e4f5a81f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThrowSpeed: 10
+  RollSpeed: 720
+  SpDesTime: 5
+  StoneSpecialNum: 0
   DieObj: {fileID: 4870061418998596664, guid: 112af9cb21be7c84884f2974d9d5e3bd, type: 3}
   Code: 3
   StonImg: {fileID: -2689840773800953785, guid: b61f4dc4647c69c4f813f814f4d51daf,
