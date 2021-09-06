@@ -153,6 +153,7 @@ MonoBehaviour:
   state: 0
   ani: {fileID: 0}
   YSet: 1
+  YNum: 4
   SenserPly: 0
   DieItem: []
   MoneyDie: 2
@@ -164,6 +165,8 @@ MonoBehaviour:
   HitAniknockBack: 1
   HitWhite: 1
   Speed: 1
+  KnockBack: 0
+  KnockPower: 2
   STime: 1
   UDS: 0
   RLS: 0
@@ -301,6 +304,7 @@ MonoBehaviour:
   AttDamage: 1
   DesTime: 0
   DesDesTime: 0
+  SelfDesTime: 0
   HitDesT: 0
   HitNum: 1
   AttArrow: -1
@@ -310,6 +314,7 @@ MonoBehaviour:
   GroundDes: 0
   Set: 1
   DieAni: 0
+  DieCollDes: 1
 --- !u!114 &1426730414746834326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,7 +546,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.44338846, y: 0.74094814}
+  m_Size: {x: 0.48, y: 0.77}
   m_EdgeRadius: 0
 --- !u!1 &5623217603232362933
 GameObject:

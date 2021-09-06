@@ -7,6 +7,7 @@ public class Enemy01 : Life
     public Animator ani;
     protected SpriteRenderer ImgRander;
     public bool YSet = true;
+    public float YNum = 4;
 
     protected Material First;
     protected virtual void Start()//protected override void Start() 상속받아서 이렇게 작성
@@ -29,7 +30,7 @@ public class Enemy01 : Life
 
         if (YSet)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, 4);
+            transform.position = new Vector3(transform.position.x, transform.position.y, YNum);
         }
     }
     protected bool Die = false;//죽으면 참이됨 죽었을떄 1번만 발생하도록 해주는 변수

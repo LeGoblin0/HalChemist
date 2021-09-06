@@ -7,6 +7,8 @@ public class FlyEnemy : Enemy01
     [Header("플레이어 위치 받아옴")]
     Transform Player;
     public float Speed;
+    public bool KnockBack = false;
+    public float KnockPower = 2;
     Rigidbody2D rig;
     public float STime = 1;
 
@@ -24,10 +26,13 @@ public class FlyEnemy : Enemy01
         if (SenserPly && STime <= 0)
         {
             //Debug.Log(!UDS && !RLS);
-            if (!UDS && !RLS) rig.velocity = (Player.position - transform.position).normalized * Speed;
+            if (KnockBack && HHIITime > 0)
+            {
+                rig.velocity = -(Player.position - transform.position).normalized * KnockPower;
+            }
             else
             {
-                rig.velocity = new Vector2(XXX, YYY) * Speed;
+                rig.velocity = new Vector2(UDS?XXX: (Player.position - transform.position).normalized.x, RLS ? YYY: (Player.position - transform.position).normalized.y) * Speed;
             }
             //Debug.Log(rig.velocity);
         }
@@ -46,20 +51,6 @@ public class FlyEnemy : Enemy01
     {
         if (t)
         {
-            if (Player.position.y > transform.position.y) YYY = 1;
-            else YYY = -1;
-
-        }
-        else
-        {
-             YYY = 0;
-        }
-        UDS = t;
-    }
-    public void RLSen(bool t)
-    {
-        if (t)
-        {
             if (Player.position.x > transform.position.x) XXX = 1;
             else XXX = -1;
         }
@@ -67,10 +58,39 @@ public class FlyEnemy : Enemy01
         {
             XXX = 0;
         }
+        UDS = t;
+    }
+    public void RLSen(bool t)
+    {
+        if (t)
+        {
+            if (Player.position.y > transform.position.y) YYY = 1;
+            else YYY = -1;
+
+        }
+        else
+        {
+            YYY = 0;
+        }
         RLS = t;
     }
     public bool UDS = false;
     public bool RLS = false;
 
    public int XXX = 0, YYY = 0;
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        //base.OnTriggerEnter2D(collision);
+
+        if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set)
+        {
+            Hp -= collision.GetComponent<Att>().AttDamage;
+            if (Hp != 0)
+            {
+                HHIITime = .5f;
+                if (HitAni) ani.SetTrigger("Hit");
+            }
+
+        }
+    }
 }

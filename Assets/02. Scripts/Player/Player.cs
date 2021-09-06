@@ -366,6 +366,7 @@ public class Player : Life
 
     protected void OnTriggerStay2D(Collider2D collision)
     {
+        //Debug.Log(collision.name);
         if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set && nowGodTime <= 0 )
         {
             //            Debug.Log(collision.name);

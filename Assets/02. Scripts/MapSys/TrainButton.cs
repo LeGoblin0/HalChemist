@@ -38,6 +38,7 @@ public class TrainButton : MonoBehaviour
         if (YSet)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, 6);
+            //if (transform.childCount > 0) transform.GetChild(0).position = new Vector3(transform.position.x, transform.position.y, 6.1f);
         }
     }
     public bool PutNow = true;
