@@ -23,7 +23,7 @@ public class manlime : Enemy01
         if (First) return;
         base.Update();//체력감소하면 사망
 
-        if (SenserPly)  //플레이어와 충돌시 러쉬
+        if (SenserPly && ani.GetCurrentAnimatorStateInfo(0).IsName("manlime00"))  //플레이어와 충돌시 러쉬
         {
             ani.SetInteger("state", 1);
             //Debug.Log(ani.GetInteger("state"));
@@ -89,7 +89,7 @@ public class manlime : Enemy01
     {
         if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set)
         {
-            Debug.Log(Hp + "  " + collision.GetComponent<Att>().AttDamage);
+            //Debug.Log(Hp + "  " + collision.GetComponent<Att>().AttDamage);
             Hp -= collision.GetComponent<Att>().AttDamage;
             if (Hp != 0)
             {
