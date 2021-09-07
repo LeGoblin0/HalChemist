@@ -533,7 +533,7 @@ MonoBehaviour:
   SenserPly: 0
   DieItem: []
   MoneyDie: 4
-  DieAniTime: 0
+  DieAniTime: 0.5
   NoDie: 0
   HHIITime: 0
   HitAni: 1
@@ -695,7 +695,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2446770638260725032, guid: 53d8714b88a42d246b2018f1a46a8d42,
+  m_Sprite: {fileID: -1389582126608179472, guid: 53d8714b88a42d246b2018f1a46a8d42,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

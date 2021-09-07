@@ -142,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 9027460619940700274}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 8, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9027460620411866039}
   m_RootOrder: 1
@@ -266,8 +266,9 @@ MonoBehaviour:
   - {fileID: 2231214881868672547, guid: de106406ba08a2e44aba2e1a03291555, type: 3}
   - {fileID: 2231214881868672547, guid: de106406ba08a2e44aba2e1a03291555, type: 3}
   - {fileID: 2231214881868672547, guid: de106406ba08a2e44aba2e1a03291555, type: 3}
+  - {fileID: 5405655724695976519, guid: 3bb7b72d2ae5a3049a6a1ce35d79afc4, type: 3}
   MoneyDie: 11
-  DieAniTime: 0
+  DieAniTime: 0.5
   NoDie: 0
   HHIITime: 0
   HitAni: 1

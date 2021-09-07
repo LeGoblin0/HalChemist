@@ -526,7 +526,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5430388337357342482}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.25, y: 2.45, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -552,14 +552,16 @@ MonoBehaviour:
   state: 0
   ani: {fileID: 0}
   YSet: 1
+  YNum: 4
   SenserPly: 0
   DieItem:
+  - {fileID: 5405655724695976519, guid: 3bb7b72d2ae5a3049a6a1ce35d79afc4, type: 3}
   - {fileID: 2231214881868672547, guid: de106406ba08a2e44aba2e1a03291555, type: 3}
   - {fileID: 2231214881868672547, guid: de106406ba08a2e44aba2e1a03291555, type: 3}
   - {fileID: 2231214881868672547, guid: de106406ba08a2e44aba2e1a03291555, type: 3}
   - {fileID: 2231214881868672547, guid: de106406ba08a2e44aba2e1a03291555, type: 3}
   MoneyDie: 15
-  DieAniTime: 0
+  DieAniTime: 0.5
   NoDie: 0
   HHIITime: 0.5
   HitAni: 0

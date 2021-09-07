@@ -28,6 +28,16 @@ public class manlime : Enemy01
             ani.SetInteger("state", 1);
             //Debug.Log(ani.GetInteger("state"));
             //Invoke("stop", RushTime);
+            if (transform.position.x > GameSystem.instance.Ply.position.x)
+            {
+                flip = -1;
+                transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
+            }
+            else
+            {
+                flip = +1;
+                transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
+            }
         }
         rig.gravityScale = 1;
 
@@ -41,6 +51,8 @@ public class manlime : Enemy01
     public Vector2 ShootPower;
     public void ShootAtt()
     {
+        air = true;
+        ani.SetBool("Air", air);
         //Debug.Log("ATt");
         rig.velocity = new Vector2(ShootPower.x * flip, ShootPower.y);
     }
@@ -49,6 +61,7 @@ public class manlime : Enemy01
     float GroundKnckBackTime = 0;
     public float GroundKnckBackTimeMax = .5f;
     public float GroundKnckBackSpeed = 3;
+    bool air = false;
     public override void GroundSen(bool Out = false)
     {
         base.GroundSen(Out);
@@ -68,6 +81,8 @@ public class manlime : Enemy01
     {
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("manlime01"))
         {
+            air = false;
+            ani.SetBool("Air", air);
             ani.SetInteger("state", 2);
         }
     }
@@ -95,16 +110,6 @@ public class manlime : Enemy01
             {
                 HHIITime = .2f;
                 if (HitAni) ani.SetTrigger("Hit");
-                if (transform.position.x > GameSystem.instance.Ply.position.x)
-                {
-                    flip = -1;
-                    transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
-                }
-                else
-                {
-                    flip = +1;
-                    transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
-                }
             }
 
         }

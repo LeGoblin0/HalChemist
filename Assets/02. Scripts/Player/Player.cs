@@ -266,19 +266,29 @@ public class Player : Life
     {
         if (!OnStory && Input.GetKeyDown(KeyCode.G))
         {
-            if (ShootStone != null) 
+
+            if (ShootStone == null) ShootStone = new Transform[100];
+            bool STSTS = false;
+            //Debug.Log(ShootStone+ "   " +ShootStone.Length);
+            for(int i = 0; i < ShootStone.Length; i++)
             {
-                Vector2 go = -(ShootStone.parent.parent.position - ShootStone.position);
-                ShootStone.parent = null;
-                Debug.Log(go);
-                ShootStone.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                ShootStone.GetComponent<Rigidbody2D>().velocity = go.normalized * ShootStone.GetComponent<StoneDieAni>().ThrowSpeed;
-                ShootStone.GetComponent<Collider2D>().enabled = true;
-                ShootStone.GetComponent<StoneDieAni>().DieSet = true;
-                ShootStone.GetComponent<StoneDieAni>().enabled = true;
-                ShootStone = null;
+                if (ShootStone[i] != null)
+                {
+                    ShootStone[i].parent.parent.GetComponent<Animator>().SetTrigger("Shoot");
+                    STSTS = true;
+                    Vector2 go = -(ShootStone[i].parent.parent.position - ShootStone[i].position);
+                    ShootStone[i].parent = null;
+                    //Debug.Log(go);
+                    ShootStone[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                    ShootStone[i].GetComponent<Rigidbody2D>().velocity = go.normalized * ShootStone[i].GetComponent<StoneDieAni>().ThrowSpeed;
+                    ShootStone[i].GetComponent<Collider2D>().enabled = true;
+                    ShootStone[i].GetComponent<StoneDieAni>().DieSet = true;
+                    ShootStone[i].GetComponent<StoneDieAni>().enabled = true;
+                    ShootStone[i] = null;
+                }
             }
-            else if (NowChooseObj != null && NowChooseObj.GetComponent<StoneDieAni>() != null)
+            if (STSTS) return;
+            if (NowChooseObj != null && NowChooseObj.GetComponent<StoneDieAni>() != null)
             {
                 int Stonecode = NowChooseObj.GetComponent<StoneDieAni>().Code;
                 for (int i = 1; i < HaveStone.Length; i++)
@@ -730,7 +740,8 @@ public class Player : Life
     bool StopStone = false;
     float StopStoneTime = 0;
 
-    Transform ShootStone;
+    Transform[] ShootStone;//던져진 스톤의 총알
+    int ShootStoneNum = 0;//던져진 스톤 총알 넘버
     void Ply_Throw()
     {
         if (!OnStory && Input.GetKeyDown(KeyCode.S))
@@ -784,9 +795,17 @@ public class Player : Life
     {
         ThrowStone = Instantiate(GameSystem.instance.AllSton[Tcode]).transform;
 
+        if (ShootStone == null) ShootStone = new Transform[100];
         if (Tcode == 4)
         {
-            ShootStone = ThrowStone.GetChild(0).GetChild(0);
+            ShootStone[ShootStoneNum++] = ThrowStone.GetChild(0).GetChild(0);
+        }
+        else if (Tcode == 5)
+        {
+            ShootStone[ShootStoneNum++] = ThrowStone.GetChild(0).GetChild(0);
+            ShootStone[ShootStoneNum++] = ThrowStone.GetChild(0).GetChild(1);
+            ShootStone[ShootStoneNum++] = ThrowStone.GetChild(0).GetChild(2);
+            ShootStone[ShootStoneNum++] = ThrowStone.GetChild(0).GetChild(3);
         }
         if (ThrowStone.GetComponent<StoneDieAni>() != null) ThrowStone.GetComponent<StoneDieAni>().DieSet = true;
         ThrowStone.GetComponent<Animator>().SetInteger("Set", 1);
