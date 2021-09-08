@@ -188,9 +188,21 @@ public class Player : Life
     }
     bool NowDie = false;
 
-    
+    public GameObject ShootThrowUI;
     void Update()
     {
+        bool ff = false;
+        if (ShootStone == null) ShootStone = new Transform[100];
+        for (int i=0;i< ShootStone.Length; i++)
+        {
+            if (ShootStone[i] != null)
+            {
+                ff = true;
+                break;
+            }
+        }
+        ShootThrowUI.SetActive(ff);
+        
         if (NowDie) return;
 
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_2")
