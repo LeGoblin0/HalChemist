@@ -45,5 +45,11 @@ public class StoneDieAni : MonoBehaviour
             transform.position = new Vector3(-1000, -1000);
             Destroy(gameObject);
         }
+        if (collision.tag == "TrapGround")
+        {
+            DieSet = true;
+            Destroy(gameObject);
+        }
+
     }
 }

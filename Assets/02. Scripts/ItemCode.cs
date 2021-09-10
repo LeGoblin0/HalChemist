@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemCode : MonoBehaviour
 {
     public int ItemCodeNum;
+    public bool DesTrap = true;
     void Start()
     {
         
@@ -35,5 +36,12 @@ public class ItemCode : MonoBehaviour
     public void DDD()
     {
         Destroy(gameObject);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (DesTrap && collision.tag == "TrapGround")
+        {
+            DDD();
+        }
     }
 }

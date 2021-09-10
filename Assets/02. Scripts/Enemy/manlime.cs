@@ -118,6 +118,10 @@ public class manlime : Enemy01
             flip *= -1;
             transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
         }
+        if (collision.tag == "TrapGround")
+        {
+            Hp = 0;
+        }
     }
     bool First = true;
     private void OnCollisionEnter2D(Collision2D collision)

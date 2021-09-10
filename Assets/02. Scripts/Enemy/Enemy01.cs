@@ -43,6 +43,7 @@ public class Enemy01 : Life
     }
 
     [Header("사망하면 떨구는 아이템")]
+    public bool DropItem = true;
     public Transform[] DieItem;
     public int MoneyDie = 0;
     [Header("사망 애니메이션 시간")]
@@ -130,7 +131,12 @@ public class Enemy01 : Life
                 HHIITime = .2f;
                 if(HitAni) ani.SetTrigger("Hit");
             }
-            
+
+        }
+        if (collision.tag == "TrapGround")
+        {
+            DropItem = false;
+            Hp = 0;
         }
     }
 }

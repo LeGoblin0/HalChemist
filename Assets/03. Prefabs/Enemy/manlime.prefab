@@ -531,6 +531,7 @@ MonoBehaviour:
   YSet: 1
   YNum: 4
   SenserPly: 0
+  DropItem: 1
   DieItem: []
   MoneyDie: 4
   DieAniTime: 0.5

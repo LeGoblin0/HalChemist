@@ -92,5 +92,9 @@ public class FlyEnemy : Enemy01
             }
 
         }
+        if (collision.tag == "TrapGround")
+        {
+            Hp = 0;
+        }
     }
 }
