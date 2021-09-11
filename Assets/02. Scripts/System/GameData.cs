@@ -11,6 +11,7 @@ namespace DataInfo
         public int[] MapObj;
         public int[] Dest;
         public bool[] Story;
+        public int[] NpcSayNum;
         public int BGSound;
         public int Sound;
         public int[] Quest;

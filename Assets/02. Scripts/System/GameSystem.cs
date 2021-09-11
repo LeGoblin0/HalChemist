@@ -13,6 +13,8 @@ public class GameSystem : MonoBehaviour
     AudioSource aus;
     public AudioClip[] BGClip;
     public StoryStart[] Story;
+    public ObjData[] NPC;
+    public GameObject TextSay;
     public void Sond(int i)
     {
         if (aus == null) aus = GetComponent<AudioSource>();
@@ -106,6 +108,12 @@ public class GameSystem : MonoBehaviour
         gameData.Story[code] = true;
         Save();
     }
+    public void NPCSaySave(int code,int num)
+    {
+        if (gameData.NpcSayNum == null) gameData.NpcSayNum = new int[1000];
+        gameData.NpcSayNum[code] = num;
+        Save();
+    }
     public GameData Load()
     {
 
@@ -132,6 +140,13 @@ public class GameSystem : MonoBehaviour
                 if (gameData.Story == null) { gameData.Story = new bool[1000]; Save(); }
                 if (gameData.Story[i]) StoryTr.GetChild(i).gameObject.SetActive(false);
             }
+            if (gameData.NpcSayNum == null) gameData.NpcSayNum = new int[1000];
+            for (int i = 0; i < NPC.Length; i++)
+            {
+                NPC[i].id = i;
+                NPC[i].NowStoryNum = gameData.NpcSayNum[i];
+            }
+
 
             MonsterSSS();
             if (gameData.Money == null) gameData.Money = new int[2];

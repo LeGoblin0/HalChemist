@@ -152,9 +152,9 @@ public class Player : Life
     //[Tooltip("추가탄 속도")]
     //public float StoneShootPower = 3;
 
-
+    [HideInInspector]
     [Tooltip("플레이어가 보고 있는 방향 [1: 우 ]  [2: 좌 ]")]
-    int PlyLook = 1;
+    public int PlyLook = 1;
 
 
     [Header("시스템")]
@@ -164,16 +164,17 @@ public class Player : Life
     [HideInInspector]
     public Mcam cam;
 
-    [Header("대화문")]
-    public DialogManager manager;
-    GameObject scanObject;
+    //[Header("대화문")]
+    //public DialogManager manager;
+    //GameObject scanObject;
+    ObjData NowObj;
 
     Vector3 dirVec;
     private void FixedUpdate()
     {
         if (NowDie) return;
         AniMove();
-        NpcCheck();
+        //NpcCheck();
 
         if (rig.velocity.y < -DownMaxSpeed) 
         {
@@ -367,9 +368,13 @@ public class Player : Life
         {
             trapsavepoint = transform.position+new Vector3(0,0.2f);
         }
-        if (collision.tag == "TrapGround")
+        else if (collision.tag == "TrapGround")
         {
             GoTrapSavePoint();
+        }
+        else if (collision.tag == "NPCObj")
+        {
+            NowObj = collision.GetComponent<ObjData>();
         }
     }
 
@@ -466,6 +471,10 @@ public class Player : Life
                 NowChooseObj.transform.position = new Vector3(NowChooseObj.transform.position.x, NowChooseObj.transform.position.y, NowChooseObj.transform.position.z + 0.1f);
             }
             NowChooseObj = null;
+        }
+        else if (collision.tag == "NPCObj")
+        {
+            if (NowObj == collision.GetComponent<ObjData>()) NowObj = null;
         }
     }
 
@@ -714,21 +723,21 @@ public class Player : Life
         PlySave(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    void NpcCheck()
-    {
-        Debug.DrawRay(rig.position, dirVec * 0.7f, new Color(0, 1, 0));
+    //void NpcCheck()
+    //{
+    //    Debug.DrawRay(rig.position, dirVec * 0.7f, new Color(0, 1, 0));
         
-        RaycastHit2D rayHit = Physics2D.Raycast(rig.position, dirVec, 0.7f, LayerMask.GetMask("ObjLayer"));
-        if (rayHit.collider != null)
-        {
-            scanObject = rayHit.collider.gameObject;
-        }
-        else
-        {
-            scanObject = null;
-        }
+    //    RaycastHit2D rayHit = Physics2D.Raycast(rig.position, dirVec, 0.7f, LayerMask.GetMask("ObjLayer"));
+    //    if (rayHit.collider != null)
+    //    {
+    //        scanObject = rayHit.collider.gameObject;
+    //    }
+    //    else
+    //    {
+    //        scanObject = null;
+    //    }
         
-    }
+    //}
     void InputTest()
     {
         if (!DontMove)
@@ -742,9 +751,10 @@ public class Player : Life
                 dirVec = Vector3.left;
             }
         }
-        if (!OnStory && Input.GetKeyDown(KeyCode.G) && scanObject != null)
+        if (!OnStory && Input.GetKeyDown(KeyCode.G) && NowObj != null)
         {
-            manager.Action(scanObject);
+            //manager.Action(scanObject);
+            NowObj.NPCOpen(0, true);
         }
     }
 

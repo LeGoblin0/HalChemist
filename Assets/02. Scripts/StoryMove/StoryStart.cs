@@ -43,6 +43,10 @@ public class StoryStart : MonoBehaviour
 
 
             if (!Loop) gameObject.SetActive(false);
+            
+            
+                nowStory = 0;
+            
             GetComponent<Collider2D>().enabled = true;
             return;
         }
