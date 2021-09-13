@@ -154,6 +154,7 @@ public class GameSystem : MonoBehaviour
             Vector3 GG = SavePos[gameData.SavePoint].transform.position;
             Sond(SavePos[gameData.SavePoint].BGSound);
             Ply.position = new Vector3(GG.x, GG.y, Ply.position.z);
+            Ply.GetComponent<Player>().trapsavepoint = new Vector3(GG.x, GG.y, Ply.position.z);
             //Ply.GetComponent<Player>().Hand.position = new Vector3(GG.x, GG.y, Ply.GetComponent<Player>().Hand.position.z);
             if (SavePos[gameData.SavePoint].MovePos == null)
             {
@@ -308,6 +309,14 @@ public class GameSystem : MonoBehaviour
     public int MapSSS(int i)
     {
         return gameData.MapObj[i];
+    }
+    public int GiveNPCSayNum(int i)
+    {
+        return gameData.NpcSayNum[i];
+    }
+    public bool GiveStory(int i)
+    {
+        return gameData.Story[i];
     }
     public SaveTrTr[] SavePos;
     public MapSyS[] MapObjS;

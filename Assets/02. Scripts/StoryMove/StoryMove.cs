@@ -44,7 +44,7 @@ public class StoryMove : MonoBehaviour
     bool ONUI2;
     [TextArea(2, 100)]
     public string OnUITxt;
-    public float PointLookTime = .2f;
+    public float PointLookTime = 0.035f;
     float NowPointLookTime = 0;
     int NowPoint = 0;
 
@@ -69,6 +69,10 @@ public class StoryMove : MonoBehaviour
     public GameObject SetObjT;
     [Header("오브젝트 비활성화")]
     public GameObject DisObjT;
+    [Header("오브젝트 애니메이션 실행 int형")]
+    public Animator SetAni;
+    public string AniName = "State";
+    public int AniNum;
 
 
     private void Start()
@@ -152,21 +156,6 @@ public class StoryMove : MonoBehaviour
                     ply.Story_RightMove = true;
                 }
             }
-            if (NPCEndSay != -1) 
-            {
-                if (SetNPC != null) ;
-                else if (transform.parent.GetComponent<ObjData>() != null) SetNPC = transform.parent.GetComponent<ObjData>();
-                else if (transform.parent.parent.GetComponent<ObjData>() != null) SetNPC = transform.parent.parent.GetComponent<ObjData>();
-                else if (transform.parent.parent.parent.GetComponent<ObjData>() != null) SetNPC = transform.parent.parent.parent.GetComponent<ObjData>();
-                SetNPC.EndSay(NPCEndSay);
-            }
-            if (NPCNowSay)
-            {
-                if (SetNPC != null) ;
-                else if (transform.parent.GetComponent<ObjData>() != null) SetNPC = transform.parent.GetComponent<ObjData>();
-                else if (transform.parent.parent.GetComponent<ObjData>() != null) SetNPC = transform.parent.parent.GetComponent<ObjData>();
-                else if (transform.parent.parent.parent.GetComponent<ObjData>() != null) SetNPC = transform.parent.parent.parent.GetComponent<ObjData>();
-            }
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -204,6 +193,21 @@ public class StoryMove : MonoBehaviour
     void EEE()
     {
         storyStart.NextStory();
+        if (NPCEndSay != -1)
+        {
+            if (SetNPC != null) ;
+            else if (transform.parent.GetComponent<ObjData>() != null) SetNPC = transform.parent.GetComponent<ObjData>();
+            else if (transform.parent.parent.GetComponent<ObjData>() != null) SetNPC = transform.parent.parent.GetComponent<ObjData>();
+            else if (transform.parent.parent.parent.GetComponent<ObjData>() != null) SetNPC = transform.parent.parent.parent.GetComponent<ObjData>();
+            SetNPC.EndSay(NPCEndSay);
+        }
+        if (NPCNowSay)
+        {
+            if (SetNPC != null) ;
+            else if (transform.parent.GetComponent<ObjData>() != null) SetNPC = transform.parent.GetComponent<ObjData>();
+            else if (transform.parent.parent.GetComponent<ObjData>() != null) SetNPC = transform.parent.parent.GetComponent<ObjData>();
+            else if (transform.parent.parent.parent.GetComponent<ObjData>() != null) SetNPC = transform.parent.parent.parent.GetComponent<ObjData>();
+        }
         if (NPCNowSay)
             SetNPC.NPCOpen();
         if (DisObjT != null) DisObjT.SetActive(false);
@@ -213,5 +217,6 @@ public class StoryMove : MonoBehaviour
     {
         GetComponent<Collider2D>().enabled = true;
         if (SetObjT != null) SetObjT.SetActive(true);
+        if (SetAni != null) SetAni.SetInteger(AniName, AniNum);
     }
 }

@@ -22,7 +22,7 @@ public class fishlime : Enemy01
     public void FFFS()
     {
 
-        transform.GetChild(0).position = new Vector3(ply.position.x, transform.GetChild(0).position.y, transform.GetChild(0).position.z);
+        //transform.GetChild(0).position = new Vector3(ply.position.x, transform.GetChild(0).position.y, transform.GetChild(0).position.z);
     }
     override protected void Dieset()
     {
@@ -65,7 +65,7 @@ public class fishlime : Enemy01
     }
     override protected void Update()
     {
-        if (!SenserPly)
+        if (!SenserPly && !ani.GetCurrentAnimatorStateInfo(0).IsName("FishLime02")) 
         {
             ani.SetInteger("State", 0);
             setF = true;
@@ -83,7 +83,11 @@ public class fishlime : Enemy01
         {
             Attss = true;
             TT -= Time.deltaTime;
-            if (TT > MoveStopTime&& ani.GetCurrentAnimatorStateInfo(0).IsName("FishLime02")) transform.GetChild(0).position += new Vector3(-transform.GetChild(0).position.x + ply.position.x, 0).normalized * Time.deltaTime * MoveSpeed;
+            if (TT > MoveStopTime && ani.GetCurrentAnimatorStateInfo(0).IsName("FishLime02") && SenserPly)
+            {
+                //transform.GetChild(0).position += new Vector3(-transform.GetChild(0).position.x + ply.position.x, 0).normalized * Time.deltaTime * MoveSpeed;
+                transform.GetChild(0).Translate(new Vector3(-transform.GetChild(0).position.x + ply.position.x, 0).normalized * Time.deltaTime * MoveSpeed);
+            }
         }
         else if (Attss)
         {

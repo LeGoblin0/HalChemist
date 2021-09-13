@@ -12,6 +12,7 @@ public class StoryStart : MonoBehaviour
 
     [Header("반복")]
     public bool Loop = false;
+
     Player ply;
     private void Start()
     {
@@ -47,6 +48,7 @@ public class StoryStart : MonoBehaviour
             
                 nowStory = 0;
             
+
             GetComponent<Collider2D>().enabled = true;
             return;
         }

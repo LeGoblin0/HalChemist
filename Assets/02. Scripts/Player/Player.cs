@@ -15,6 +15,7 @@ public class Player : Life
     public Animator ani;
     public Animator Handani;
 
+    const float PlYLAYER_NUM = 3;
 
     [Header("핸도 위치")]
     public Transform Hand;
@@ -189,12 +190,13 @@ public class Player : Life
     }
     bool NowDie = false;
 
-    public GameObject ShootThrowUI;
+    public GameObject ShootThrowUI;//G나오는 이모티콘
     void Update()
     {
         bool ff = false;
+        if (NowObj != null) ff = true;
         if (ShootStone == null) ShootStone = new Transform[100];
-        for (int i=0;i< ShootStone.Length; i++)
+        for (int i = 0; !ff && i < ShootStone.Length; i++) 
         {
             if (ShootStone[i] != null)
             {
@@ -360,17 +362,26 @@ public class Player : Life
         GameSystem.instance.Save();
     }
    
-    Vector3 trapsavepoint;
+    [HideInInspector]
+    public Vector3 trapsavepoint;
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log(collision.tag);
         if (collision.tag == "TrapSavePoint")
         {
-            trapsavepoint = transform.position+new Vector3(0,0.2f);
+            trapsavepoint = transform.position;//+new Vector3(0,0.2f);
         }
         else if (collision.tag == "TrapGround")
         {
-            GoTrapSavePoint();
+            if (Hp > 1)
+            {
+                TrapSaveDie();
+            }
+            Hp--; HPUI();
+        }
+        else if (collision.tag == "Water")
+        {
+            TrapSaveDie();
         }
         else if (collision.tag == "NPCObj")
         {
@@ -378,22 +389,31 @@ public class Player : Life
         }
     }
 
-    void GoTrapSavePoint()
-    {
-        if (Hp > 1)
-        {
-            GameSystem.instance.CanversUI.GetChild(1).GetComponent<Animator>().SetTrigger("On");
-            transform.position = trapsavepoint;
-            Hp--; HPUI();
-        }
-        else { Hp--; HPUI(); }
-    }
 
+    void TrapSaveDie()
+    {
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        ani.SetTrigger("Die");
+        rig.bodyType = RigidbodyType2D.Static;
+        Time.timeScale = 1;
+        NowDie = true;
+    }
+    public void ReAni()
+    {
+        transform.position = trapsavepoint;
+        transform.position = new Vector3(transform.position.x, transform.position.y, PlYLAYER_NUM);
+        ani.SetInteger("State", 0);
+        rig.bodyType = RigidbodyType2D.Dynamic;
+        Time.timeScale = 1;
+        NowDie = false;
+    }
 
 
     protected void OnTriggerStay2D(Collider2D collision)
     {
         //Debug.Log(collision.name);
+        if (NowDie) return;
         if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set && nowGodTime <= 0 )
         {
             //            Debug.Log(collision.name);
@@ -717,11 +737,18 @@ public class Player : Life
     }
     public void DieDie()
     {
-        GameSystem.instance.GiveMoneyBag(true);
-        saveMoneyInt[0] = Money;
-        saveMoneyInt[1] = 0;
-        PlySave(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (Hp <= 0)
+        {
+            GameSystem.instance.GiveMoneyBag(true);
+            saveMoneyInt[0] = Money;
+            saveMoneyInt[1] = 0;
+            PlySave(false);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        else
+        {
+            GameSystem.instance.CanversUI.GetChild(1).GetComponent<Animator>().SetTrigger("On");
+        }
     }
     //void NpcCheck()
     //{

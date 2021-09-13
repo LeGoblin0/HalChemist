@@ -544,8 +544,7 @@ MonoBehaviour:
   StoneSpecialNum: 0
   DieObj: {fileID: 4870061418998596664, guid: 0eb05de11ad73de4db66e1e9928971e1, type: 3}
   Code: 5
-  StonImg: {fileID: -2689840773800953785, guid: b61f4dc4647c69c4f813f814f4d51daf,
-    type: 3}
+  StonImg: {fileID: 21300000, guid: 8ba0f65d449074c4a8432d452e05c10f, type: 3}
   DieSet: 0
 --- !u!1 &3706295720004027570
 GameObject:

@@ -21,6 +21,8 @@ TagManager:
   - TrapSavePoint
   - TrainSet
   - NPCObj
+  - MyTag
+  - Water
   layers:
   - Default
   - TransparentFX

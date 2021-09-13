@@ -16,7 +16,7 @@ public class DialogManager : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log(questManager.CheckQuest());
+        //Debug.Log(questManager.CheckQuest());
     }
 
     public void Action(GameObject scanObj)
