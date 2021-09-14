@@ -48,7 +48,7 @@ public class MapManager : MonoBehaviour
             }
 
             //Debug.Log(transform.parent.GetComponent<MMini>().MMM);
-            PlyMiniMapTr.position = MiniMapTr.GetChild(transform.GetSiblingIndex()).position;
+            //PlyMiniMapTr.position = MiniMapTr.GetChild(transform.GetSiblingIndex()).position;
         }
     }
 }

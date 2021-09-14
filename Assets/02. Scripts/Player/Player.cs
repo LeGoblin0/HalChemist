@@ -96,6 +96,7 @@ public class Player : Life
     public float MaxSpeed = 1.8f;
     public float JumpPower = 3;
     public float gravityScale = 2;
+    public float WatergravityScale = .8f;
     bool DontKeyStayMove = false;
     public float DownMaxSpeed = 4;
     [Range(0,1f)]
@@ -182,7 +183,7 @@ public class Player : Life
             rig.velocity = new Vector2(rig.velocity.x, -DownMaxSpeed);
         }
     }
-
+    bool GodMode = false;
     bool GGGodMod;
     void GGGGG()
     {
@@ -371,7 +372,7 @@ public class Player : Life
         {
             trapsavepoint = transform.position;//+new Vector3(0,0.2f);
         }
-        else if (collision.tag == "TrapGround")
+        else if (!GodMode && collision.tag == "TrapGround")
         {
             if (Hp > 1)
             {
@@ -379,8 +380,11 @@ public class Player : Life
             }
             Hp--; HPUI();
         }
-        else if (collision.tag == "Water")
+        else if (!GodMode && collision.tag == "Water")
         {
+            rig.mass = 2;
+            rig.gravityScale = WatergravityScale;
+            rig.velocity = rig.velocity * .9f;
             TrapSaveDie();
         }
         else if (collision.tag == "NPCObj")
@@ -393,20 +397,31 @@ public class Player : Life
     void TrapSaveDie()
     {
 
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-        ani.SetTrigger("Die");
-        rig.bodyType = RigidbodyType2D.Static;
+        GodMode = true;
+        DontMove = true;
+        //transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        ani.SetTrigger("Hit");
+        //rig.bodyType = RigidbodyType2D.Static;
         Time.timeScale = 1;
-        NowDie = true;
+        //NowDie = true;
+        Invoke("OffDisply", .5f);
+        Invoke("ReAni", .8f);
     }
-    public void ReAni()
+    void OffDisply()
     {
+        GameSystem.instance.CanversUI.GetChild(1).GetComponent<Animator>().SetTrigger("On");
+    }
+    void ReAni()
+    {
+        GodMode = false;
+        DontMove = false;
+        //Debug.Log(trapsavepoint);
         transform.position = trapsavepoint;
         transform.position = new Vector3(transform.position.x, transform.position.y, PlYLAYER_NUM);
         ani.SetInteger("State", 0);
-        rig.bodyType = RigidbodyType2D.Dynamic;
+        //rig.bodyType = RigidbodyType2D.Dynamic;
         Time.timeScale = 1;
-        NowDie = false;
+        //NowDie = false;
     }
 
 
@@ -414,7 +429,7 @@ public class Player : Life
     {
         //Debug.Log(collision.name);
         if (NowDie) return;
-        if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set && nowGodTime <= 0 )
+        if (!GodMode && collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set && nowGodTime <= 0 )
         {
             //            Debug.Log(collision.name);
             Hp -= collision.GetComponent<Att>().AttDamage;
@@ -474,6 +489,13 @@ public class Player : Life
                 HPUI();
             }
         }
+        //if (!GodMode && collision.tag == "Water")
+        //{
+        //    rig.mass = 700;
+        //    rig.gravityScale = .3f;
+        //    rig.velocity = rig.velocity * .7f;
+        //    //TrapSaveDie();
+        //}
 
         //if (collision.transform.parent != null && collision.transform.parent.GetComponent<Train>() != null)
         //{
@@ -495,6 +517,11 @@ public class Player : Life
         else if (collision.tag == "NPCObj")
         {
             if (NowObj == collision.GetComponent<ObjData>()) NowObj = null;
+        }
+        else if (collision.tag == "Water")
+        {
+            rig.mass = 1;
+            rig.gravityScale = gravityScale;
         }
     }
 
@@ -583,7 +610,7 @@ public class Player : Life
             {
                 ani.SetBool("RL", false);
             }
-            rig.gravityScale = gravityScale;
+            if (rig.mass == 1) rig.gravityScale = gravityScale;
         }
         else
         {
@@ -680,7 +707,8 @@ public class Player : Life
         }
         else
         {
-            rig.gravityScale = gravityScale;
+            if (rig.mass == 1) rig.gravityScale = gravityScale;
+            else rig.gravityScale = WatergravityScale;
         }
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle"))
         {
@@ -745,10 +773,7 @@ public class Player : Life
             PlySave(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        else
-        {
-            GameSystem.instance.CanversUI.GetChild(1).GetComponent<Animator>().SetTrigger("On");
-        }
+        
     }
     //void NpcCheck()
     //{
@@ -938,8 +963,8 @@ public class Player : Life
     float NowJumpPower;
     public void JumpU()
     {
-
-        rig.velocity = new Vector2(rig.velocity.x, NowJumpPower);
+        if (rig.mass == 1) rig.velocity = new Vector2(rig.velocity.x, NowJumpPower);
+        else rig.velocity = new Vector2(rig.velocity.x, NowJumpPower *2/ 3);
     }
     void DontMoveSet(int dd)
     {

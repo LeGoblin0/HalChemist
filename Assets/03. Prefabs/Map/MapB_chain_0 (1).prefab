@@ -96,7 +96,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -198,13 +198,12 @@ GameObject:
   m_Component:
   - component: {fileID: 275694509019878637}
   - component: {fileID: 275694509019878419}
-  - component: {fileID: 275694509019878416}
+  - component: {fileID: 275694509019878418}
   - component: {fileID: 275694509019878417}
   - component: {fileID: 275694509019878638}
   - component: {fileID: 275694509019878639}
   - component: {fileID: 275694509019878636}
-  - component: {fileID: 275694509019878418}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MapB_chain_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +217,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275694509019878634}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.84, y: 8.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -276,7 +275,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &275694509019878416
+--- !u!114 &275694509019878418
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -285,26 +284,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 275694509019878634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c471794980aaed94a962460dc06f001e, type: 3}
+  m_Script: {fileID: 11500000, guid: 31015c8610d5cf2478ac07491378f7cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 1
-  Hp: 1
-  state: 0
-  ani: {fileID: 0}
+  ObjCode: -1
+  MapObj:
+  - {fileID: 275694509019878634}
+  MapTTT: []
+  MapTTTTime: 0
+  state: 6
+  SaveOn: 0
+  All: 1
+  AllSS: 0
+  Loop: 0
   YSet: 1
-  YNum: 4
-  SenserPly: 0
-  DropItem: 1
-  DieItem: []
-  MoneyDie: 0
-  DieAniTime: 5
-  NoDie: 1
-  HHIITime: 0
-  HitAni: 0
-  HitAniSpeed: 10
-  HitAniknockBack: 1
-  HitWhite: 0
 --- !u!95 &275694509019878417
 Animator:
   serializedVersion: 3
@@ -374,7 +367,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -1.1801931}
@@ -390,26 +383,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 2.3603861}
   m_EdgeRadius: 0
---- !u!114 &275694509019878418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 275694509019878634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31015c8610d5cf2478ac07491378f7cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjCode: -1
-  MapObj:
-  - {fileID: 275694509019878634}
-  MapTTT: []
-  MapTTTTime: 0
-  state: 6
-  SaveOn: 0
-  All: 1
-  AllSS: 0
-  Loop: 0
-  YSet: 1
