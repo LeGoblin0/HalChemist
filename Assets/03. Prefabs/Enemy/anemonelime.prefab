@@ -69,7 +69,7 @@ MonoBehaviour:
   HitAniSpeed: 10
   HitAniknockBack: 1
   HitWhite: 1
-  ShootTime: 5
+  ShootTime: 2
   ShhotTr: {fileID: 7911253767388644467, guid: cfc7c1fcac0840c4db60b8f3b5182a79, type: 3}
   STr: {fileID: 2049934606195081014}
   ShootSpeed: 3
