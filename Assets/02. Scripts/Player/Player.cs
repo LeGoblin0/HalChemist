@@ -300,6 +300,7 @@ public class Player : Life
                     ShootStone[i].GetComponent<Collider2D>().enabled = true;
                     ShootStone[i].GetComponent<StoneDieAni>().DieSet = true;
                     ShootStone[i].GetComponent<StoneDieAni>().enabled = true;
+                    ShootStone[i].GetComponent<Att>().Set = true;
                     ShootStone[i] = null;
                 }
             }

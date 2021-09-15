@@ -181,7 +181,7 @@ MonoBehaviour:
   set2: 1
   AttState: 0
   GroundDes: 1
-  Set: 1
+  Set: 0
   DieAni: 0
   DieCollDes: 1
 --- !u!114 &5553417448035432618
@@ -351,7 +351,7 @@ MonoBehaviour:
   set2: 1
   AttState: 0
   GroundDes: 1
-  Set: 1
+  Set: 0
   DieAni: 0
   DieCollDes: 1
 --- !u!114 &2146792643363719640
@@ -676,7 +676,7 @@ MonoBehaviour:
   set2: 1
   AttState: 0
   GroundDes: 1
-  Set: 1
+  Set: 0
   DieAni: 0
   DieCollDes: 1
 --- !u!114 &3600201151748688304
@@ -943,7 +943,7 @@ MonoBehaviour:
   set2: 1
   AttState: 0
   GroundDes: 1
-  Set: 1
+  Set: 0
   DieAni: 0
   DieCollDes: 1
 --- !u!114 &8959552533788301716

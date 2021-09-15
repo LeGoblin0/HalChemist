@@ -89,15 +89,19 @@ public class GiantEnemy : Enemy01
             {
                 HHIITime = .2f;
                 if (HitAni) ani.SetTrigger("Hit");
-                if (transform.position.x > GameSystem.instance.Ply.position.x)
+
+                if (ani.GetCurrentAnimatorStateInfo(0).IsName("giantlime_Idle"))
                 {
-                    flip = -1;
-                    transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
-                }
-                else
-                {
-                    flip = +1;
-                    transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
+                    if (transform.position.x > GameSystem.instance.Ply.position.x)
+                    {
+                        flip = -1;
+                        transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
+                    }
+                    else
+                    {
+                        flip = +1;
+                        transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
+                    }
                 }
             }
 

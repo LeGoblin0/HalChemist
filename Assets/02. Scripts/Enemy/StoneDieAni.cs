@@ -40,7 +40,7 @@ public class StoneDieAni : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "EndMap")
+        if (DieSet && collision.tag == "EndMap")
         {
             transform.position = new Vector3(-1000, -1000);
             Destroy(gameObject);

@@ -262,10 +262,11 @@ MonoBehaviour:
   YSet: 1
   YNum: 4
   SenserPly: 0
+  DropItem: 1
   DieItem:
-  - {fileID: 2231214881868672547, guid: de106406ba08a2e44aba2e1a03291555, type: 3}
-  - {fileID: 2231214881868672547, guid: de106406ba08a2e44aba2e1a03291555, type: 3}
-  - {fileID: 2231214881868672547, guid: de106406ba08a2e44aba2e1a03291555, type: 3}
+  - {fileID: 2231214881868672547, guid: 15601f35e6e09fb41ad2ddf3d70b0388, type: 3}
+  - {fileID: 2231214881868672547, guid: 15601f35e6e09fb41ad2ddf3d70b0388, type: 3}
+  - {fileID: 2231214881868672547, guid: 15601f35e6e09fb41ad2ddf3d70b0388, type: 3}
   - {fileID: 5405655724695976519, guid: 3bb7b72d2ae5a3049a6a1ce35d79afc4, type: 3}
   MoneyDie: 11
   DieAniTime: 0.5

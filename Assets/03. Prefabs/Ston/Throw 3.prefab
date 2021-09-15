@@ -457,7 +457,7 @@ MonoBehaviour:
   set2: 1
   AttState: 0
   GroundDes: 1
-  Set: 1
+  Set: 0
   DieAni: 0
   DieCollDes: 1
 --- !u!114 &8959552533788301716

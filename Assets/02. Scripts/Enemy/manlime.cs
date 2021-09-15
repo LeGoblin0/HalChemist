@@ -112,6 +112,20 @@ public class manlime : Enemy01
                 if (HitAni) ani.SetTrigger("Hit");
             }
 
+            if (ani.GetCurrentAnimatorStateInfo(0).IsName("manlime00"))
+            {
+                if (transform.position.x > GameSystem.instance.Ply.position.x)
+                {
+                    flip = -1;
+                    transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
+                }
+                else
+                {
+                    flip = +1;
+                    transform.GetChild(0).localScale = new Vector3(-flip, 1, 1);
+                }
+            }
+
         }
         if (collision.gameObject.tag == "TurnPoint" && !ani.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
         {

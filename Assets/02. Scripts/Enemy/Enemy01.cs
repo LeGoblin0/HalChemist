@@ -72,6 +72,17 @@ public class Enemy01 : Life
         {
             if (!Die)
             {
+                gameObject.layer = 17;
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    if (transform.GetChild(i).gameObject.layer==11) transform.GetChild(i).gameObject.layer = 17;
+                }
+                for (int i = 0; i < transform.GetChild(0).childCount; i++)
+                {
+                    if (transform.GetChild(0).GetChild(i).gameObject.layer == 11) transform.GetChild(0).GetChild(i).gameObject.layer = 17;
+                }
+
+
                 Die = true;
                 if (DieItem != null && DieItem.Length > 0) 
                 {
