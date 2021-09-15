@@ -701,7 +701,7 @@ public class Player : Life
             }
             else
             {
-                rig.velocity = Vector2.zero;
+                rig.velocity = new Vector2(0, rig.velocity.y);
                 rig.gravityScale = 1;
             }
             return;
