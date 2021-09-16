@@ -5,8 +5,7 @@ using UnityEngine;
 public class ObjData : MonoBehaviour
 {
     [HideInInspector]
-    public int id;
-    public bool isNpc;
+    public int id=-1;
     [Header("NPCStoryCode")]
     public int NowStoryNum = 0;
     private void Start()
@@ -41,6 +40,10 @@ public class ObjData : MonoBehaviour
     public void EndSay(int a = 1)
     {
         NowStoryNum = a;
-        GameSystem.instance.NPCSaySave(id, NowStoryNum);
+        if (id != -1)
+        {
+            Debug.Log(id + "  " + NowStoryNum);
+            GameSystem.instance.NPCSaySave(id, NowStoryNum);
+        }
     }
 }

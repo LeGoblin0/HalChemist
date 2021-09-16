@@ -59,8 +59,7 @@ MonoBehaviour:
   YNum: 4
   SenserPly: 0
   DropItem: 1
-  DieItem:
-  - {fileID: 2231214881868672547, guid: 15601f35e6e09fb41ad2ddf3d70b0388, type: 3}
+  DieItem: []
   MoneyDie: 8
   DieAniTime: 0.5
   NoDie: 0

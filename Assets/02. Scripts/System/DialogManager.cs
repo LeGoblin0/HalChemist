@@ -24,7 +24,7 @@ public class DialogManager : MonoBehaviour
         talkPanel.SetActive(true);
         scanObject = scanObj;
         ObjData objData = scanObject.GetComponent<ObjData>();
-        Talk(objData.id, objData.isNpc);
+       // Talk(objData.id, objData.isNpc);
         talkPanel.SetActive(isAction);
     }
     void Talk(int id, bool isNpc)
