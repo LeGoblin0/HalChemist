@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 719797484792284287}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &2308698320830371818
 CircleCollider2D:
@@ -77,7 +77,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 719797484792284287}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &969178861064649202
 SpriteRenderer:
@@ -177,8 +177,8 @@ Transform:
   m_LocalPosition: {x: -0.3248756, y: -0.5103561, z: -1.5634766}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3952669369854425545}
   - {fileID: 9144037066758889588}
+  - {fileID: 3952669369854425545}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -207,6 +207,7 @@ MonoBehaviour:
   GroundDes: 0
   Set: 0
   DieAni: 0
+  DieCollDes: 1
 --- !u!114 &4551014918239076005
 MonoBehaviour:
   m_ObjectHideFlags: 0

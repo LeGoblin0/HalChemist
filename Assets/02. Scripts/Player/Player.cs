@@ -140,7 +140,7 @@ public class Player : Life
     [HideInInspector]
     public int NowChoose = 0;
     [Tooltip("스톤 겹치는 수량")]
-    public int StackStone = 3;//스톤겹친갯수
+    public int StackStone = 20;//스톤겹친갯수
     Transform ThrowStone;//던진 스톤 정보 
     //[Tooltip("던질파워")]
     //public float ThrowPower = 5;
@@ -237,6 +237,8 @@ public class Player : Life
         InputTest();
         ObjSet();
 
+        PlyInv();
+
         if (nowGodTime >= 0)
         {
             nowGodTime -= Time.deltaTime;
@@ -276,6 +278,170 @@ public class Player : Life
         else transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
 
         
+    }
+    public Transform PlyInvTr;
+    int PageNum = 0;
+    int PageCarrNum = 0;
+    int PageDUButNum = 1;
+    int PageRLButNum = 1;
+    public void PlyInv()
+    {
+        if (PlyInvTr.gameObject.activeSelf )
+        {
+            if (PlyInvTr.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("book_R") || PlyInvTr.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("book_L")) return;
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                PlyInvTr.gameObject.SetActive(false);
+                OnStory = false;
+                return;
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                PlyInvTr.GetComponent<Animator>().SetTrigger("R");
+                CleanIve();
+                Invoke("ReMakeIve", .35f);
+                PageNum++;
+                PageCarrNum = 0;
+                PageNum = (PageNum + PlyInvTr.GetChild(0).childCount) % PlyInvTr.GetChild(0).childCount;
+
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                PlyInvTr.GetComponent<Animator>().SetTrigger("L");
+                CleanIve();
+                Invoke("ReMakeIve", .35f);
+                PageNum--;
+                PageCarrNum = 0;
+                PageNum = (PageNum + PlyInvTr.GetChild(0).childCount) % PlyInvTr.GetChild(0).childCount;
+
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                PageCarrNum -= PageDUButNum;
+                PageCarrNum = (PageCarrNum + PlyInvTr.GetChild(0).GetChild(PageNum).childCount) % PlyInvTr.GetChild(0).GetChild(PageNum).childCount;
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(1, 1, 1);
+
+                PlyInvTr.GetChild(2).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info;
+                PlyInvTr.GetChild(3).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info2;
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                PageCarrNum += PageDUButNum;
+                PageCarrNum = (PageCarrNum + PlyInvTr.GetChild(0).GetChild(PageNum).childCount) % PlyInvTr.GetChild(0).GetChild(PageNum).childCount;
+
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(1, 1, 1);
+
+                PlyInvTr.GetChild(2).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info;
+                PlyInvTr.GetChild(3).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info2;
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                PageCarrNum -= PageRLButNum;
+                PageCarrNum = (PageCarrNum + PlyInvTr.GetChild(0).GetChild(PageNum).childCount) % PlyInvTr.GetChild(0).GetChild(PageNum).childCount;
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(1, 1, 1);
+
+                PlyInvTr.GetChild(2).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info;
+                PlyInvTr.GetChild(3).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info2;
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                PageCarrNum += PageRLButNum;
+                PageCarrNum = (PageCarrNum + PlyInvTr.GetChild(0).GetChild(PageNum).childCount) % PlyInvTr.GetChild(0).GetChild(PageNum).childCount;
+
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(1, 1, 1);
+
+                PlyInvTr.GetChild(2).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info;
+                PlyInvTr.GetChild(3).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info2;
+            }
+        }
+        if (!OnStory && Input.GetKeyDown(KeyCode.Tab))
+        {
+            PlyInvTr.gameObject.SetActive(true);
+            OnStory = true;
+            Story_RightMove = false;
+            Story_LeftMove = false;
+
+            ReMakeIve();
+
+        }
+    }
+    void CleanIve()
+    {
+        for (int i = 0; i < PlyInvTr.GetChild(0).childCount; i++)
+        {
+            PlyInvTr.GetChild(0).GetChild(i).gameObject.SetActive(false);
+        }
+    }
+    void ReMakeIve()
+    {
+        for (int i = 0; i < PlyInvTr.GetChild(0).childCount; i++)
+        {
+            PlyInvTr.GetChild(0).GetChild(i).gameObject.SetActive(false);
+        }
+        PlyInvTr.GetChild(0).GetChild(PageNum).gameObject.SetActive(true);
+        if (PageNum == 0)
+        {
+            PageDUButNum = 6;
+            PageRLButNum = 1;
+            PlyInvTr.GetChild(1).GetComponent<Text>().text = "인장";
+        }
+        if (PageNum == 1)
+        {
+            PageDUButNum = 1;
+            PageRLButNum = 3;
+            PlyInvTr.GetChild(1).GetComponent<Text>().text = "원석";
+            for (int i = 0; i < PlyInvTr.GetChild(0).GetChild(PageNum).childCount; i++)
+            {
+                //Debug.Log(PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<Image>().sprite+"  "+i);
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<Image>().sprite = GameSystem.instance.AllSton[HaveStone.Length <= i ? 0 : HaveStone[i] / 1000].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite;
+                if (i == 0)
+                {
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(0).GetComponent<Text>().text = "X ∞";
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info = "기본 원석";
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info2 = "5초마다 계속 생성 된다.";
+                }
+                else if (HaveStone.Length <= i || HaveStone[i] == 0) 
+                {
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(0).GetComponent<Text>().text = "";
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info = "비어 있음";
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info2 = "";
+                }
+                else
+                {
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(0).GetComponent<Text>().text = "X " + (HaveStone[i] % 1000);
+                    if (HaveStone[i] / 1000 == 3)
+                    {
+                        PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info = "탱탱 원석";
+                        PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info2 = "벽에 충돌시 반사한다.";
+                    }
+                    if (HaveStone[i] / 1000 == 5)
+                    {
+                        PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info = "슬라임 원석";
+                        PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info2 = "던진후 G키를 입력시 대각선으로 탄환을 발사한다.";
+                    }
+                }
+
+            }
+        }
+
+
+        for (int i = 0; i < PlyInvTr.GetChild(0).GetChild(PageNum).childCount; i++)
+        {
+            PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+        }
+        PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(1, 1, 1);
+
+
+
+        PlyInvTr.GetChild(2).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info;
+        PlyInvTr.GetChild(3).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info2;
     }
     public GameObject NowChooseObj;
     public void ObjSet()
