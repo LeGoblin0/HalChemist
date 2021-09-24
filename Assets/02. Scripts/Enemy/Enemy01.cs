@@ -94,7 +94,7 @@ public class Enemy01 : Life
                         if (aa.GetComponent<Rigidbody2D>() != null)
                         {
                             aa.GetComponent<Rigidbody2D>().sharedMaterial = null;
-                            aa.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(0, 3f), Random.Range(0, 4f));
+                            aa.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-3, 3f), Random.Range(0, 4f));
                         }
                     }
                 }

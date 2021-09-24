@@ -49,7 +49,7 @@ public class Player : Life
         {
             int[] aa = HaveStone;
             HaveStone = new int[MaxStoneNum];
-            for (int i = 0; i < aa.Length; i++) 
+            for (int i = 0; i < aa.Length; i++)
             {
                 HaveStone[i] = aa[i];
             }
@@ -57,7 +57,7 @@ public class Player : Life
         HaveStone[0] = 1;
         StoneUI();
         HPUI();
-        
+
         ani.SetFloat("HitThrowTime", HitThrowTime);
 
         saveMoneyInt = GameSystem.instance.MoneyInt();
@@ -66,6 +66,12 @@ public class Player : Life
         LookMoney();
 
         MoneyBagImg.sprite = MoneyBag[GameSystem.instance.GiveMoneyBag() ? 1 : 0];
+
+
+        //인장 테스트
+        INJHave[2] = 2;
+        INJHave[5] = 5;
+        INJHave[8] = 8;
     }
 
     public Sprite[] MoneyBag;
@@ -99,7 +105,7 @@ public class Player : Life
     public float WatergravityScale = .8f;
     bool DontKeyStayMove = false;
     public float DownMaxSpeed = 4;
-    [Range(0,1f)]
+    [Range(0, 1f)]
     public float LongJumpTime = .3f;
 
     void PlySound(int i)
@@ -178,7 +184,7 @@ public class Player : Life
         AniMove();
         //NpcCheck();
 
-        if (rig.velocity.y < -DownMaxSpeed) 
+        if (rig.velocity.y < -DownMaxSpeed)
         {
             rig.velocity = new Vector2(rig.velocity.x, -DownMaxSpeed);
         }
@@ -197,7 +203,7 @@ public class Player : Life
         bool ff = false;
         if (NowObj != null) ff = true;
         if (ShootStone == null) ShootStone = new Transform[100];
-        for (int i = 0; !ff && i < ShootStone.Length; i++) 
+        for (int i = 0; !ff && i < ShootStone.Length; i++)
         {
             if (ShootStone[i] != null)
             {
@@ -206,7 +212,7 @@ public class Player : Life
             }
         }
         ShootThrowUI.SetActive(ff);
-        
+
         if (NowDie) return;
 
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_2")
@@ -214,10 +220,10 @@ public class Player : Life
         {
             if (TrainNow != null)
             {
-                transform.position = new Vector3(transform.position.x, TrainNow.transform.position.y+1, transform.position.z);
+                transform.position = new Vector3(transform.position.x, TrainNow.transform.position.y + 1, transform.position.z);
             }
         }
-        
+
 
         if (Hp <= 0)
         {
@@ -244,7 +250,7 @@ public class Player : Life
             nowGodTime -= Time.deltaTime;
             GGGodMod = true;
         }
-        else if(GGGodMod)
+        else if (GGGodMod)
         {
             GGGodMod = false;
             GetComponent<Collider2D>().enabled = false;
@@ -252,7 +258,7 @@ public class Player : Life
         }
 
 
-        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Desh01") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Desh02")) 
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Desh01") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Desh02"))
         {
             ImgDeshNowTime -= Time.deltaTime;
             if (ImgDeshNowTime <= 0)
@@ -265,7 +271,7 @@ public class Player : Life
                 Destroy(aa.gameObject, ImgDestorTime);
             }
         }
-        
+
 
         if (nowGodTime > 0)
         {
@@ -277,16 +283,51 @@ public class Player : Life
         }
         else transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
 
-        
+
     }
     public Transform PlyInvTr;
     int PageNum = 0;
     int PageCarrNum = 0;
     int PageDUButNum = 1;
     int PageRLButNum = 1;
+    int[] INJHave = new int[18];
+    bool InJChangN = false;
     public void PlyInv()
     {
-        if (PlyInvTr.gameObject.activeSelf )
+        if (InJChangN)
+        {
+            InJChangN = false;
+            if (INJHave[0] == 2)
+            {
+                transform.GetChild(0).GetChild(0).GetComponent<Att>().AttDamage = 100;
+                transform.GetChild(0).GetChild(1).GetComponent<Att>().AttDamage = 100;
+                transform.GetChild(0).GetChild(2).GetComponent<Att>().AttDamage = 100;
+            }
+            else
+            {
+                transform.GetChild(0).GetChild(0).GetComponent<Att>().AttDamage = 1;
+                transform.GetChild(0).GetChild(1).GetComponent<Att>().AttDamage = 1;
+                transform.GetChild(0).GetChild(2).GetComponent<Att>().AttDamage = 1;
+            }
+            if (INJHave[0] == 5)
+            {
+                MaxSpeed = 10;
+            }
+            else
+            {
+                MaxSpeed = 5;
+            }
+            if (INJHave[6] == 8)
+            {
+                JumpPower = 30;
+            }
+            else
+            {
+                JumpPower = 17.2f;
+            }
+
+        }
+        if (PlyInvTr.gameObject.activeSelf)
         {
             if (PlyInvTr.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("book_R") || PlyInvTr.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("book_L")) return;
             if (Input.GetKeyDown(KeyCode.Tab))
@@ -320,45 +361,96 @@ public class Player : Life
             }
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetChild(0).gameObject.SetActive(false);
                 PageCarrNum -= PageDUButNum;
                 PageCarrNum = (PageCarrNum + PlyInvTr.GetChild(0).GetChild(PageNum).childCount) % PlyInvTr.GetChild(0).GetChild(PageNum).childCount;
-                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(1, 1, 1);
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetChild(0).gameObject.SetActive(true);
 
                 PlyInvTr.GetChild(2).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info;
                 PlyInvTr.GetChild(3).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info2;
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetChild(0).gameObject.SetActive(false);
                 PageCarrNum += PageDUButNum;
                 PageCarrNum = (PageCarrNum + PlyInvTr.GetChild(0).GetChild(PageNum).childCount) % PlyInvTr.GetChild(0).GetChild(PageNum).childCount;
 
-                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(1, 1, 1);
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetChild(0).gameObject.SetActive(true);
 
                 PlyInvTr.GetChild(2).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info;
                 PlyInvTr.GetChild(3).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info2;
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetChild(0).gameObject.SetActive(false);
                 PageCarrNum -= PageRLButNum;
                 PageCarrNum = (PageCarrNum + PlyInvTr.GetChild(0).GetChild(PageNum).childCount) % PlyInvTr.GetChild(0).GetChild(PageNum).childCount;
-                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(1, 1, 1);
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetChild(0).gameObject.SetActive(true);
 
                 PlyInvTr.GetChild(2).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info;
                 PlyInvTr.GetChild(3).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info2;
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetChild(0).gameObject.SetActive(false);
                 PageCarrNum += PageRLButNum;
                 PageCarrNum = (PageCarrNum + PlyInvTr.GetChild(0).GetChild(PageNum).childCount) % PlyInvTr.GetChild(0).GetChild(PageNum).childCount;
 
-                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(1, 1, 1);
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetChild(0).gameObject.SetActive(true);
 
                 PlyInvTr.GetChild(2).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info;
                 PlyInvTr.GetChild(3).GetComponent<Text>().text = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<InvInfi>().Info2;
+            }
+            else if (Input.GetKeyDown(KeyCode.G))
+            {
+                if (PageNum == 0)
+                {
+                    if (INJHave[PageCarrNum] != 0)
+                    {
+                        if (PageCarrNum % 6 == 0) //장착인장 클릭시 돌려주기
+                        {
+                            INJHave[INJHave[PageCarrNum]] = INJHave[PageCarrNum];
+                            INJHave[PageCarrNum] = 0;
+                        }
+                        else if (PageCarrNum % 6 != 0) //장착 아니면 클릭시 장착 또는 교체
+                        {
+                            if (INJHave[INJHave[PageCarrNum] / 6 * 6] == 0)
+                            {
+                                INJHave[INJHave[PageCarrNum] / 6 * 6] = INJHave[PageCarrNum];
+                                INJHave[PageCarrNum] = 0;
+                            }
+                            else
+                            {
+                                INJHave[INJHave[INJHave[PageCarrNum] / 6 * 6]] = INJHave[INJHave[PageCarrNum] / 6 * 6];
+                                INJHave[INJHave[PageCarrNum] / 6 * 6] = INJHave[PageCarrNum];
+                                INJHave[PageCarrNum] = 0;
+                            }
+                        }
+                        InJChangN = true;
+                        ReMakeIve();
+                    }
+                }
+                else if (PageNum == 1)
+                {
+                    if (HaveStone.Length > PageCarrNum && HaveStone[PageCarrNum] / 1000 >= 1)
+                    {
+                        for (int i = 0; i < HaveStone[PageCarrNum] % 1000; i++)
+                        {
+                            Transform aa = Instantiate(GameSystem.instance.AllSton[HaveStone[PageCarrNum] / 1000]).transform;
+                            aa.position = new Vector3(transform.position.x, transform.position.y, 2);
+                            aa.parent = transform.parent;
+                            if (aa.GetComponent<Rigidbody2D>() != null)
+                            {
+                                aa.GetComponent<Rigidbody2D>().sharedMaterial = null;
+                                aa.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-3f, 3f), Random.Range(0, 4f));
+                            }
+                        }
+                        PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                        HaveStone[PageCarrNum] = 0;
+                        ReMakeIve();
+                        StoneUI();
+                    }
+                }
             }
         }
         if (!OnStory && Input.GetKeyDown(KeyCode.Tab))
@@ -391,6 +483,61 @@ public class Player : Life
             PageDUButNum = 6;
             PageRLButNum = 1;
             PlyInvTr.GetChild(1).GetComponent<Text>().text = "인장";
+            int i;
+            for (i = 0; i < PlyInvTr.GetChild(0).GetChild(PageNum).childCount; i++)
+            {
+                //인장 정보
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<Image>().color = new Color(1, 1, 1);
+                //Debug.Log(i+"   "+INJHave.Length);
+                if (INJHave[i] == 0 && INJHave[i / 6 * 6] != i) 
+                {
+                    if (i % 6 == 0)//장착인장
+                    {
+                        PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info = "미장착";
+                        PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info2 = "얻은 인장을 G키를 눌러서 장착해 보세요";
+                    }
+                    else
+                    {
+                        PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info = "미획득";
+                        PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info2 = "탐험을 통해 인장을 찾아보세요";
+                    }
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                }
+                else if (INJHave[i] == 2 || (INJHave[i / 6 * 6] == i && i == 2))
+                {
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info = "공격의 인장";
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info2 = "공격력이 대폭 증가합니다.";
+                }
+                else if (INJHave[i] == 5 || (INJHave[i / 6 * 6] == i && i == 5))
+                {
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info = "초고속 부츠";
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info2 = "이속이 미쳐 날뜁니다.";
+                }
+                else if (INJHave[i] == 8 || (INJHave[i / 6 * 6] == i && i == 8))
+                {
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info = "콩콩이 마스터";
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info2 = "점프력이 오집니다.";
+                }
+
+            }
+            i = 0;
+            if (INJHave[i] != 0)//장착인장
+            {
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetComponent<InvInfi>().Info += " (장착중)";
+            }
+            i = 6;
+            if (INJHave[i] != 0)//장착인장
+            {
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetComponent<InvInfi>().Info += " (장착중)";
+            }
+            i = 12;
+            if (INJHave[i] != 0)//장착인장
+            {
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetComponent<InvInfi>().Info += " (장착중)";
+            }
         }
         if (PageNum == 1)
         {
@@ -403,19 +550,22 @@ public class Player : Life
                 PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<Image>().sprite = GameSystem.instance.AllSton[HaveStone.Length <= i ? 0 : HaveStone[i] / 1000].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite;
                 if (i == 0)
                 {
-                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(0).GetComponent<Text>().text = "X ∞";
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(1).GetComponent<Text>().text = "X ∞";
                     PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info = "기본 원석";
                     PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info2 = "5초마다 계속 생성 된다.";
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<Image>().color = new Color(1, 1, 1);
                 }
-                else if (HaveStone.Length <= i || HaveStone[i] == 0) 
+                else if (HaveStone.Length <= i || HaveStone[i] == 0)
                 {
-                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(0).GetComponent<Text>().text = "";
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(1).GetComponent<Text>().text = "";
                     PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info = "비어 있음";
                     PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info2 = "";
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
                 }
                 else
                 {
-                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(0).GetComponent<Text>().text = "X " + (HaveStone[i] % 1000);
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<Image>().color = new Color(1, 1, 1);
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(1).GetComponent<Text>().text = "X " + (HaveStone[i] % 1000);
                     if (HaveStone[i] / 1000 == 3)
                     {
                         PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info = "탱탱 원석";
@@ -434,9 +584,9 @@ public class Player : Life
 
         for (int i = 0; i < PlyInvTr.GetChild(0).GetChild(PageNum).childCount; i++)
         {
-            PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+            PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(0).gameObject.SetActive(false);//.GetComponent<Image>().color = new Color(.5f, .5f, .5f);
         }
-        PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetComponent<Image>().color = new Color(1, 1, 1);
+        PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(PageCarrNum).GetChild(0).gameObject.SetActive(true);
 
 
 
@@ -452,7 +602,7 @@ public class Player : Life
             if (ShootStone == null) ShootStone = new Transform[100];
             bool STSTS = false;
             //Debug.Log(ShootStone+ "   " +ShootStone.Length);
-            for(int i = 0; i < ShootStone.Length; i++)
+            for (int i = 0; i < ShootStone.Length; i++)
             {
                 if (ShootStone[i] != null)
                 {
@@ -495,15 +645,15 @@ public class Player : Life
                     }
                 }
             }
-            else if (NowChooseObj != null && NowChooseObj.tag == "Save" && NowChooseObj.GetComponent<SaveTrTr>() != null) 
+            else if (NowChooseObj != null && NowChooseObj.tag == "Save" && NowChooseObj.GetComponent<SaveTrTr>() != null)
             {
                 if (Money2 > 0) MonyBagAni.SetTrigger("On");
                 int[] ss = new int[HaveStone.Length];
-                for(int i = 0; i < ss.Length; i++)
+                for (int i = 0; i < ss.Length; i++)
                 {
                     ss[i] = HaveStone[i];
                 }
-                if(NowChooseObj.GetComponent<SaveTrTr>().SaveOn())
+                if (NowChooseObj.GetComponent<SaveTrTr>().SaveOn())
                 {
                     GameSystem.instance.GiveMoneyBag(false);
 
@@ -517,7 +667,7 @@ public class Player : Life
         }
     }
     public Animator MonyBagAni;
-    public void PlySave( bool moneySave=true)
+    public void PlySave(bool moneySave = true)
     {
         if (moneySave)
         {
@@ -529,7 +679,7 @@ public class Player : Life
 
         GameSystem.instance.Save();
     }
-   
+
     [HideInInspector]
     public Vector3 trapsavepoint;
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -596,7 +746,7 @@ public class Player : Life
     {
         //Debug.Log(collision.name);
         if (NowDie) return;
-        if (!GodMode && collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set && nowGodTime <= 0 )
+        if (!GodMode && collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set && nowGodTime <= 0)
         {
             //            Debug.Log(collision.name);
             Hp -= collision.GetComponent<Att>().AttDamage;
@@ -606,12 +756,17 @@ public class Player : Life
             rig.velocity = new Vector2(ThrowF.x * PlyLook, ThrowF.y);
 
 
+            if (PlyInvTr.gameObject.activeSelf)
+            {
+                PlyInvTr.gameObject.SetActive(false);
+                OnStory = false;
+            }
             HPUI();
             //Debug.Log(rig.velocity);
             //Debug.Log(new Vector2(ThrowF.x * PlyLook, ThrowF.y));
 
         }
-        if (ThrowStone != collision.transform && collision.gameObject.layer == 26)  
+        if (ThrowStone != collision.transform && collision.gameObject.layer == 26)
         {
             if (NowChooseObj != null)
             {
@@ -634,7 +789,7 @@ public class Player : Life
             collision.GetComponent<ItemCode>().Eat();
             if (collision.GetComponent<ItemCode>().ItemCodeNum == 0)
             {
-                if(Money<=9999)
+                if (Money <= 9999)
                 {
                     Money++;
                     if (!GameSystem.instance.GiveMoneyBag()) Money2++;
@@ -716,7 +871,7 @@ public class Player : Life
             {
                 ani.SetFloat("AirTime", ani.GetFloat("AirTime") + Time.deltaTime);
             }
-            if (((!OnStory && Input.GetKey(KeyCode.DownArrow)) || (OnStory && Story_Down && !Story_DownUp)) && down) 
+            if (((!OnStory && Input.GetKey(KeyCode.DownArrow)) || (OnStory && Story_Down && !Story_DownUp)) && down)
             {
                 if (OnStory) Story_DownUp = false;
                 ani.SetInteger("State", 3);
@@ -724,7 +879,7 @@ public class Player : Life
                 col.offset = new Vector2(col.offset.x, 0.3257405f);
                 col.size = new Vector2(col.size.x, 0.5742418f);
             }
-            else if ((OnStory && Story_DownUp) || (Input.GetKeyUp(KeyCode.DownArrow) && !OnStory)) 
+            else if ((OnStory && Story_DownUp) || (Input.GetKeyUp(KeyCode.DownArrow) && !OnStory))
             {
                 if (OnStory)
                 {
@@ -745,7 +900,7 @@ public class Player : Life
                 PlyLook = 1;
                 DontKeyStayMove = false;
             }
-            else if ((!OnStory && Input.GetKey(KeyCode.LeftArrow)) || (OnStory && Story_LeftMove)) 
+            else if ((!OnStory && Input.GetKey(KeyCode.LeftArrow)) || (OnStory && Story_LeftMove))
             {
                 if (down) ani.SetInteger("State", 1);
                 else
@@ -755,7 +910,7 @@ public class Player : Life
                 PlyLook = -1;
                 DontKeyStayMove = false;
             }
-            else if (OnStory||(!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)))
+            else if (OnStory || (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)))
             {
                 if (down) ani.SetInteger("State", 0);
                 else
@@ -763,7 +918,7 @@ public class Player : Life
                     ani.SetInteger("State", 2);
                 }
             }
-            if (((!OnStory && Input.GetKeyDown(KeyCode.UpArrow)) || (OnStory && Story_Jump)) && down) 
+            if (((!OnStory && Input.GetKeyDown(KeyCode.UpArrow)) || (OnStory && Story_Jump)) && down)
             {
                 if (OnStory) Story_Jump = false;
                 ani.SetBool("RL", true);
@@ -788,13 +943,13 @@ public class Player : Life
         {
             if (rig.velocity.y > 0) rig.velocity = new Vector2(rig.velocity.x, rig.velocity.y * LongJumpTime);
             else NowJumpPower = JumpPower * LongJumpTime;
-            
+
         }
     }
     void Ply_Desh()
     {
 
-        if ((!OnStory && Input.GetKeyDown(KeyCode.Space) && nowDeshCoolTime <= 0) || (OnStory && Story_Desh))  
+        if ((!OnStory && Input.GetKeyDown(KeyCode.Space) && nowDeshCoolTime <= 0) || (OnStory && Story_Desh))
         {
             if (OnStory) Story_Desh = false;
             if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || ani.GetCurrentAnimatorStateInfo(0).IsName("Run") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump"))
@@ -858,7 +1013,7 @@ public class Player : Life
             rig.gravityScale = 0;
             return;
         }
-        else if(ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_2") 
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_2")
             || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down01") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down02"))
         {
             if (TrainNow != null)
@@ -888,16 +1043,16 @@ public class Player : Life
                 rig.velocity = new Vector2(0, rig.velocity.y);
                 rig.gravityScale = 1;
             }
-            
+
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Run"))
         {
             ani.SetFloat("RunSpeed", MaxSpeed * 1.2f);
             rig.velocity = new Vector2(MaxSpeed * PlyLook, rig.velocity.y);
         }
-        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump") && !DontKeyStayMove) 
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump") && !DontKeyStayMove)
         {
-            if ((OnStory && (Story_RightMove || Story_LeftMove)) || (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))) 
+            if ((OnStory && (Story_RightMove || Story_LeftMove)) || (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)))
             {
                 ani.SetFloat("RunSpeed", MaxSpeed * 1.2f);
                 rig.velocity = new Vector2(MaxSpeed * PlyLook, rig.velocity.y);
@@ -928,7 +1083,7 @@ public class Player : Life
                 ani.SetInteger("State", 2);
             }
         }
-       
+
     }
     public void DieDie()
     {
@@ -940,12 +1095,12 @@ public class Player : Life
             PlySave(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        
+
     }
     //void NpcCheck()
     //{
     //    Debug.DrawRay(rig.position, dirVec * 0.7f, new Color(0, 1, 0));
-        
+
     //    RaycastHit2D rayHit = Physics2D.Raycast(rig.position, dirVec, 0.7f, LayerMask.GetMask("ObjLayer"));
     //    if (rayHit.collider != null)
     //    {
@@ -955,7 +1110,7 @@ public class Player : Life
     //    {
     //        scanObject = null;
     //    }
-        
+
     //}
     void InputTest()
     {
@@ -1007,7 +1162,7 @@ public class Player : Life
         {
             StopStoneTime += Time.deltaTime;
         }
-        if (StopStone && StopStoneTime>.5f && !Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Att") && ThrowStone != null)
+        if (StopStone && StopStoneTime > .5f && !Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Att") && ThrowStone != null)
         {
             ThrowStone.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             ThrowStone.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
@@ -1015,18 +1170,18 @@ public class Player : Life
             ThrowStone = null;
             StopStone = false;
         }
-        else if(Hand.GetChild(0).childCount==0 && !StopStone)
+        else if (Hand.GetChild(0).childCount == 0 && !StopStone)
         {
             ThrowStone = null;
         }
-       
+
         if (!OnStory && Input.GetKeyDown(KeyCode.E))
         {
             NowChoose++;
             if (HaveStone.Length <= NowChoose) NowChoose = 0;
         }
     }
-  
+
     void REStone()
     {
         HaveStone[0] = 1;
@@ -1103,11 +1258,11 @@ public class Player : Life
     }
     void HPUI()
     {
-        for(int i = HPUITr.childCount; i < MaxHP; i++)
+        for (int i = HPUITr.childCount; i < MaxHP; i++)
         {
             Instantiate(HPUITr.GetChild(0), HPUITr);
         }
-        for(int i = 0; i < MaxHP; i++)
+        for (int i = 0; i < MaxHP; i++)
         {
             if (i < Hp) HPUITr.GetChild(i).GetComponent<Animator>().SetInteger("State", 1);
             else HPUITr.GetChild(i).GetComponent<Animator>().SetInteger("State", 0);
@@ -1119,7 +1274,7 @@ public class Player : Life
         if (rig.velocity.y < 0)
         {
             DontKeyStayMove = true;
-            rig.velocity = new Vector2(transform.position.x - collision.transform.position.x, transform.position.y - collision.transform.position.y+.5f).normalized * JumpPower;
+            rig.velocity = new Vector2(transform.position.x - collision.transform.position.x, transform.position.y - collision.transform.position.y + .5f).normalized * JumpPower;
         }
     }
     public void SSSS()
@@ -1131,7 +1286,7 @@ public class Player : Life
     public void JumpU()
     {
         if (rig.mass == 1) rig.velocity = new Vector2(rig.velocity.x, NowJumpPower);
-        else rig.velocity = new Vector2(rig.velocity.x, NowJumpPower *2/ 3);
+        else rig.velocity = new Vector2(rig.velocity.x, NowJumpPower * 2 / 3);
     }
     void DontMoveSet(int dd)
     {
