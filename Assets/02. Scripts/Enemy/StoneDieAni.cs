@@ -14,6 +14,8 @@ public class StoneDieAni : MonoBehaviour
     public float SpDesTime = 5;
     [Header("다용도 변수")]
     public float StoneSpecialNum;
+    [Header("과열 게이지 변수")]
+    public int AngNum = 5;
     void Start()
     {
 

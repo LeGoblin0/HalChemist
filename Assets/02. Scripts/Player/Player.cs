@@ -164,6 +164,14 @@ public class Player : Life
     [Tooltip("플레이어가 보고 있는 방향 [1: 우 ]  [2: 좌 ]")]
     public int PlyLook = 1;
 
+    [Header("과열 시스템")]
+    public float Ang_Down_Time = 3;
+    int AngNum = 0;
+    public float Ang_Down_Speed_Time = .5f;
+    float Ang_Down_Time_Now = 0;
+    bool AngMax = false;
+    public float Ang_Max_Time = 30;
+    public Image AngImgF;
 
     [Header("시스템")]
     public Transform HPUITr;
@@ -487,7 +495,7 @@ public class Player : Life
             for (i = 0; i < PlyInvTr.GetChild(0).GetChild(PageNum).childCount; i++)
             {
                 //인장 정보
-                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<Image>().color = new Color(1, 1, 1);
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(1).gameObject.SetActive(true);//.GetComponent<Image>().color = new Color(1, 1, 1);
                 //Debug.Log(i+"   "+INJHave.Length);
                 if (INJHave[i] == 0 && INJHave[i / 6 * 6] != i) 
                 {
@@ -501,7 +509,7 @@ public class Player : Life
                         PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info = "미획득";
                         PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info2 = "탐험을 통해 인장을 찾아보세요";
                     }
-                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(1).gameObject.SetActive(false);//.GetComponent<Image>().color = new Color(.5f, .5f, .5f);
                 }
                 else if (INJHave[i] == 2 || (INJHave[i / 6 * 6] == i && i == 2))
                 {
@@ -523,21 +531,27 @@ public class Player : Life
             i = 0;
             if (INJHave[i] != 0)//장착인장
             {
-                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetChild(1).gameObject.SetActive(false);//.GetComponent<Image>().color = new Color(.5f, .5f, .5f);
                 PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetComponent<InvInfi>().Info += " (장착중)";
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(1).GetComponent<Image>().sprite = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetChild(1).GetComponent<Image>().sprite;
             }
+            else PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(1).gameObject.SetActive(false);
             i = 6;
             if (INJHave[i] != 0)//장착인장
             {
-                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetChild(1).gameObject.SetActive(false);//.GetComponent<Image>().color = new Color(.5f, .5f, .5f);
                 PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetComponent<InvInfi>().Info += " (장착중)";
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(1).GetComponent<Image>().sprite = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetChild(1).GetComponent<Image>().sprite;
             }
+            else PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(1).gameObject.SetActive(false);
             i = 12;
             if (INJHave[i] != 0)//장착인장
             {
-                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetComponent<Image>().color = new Color(.5f, .5f, .5f);
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetChild(1).gameObject.SetActive(false);//.GetComponent<Image>().color = new Color(.5f, .5f, .5f);
                 PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetComponent<InvInfi>().Info += " (장착중)";
+                PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(1).GetComponent<Image>().sprite = PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(INJHave[i]).GetChild(1).GetComponent<Image>().sprite;
             }
+            else PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetChild(1).gameObject.SetActive(false);
         }
         if (PageNum == 1)
         {
@@ -970,7 +984,7 @@ public class Player : Life
     void Ply_Att()
     {
         //if (!ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Run") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump_00")) return;
-        if (!OnStory && Input.GetKeyDown(KeyCode.A) && DontAttTime <= 0 && !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down01") && !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down02"))
+        if (!OnStory && !AngMax && Input.GetKeyDown(KeyCode.A) && DontAttTime <= 0 && !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down01") && !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down02")) 
         {
             if (down && nowAttTime <= 0 && !DontMove)
             {
@@ -1140,9 +1154,33 @@ public class Player : Life
     int ShootStoneNum = 0;//던져진 스톤 총알 넘버
     void Ply_Throw()
     {
-        if (!OnStory && Input.GetKeyDown(KeyCode.S))
+        if (Ang_Down_Time_Now > 0)
         {
-            if (!Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Att") && ThrowStone == null && HaveStone[NowChoose] > 0)
+            Ang_Down_Time_Now -= Time.deltaTime;
+        }
+        else if (!AngMax) 
+        {
+            Ang_Down_Time_Now = Ang_Down_Speed_Time;
+            AngNum--;
+            if (AngNum < 0)
+            {
+                AngNum = 0;
+            }
+
+            else if (AngNum >= 90)
+            {
+                Handani.SetInteger("State", 1);
+            }
+            else
+            {
+                Handani.SetInteger("State", 0);
+            }
+            AngImgF.fillAmount = AngNum / 100f;
+            
+        }
+        if (!OnStory && !AngMax && Input.GetKeyDown(KeyCode.S)) 
+        {
+            if (!Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Att") && !Handani.GetCurrentAnimatorStateInfo(0).IsName("Ang_Att") && !Handani.GetCurrentAnimatorStateInfo(0).IsName("Attt") && ThrowStone == null && HaveStone[NowChoose] > 0)
             {
                 StopStone = true;
                 Handani.SetTrigger("Att");
@@ -1209,8 +1247,28 @@ public class Player : Life
         ThrowStone.parent = Hand.GetChild(0);
         ThrowStone.GetComponent<Rigidbody2D>().gravityScale = 0;
         if (ThrowStone.GetComponent<Att>() != null && ThrowStone.GetComponent<Att>().SelfDesTime != 0) ThrowStone.GetComponent<Att>().SelfDie();
+        AngNum += ThrowStone.GetComponent<StoneDieAni>().AngNum;
+        Ang_Down_Time_Now = Ang_Down_Time;
+        AngImgF.fillAmount = AngNum / 100f;
+        if (AngNum >= 100)
+        {
+            Ang_Down_Time_Now = Ang_Max_Time;
+            AngMax = true;
+            Invoke("AngMaxEnd", Ang_Max_Time);
+            Handani.SetInteger("State", 100);
+        }
+        else if (AngNum >= 90)
+        {
+            Handani.SetInteger("State", 1);
+        }
     }
-
+    void AngMaxEnd()
+    {
+        AngNum = 0;
+        AngMax = false;
+        Handani.SetInteger("State", 0);
+        AngImgF.fillAmount = AngNum / 100f;
+    }
     public void TStone()
     {
         ThrowStone.parent = GameObject.Find("NowMapEnemy").transform;
