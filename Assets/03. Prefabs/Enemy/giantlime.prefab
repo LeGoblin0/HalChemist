@@ -547,8 +547,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def7c3364117f4a449dbe948e518da79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 12
-  Hp: 8
+  MaxHP: 25
+  Hp: 25
   state: 0
   ani: {fileID: 0}
   YSet: 1
