@@ -123,10 +123,10 @@ public class Player : Life
     float ImgDeshNowTime = 0;
 
     [Header("공격")]
-    public float AttSpeed = 1.8f;
-    public float AttCoolTime = 2f;
-    [Tooltip("평타 쿨남은시간")]
-    float nowAttTime = 0;
+    public float AttSpeed = 1f;
+    //public float AttCoolTime = 2f;
+    //[Tooltip("평타 쿨남은시간")]
+    //float nowAttTime = 0;
 
     [Tooltip("평타 불가시간")]
     float DontAttTime = 0;
@@ -143,6 +143,7 @@ public class Player : Life
     [Header("원석")]
     public int[] HaveStone;
     public int MaxStoneNum = 3;
+    public float ThrowSpeed = 4;
     [HideInInspector]
     public int NowChoose = 0;
     [Tooltip("스톤 겹치는 수량")]
@@ -208,6 +209,9 @@ public class Player : Life
     public GameObject ShootThrowUI;//G나오는 이모티콘
     void Update()
     {
+        Handani.SetFloat("AttSpeed", AttSpeed);
+        Handani.SetFloat("ThrowSpeed", ThrowSpeed);
+
         bool ff = false;
         if (NowObj != null) ff = true;
         if (ShootStone == null) ShootStone = new Transform[100];
@@ -984,8 +988,10 @@ public class Player : Life
     void Ply_Att()
     {
         //if (!ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Run") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump_00")) return;
-        if (!OnStory && !AngMax && Input.GetKeyDown(KeyCode.A) && DontAttTime <= 0 && !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down01") && !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Down02")) 
+        if (!OnStory && !AngMax && Input.GetKeyDown(KeyCode.A) && DontAttTime <= 0 && (Handani.GetCurrentAnimatorStateInfo(0).IsName("Ang_Idle") || Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Idle"))) 
         {
+            Handani.SetTrigger("Hit");
+            /*
             if (down && nowAttTime <= 0 && !DontMove)
             {
                 DontMove = true;
@@ -1007,12 +1013,13 @@ public class Player : Life
                 ani.SetInteger("State", 4);
                 nowAttTime = AttCoolTime;
             }
+            *///일반 공격 조건문도 사라짐 서있을때나 점프중일때
         }
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Ground_Att_1") && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= .95f && ani.GetInteger("State") != 5)
         {
             DontMove = false;
         }
-        if (nowAttTime > 0) nowAttTime -= Time.deltaTime;
+        //if (nowAttTime > 0) nowAttTime -= Time.deltaTime;
         if (DontAttTime > 0) DontAttTime -= Time.deltaTime;
     }
     public Rigidbody2D TrainNow;
@@ -1178,20 +1185,22 @@ public class Player : Life
             AngImgF.fillAmount = AngNum / 100f;
             
         }
-        if (!OnStory && !AngMax && Input.GetKeyDown(KeyCode.S)) 
+        if (!OnStory && !AngMax && Input.GetKey(KeyCode.S)) 
         {
-            if (!Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Att") && !Handani.GetCurrentAnimatorStateInfo(0).IsName("Ang_Att") && !Handani.GetCurrentAnimatorStateInfo(0).IsName("Attt") && ThrowStone == null && HaveStone[NowChoose] > 0)
+            Debug.Log((Handani.GetCurrentAnimatorStateInfo(0).IsName("Ang_Idle") || Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Idle")) +"  "+ ThrowStone);
+            if ((Handani.GetCurrentAnimatorStateInfo(0).IsName("Ang_Idle") || Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Idle")) && !Handani.GetCurrentAnimatorStateInfo(0).IsName("Attt") && ThrowStone == null && HaveStone[NowChoose] > 0)
             {
-                StopStone = true;
                 Handani.SetTrigger("Att");
                 Tcode = HaveStone[NowChoose] / 1000;
                 --HaveStone[NowChoose];
                 if (HaveStone[NowChoose] % 1000 == 0) HaveStone[NowChoose] = 0;
                 if (NowChoose == 0) Invoke("REStone", BaseStoneCoolTime);
                 StoneUI();
-                StopStoneTime = 0;
+                //StopStone = true;//스핀
+                //StopStoneTime = 0;//스핀
             }
         }
+        /*
         if (Input.GetKeyUp(KeyCode.S))
         {
             StopStone = false;
@@ -1212,6 +1221,7 @@ public class Player : Life
         {
             ThrowStone = null;
         }
+        *///스핀
 
         if (!OnStory && Input.GetKeyDown(KeyCode.E))
         {
@@ -1289,7 +1299,7 @@ public class Player : Life
             ThrowStone.GetComponent<Att>().HitNum = 2;
             ThrowStone.GetComponent<Att>().HitDesT = true;
         }
-
+        ThrowStone = null;
 
     }
 
