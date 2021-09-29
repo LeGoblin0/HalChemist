@@ -209,7 +209,7 @@ public class Player : Life
     public GameObject ShootThrowUI;//G나오는 이모티콘
     void Update()
     {
-        Handani.SetFloat("AttSpeed", AttSpeed);
+        Handani.SetFloat("HitSpeed", AttSpeed);
         Handani.SetFloat("ThrowSpeed", ThrowSpeed);
 
         bool ff = false;
