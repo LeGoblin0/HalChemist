@@ -741,7 +741,7 @@ public class Player : Life
     }
     void OffDisply()
     {
-        GameSystem.instance.CanversUI.GetChild(1).GetComponent<Animator>().SetTrigger("On");
+        GameSystem.instance.CanversUI.GetChild(2).GetComponent<Animator>().SetTrigger("On");
     }
     void ReAni()
     {
