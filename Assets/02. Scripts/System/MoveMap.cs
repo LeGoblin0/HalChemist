@@ -52,7 +52,7 @@ public class MoveMap : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            GameSystem.instance.CanversUI.GetChild(1).GetComponent<Animator>().SetTrigger("On");
+            GameSystem.instance.CanversUI.GetChild(2).GetComponent<Animator>().SetTrigger("On");
             Ply.GetComponent<Player>().DontMove = true;
             Invoke("gogoMap", 0.2f);
             if (BGChange >= 0)

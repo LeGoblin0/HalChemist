@@ -16,6 +16,8 @@ namespace DataInfo
         public int Sound;
         public int[] Quest;
 
+        public bool[] StoneMake;
+
         public bool LostMoneyBag;
         public int[] Money;
         public int[] Stone;

@@ -16,6 +16,8 @@ public class StoneDieAni : MonoBehaviour
     public float StoneSpecialNum;
     [Header("과열 게이지 변수")]
     public int AngNum = 5;
+    [Header("상점가격")]
+    public int MoneyBuy = 10;
     void Start()
     {
 

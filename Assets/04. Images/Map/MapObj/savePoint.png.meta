@@ -155,7 +155,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
+        width: 144
         height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -174,9 +174,9 @@ TextureImporter:
       name: savePoint_1
       rect:
         serializedVersion: 2
-        x: 96
+        x: 144
         y: 0
-        width: 96
+        width: 144
         height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -195,9 +195,9 @@ TextureImporter:
       name: savePoint_2
       rect:
         serializedVersion: 2
-        x: 192
+        x: 288
         y: 0
-        width: 96
+        width: 144
         height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -216,9 +216,9 @@ TextureImporter:
       name: savePoint_3
       rect:
         serializedVersion: 2
-        x: 288
+        x: 432
         y: 0
-        width: 96
+        width: 144
         height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -237,9 +237,9 @@ TextureImporter:
       name: savePoint_4
       rect:
         serializedVersion: 2
-        x: 384
+        x: 576
         y: 0
-        width: 96
+        width: 144
         height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -258,9 +258,9 @@ TextureImporter:
       name: savePoint_5
       rect:
         serializedVersion: 2
-        x: 480
+        x: 720
         y: 0
-        width: 96
+        width: 144
         height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -279,9 +279,9 @@ TextureImporter:
       name: savePoint_6
       rect:
         serializedVersion: 2
-        x: 576
+        x: 864
         y: 0
-        width: 96
+        width: 144
         height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -300,9 +300,9 @@ TextureImporter:
       name: savePoint_7
       rect:
         serializedVersion: 2
-        x: 672
+        x: 1008
         y: 0
-        width: 96
+        width: 144
         height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -321,9 +321,9 @@ TextureImporter:
       name: savePoint_8
       rect:
         serializedVersion: 2
-        x: 768
+        x: 1152
         y: 0
-        width: 96
+        width: 144
         height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -342,9 +342,9 @@ TextureImporter:
       name: savePoint_9
       rect:
         serializedVersion: 2
-        x: 864
+        x: 1296
         y: 0
-        width: 96
+        width: 144
         height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -363,9 +363,9 @@ TextureImporter:
       name: savePoint_10
       rect:
         serializedVersion: 2
-        x: 960
+        x: 1440
         y: 0
-        width: 96
+        width: 144
         height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -384,9 +384,9 @@ TextureImporter:
       name: savePoint_11
       rect:
         serializedVersion: 2
-        x: 1056
+        x: 1584
         y: 0
-        width: 96
+        width: 144
         height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -405,9 +405,9 @@ TextureImporter:
       name: savePoint_12
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 1728
         y: 0
-        width: 96
+        width: 144
         height: 96
       alignment: 7
       pivot: {x: 0.5, y: 0}

@@ -15,6 +15,7 @@ public class GameSystem : MonoBehaviour
     public StoryStart[] Story;
     public ObjData[] NPC;
     public GameObject TextSay;
+    public GameObject StoneButUI;
     public void Sond(int i)
     {
         if (aus == null) aus = GetComponent<AudioSource>();
@@ -108,6 +109,7 @@ public class GameSystem : MonoBehaviour
         gameData.Story[code] = true;
         Save();
     }
+    public bool TEST_BOOL = true;
     public void NPCSaySave(int code,int num)
     {
         if (gameData.NpcSayNum == null) gameData.NpcSayNum = new int[1000];
@@ -141,6 +143,11 @@ public class GameSystem : MonoBehaviour
                 if (gameData.Story[i]) StoryTr.GetChild(i).gameObject.SetActive(false);
             }
             if (gameData.NpcSayNum == null) gameData.NpcSayNum = new int[1000];
+            if (gameData.StoneMake == null) gameData.StoneMake = new bool[1000];
+            if (TEST_BOOL)
+            {
+                gameData.StoneMake[0] = true;
+            }
             for (int i = 0; i < NPC.Length; i++)
             {
                 NPC[i].id = i;
@@ -191,7 +198,10 @@ public class GameSystem : MonoBehaviour
         public int BGSound = 100;
         public int Sound = 100;
     }
-
+    public bool[] GiveStoneMake()
+    {
+        return gameData.StoneMake;
+    }
     public SystemSave gamesystemdata;
 
     private string dataPathSys;//파일저장위치

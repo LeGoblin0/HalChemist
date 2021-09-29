@@ -665,22 +665,19 @@ public class Player : Life
             }
             else if (NowChooseObj != null && NowChooseObj.tag == "Save" && NowChooseObj.GetComponent<SaveTrTr>() != null)
             {
-                if (Money2 > 0) MonyBagAni.SetTrigger("On");
-                int[] ss = new int[HaveStone.Length];
-                for (int i = 0; i < ss.Length; i++)
-                {
-                    ss[i] = HaveStone[i];
-                }
-                if (NowChooseObj.GetComponent<SaveTrTr>().SaveOn())
-                {
-                    GameSystem.instance.GiveMoneyBag(false);
+                //if (Money2 > 0) MonyBagAni.SetTrigger("On");
+                //int[] ss = new int[HaveStone.Length];
+                //for (int i = 0; i < ss.Length; i++)
+                //{
+                //    ss[i] = HaveStone[i];
+                //}
+                //if (NowChooseObj.GetComponent<SaveTrTr>().SaveOn())
+                //{
+                //    GameSystem.instance.GiveMoneyBag(false);
 
-                    MoneyBagImg.sprite = MoneyBag[GameSystem.instance.GiveMoneyBag() ? 1 : 0];
-                }
-                Money += Money2;
-                Money2 = 0;
-                LookMoney();
-                PlySave();
+                //    MoneyBagImg.sprite = MoneyBag[GameSystem.instance.GiveMoneyBag() ? 1 : 0];
+                //}
+                NowChooseObj.GetComponent<SaveTrTr>().openUI();
             }
         }
     }
@@ -872,7 +869,7 @@ public class Player : Life
     public int Money2;
     public Text MoneyInt2;
 
-    void LookMoney()
+    public void LookMoney()
     {
         MoneyInt.text = Money + "";
         MoneyInt2.text = Money2 + "";
@@ -1187,7 +1184,7 @@ public class Player : Life
         }
         if (!OnStory && !AngMax && Input.GetKey(KeyCode.S)) 
         {
-            Debug.Log((Handani.GetCurrentAnimatorStateInfo(0).IsName("Ang_Idle") || Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Idle")) +"  "+ ThrowStone);
+            //Debug.Log((Handani.GetCurrentAnimatorStateInfo(0).IsName("Ang_Idle") || Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Idle")) +"  "+ ThrowStone);
             if ((Handani.GetCurrentAnimatorStateInfo(0).IsName("Ang_Idle") || Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Idle")) && !Handani.GetCurrentAnimatorStateInfo(0).IsName("Attt") && ThrowStone == null && HaveStone[NowChoose] > 0)
             {
                 Handani.SetTrigger("Att");
@@ -1303,7 +1300,7 @@ public class Player : Life
 
     }
 
-    void StoneUI()
+    public void StoneUI()
     {
         for (int i = 0; i < HaveStone.Length; i++)
         {
