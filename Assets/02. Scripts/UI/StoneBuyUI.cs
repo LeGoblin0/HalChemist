@@ -188,6 +188,7 @@ public class StoneBuyUI : MonoBehaviour
             transform.GetChild(i).GetChild(0).GetChild(1).gameObject.SetActive(false);
             transform.GetChild(i).GetChild(0).GetChild(2).gameObject.SetActive(false);
         }
+        //Debug.Log(Car);
         transform.GetChild(Car).GetChild(0).gameObject.SetActive(true);
         transform.GetChild(Car).GetChild(0).GetChild(StoneMake[Car] ? 0 : 2).gameObject.SetActive(true);
         if (Choose)
