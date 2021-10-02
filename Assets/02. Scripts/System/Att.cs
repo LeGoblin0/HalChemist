@@ -14,6 +14,8 @@ public class Att : MonoBehaviour
     public float SelfDesTime = 0;
     [Header("관통")]
     public bool HitDesT = false;
+    [Header("어텍코드")]
+    public int AttCode = -1;
     public int HitNum = 1;
     [Tooltip("-1=없음 0=상 1=하 2=좌 3=우")]
     public int AttArrow = -1;

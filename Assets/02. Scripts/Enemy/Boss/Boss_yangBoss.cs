@@ -298,7 +298,11 @@ public class Boss_yangBoss : Enemy01
     {
         if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set)
         {
-            Hp -= collision.GetComponent<Att>().AttDamage;
+            if (collision.GetComponent<Att>().AttCode == -1 || collision.GetComponent<Att>().AttCode != LastAtt)
+            {
+                LastAtt = collision.GetComponent<Att>().AttCode;
+                Hp -= collision.GetComponent<Att>().AttDamage;
+            }
             if (Hp != 0)
             {
                 HHIITime = .2f;

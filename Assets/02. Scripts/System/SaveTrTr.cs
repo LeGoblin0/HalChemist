@@ -54,6 +54,7 @@ public class SaveTrTr : MonoBehaviour
                 {
                     SaveOn();
                     SaveUI.SetActive(false);
+                    ply.SaveHp();
                     ply.OnStory = false; OpenNow = false;
                 }
                 else if (car == 1)
@@ -90,6 +91,7 @@ public class SaveTrTr : MonoBehaviour
 
     public bool SaveOn()
     {
+        
         ply.LookMoney();
         ply.PlySave();
         return GameSystem.instance.ChangeSave(ObjCode);

@@ -677,6 +677,7 @@ public class Player : Life
 
                 //    MoneyBagImg.sprite = MoneyBag[GameSystem.instance.GiveMoneyBag() ? 1 : 0];
                 //}
+                ShootThrowUI.SetActive(false);
                 NowChooseObj.GetComponent<SaveTrTr>().openUI();
             }
         }
@@ -714,10 +715,14 @@ public class Player : Life
         }
         else if (!GodMode && collision.tag == "Water")
         {
+            if (Hp > 1)
+            {
+                TrapSaveDie();
+            }
+            Hp--; HPUI();
             rig.mass = 2;
             rig.gravityScale = WatergravityScale;
             rig.velocity = rig.velocity * .9f;
-            TrapSaveDie();
         }
         else if (collision.tag == "NPCObj")
         {
@@ -731,13 +736,14 @@ public class Player : Life
 
         GodMode = true;
         DontMove = true;
+        rig.velocity = Vector2.zero;
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         ani.SetTrigger("Hit");
         //rig.bodyType = RigidbodyType2D.Static;
         Time.timeScale = 1;
         //NowDie = true;
-        Invoke("OffDisply", .5f);
-        Invoke("ReAni", .8f);
+        Invoke("OffDisply", .3f);
+        Invoke("ReAni", .4f);
     }
     void OffDisply()
     {
@@ -987,6 +993,8 @@ public class Player : Life
         //if (!ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Run") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump_00")) return;
         if (!OnStory && !AngMax && Input.GetKeyDown(KeyCode.A) && DontAttTime <= 0 && (Handani.GetCurrentAnimatorStateInfo(0).IsName("Ang_Idle") || Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Idle"))) 
         {
+            Hand.GetChild(0).GetChild(0).GetChild(0).GetComponent<Att>().AttCode++;
+            Hand.GetChild(0).GetChild(0).GetChild(1).GetComponent<Att>().AttCode++;
             Handani.SetTrigger("Hit");
             /*
             if (down && nowAttTime <= 0 && !DontMove)
