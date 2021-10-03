@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1989194425660929788}
   - component: {fileID: 102948720024153383}
   - component: {fileID: 1160654160813006498}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: angelica_phase1_bullet_4
   m_TagString: Att
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &8973552374129261612
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 5597359061375023918}
   - component: {fileID: 4185971630976152439}
   - component: {fileID: 810507747843031490}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Att
   m_Icon: {fileID: 0}

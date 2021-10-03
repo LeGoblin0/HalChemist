@@ -22,18 +22,26 @@ public class BossShoot : MonoBehaviour
             transform.position += new Vector3(Target.position.x - transform.position.x, Target.position.y - transform.position.y).normalized * 3 * Time.deltaTime;
         }
     }
+    public void SetDie(float Timess)
+    {
+        Invoke("DieAniS", Timess);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Shhoo_Att1") && collision.tag == "Att" && collision.GetComponent<Att>() != null)
         {
-            ani.SetTrigger("Die");
+            DieAniS();
             rig.velocity = Vector2.zero;
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Shhoo_Att1") && collision.tag == "Ground")
         {
-            ani.SetTrigger("Die");
+            DieAniS();
             rig.velocity = Vector2.zero;
         }
+    }
+    public void DieAniS()
+    {
+        ani.SetTrigger("Die");
     }
     public void DesOO()
     {
