@@ -52,6 +52,7 @@ public class Enemy01 : Life
     protected virtual void Update()//protected override void Update() 상속받아서 이렇게 작성
     {
         if (Die) return;
+        //Debug.Log(HitWhite);
         if (HitWhite)
         {
             if (HHIITime > 0)
@@ -145,6 +146,7 @@ public class Enemy01 : Life
             {
                 HHIITime = .2f;
                 if(HitAni) ani.SetTrigger("Hit");
+                //Debug.Log(HHIITime);
             }
 
         }

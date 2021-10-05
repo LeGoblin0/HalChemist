@@ -28,7 +28,8 @@ public class BossShoot : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Shhoo_Att1") && collision.tag == "Att" && collision.GetComponent<Att>() != null)
+        //Debug.Log(collision);
+        if (/*ani.GetCurrentAnimatorStateInfo(0).IsName("Shhoo_Att1") &&*/ collision.tag == "Att" && collision.GetComponent<Att>() != null)
         {
             DieAniS();
             rig.velocity = Vector2.zero;

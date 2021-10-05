@@ -9,9 +9,12 @@ public class angelica : Enemy01
     {
         base.Start();
         MakeShoot();
+        rig = GetComponent<Rigidbody2D>();
     }
     float StopCoolTime = 5;
     public float MoveSpeed = 3;
+    public float CaveSpeed = 7;
+    public float DisSpeed = 0.2f;
     bool MoveNow = false;
     int NowPatt = 0;
     
@@ -19,6 +22,8 @@ public class angelica : Enemy01
     public Transform AttShoots;
     public float ShootSpeed = 5;
     public Transform[] PPPP;
+
+    Rigidbody2D rig;
     
     public void MakeShoot()
     {
@@ -59,6 +64,7 @@ public class angelica : Enemy01
     // Update is called once per frame
     override protected void Update()
     {
+        base.Update();
         if (Hp <= 50 && !NWater) 
         {
             NWater = true;
@@ -132,8 +138,10 @@ public class angelica : Enemy01
         }
         else if (StopCoolTime <= -100 && StopCoolTime > -1000)//이동
         {
-            if (new Vector3(PPPP[NowPatt-1].position.x - transform.position.x, PPPP[NowPatt-1].position.y - transform.position.y).sqrMagnitude <= 0.001)//이동끝 1번
+            if (new Vector3(PPPP[NowPatt-1].position.x - transform.position.x, PPPP[NowPatt-1].position.y - transform.position.y).sqrMagnitude <= 0.1)//이동끝 1번
             {
+                NNMM = false;
+                rig.velocity = Vector2.zero;
                 MoveTrue(false);
                 if (430 < transform.position.x)
                 {
@@ -157,31 +165,37 @@ public class angelica : Enemy01
                     int aa = -1;
                     if (transform.GetChild(0).GetChild(++aa).childCount > 0)
                     {
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                         transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * ShootSpeed;
                         transform.GetChild(0).GetChild(aa).GetChild(0).parent = null;
                     }
                     if (transform.GetChild(0).GetChild(++aa).childCount > 0)
                     {
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                         transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * ShootSpeed;
                         transform.GetChild(0).GetChild(aa).GetChild(0).parent = null;
                     }
                     if (transform.GetChild(0).GetChild(++aa).childCount > 0)
                     {
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                         transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * ShootSpeed;
                         transform.GetChild(0).GetChild(aa).GetChild(0).parent = null;
                     }
                     if (transform.GetChild(0).GetChild(++aa).childCount > 0)
                     {
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                         transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * ShootSpeed;
                         transform.GetChild(0).GetChild(aa).GetChild(0).parent = null;
                     }
                     if (transform.GetChild(0).GetChild(++aa).childCount > 0)
                     {
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                         transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * ShootSpeed;
                         transform.GetChild(0).GetChild(aa).GetChild(0).parent = null;
                     }
                     if (transform.GetChild(0).GetChild(++aa).childCount > 0)
                     {
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                         transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * ShootSpeed;
                         transform.GetChild(0).GetChild(aa).GetChild(0).parent = null;
                     }
@@ -201,7 +215,7 @@ public class angelica : Enemy01
                 {
                     transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
                 }
-                transform.position += new Vector3(PPPP[NowPatt - 1].position.x - transform.position.x, PPPP[NowPatt - 1].position.y - transform.position.y).normalized * MoveSpeed * Time.deltaTime;
+                NNMM = true;
             }
         }
         else if (StopCoolTime <= 0 && StopCoolTime > -100) //대기시간 끝나면 패턴 설정
@@ -211,16 +225,27 @@ public class angelica : Enemy01
             if (AngBossN) NowPatt = Random.Range(6, 10);
             else NowPatt = Random.Range(1, 4);
             MoveTrue(true);
+            rig.velocity = new Vector2(Random.Range(-CaveSpeed, CaveSpeed), Random.Range(-CaveSpeed, CaveSpeed));
         }
 
 
         base.Start();
     }
+    bool NNMM = false;
+    private void FixedUpdate()
+    {
+        if (NNMM)
+        {
+            Debug.Log(rig.velocity);
+            rig.velocity = rig.velocity - rig.velocity * DisSpeed * Time.deltaTime;
+            transform.position += new Vector3(PPPP[NowPatt - 1].position.x - transform.position.x, PPPP[NowPatt - 1].position.y - transform.position.y).normalized * (MoveSpeed) * Time.deltaTime;
+        }
+    }
     public void MakePlySh()
     {
         Transform ff = Instantiate(AttShoots).transform;
         ff.position = GameSystem.instance.Ply.position;
-        ff.position += new Vector3(0, 0, -.1f);
+        ff.position += new Vector3(0, +.5f, -.1f);
         ff.GetComponent<BossShoot>().SetDie(.5f);
     }
     void MoveTrue(bool NN)
