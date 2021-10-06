@@ -31,13 +31,14 @@ public class AttEfff : MonoBehaviour
             aa.transform.position = (new Vector3(transform.position.x + Random.Range(-OffSetRandom, OffSetRandom), transform.position.y + Random.Range(-OffSetRandom, OffSetRandom), 0) + OFFSET * lmg.localScale.x);
             aa.localScale = Scall;
             Destroy(aa.gameObject, DesTime);
-            Time.timeScale = .2f;
+
+            if (GameSystem.instance.PlyAttSlow) Time.timeScale = .2f;
             Invoke("TTT", .05f);
             //camsh.CamMove(.5f);
         }
     }
     void TTT()
     {
-        Time.timeScale = 1;
+        if (GameSystem.instance.PlyAttSlow) Time.timeScale = 1;
     }
 }

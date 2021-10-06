@@ -187,9 +187,23 @@ public class Player : Life
     ObjData NowObj;
 
     Vector3 dirVec;
+
+    float TrapReset = 5;
     private void FixedUpdate()
     {
         if (NowDie) return;
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Trap1"))
+        {
+            TrapReset += Random.Range(-2, 6f);
+            if (TrapReset > 6) TrapReset = 6;
+            else if (TrapReset < -3) TrapReset = -3;
+            transform.position += new Vector3(trapsavepoint.x - transform.position.x, trapsavepoint.y - transform.position.y, 0).normalized * TrapReset * Time.deltaTime;
+            if (new Vector3(trapsavepoint.x - transform.position.x, trapsavepoint.y - transform.position.y, 0).sqrMagnitude < 0.1f)
+            {
+                ani.SetInteger("State", 1000);
+            }
+            //transform.position = new Vector3(transform.position.x, transform.position.y, PlYLAYER_NUM);
+        }
         AniMove();
         //NpcCheck();
 
@@ -209,6 +223,10 @@ public class Player : Life
     public GameObject ShootThrowUI;//G나오는 이모티콘
     void Update()
     {
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Trap2") && down)
+        {
+            ani.SetInteger("State", 0);
+        }
         Handani.SetFloat("HitSpeed", AttSpeed);
         Handani.SetFloat("ThrowSpeed", ThrowSpeed);
 
@@ -713,7 +731,7 @@ public class Player : Life
             }
             Hp--; HPUI();
         }
-        else if (!GodMode && collision.tag == "Water")
+        else if (collision.tag == "Water")
         {
             if (Hp > 1)
             {
@@ -721,7 +739,7 @@ public class Player : Life
             }
             Hp--; HPUI();
             rig.mass = 2;
-            rig.gravityScale = WatergravityScale;
+            if(!GodMode) rig.gravityScale = WatergravityScale;
             rig.velocity = rig.velocity * .9f;
         }
         else if (collision.tag == "NPCObj")
@@ -735,28 +753,60 @@ public class Player : Life
     {
 
         GodMode = true;
+        OnStory = true;
         DontMove = true;
         rig.velocity = Vector2.zero;
+
+
+        ani.SetTrigger("Trap");
+        ani.SetInteger("State", 100);
+
+        TrapReset = 0;
+
+        GetComponent<Collider2D>().enabled = false;
+        transform.GetChild(1).gameObject.SetActive(false);
+        transform.GetChild(2).gameObject.SetActive(false);
+        transform.GetChild(3).gameObject.SetActive(false);
+        GetComponent<Rigidbody2D>().gravityScale = 0;
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-        ani.SetTrigger("Hit");
         //rig.bodyType = RigidbodyType2D.Static;
         Time.timeScale = 1;
         //NowDie = true;
-        Invoke("OffDisply", .3f);
-        Invoke("ReAni", .4f);
+        //Invoke("OffDisply", .3f);
+        //Invoke("ReAni", .4f);
     }
     void OffDisply()
     {
         GameSystem.instance.CanversUI.GetChild(2).GetComponent<Animator>().SetTrigger("On");
     }
-    void ReAni()
+    public void ReAni()
     {
+
+        GetComponent<Collider2D>().enabled = true;
+        transform.GetChild(1).gameObject.SetActive(true);
+        transform.GetChild(2).gameObject.SetActive(true);
+        transform.GetChild(3).gameObject.SetActive(true);
+        GetComponent<Rigidbody2D>().gravityScale = 2;
+
+
         GodMode = false;
+        OnStory = false;
         DontMove = false;
         //Debug.Log(trapsavepoint);
-        transform.position = trapsavepoint;
-        transform.position = new Vector3(transform.position.x, transform.position.y, PlYLAYER_NUM);
-        ani.SetInteger("State", 0);
+        //transform.position = trapsavepoint;
+        //transform.position = new Vector3(transform.position.x, transform.position.y, PlYLAYER_NUM);
+        //rig.bodyType = RigidbodyType2D.Dynamic;
+        Time.timeScale = 1;
+        //NowDie = false;
+    }
+    public void ReAni2()
+    {
+        GodMode = false;
+        OnStory = false;
+        DontMove = false;
+        //Debug.Log(trapsavepoint);
+        //transform.position = trapsavepoint;
+        //transform.position = new Vector3(transform.position.x, transform.position.y, PlYLAYER_NUM);
         //rig.bodyType = RigidbodyType2D.Dynamic;
         Time.timeScale = 1;
         //NowDie = false;
@@ -861,7 +911,7 @@ public class Player : Life
         {
             if (NowObj == collision.GetComponent<ObjData>()) NowObj = null;
         }
-        else if (collision.tag == "Water")
+        else if (!GodMode&&collision.tag == "Water")
         {
             rig.mass = 1;
             rig.gravityScale = gravityScale;
@@ -1053,7 +1103,7 @@ public class Player : Life
             }
             return;
         }
-        else
+        else if(!DontMove)
         {
             if (rig.mass == 1) rig.gravityScale = gravityScale;
             else rig.gravityScale = WatergravityScale;

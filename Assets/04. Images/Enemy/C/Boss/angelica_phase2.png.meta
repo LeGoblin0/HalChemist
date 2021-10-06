@@ -373,7 +373,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 576
+        y: 1152
         width: 288
         height: 288
       alignment: 0
@@ -394,7 +394,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 288
-        y: 576
+        y: 1152
         width: 288
         height: 288
       alignment: 0
@@ -415,7 +415,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 576
-        y: 576
+        y: 1152
         width: 288
         height: 288
       alignment: 0
@@ -436,7 +436,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 864
-        y: 576
+        y: 1152
         width: 288
         height: 288
       alignment: 0
@@ -457,7 +457,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1152
-        y: 576
+        y: 1152
         width: 288
         height: 288
       alignment: 0
@@ -478,7 +478,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1440
-        y: 576
+        y: 1152
         width: 288
         height: 288
       alignment: 0
@@ -499,7 +499,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1728
-        y: 576
+        y: 1152
         width: 288
         height: 288
       alignment: 0
@@ -520,7 +520,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2016
-        y: 576
+        y: 1152
         width: 288
         height: 288
       alignment: 0
@@ -541,7 +541,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2304
-        y: 576
+        y: 1152
         width: 288
         height: 288
       alignment: 0
@@ -562,7 +562,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2592
-        y: 576
+        y: 1152
         width: 288
         height: 288
       alignment: 0
@@ -583,7 +583,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2880
-        y: 576
+        y: 1152
         width: 288
         height: 288
       alignment: 0
@@ -604,7 +604,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3168
-        y: 576
+        y: 1152
         width: 288
         height: 288
       alignment: 0
@@ -625,7 +625,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3456
-        y: 576
+        y: 1152
         width: 288
         height: 288
       alignment: 0
@@ -646,7 +646,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3744
-        y: 576
+        y: 1152
         width: 288
         height: 288
       alignment: 0
@@ -667,7 +667,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 4032
-        y: 576
+        y: 1152
         width: 288
         height: 288
       alignment: 0
@@ -687,8 +687,8 @@ TextureImporter:
       name: angelica_phase2_15
       rect:
         serializedVersion: 2
-        x: 4320
-        y: 576
+        x: 0
+        y: 864
         width: 288
         height: 288
       alignment: 0
@@ -708,8 +708,8 @@ TextureImporter:
       name: angelica_phase2_16
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 576
+        x: 288
+        y: 864
         width: 288
         height: 288
       alignment: 0
@@ -729,8 +729,8 @@ TextureImporter:
       name: angelica_phase2_17
       rect:
         serializedVersion: 2
-        x: 4896
-        y: 576
+        x: 576
+        y: 864
         width: 288
         height: 288
       alignment: 0
@@ -750,8 +750,8 @@ TextureImporter:
       name: angelica_phase2_18
       rect:
         serializedVersion: 2
-        x: 5184
-        y: 576
+        x: 864
+        y: 864
         width: 288
         height: 288
       alignment: 0
@@ -771,8 +771,8 @@ TextureImporter:
       name: angelica_phase2_19
       rect:
         serializedVersion: 2
-        x: 5472
-        y: 576
+        x: 1152
+        y: 864
         width: 288
         height: 288
       alignment: 0
@@ -792,8 +792,8 @@ TextureImporter:
       name: angelica_phase2_20
       rect:
         serializedVersion: 2
-        x: 5760
-        y: 576
+        x: 1440
+        y: 864
         width: 288
         height: 288
       alignment: 0
@@ -813,8 +813,8 @@ TextureImporter:
       name: angelica_phase2_21
       rect:
         serializedVersion: 2
-        x: 6048
-        y: 576
+        x: 1728
+        y: 864
         width: 288
         height: 288
       alignment: 0
@@ -834,8 +834,8 @@ TextureImporter:
       name: angelica_phase2_22
       rect:
         serializedVersion: 2
-        x: 6336
-        y: 576
+        x: 2016
+        y: 864
         width: 288
         height: 288
       alignment: 0
@@ -855,8 +855,8 @@ TextureImporter:
       name: angelica_phase2_23
       rect:
         serializedVersion: 2
-        x: 6624
-        y: 576
+        x: 2304
+        y: 864
         width: 288
         height: 288
       alignment: 0
@@ -876,8 +876,8 @@ TextureImporter:
       name: angelica_phase2_24
       rect:
         serializedVersion: 2
-        x: 6912
-        y: 576
+        x: 2592
+        y: 864
         width: 288
         height: 288
       alignment: 0
@@ -897,8 +897,8 @@ TextureImporter:
       name: angelica_phase2_25
       rect:
         serializedVersion: 2
-        x: 7200
-        y: 576
+        x: 2880
+        y: 864
         width: 288
         height: 288
       alignment: 0
@@ -918,8 +918,8 @@ TextureImporter:
       name: angelica_phase2_26
       rect:
         serializedVersion: 2
-        x: 7488
-        y: 576
+        x: 3168
+        y: 864
         width: 288
         height: 288
       alignment: 0
@@ -939,8 +939,8 @@ TextureImporter:
       name: angelica_phase2_27
       rect:
         serializedVersion: 2
-        x: 7776
-        y: 576
+        x: 3456
+        y: 864
         width: 288
         height: 288
       alignment: 0
@@ -960,7 +960,7 @@ TextureImporter:
       name: angelica_phase2_28
       rect:
         serializedVersion: 2
-        x: 8064
+        x: 0
         y: 576
         width: 288
         height: 288
@@ -981,8 +981,8 @@ TextureImporter:
       name: angelica_phase2_29
       rect:
         serializedVersion: 2
-        x: 0
-        y: 288
+        x: 288
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1002,8 +1002,8 @@ TextureImporter:
       name: angelica_phase2_30
       rect:
         serializedVersion: 2
-        x: 288
-        y: 288
+        x: 576
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1023,8 +1023,8 @@ TextureImporter:
       name: angelica_phase2_31
       rect:
         serializedVersion: 2
-        x: 576
-        y: 288
+        x: 864
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1044,8 +1044,8 @@ TextureImporter:
       name: angelica_phase2_32
       rect:
         serializedVersion: 2
-        x: 864
-        y: 288
+        x: 1152
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1065,8 +1065,8 @@ TextureImporter:
       name: angelica_phase2_33
       rect:
         serializedVersion: 2
-        x: 1152
-        y: 288
+        x: 1440
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1086,8 +1086,8 @@ TextureImporter:
       name: angelica_phase2_34
       rect:
         serializedVersion: 2
-        x: 1440
-        y: 288
+        x: 1728
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1107,8 +1107,8 @@ TextureImporter:
       name: angelica_phase2_35
       rect:
         serializedVersion: 2
-        x: 1728
-        y: 288
+        x: 2016
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1128,8 +1128,8 @@ TextureImporter:
       name: angelica_phase2_36
       rect:
         serializedVersion: 2
-        x: 2016
-        y: 288
+        x: 2304
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1149,8 +1149,8 @@ TextureImporter:
       name: angelica_phase2_37
       rect:
         serializedVersion: 2
-        x: 2304
-        y: 288
+        x: 2592
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1170,8 +1170,8 @@ TextureImporter:
       name: angelica_phase2_38
       rect:
         serializedVersion: 2
-        x: 2592
-        y: 288
+        x: 2880
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1191,8 +1191,8 @@ TextureImporter:
       name: angelica_phase2_39
       rect:
         serializedVersion: 2
-        x: 2880
-        y: 288
+        x: 3168
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1212,8 +1212,8 @@ TextureImporter:
       name: angelica_phase2_40
       rect:
         serializedVersion: 2
-        x: 3168
-        y: 288
+        x: 3456
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1233,8 +1233,8 @@ TextureImporter:
       name: angelica_phase2_41
       rect:
         serializedVersion: 2
-        x: 3456
-        y: 288
+        x: 3744
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1254,8 +1254,8 @@ TextureImporter:
       name: angelica_phase2_42
       rect:
         serializedVersion: 2
-        x: 3744
-        y: 288
+        x: 4032
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1275,8 +1275,8 @@ TextureImporter:
       name: angelica_phase2_43
       rect:
         serializedVersion: 2
-        x: 4032
-        y: 288
+        x: 4320
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1296,8 +1296,8 @@ TextureImporter:
       name: angelica_phase2_44
       rect:
         serializedVersion: 2
-        x: 4320
-        y: 288
+        x: 4608
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1317,8 +1317,8 @@ TextureImporter:
       name: angelica_phase2_45
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 288
+        x: 4896
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1338,8 +1338,8 @@ TextureImporter:
       name: angelica_phase2_46
       rect:
         serializedVersion: 2
-        x: 4896
-        y: 288
+        x: 5184
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1359,8 +1359,8 @@ TextureImporter:
       name: angelica_phase2_47
       rect:
         serializedVersion: 2
-        x: 5184
-        y: 288
+        x: 5472
+        y: 576
         width: 288
         height: 288
       alignment: 0
@@ -1380,7 +1380,7 @@ TextureImporter:
       name: angelica_phase2_48
       rect:
         serializedVersion: 2
-        x: 5472
+        x: 0
         y: 288
         width: 288
         height: 288
@@ -1401,7 +1401,7 @@ TextureImporter:
       name: angelica_phase2_49
       rect:
         serializedVersion: 2
-        x: 5760
+        x: 288
         y: 288
         width: 288
         height: 288
@@ -1422,7 +1422,7 @@ TextureImporter:
       name: angelica_phase2_50
       rect:
         serializedVersion: 2
-        x: 6336
+        x: 576
         y: 288
         width: 288
         height: 288
@@ -1443,7 +1443,7 @@ TextureImporter:
       name: angelica_phase2_51
       rect:
         serializedVersion: 2
-        x: 6624
+        x: 864
         y: 288
         width: 288
         height: 288
@@ -1464,7 +1464,7 @@ TextureImporter:
       name: angelica_phase2_52
       rect:
         serializedVersion: 2
-        x: 6912
+        x: 1152
         y: 288
         width: 288
         height: 288
@@ -1485,7 +1485,7 @@ TextureImporter:
       name: angelica_phase2_53
       rect:
         serializedVersion: 2
-        x: 7200
+        x: 1440
         y: 288
         width: 288
         height: 288
@@ -1506,7 +1506,7 @@ TextureImporter:
       name: angelica_phase2_54
       rect:
         serializedVersion: 2
-        x: 7488
+        x: 1728
         y: 288
         width: 288
         height: 288
@@ -1527,7 +1527,7 @@ TextureImporter:
       name: angelica_phase2_55
       rect:
         serializedVersion: 2
-        x: 7776
+        x: 2016
         y: 288
         width: 288
         height: 288
@@ -1548,7 +1548,7 @@ TextureImporter:
       name: angelica_phase2_56
       rect:
         serializedVersion: 2
-        x: 8064
+        x: 2304
         y: 288
         width: 288
         height: 288
@@ -1569,8 +1569,8 @@ TextureImporter:
       name: angelica_phase2_57
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 2592
+        y: 288
         width: 288
         height: 288
       alignment: 0
@@ -1590,8 +1590,8 @@ TextureImporter:
       name: angelica_phase2_58
       rect:
         serializedVersion: 2
-        x: 288
-        y: 0
+        x: 2880
+        y: 288
         width: 288
         height: 288
       alignment: 0
@@ -1611,8 +1611,8 @@ TextureImporter:
       name: angelica_phase2_59
       rect:
         serializedVersion: 2
-        x: 576
-        y: 0
+        x: 3168
+        y: 288
         width: 288
         height: 288
       alignment: 0
@@ -1632,8 +1632,8 @@ TextureImporter:
       name: angelica_phase2_60
       rect:
         serializedVersion: 2
-        x: 864
-        y: 0
+        x: 3456
+        y: 288
         width: 288
         height: 288
       alignment: 0
@@ -1653,8 +1653,8 @@ TextureImporter:
       name: angelica_phase2_61
       rect:
         serializedVersion: 2
-        x: 1152
-        y: 0
+        x: 3744
+        y: 288
         width: 288
         height: 288
       alignment: 0
@@ -1674,8 +1674,8 @@ TextureImporter:
       name: angelica_phase2_62
       rect:
         serializedVersion: 2
-        x: 1440
-        y: 0
+        x: 4032
+        y: 288
         width: 288
         height: 288
       alignment: 0
@@ -1695,8 +1695,8 @@ TextureImporter:
       name: angelica_phase2_63
       rect:
         serializedVersion: 2
-        x: 1728
-        y: 0
+        x: 4320
+        y: 288
         width: 288
         height: 288
       alignment: 0
@@ -1716,8 +1716,8 @@ TextureImporter:
       name: angelica_phase2_64
       rect:
         serializedVersion: 2
-        x: 2016
-        y: 0
+        x: 4608
+        y: 288
         width: 288
         height: 288
       alignment: 0
@@ -1737,8 +1737,8 @@ TextureImporter:
       name: angelica_phase2_65
       rect:
         serializedVersion: 2
-        x: 2304
-        y: 0
+        x: 4896
+        y: 288
         width: 288
         height: 288
       alignment: 0
@@ -1758,8 +1758,8 @@ TextureImporter:
       name: angelica_phase2_66
       rect:
         serializedVersion: 2
-        x: 2592
-        y: 0
+        x: 5184
+        y: 288
         width: 288
         height: 288
       alignment: 0
@@ -1779,7 +1779,7 @@ TextureImporter:
       name: angelica_phase2_67
       rect:
         serializedVersion: 2
-        x: 2880
+        x: 0
         y: 0
         width: 288
         height: 288
@@ -1800,7 +1800,7 @@ TextureImporter:
       name: angelica_phase2_68
       rect:
         serializedVersion: 2
-        x: 3168
+        x: 288
         y: 0
         width: 288
         height: 288
@@ -1821,7 +1821,7 @@ TextureImporter:
       name: angelica_phase2_69
       rect:
         serializedVersion: 2
-        x: 3456
+        x: 576
         y: 0
         width: 288
         height: 288
@@ -1842,7 +1842,7 @@ TextureImporter:
       name: angelica_phase2_70
       rect:
         serializedVersion: 2
-        x: 3744
+        x: 864
         y: 0
         width: 288
         height: 288
@@ -1863,7 +1863,7 @@ TextureImporter:
       name: angelica_phase2_71
       rect:
         serializedVersion: 2
-        x: 4032
+        x: 1152
         y: 0
         width: 288
         height: 288
@@ -1884,7 +1884,7 @@ TextureImporter:
       name: angelica_phase2_72
       rect:
         serializedVersion: 2
-        x: 4320
+        x: 1440
         y: 0
         width: 288
         height: 288
@@ -1905,7 +1905,7 @@ TextureImporter:
       name: angelica_phase2_73
       rect:
         serializedVersion: 2
-        x: 4608
+        x: 1728
         y: 0
         width: 288
         height: 288
@@ -1926,7 +1926,7 @@ TextureImporter:
       name: angelica_phase2_74
       rect:
         serializedVersion: 2
-        x: 4896
+        x: 2016
         y: 0
         width: 288
         height: 288
@@ -1947,7 +1947,7 @@ TextureImporter:
       name: angelica_phase2_75
       rect:
         serializedVersion: 2
-        x: 5184
+        x: 2304
         y: 0
         width: 288
         height: 288
@@ -1968,7 +1968,7 @@ TextureImporter:
       name: angelica_phase2_76
       rect:
         serializedVersion: 2
-        x: 5472
+        x: 2592
         y: 0
         width: 288
         height: 288
@@ -1981,195 +1981,6 @@ TextureImporter:
       bones: []
       spriteID: e27da47f86c7433c0800000000000000
       internalID: -4380739747257329874
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase2_77
-      rect:
-        serializedVersion: 2
-        x: 5760
-        y: 0
-        width: 288
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f5f615cc612f091b0800000000000000
-      internalID: -5651751352618881185
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase2_78
-      rect:
-        serializedVersion: 2
-        x: 6048
-        y: 0
-        width: 288
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aba743effb678d320800000000000000
-      internalID: 2582944953272662714
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase2_79
-      rect:
-        serializedVersion: 2
-        x: 6336
-        y: 0
-        width: 288
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3e268e7741c211060800000000000000
-      internalID: 6922362568667849443
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase2_80
-      rect:
-        serializedVersion: 2
-        x: 6624
-        y: 0
-        width: 288
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1e234acec3d979ca0800000000000000
-      internalID: -6010162292708855071
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase2_81
-      rect:
-        serializedVersion: 2
-        x: 6912
-        y: 0
-        width: 288
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3e08d21261bd81040800000000000000
-      internalID: 4618682305960837347
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase2_82
-      rect:
-        serializedVersion: 2
-        x: 7200
-        y: 0
-        width: 288
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 87c6b20de16138c50800000000000000
-      internalID: 6666196195035802744
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase2_83
-      rect:
-        serializedVersion: 2
-        x: 7488
-        y: 0
-        width: 288
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0884131be69d908b0800000000000000
-      internalID: -5185374426497988480
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase2_84
-      rect:
-        serializedVersion: 2
-        x: 7776
-        y: 0
-        width: 288
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 252b3d331c8991c70800000000000000
-      internalID: 8942346490686452306
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase2_85
-      rect:
-        serializedVersion: 2
-        x: 8064
-        y: 0
-        width: 288
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e27361b3152631e90800000000000000
-      internalID: -7056188090136250578
       vertices: []
       indices: 
       edges: []

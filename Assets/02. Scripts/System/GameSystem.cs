@@ -16,6 +16,8 @@ public class GameSystem : MonoBehaviour
     public ObjData[] NPC;
     public GameObject TextSay;
     public GameObject StoneButUI;
+
+    public bool PlyAttSlow = true;
     public void Sond(int i)
     {
         if (aus == null) aus = GetComponent<AudioSource>();

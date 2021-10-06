@@ -15,9 +15,14 @@ public class angelica : Enemy01
     public float MoveSpeed = 3;
     public float CaveSpeed = 7;
     public float DisSpeed = 0.2f;
+
+    public float DownTime = 2;
     bool MoveNow = false;
     int NowPatt = 0;
-    
+
+    public float BeemTime = 0;
+
+
     bool PlySS = false;
     public Transform AttShoots;
     public float ShootSpeed = 5;
@@ -61,9 +66,11 @@ public class angelica : Enemy01
     }
     public int COOLDOWN = 2;//cooltime
     bool AngBossN = false;//페이즈 
+    bool OnDownT = false;//Down
     // Update is called once per frame
     override protected void Update()
     {
+        if (Die) return;
         base.Update();
         if (Hp <= 50 && !NWater) 
         {
@@ -121,14 +128,14 @@ public class angelica : Enemy01
         else if ((NowPatt == 6 || NowPatt == 7) && StopCoolTime < -1001f)
         {
             //Debug.Log(NowPatt);
-            StopCoolTime = COOLDOWN;
+            StopCoolTime = COOLDOWN+3.5f;
             ani.SetInteger("State", 0);
         }
         else if ((NowPatt == 8 || NowPatt == 9) && StopCoolTime < -1001.1f)
         {
             //Debug.Log(NowPatt);
-            StopCoolTime = COOLDOWN;
-            ani.SetInteger("State", 0);
+            StopCoolTime = COOLDOWN+1;
+            Invoke("SetSSS", BeemTime);
         }
         else if (StopCoolTime < -1030f)
         {
@@ -159,44 +166,55 @@ public class angelica : Enemy01
                     Invoke("Shoot1", Random.Range(.5f, 2));
                     Invoke("Shoot2", Random.Range(.5f, 2));
                 }
-                if (NowPatt == 5)
+                else if (NowPatt == 6 || NowPatt == 7)
+                {
+                    ani.SetInteger("State", NowPatt);
+                    OnDownT = true;
+                }
+                else if (NowPatt == 5)
                 {
                     ani.SetInteger("State", 5);
                     int aa = -1;
                     if (transform.GetChild(0).GetChild(++aa).childCount > 0)
                     {
                         transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * ShootSpeed;
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * 0;
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Animator>().SetTrigger("Die");
                         transform.GetChild(0).GetChild(aa).GetChild(0).parent = null;
                     }
                     if (transform.GetChild(0).GetChild(++aa).childCount > 0)
                     {
                         transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * ShootSpeed;
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * 0;
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Animator>().SetTrigger("Die");
                         transform.GetChild(0).GetChild(aa).GetChild(0).parent = null;
                     }
                     if (transform.GetChild(0).GetChild(++aa).childCount > 0)
                     {
                         transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * ShootSpeed;
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * 0;
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Animator>().SetTrigger("Die");
                         transform.GetChild(0).GetChild(aa).GetChild(0).parent = null;
                     }
                     if (transform.GetChild(0).GetChild(++aa).childCount > 0)
                     {
                         transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * ShootSpeed;
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * 0;
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Animator>().SetTrigger("Die");
                         transform.GetChild(0).GetChild(aa).GetChild(0).parent = null;
                     }
                     if (transform.GetChild(0).GetChild(++aa).childCount > 0)
                     {
                         transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * ShootSpeed;
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * 0;
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Animator>().SetTrigger("Die");
                         transform.GetChild(0).GetChild(aa).GetChild(0).parent = null;
                     }
                     if (transform.GetChild(0).GetChild(++aa).childCount > 0)
                     {
                         transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * ShootSpeed;
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Rigidbody2D>().velocity = new Vector3(transform.GetChild(0).GetChild(aa).GetChild(0).position.x - transform.position.x, transform.GetChild(0).GetChild(aa).GetChild(0).position.y - transform.position.y) * 0;
+                        transform.GetChild(0).GetChild(aa).GetChild(0).GetComponent<Animator>().SetTrigger("Die");
                         transform.GetChild(0).GetChild(aa).GetChild(0).parent = null;
                     }
                 }
@@ -232,8 +250,13 @@ public class angelica : Enemy01
         base.Start();
     }
     bool NNMM = false;
+    void SetSSS()
+    {
+        ani.SetInteger("State", 0);
+    }
     private void FixedUpdate()
     {
+        if (Die) return;
         if (NNMM)
         {
             Debug.Log(rig.velocity);
@@ -287,6 +310,11 @@ public class angelica : Enemy01
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
+        if (OnDownT && collision.GetComponent<StoneDieAni>() != null) 
+        {
+            ani.SetTrigger("Down");
+            Invoke("SetSSS", DownTime);
+        }
         
     }
     public GameObject[] WaterOn;
@@ -305,8 +333,66 @@ public class angelica : Enemy01
     }
     public void Shotss()
     {
+        OnDownT = false;
         transform.GetChild(4).localScale = new Vector3(transform.GetChild(0).GetComponent<SpriteRenderer>().flipX ? -1 : 1, 1, 1);
         transform.GetChild(4).GetChild(0).GetComponent<Animator>().SetTrigger("Att");
         transform.GetChild(4).GetChild(0).gameObject.SetActive(true);
+    }
+    protected override void Dieset()
+    {
+        if (Hp <= 0)
+        {
+            if (!Die)
+            {
+                gameObject.layer = 17;
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    if (transform.GetChild(i).gameObject.layer == 11) transform.GetChild(i).gameObject.layer = 17;
+                }
+                for (int i = 0; i < transform.GetChild(0).childCount; i++)
+                {
+                    if (transform.GetChild(0).GetChild(i).gameObject.layer == 11) transform.GetChild(0).GetChild(i).gameObject.layer = 17;
+                }
+
+
+                Die = true;
+                if (DieItem != null && DieItem.Length > 0)
+                {
+                    for (int i = 0; i < DieItem.Length; i++)
+                    {
+                        Transform aa = Instantiate(DieItem[i]);
+                        aa.position = new Vector3(transform.position.x, transform.position.y, 2);
+                        aa.parent = transform.parent;
+                        if (aa.GetComponent<Rigidbody2D>() != null)
+                        {
+                            aa.GetComponent<Rigidbody2D>().sharedMaterial = null;
+                            aa.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-3, 3f), Random.Range(0, 4f));
+                        }
+                    }
+                }
+                for (int i = 0; i < MoneyDie; i++)
+                {
+                    Transform aa = Instantiate(GameSystem.instance.ItemPre[0]);
+                    aa.position = new Vector3(transform.position.x, transform.position.y, 2);
+                    aa.parent = transform.parent;
+                    aa.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(0, 1f), Random.Range(0, 1f)) * 5 * transform.GetChild(0).localScale.x;
+                    Destroy(aa.gameObject, 5);
+                }
+                if (GetComponent<Rigidbody2D>() != null) GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                gameObject.layer = 19;
+                ani.SetTrigger("Die");
+                GameSystem.instance.PlyAttSlow = false;
+                Time.timeScale = 0.2f;
+                if (!NoDie) Destroy(gameObject, DieAniTime);
+                //사망 애니메이션 실행
+                //
+            }
+            return;
+        }
+    }
+    private void OnDestroy()
+    {
+        GameSystem.instance.PlyAttSlow = true;
+        Time.timeScale = 1;
     }
 }
