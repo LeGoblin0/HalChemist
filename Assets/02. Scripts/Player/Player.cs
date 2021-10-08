@@ -102,7 +102,7 @@ public class Player : Life
     public float MaxSpeed = 1.8f;
     public float JumpPower = 3;
     public float gravityScale = 2;
-    public float WatergravityScale = .8f;
+    //public float WatergravityScale = .8f;
     bool DontKeyStayMove = false;
     public float DownMaxSpeed = 4;
     [Range(0, 1f)]
@@ -189,10 +189,11 @@ public class Player : Life
     Vector3 dirVec;
 
     float TrapReset = 5;
+    bool TrapMove = false;
     private void FixedUpdate()
     {
         if (NowDie) return;
-        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Trap1"))
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Trap1") && TrapMove) 
         {
             TrapReset += Random.Range(-2, 6f);
             if (TrapReset > 6) TrapReset = 6;
@@ -200,9 +201,14 @@ public class Player : Life
             transform.position += new Vector3(trapsavepoint.x - transform.position.x, trapsavepoint.y - transform.position.y, 0).normalized * TrapReset * Time.deltaTime;
             if (new Vector3(trapsavepoint.x - transform.position.x, trapsavepoint.y - transform.position.y, 0).sqrMagnitude < 0.1f)
             {
-                ani.SetInteger("State", 1000);
+                TrapMove = false;
+                //ani.SetInteger("State", 1000);
             }
             //transform.position = new Vector3(transform.position.x, transform.position.y, PlYLAYER_NUM);
+        }
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Trap1"))
+        {
+            rig.velocity = Vector2.zero;
         }
         AniMove();
         //NpcCheck();
@@ -223,6 +229,15 @@ public class Player : Life
     public GameObject ShootThrowUI;//G나오는 이모티콘
     void Update()
     {
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Trap1") && !TrapMove)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                ani.SetInteger("State", 1000);
+                Handani.SetInteger("State", 0);
+                return;
+            }
+        }
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Trap2") && down)
         {
             ani.SetInteger("State", 0);
@@ -738,8 +753,8 @@ public class Player : Life
                 TrapSaveDie();
             }
             Hp--; HPUI();
-            rig.mass = 2;
-            if(!GodMode) rig.gravityScale = WatergravityScale;
+            //rig.mass = 2;
+            //if(!GodMode) rig.gravityScale = WatergravityScale;
             rig.velocity = rig.velocity * .9f;
         }
         else if (collision.tag == "NPCObj")
@@ -747,16 +762,20 @@ public class Player : Life
             NowObj = collision.GetComponent<ObjData>();
         }
     }
+ 
 
 
     void TrapSaveDie()
     {
+        TrapMove = true;
 
         GodMode = true;
         OnStory = true;
-        DontMove = true;
+        //DontMove = true;
         rig.velocity = Vector2.zero;
 
+        Handani.SetTrigger("Die");
+        Handani.SetInteger("State", 1000);
 
         ani.SetTrigger("Trap");
         ani.SetInteger("State", 100);
@@ -767,6 +786,7 @@ public class Player : Life
         transform.GetChild(1).gameObject.SetActive(false);
         transform.GetChild(2).gameObject.SetActive(false);
         transform.GetChild(3).gameObject.SetActive(false);
+        transform.GetChild(4).gameObject.SetActive(false);
         GetComponent<Rigidbody2D>().gravityScale = 0;
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         //rig.bodyType = RigidbodyType2D.Static;
@@ -786,12 +806,11 @@ public class Player : Life
         transform.GetChild(1).gameObject.SetActive(true);
         transform.GetChild(2).gameObject.SetActive(true);
         transform.GetChild(3).gameObject.SetActive(true);
-        GetComponent<Rigidbody2D>().gravityScale = 2;
+        transform.GetChild(4).gameObject.SetActive(true);
+        GetComponent<Rigidbody2D>().gravityScale = gravityScale;
 
 
-        GodMode = false;
-        OnStory = false;
-        DontMove = false;
+        
         //Debug.Log(trapsavepoint);
         //transform.position = trapsavepoint;
         //transform.position = new Vector3(transform.position.x, transform.position.y, PlYLAYER_NUM);
@@ -913,8 +932,12 @@ public class Player : Life
         }
         else if (!GodMode&&collision.tag == "Water")
         {
-            rig.mass = 1;
-            rig.gravityScale = gravityScale;
+            //rig.mass = 1;
+            //rig.gravityScale = gravityScale;
+        }
+        else if (collision.tag == "TrapSavePoint")
+        {
+            trapsavepoint = transform.position;//+new Vector3(0,0.2f);
         }
     }
 
@@ -1003,7 +1026,7 @@ public class Player : Life
             {
                 ani.SetBool("RL", false);
             }
-            if (rig.mass == 1) rig.gravityScale = gravityScale;
+            //if (rig.mass == 1) rig.gravityScale = gravityScale;
         }
         else
         {
@@ -1099,14 +1122,15 @@ public class Player : Life
             else
             {
                 rig.velocity = new Vector2(0, rig.velocity.y);
-                rig.gravityScale = 1;
+                rig.gravityScale = gravityScale;
             }
             return;
         }
         else if(!DontMove)
         {
-            if (rig.mass == 1) rig.gravityScale = gravityScale;
-            else rig.gravityScale = WatergravityScale;
+            //if (rig.mass == 1)
+            if (GetComponent<Collider2D>().enabled) rig.gravityScale = gravityScale;
+            //else rig.gravityScale = WatergravityScale;
         }
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle"))
         {
@@ -1117,7 +1141,7 @@ public class Player : Life
             else
             {
                 rig.velocity = new Vector2(0, rig.velocity.y);
-                rig.gravityScale = 1;
+                rig.gravityScale = gravityScale;
             }
 
         }
@@ -1408,7 +1432,7 @@ public class Player : Life
     float NowJumpPower;
     public void JumpU()
     {
-        if (rig.mass == 1) rig.velocity = new Vector2(rig.velocity.x, NowJumpPower);
+        if (rig.mass == gravityScale) rig.velocity = new Vector2(rig.velocity.x, NowJumpPower);
         else rig.velocity = new Vector2(rig.velocity.x, NowJumpPower * 2 / 3);
     }
     void DontMoveSet(int dd)

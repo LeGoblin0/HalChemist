@@ -83,7 +83,7 @@ public class angelica : Enemy01
         if (!PlySS) return;
         StopCoolTime -= Time.deltaTime;
 
-        if (Hp <= 30 && StopCoolTime > 0 && !AngBossN)
+        if (Hp <= 30 && StopCoolTime > 0 && (!AngBossN || (ani.GetCurrentAnimatorStateInfo(0).IsName("Ang_Idle") && NowPatt != 5))) 
         {
             StopCoolTime = -101;
             AngBossN = true;
