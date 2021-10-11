@@ -53,13 +53,18 @@ public class MoveMap : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             GameSystem.instance.CanversUI.GetChild(2).GetComponent<Animator>().SetTrigger("On");
-            Ply.GetComponent<Player>().DontMove = true;
+            Ply.GetComponent<Player>().OnStory = true;
             Invoke("gogoMap", 0.2f);
+            Invoke("MovePly", 0.5f);
             if (BGChange >= 0)
             {
                 GameSystem.instance.Sond(BGChange);
             }
         }
+    }
+    void MovePly()
+    {
+        Ply.GetComponent<Player>().OnStory = false;
     }
     void gogoMap()
     {
@@ -72,7 +77,6 @@ public class MoveMap : MonoBehaviour
         if (transform.parent.parent.gameObject.GetComponent<MapManager>().EEE != null)
             Destroy(transform.parent.parent.gameObject.GetComponent<MapManager>().EEE.gameObject);
         //Ply.GetComponent<Player>().MoveMap = true;
-        Ply.GetComponent<Player>().DontMove = false;
 
         MovePos.parent.parent.gameObject.SetActive(true);
         transform.parent.parent.gameObject.SetActive(false);

@@ -128,8 +128,8 @@ public class Player : Life
     //[Tooltip("평타 쿨남은시간")]
     //float nowAttTime = 0;
 
-    [Tooltip("평타 불가시간")]
-    float DontAttTime = 0;
+    //[Tooltip("평타 불가시간")]
+    //float DontAttTime = 0;
 
     [Header("피격")]
     [Tooltip("무적모드")]
@@ -188,27 +188,46 @@ public class Player : Life
 
     Vector3 dirVec;
 
-    float TrapReset = 5;
+    public float TrapReset = 5;
+    public float TrapReset_UP = 5;
+    public float SlowTrapSpeed = 0.99f;
+    float TimeTrapS = 0;
+    int xxTrapS = 1, yyTrapS = -1;
     bool TrapMove = false;
     private void FixedUpdate()
     {
         if (NowDie) return;
-        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Trap1") && TrapMove) 
+        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Trap") && ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= .99f && TrapMove)
         {
-            TrapReset += Random.Range(-2, 6f);
-            if (TrapReset > 6) TrapReset = 6;
-            else if (TrapReset < -3) TrapReset = -3;
-            transform.position += new Vector3(trapsavepoint.x - transform.position.x, trapsavepoint.y - transform.position.y, 0).normalized * TrapReset * Time.deltaTime;
+            if (TrapReset_UP >= TimeTrapS * SlowTrapSpeed) 
+            {
+                rig.velocity = new Vector2((TrapReset_UP - TimeTrapS * SlowTrapSpeed )* xxTrapS, (TrapReset_UP - TimeTrapS * SlowTrapSpeed )* yyTrapS);
+            }
+            else
+            {
+                rig.velocity = Vector2.zero;
+            }
+            TimeTrapS += Time.deltaTime;
+
+
+            //TrapReset += Random.Range(-2, 6f);
+            //if (TrapReset > 6) TrapReset = 6;
+            //else if (TrapReset < -3) TrapReset = -3;
+            transform.position += new Vector3(trapsavepoint.x - transform.position.x, trapsavepoint.y - transform.position.y, 0).normalized * TrapReset * Time.deltaTime * ((TimeTrapS > 2) ? 1 : (TimeTrapS / 2));
             if (new Vector3(trapsavepoint.x - transform.position.x, trapsavepoint.y - transform.position.y, 0).sqrMagnitude < 0.1f)
             {
                 TrapMove = false;
-                //ani.SetInteger("State", 1000);
+                rig.velocity = Vector2.zero;
+                ani.SetInteger("State", 100);
             }
             //transform.position = new Vector3(transform.position.x, transform.position.y, PlYLAYER_NUM);
         }
-        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Trap1"))
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Trap") && ani.GetCurrentAnimatorStateInfo(0).normalizedTime < .99f)
         {
-            rig.velocity = Vector2.zero;
+            xxTrapS = 1; yyTrapS = -1;
+            if (trapsavepoint.x > transform.position.x) xxTrapS = -1;
+            if (trapsavepoint.y > transform.position.y) yyTrapS = +1;
+            rig.velocity = Vector2.zero; TimeTrapS = 0;
         }
         AniMove();
         //NpcCheck();
@@ -238,9 +257,13 @@ public class Player : Life
                 return;
             }
         }
-        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Trap2") && down)
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Trap2") && down)
         {
             ani.SetInteger("State", 0);
+        }
+        else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Trap"))
+        {
+            return;
         }
         Handani.SetFloat("HitSpeed", AttSpeed);
         Handani.SetFloat("ThrowSpeed", ThrowSpeed);
@@ -734,6 +757,7 @@ public class Player : Life
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log(collision.tag);
+
         if (collision.tag == "TrapSavePoint")
         {
             trapsavepoint = transform.position;//+new Vector3(0,0.2f);
@@ -746,7 +770,7 @@ public class Player : Life
             }
             Hp--; HPUI();
         }
-        else if (collision.tag == "Water")
+        else if (!GodMode && collision.tag == "Water")
         {
             if (Hp > 1)
             {
@@ -762,12 +786,13 @@ public class Player : Life
             NowObj = collision.GetComponent<ObjData>();
         }
     }
- 
+
 
 
     void TrapSaveDie()
     {
         TrapMove = true;
+
 
         GodMode = true;
         OnStory = true;
@@ -780,7 +805,8 @@ public class Player : Life
         ani.SetTrigger("Trap");
         ani.SetInteger("State", 100);
 
-        TrapReset = 0;
+
+        //TrapReset = 0;
 
         GetComponent<Collider2D>().enabled = false;
         transform.GetChild(1).gameObject.SetActive(false);
@@ -1015,17 +1041,18 @@ public class Player : Life
             if (((!OnStory && Input.GetKeyDown(KeyCode.UpArrow)) || (OnStory && Story_Jump)) && down)
             {
                 if (OnStory) Story_Jump = false;
-                ani.SetBool("RL", true);
+                //ani.SetBool("RL", true);
                 ani.SetInteger("State", 2);
-                DontAttTime = .2f;
+                //DontAttTime = .2f;
                 Jump01 = false;
-                DontMove = true;
+                //DontMove = true;
                 NowJumpPower = JumpPower;
+                JumpU();
             }
-            else
-            {
-                ani.SetBool("RL", false);
-            }
+            //else
+            //{
+            //    ani.SetBool("RL", false);
+            //}
             //if (rig.mass == 1) rig.gravityScale = gravityScale;
         }
         else
@@ -1064,7 +1091,7 @@ public class Player : Life
     void Ply_Att()
     {
         //if (!ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Idle") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Run") || !ani.GetCurrentAnimatorStateInfo(0).IsName("Ply_Jump_00")) return;
-        if (!OnStory && !AngMax && Input.GetKeyDown(KeyCode.A) && DontAttTime <= 0 && (Handani.GetCurrentAnimatorStateInfo(0).IsName("Ang_Idle") || Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Idle"))) 
+        if (!OnStory && !AngMax && Input.GetKeyDown(KeyCode.A) && (Handani.GetCurrentAnimatorStateInfo(0).IsName("Ang_Idle") || Handani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Idle"))) 
         {
             Hand.GetChild(0).GetChild(0).GetChild(0).GetComponent<Att>().AttCode++;
             Hand.GetChild(0).GetChild(0).GetChild(1).GetComponent<Att>().AttCode++;
@@ -1098,7 +1125,7 @@ public class Player : Life
             DontMove = false;
         }
         //if (nowAttTime > 0) nowAttTime -= Time.deltaTime;
-        if (DontAttTime > 0) DontAttTime -= Time.deltaTime;
+        //if (DontAttTime > 0) DontAttTime -= Time.deltaTime;
     }
     public Rigidbody2D TrainNow;
     /// <summary>

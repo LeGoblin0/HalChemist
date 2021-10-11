@@ -32,6 +32,7 @@ public class anemonelime : Enemy01
     {
         Transform s = Instantiate(ShhotTr);
         s.position = STr.position;
+        s.parent = transform.parent;
         s.GetComponent<Rigidbody2D>().gravityScale = 0;
         s.GetComponent<Rigidbody2D>().velocity = (Vector3)((Vector2)(STr.position - transform.position)).normalized * ShootSpeed;
     }

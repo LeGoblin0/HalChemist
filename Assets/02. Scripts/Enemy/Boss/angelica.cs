@@ -75,9 +75,9 @@ public class angelica : Enemy01
         if (Hp <= 50 && !NWater) 
         {
             NWater = true;
-            Invoke("Water1On", 0);
-            Invoke("Water2On", 10);
-            Invoke("Water3On", 20);
+            //Invoke("Water1On", 0);
+            //Invoke("Water2On", 10);
+            //Invoke("Water3On", 20);
         }
         if (SenserPly) PlySS = true;
         if (!PlySS) return;
@@ -259,7 +259,7 @@ public class angelica : Enemy01
         if (Die) return;
         if (NNMM)
         {
-            Debug.Log(rig.velocity);
+            //Debug.Log(rig.velocity);
             rig.velocity = rig.velocity - rig.velocity * DisSpeed * Time.deltaTime;
             transform.position += new Vector3(PPPP[NowPatt - 1].position.x - transform.position.x, PPPP[NowPatt - 1].position.y - transform.position.y).normalized * (MoveSpeed) * Time.deltaTime;
         }

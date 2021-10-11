@@ -26,13 +26,23 @@ public class BossShoot : MonoBehaviour
     {
         Invoke("DieAniS", Timess);
     }
+    public int hp = 3;
+    int attcode=-2;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log(collision);
         if (/*ani.GetCurrentAnimatorStateInfo(0).IsName("Shhoo_Att1") &&*/ collision.tag == "Att" && collision.GetComponent<Att>() != null)
         {
-            DieAniS();
-            rig.velocity = Vector2.zero;
+            if (attcode == collision.GetComponent<Att>().AttCode) return;
+            attcode = collision.GetComponent<Att>().AttCode;
+            hp -= collision.GetComponent<Att>().AttDamage;
+            
+
+            if (hp <= 0)
+            {
+                DieAniS();
+                rig.velocity = Vector2.zero;
+            }
         }
         else if (ani.GetCurrentAnimatorStateInfo(0).IsName("Shhoo_Att1") && collision.tag == "Ground")
         {
