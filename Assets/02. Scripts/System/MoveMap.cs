@@ -55,7 +55,7 @@ public class MoveMap : MonoBehaviour
             GameSystem.instance.CanversUI.GetChild(2).GetComponent<Animator>().SetTrigger("On");
             Ply.GetComponent<Player>().OnStory = true;
             Invoke("gogoMap", 0.2f);
-            Invoke("MovePly", 0.5f);
+            Invoke("MovePly", 2f);
             if (BGChange >= 0)
             {
                 GameSystem.instance.Sond(BGChange);
