@@ -34,34 +34,53 @@ public class angelica : Enemy01
     {
         ani.SetInteger("State", 0);
         int af = 0;
-        Transform ff = Instantiate(AttShoots).transform;
-        ff.position = transform.GetChild(0).GetChild(af).position;
-        ff.parent = transform.GetChild(0).GetChild(af);
+        Transform ff;
+        if (transform.GetChild(0).GetChild(af).childCount == 0)
+        {
+            ff = Instantiate(AttShoots).transform;
+            ff.position = transform.GetChild(0).GetChild(af).position;
+            ff.parent = transform.GetChild(0).GetChild(af);
+        }
 
         af++;
-        ff = Instantiate(AttShoots).transform;
-        ff.position = transform.GetChild(0).GetChild(af).position;
-        ff.parent = transform.GetChild(0).GetChild(af);
+        if (transform.GetChild(0).GetChild(af).childCount == 0)
+        {
+            ff = Instantiate(AttShoots).transform;
+            ff.position = transform.GetChild(0).GetChild(af).position;
+            ff.parent = transform.GetChild(0).GetChild(af);
+        }
 
         af++;
-        ff = Instantiate(AttShoots).transform;
-        ff.position = transform.GetChild(0).GetChild(af).position;
-        ff.parent = transform.GetChild(0).GetChild(af);
+        if (transform.GetChild(0).GetChild(af).childCount == 0)
+        {
+            ff = Instantiate(AttShoots).transform;
+            ff.position = transform.GetChild(0).GetChild(af).position;
+            ff.parent = transform.GetChild(0).GetChild(af);
+        }
 
         af++;
-        ff = Instantiate(AttShoots).transform;
-        ff.position = transform.GetChild(0).GetChild(af).position;
-        ff.parent = transform.GetChild(0).GetChild(af);
+        if (transform.GetChild(0).GetChild(af).childCount == 0)
+        {
+            ff = Instantiate(AttShoots).transform;
+            ff.position = transform.GetChild(0).GetChild(af).position;
+            ff.parent = transform.GetChild(0).GetChild(af);
+        }
 
         af++;
-        ff = Instantiate(AttShoots).transform;
-        ff.position = transform.GetChild(0).GetChild(af).position;
-        ff.parent = transform.GetChild(0).GetChild(af);
+        if (transform.GetChild(0).GetChild(af).childCount == 0)
+        {
+            ff = Instantiate(AttShoots).transform;
+            ff.position = transform.GetChild(0).GetChild(af).position;
+            ff.parent = transform.GetChild(0).GetChild(af);
+        }
 
         af++;
-        ff = Instantiate(AttShoots).transform;
-        ff.position = transform.GetChild(0).GetChild(af).position;
-        ff.parent = transform.GetChild(0).GetChild(af);
+        if (transform.GetChild(0).GetChild(af).childCount == 0)
+        {
+            ff = Instantiate(AttShoots).transform;
+            ff.position = transform.GetChild(0).GetChild(af).position;
+            ff.parent = transform.GetChild(0).GetChild(af);
+        }
 
     }
     public int COOLDOWN = 2;//cooltime
@@ -101,7 +120,7 @@ public class angelica : Enemy01
             }
             else
             {
-                StopCoolTime = COOLDOWN;
+                StopCoolTime = COOLDOWN/2;
                 ani.SetInteger("State", 0);
                 //transform.GetChild(0).GetChild(3).GetChild(0).parent = transform.GetChild(0).GetChild(0);
                 //transform.GetChild(0).GetChild(4).GetChild(0).parent = transform.GetChild(0).GetChild(1);
@@ -162,9 +181,20 @@ public class angelica : Enemy01
                 if (NowPatt == 1 || NowPatt == 2)
                 {
                     ani.SetInteger("State", 1);
-                    Invoke("Shoot0", Random.Range(.5f, 2));
-                    Invoke("Shoot1", Random.Range(.5f, 2));
-                    Invoke("Shoot2", Random.Range(.5f, 2));
+                    float[] a = { .5f, 1.2f, 1.9f ,2};
+
+                    for(int i = 0; i < 100; i++)
+                    {
+                        int ch1 = Random.Range(0, 3);
+                        int ch2 = Random.Range(0, 3);
+                        a[3] = a[ch1];
+                        a[ch1] = a[ch2];
+                        a[ch2] = a[3];
+                    }
+
+                    Invoke("Shoot0", a[0]);
+                    Invoke("Shoot1", a[1]);
+                    Invoke("Shoot2", a[2]);
                 }
                 else if (NowPatt == 6 || NowPatt == 7)
                 {
@@ -269,7 +299,8 @@ public class angelica : Enemy01
         Transform ff = Instantiate(AttShoots).transform;
         ff.position = GameSystem.instance.Ply.position;
         ff.position += new Vector3(0, +.5f, -.1f);
-        ff.GetComponent<BossShoot>().SetDie(.5f);
+        ff.GetComponent<Animator>().SetTrigger("SSS");
+        ff.GetComponent<BossShoot>().SetDie(1.5f);
     }
     void MoveTrue(bool NN)
     {

@@ -52,7 +52,7 @@ public class BossShoot : MonoBehaviour
     }
     public void DieAniS()
     {
-        ani.SetTrigger("Die");
+        ani.SetBool("Die",true);
     }
     public void DesOO()
     {
