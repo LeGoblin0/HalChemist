@@ -792,8 +792,8 @@ public class Player : Life
     void TrapSaveDie()
     {
         TrapMove = true;
-
-
+        nowGodTime = -1;
+        GGGodMod = false;
         GodMode = true;
         OnStory = true;
         //DontMove = true;
