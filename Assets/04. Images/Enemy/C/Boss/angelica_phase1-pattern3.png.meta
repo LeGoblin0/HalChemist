@@ -1,43 +1,58 @@
 fileFormatVersion: 2
-guid: 1607113152b1ddb4cb42b0926600e015
+guid: 00de67fd73a62d149b0ebfd38d6143f7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7461773704514874968
-    second: angelica_phase1_move_0
+      213: 6057572892713958076
+    second: angelica_phase1-pattern3_0
   - first:
-      213: 9106486294960710586
-    second: angelica_phase1_move_1
+      213: -4217371322652902410
+    second: angelica_phase1-pattern3_1
   - first:
-      213: 8540901699991265836
-    second: angelica_phase1_move_2
+      213: -2707407737325478728
+    second: angelica_phase1-pattern3_2
   - first:
-      213: -2138557867110477899
-    second: angelica_phase1_move_3
+      213: 3578873324737568283
+    second: angelica_phase1-pattern3_3
   - first:
-      213: 4602495006399145661
-    second: angelica_phase1_move_4
+      213: 7095525528317008081
+    second: angelica_phase1-pattern3_4
   - first:
-      213: 7664411290699847106
-    second: angelica_phase1_move_5
+      213: -8041107450817034932
+    second: angelica_phase1-pattern3_5
   - first:
-      213: 2485977556688950702
-    second: angelica_phase1_move_6
+      213: 4098953818198342405
+    second: angelica_phase1-pattern3_6
   - first:
-      213: 6045594592112423729
-    second: angelica_phase1_move_7
+      213: -6886907192830031794
+    second: angelica_phase1-pattern3_7
   - first:
-      213: -5174991738500536889
-    second: angelica_phase1_move_8
+      213: -4359937613466255259
+    second: angelica_phase1-pattern3_8
   - first:
-      213: -959795099731777396
-    second: angelica_phase1_move_9
+      213: -2262698679277837770
+    second: angelica_phase1-pattern3_9
   - first:
-      213: 6518821315767738922
-    second: angelica_phase1_move_10
+      213: 5641407515735614268
+    second: angelica_phase1-pattern3_10
   - first:
-      213: -4408318791224971183
-    second: angelica_phase1_move_11
+      213: 2134745075734057453
+    second: angelica_phase1-pattern3_11
+  - first:
+      213: -1055059038817096587
+    second: angelica_phase1-pattern3_12
+  - first:
+      213: -2802665488117401143
+    second: angelica_phase1-pattern3_13
+  - first:
+      213: -5799775245351206625
+    second: angelica_phase1-pattern3_14
+  - first:
+      213: 3700077683254192905
+    second: angelica_phase1-pattern3_15
+  - first:
+      213: 7017257010498937857
+    second: angelica_phase1-pattern3_16
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -97,7 +112,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -109,7 +124,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -121,7 +136,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: iPhone
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -133,7 +148,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 8192
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -147,7 +162,301 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: angelica_phase1_move_0
+      name: angelica_phase1-pattern3_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cba30479372d01450800000000000000
+      internalID: 6057572892713958076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angelica_phase1-pattern3_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 288
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fbba5b6023e875c0800000000000000
+      internalID: -4217371322652902410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angelica_phase1-pattern3_2
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 288
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bc1292e10b5d6ad0800000000000000
+      internalID: -2707407737325478728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angelica_phase1-pattern3_3
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 288
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1e9a11c356baa130800000000000000
+      internalID: 3578873324737568283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angelica_phase1-pattern3_4
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 288
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d81d02dfde587260800000000000000
+      internalID: 7095525528317008081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angelica_phase1-pattern3_5
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 288
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c45cd49806f386090800000000000000
+      internalID: -8041107450817034932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angelica_phase1-pattern3_6
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 288
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50b717cc7c862e830800000000000000
+      internalID: 4098953818198342405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angelica_phase1-pattern3_7
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 288
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e488842856acc60a0800000000000000
+      internalID: -6886907192830031794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angelica_phase1-pattern3_8
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 288
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 560ca7a27d36e73c0800000000000000
+      internalID: -4359937613466255259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angelica_phase1-pattern3_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63226eb1a874990e0800000000000000
+      internalID: -2262698679277837770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angelica_phase1-pattern3_10
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 144
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c33e3a00f3e4a4e40800000000000000
+      internalID: 5641407515735614268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angelica_phase1-pattern3_11
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 144
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de19425065320ad10800000000000000
+      internalID: 2134745075734057453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angelica_phase1-pattern3_12
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 144
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57ced36e46dab51f0800000000000000
+      internalID: -1055059038817096587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angelica_phase1-pattern3_13
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 144
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c9f384769eea19d0800000000000000
+      internalID: -2802665488117401143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: angelica_phase1-pattern3_14
       rect:
         serializedVersion: 2
         x: 0
@@ -161,14 +470,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85ea5fb66ab8d8760800000000000000
-      internalID: 7461773704514874968
+      spriteID: f11ccb3942f038fa0800000000000000
+      internalID: -5799775245351206625
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angelica_phase1_move_1
+      name: angelica_phase1-pattern3_15
       rect:
         serializedVersion: 2
         x: 144
@@ -182,14 +491,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab3a81b790db06e70800000000000000
-      internalID: 9106486294960710586
+      spriteID: 90b67bf8c01595330800000000000000
+      internalID: 3700077683254192905
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angelica_phase1_move_2
+      name: angelica_phase1-pattern3_16
       rect:
         serializedVersion: 2
         x: 288
@@ -203,197 +512,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c22628138d0678670800000000000000
-      internalID: 8540901699991265836
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase1_move_3
-      rect:
-        serializedVersion: 2
-        x: 432
-        y: 0
-        width: 144
-        height: 144
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5bf434f43f05252e0800000000000000
-      internalID: -2138557867110477899
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase1_move_4
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 144
-        height: 144
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db62ee0c2d85fdf30800000000000000
-      internalID: 4602495006399145661
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase1_move_5
-      rect:
-        serializedVersion: 2
-        x: 720
-        y: 0
-        width: 144
-        height: 144
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2c558aa06757d5a60800000000000000
-      internalID: 7664411290699847106
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase1_move_6
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 0
-        width: 144
-        height: 144
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ea5d902aa67ff7220800000000000000
-      internalID: 2485977556688950702
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase1_move_7
-      rect:
-        serializedVersion: 2
-        x: 1008
-        y: 0
-        width: 144
-        height: 144
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 13332e6204446e350800000000000000
-      internalID: 6045594592112423729
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase1_move_8
-      rect:
-        serializedVersion: 2
-        x: 1152
-        y: 0
-        width: 144
-        height: 144
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c5281f9e6cbe28b0800000000000000
-      internalID: -5174991738500536889
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase1_move_9
-      rect:
-        serializedVersion: 2
-        x: 1296
-        y: 0
-        width: 144
-        height: 144
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c88a357217f1ea2f0800000000000000
-      internalID: -959795099731777396
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase1_move_10
-      rect:
-        serializedVersion: 2
-        x: 1440
-        y: 0
-        width: 144
-        height: 144
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a22a490d271877a50800000000000000
-      internalID: 6518821315767738922
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: angelica_phase1_move_11
-      rect:
-        serializedVersion: 2
-        x: 1584
-        y: 0
-        width: 144
-        height: 144
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1503b586a6182d2c0800000000000000
-      internalID: -4408318791224971183
+      spriteID: 104a860721e426160800000000000000
+      internalID: 7017257010498937857
       vertices: []
       indices: 
       edges: []

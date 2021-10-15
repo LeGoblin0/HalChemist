@@ -34,34 +34,53 @@ public class angelica : Enemy01
     {
         ani.SetInteger("State", 0);
         int af = 0;
-        Transform ff = Instantiate(AttShoots).transform;
-        ff.position = transform.GetChild(0).GetChild(af).position;
-        ff.parent = transform.GetChild(0).GetChild(af);
+        Transform ff;
+        if (transform.GetChild(0).GetChild(af).childCount == 0)
+        {
+            ff = Instantiate(AttShoots).transform;
+            ff.position = transform.GetChild(0).GetChild(af).position;
+            ff.parent = transform.GetChild(0).GetChild(af);
+        }
 
         af++;
-        ff = Instantiate(AttShoots).transform;
-        ff.position = transform.GetChild(0).GetChild(af).position;
-        ff.parent = transform.GetChild(0).GetChild(af);
+        if (transform.GetChild(0).GetChild(af).childCount == 0)
+        {
+            ff = Instantiate(AttShoots).transform;
+            ff.position = transform.GetChild(0).GetChild(af).position;
+            ff.parent = transform.GetChild(0).GetChild(af);
+        }
 
         af++;
-        ff = Instantiate(AttShoots).transform;
-        ff.position = transform.GetChild(0).GetChild(af).position;
-        ff.parent = transform.GetChild(0).GetChild(af);
+        if (transform.GetChild(0).GetChild(af).childCount == 0)
+        {
+            ff = Instantiate(AttShoots).transform;
+            ff.position = transform.GetChild(0).GetChild(af).position;
+            ff.parent = transform.GetChild(0).GetChild(af);
+        }
 
         af++;
-        ff = Instantiate(AttShoots).transform;
-        ff.position = transform.GetChild(0).GetChild(af).position;
-        ff.parent = transform.GetChild(0).GetChild(af);
+        if (transform.GetChild(0).GetChild(af).childCount == 0)
+        {
+            ff = Instantiate(AttShoots).transform;
+            ff.position = transform.GetChild(0).GetChild(af).position;
+            ff.parent = transform.GetChild(0).GetChild(af);
+        }
 
         af++;
-        ff = Instantiate(AttShoots).transform;
-        ff.position = transform.GetChild(0).GetChild(af).position;
-        ff.parent = transform.GetChild(0).GetChild(af);
+        if (transform.GetChild(0).GetChild(af).childCount == 0)
+        {
+            ff = Instantiate(AttShoots).transform;
+            ff.position = transform.GetChild(0).GetChild(af).position;
+            ff.parent = transform.GetChild(0).GetChild(af);
+        }
 
         af++;
-        ff = Instantiate(AttShoots).transform;
-        ff.position = transform.GetChild(0).GetChild(af).position;
-        ff.parent = transform.GetChild(0).GetChild(af);
+        if (transform.GetChild(0).GetChild(af).childCount == 0)
+        {
+            ff = Instantiate(AttShoots).transform;
+            ff.position = transform.GetChild(0).GetChild(af).position;
+            ff.parent = transform.GetChild(0).GetChild(af);
+        }
 
     }
     public int COOLDOWN = 2;//cooltime
