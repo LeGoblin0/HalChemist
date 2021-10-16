@@ -370,12 +370,16 @@ public class Player : Life
                 transform.GetChild(0).GetChild(0).GetComponent<Att>().AttDamage = 100;
                 transform.GetChild(0).GetChild(1).GetComponent<Att>().AttDamage = 100;
                 transform.GetChild(0).GetChild(2).GetComponent<Att>().AttDamage = 100;
+                transform.GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetComponent<Att>().AttDamage = 10;
+                transform.GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(1).GetComponent<Att>().AttDamage = 20;
             }
             else
             {
                 transform.GetChild(0).GetChild(0).GetComponent<Att>().AttDamage = 1;
                 transform.GetChild(0).GetChild(1).GetComponent<Att>().AttDamage = 1;
                 transform.GetChild(0).GetChild(2).GetComponent<Att>().AttDamage = 1;
+                transform.GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetComponent<Att>().AttDamage = 1;
+                transform.GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(1).GetComponent<Att>().AttDamage = 2;
             }
             if (INJHave[0] == 5)
             {
@@ -387,11 +391,13 @@ public class Player : Life
             }
             if (INJHave[6] == 8)
             {
-                JumpPower = 30;
+                Hp = 500;
+                MaxHP = 500;
             }
             else
             {
-                JumpPower = 17.2f;
+                Hp = 2;
+                MaxHP = 2;
             }
 
         }
@@ -583,8 +589,8 @@ public class Player : Life
                 }
                 else if (INJHave[i] == 8 || (INJHave[i / 6 * 6] == i && i == 8))
                 {
-                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info = "콩콩이 마스터";
-                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info2 = "점프력이 오집니다.";
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info = "강철갑옷";
+                    PlyInvTr.GetChild(0).GetChild(PageNum).GetChild(i).GetComponent<InvInfi>().Info2 = "체력무한 생성.";
                 }
 
             }
@@ -812,7 +818,7 @@ public class Player : Life
         transform.GetChild(1).gameObject.SetActive(false);
         transform.GetChild(2).gameObject.SetActive(false);
         transform.GetChild(3).gameObject.SetActive(false);
-        transform.GetChild(4).gameObject.SetActive(false);
+        ///transform.GetChild(4).gameObject.SetActive(false);
         GetComponent<Rigidbody2D>().gravityScale = 0;
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         //rig.bodyType = RigidbodyType2D.Static;

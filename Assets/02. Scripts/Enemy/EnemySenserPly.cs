@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemySenserPly : MonoBehaviour
 {
+    public bool CheckOff = false;
+    public float ININTime = .1f;
     private void Start()
     {
         enemy = transform.parent.GetComponent<Enemy01>();
@@ -29,7 +31,12 @@ public class EnemySenserPly : MonoBehaviour
         {
             
             enemy.SenserPly = true;
+            if (CheckOff) Invoke("OffGO", ININTime);
         }
+    }
+    void OffGO()
+    {
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
