@@ -60,7 +60,7 @@ MonoBehaviour:
   SenserPly: 0
   DropItem: 1
   DieItem: []
-  MoneyDie: 8
+  MoneyDie: 10
   DieAniTime: 0.5
   NoDie: 0
   HHIITime: 0
@@ -206,6 +206,7 @@ MonoBehaviour:
   DesDesTime: 0
   SelfDesTime: 0
   HitDesT: 0
+  AttCode: -1
   HitNum: 1
   AttArrow: -1
   attObj: {fileID: 0}

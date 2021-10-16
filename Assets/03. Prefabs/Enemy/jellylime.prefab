@@ -140,6 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9eff50aef4a80d47a6db9cd229a55dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CheckOff: 0
+  ININTime: 0.1
 --- !u!61 &5302901656155696389
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -292,7 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHP: 1
-  Hp: 7
+  Hp: 6
   state: 0
   ani: {fileID: 0}
   YSet: 1
@@ -302,7 +304,8 @@ MonoBehaviour:
   DieItem:
   - {fileID: 2231214881868672547, guid: 15601f35e6e09fb41ad2ddf3d70b0388, type: 3}
   - {fileID: 2231214881868672547, guid: 15601f35e6e09fb41ad2ddf3d70b0388, type: 3}
-  MoneyDie: 9
+  - {fileID: 2231214881868672547, guid: 15601f35e6e09fb41ad2ddf3d70b0388, type: 3}
+  MoneyDie: 10
   DieAniTime: 0.5
   NoDie: 0
   HHIITime: 0
@@ -452,6 +455,7 @@ MonoBehaviour:
   DesDesTime: 0
   SelfDesTime: 0
   HitDesT: 0
+  AttCode: -1
   HitNum: 1
   AttArrow: -1
   attObj: {fileID: 0}

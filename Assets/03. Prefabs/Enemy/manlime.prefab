@@ -132,6 +132,7 @@ MonoBehaviour:
   DesDesTime: 0
   SelfDesTime: 0
   HitDesT: 0
+  AttCode: -1
   HitNum: 1
   AttArrow: -1
   attObj: {fileID: 0}
@@ -216,6 +217,7 @@ MonoBehaviour:
   DesDesTime: 0
   SelfDesTime: 0
   HitDesT: 0
+  AttCode: -1
   HitNum: 1
   AttArrow: -1
   attObj: {fileID: 0}
@@ -300,6 +302,7 @@ MonoBehaviour:
   DesDesTime: 0
   SelfDesTime: 0
   HitDesT: 0
+  AttCode: -1
   HitNum: 1
   AttArrow: -1
   attObj: {fileID: 0}
@@ -475,6 +478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9eff50aef4a80d47a6db9cd229a55dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CheckOff: 0
+  ININTime: 0.1
 --- !u!1 &6075624389741001129
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,8 +529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83939f36825e32441a07e489e30f59d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 3
-  Hp: 3
+  MaxHP: 4
+  Hp: 4
   state: 0
   ani: {fileID: 0}
   YSet: 1
@@ -533,7 +538,7 @@ MonoBehaviour:
   SenserPly: 0
   DropItem: 1
   DieItem: []
-  MoneyDie: 4
+  MoneyDie: 7
   DieAniTime: 0.5
   NoDie: 0
   HHIITime: 0
