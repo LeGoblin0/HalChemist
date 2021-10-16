@@ -22,6 +22,7 @@ public class angelica : Enemy01
 
     public float BeemTime = 0;
 
+    public float DeshSpeed = 3;
 
     bool PlySS = false;
     public Transform AttShoots;
@@ -83,12 +84,17 @@ public class angelica : Enemy01
         }
 
     }
+    public void SetIdle(float a)
+    {
+        StopCoolTime = a;
+    }
     public int COOLDOWN = 2;//cooltime
     bool AngBossN = false;//페이즈 
     bool OnDownT = false;//Down
     // Update is called once per frame
     override protected void Update()
     {
+        ani.SetBool("PlySen", SenserPly);
         if (Die) return;
         base.Update();
         if (Hp <= 50 && !NWater) 
@@ -147,14 +153,14 @@ public class angelica : Enemy01
         else if ((NowPatt == 6 || NowPatt == 7) && StopCoolTime < -1001f)
         {
             //Debug.Log(NowPatt);
-            StopCoolTime = COOLDOWN+3.5f;
-            ani.SetInteger("State", 0);
+            StopCoolTime = COOLDOWN+13.5f;
+            //ani.SetInteger("State", 0);
         }
         else if ((NowPatt == 8 || NowPatt == 9) && StopCoolTime < -1001.1f)
         {
             //Debug.Log(NowPatt);
-            StopCoolTime = COOLDOWN+1;
-            Invoke("SetSSS", BeemTime);
+            StopCoolTime = COOLDOWN + 1;
+            //Invoke("SetSSS", BeemTime);
         }
         else if (StopCoolTime < -1030f)
         {
@@ -200,6 +206,10 @@ public class angelica : Enemy01
                 {
                     ani.SetInteger("State", NowPatt);
                     OnDownT = true;
+                }
+                else if (NowPatt == 8)
+                {
+                    ani.SetInteger("State", NowPatt);
                 }
                 else if (NowPatt == 5)
                 {
@@ -255,6 +265,10 @@ public class angelica : Enemy01
             }
             else
             {
+                if (NowPatt == 8)
+                {
+                    return;
+                }
                 if (PPPP[NowPatt-1].position.x < transform.position.x)
                 {
                     transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = false;
@@ -270,7 +284,7 @@ public class angelica : Enemy01
         {
             StopCoolTime = -101;
             MoveNow = true;
-            if (AngBossN) NowPatt = Random.Range(6, 10);
+            if (AngBossN) NowPatt = Random.Range(6, 9);
             else NowPatt = Random.Range(1, 4);
             MoveTrue(true);
             rig.velocity = new Vector2(Random.Range(-CaveSpeed, CaveSpeed), Random.Range(-CaveSpeed, CaveSpeed));
@@ -280,9 +294,36 @@ public class angelica : Enemy01
         base.Start();
     }
     bool NNMM = false;
-    void SetSSS()
+
+    public void upM()
+    {
+        rig.velocity = new Vector2(0, 1);
+    }
+    Vector3 plpo;
+    public void FrM()
+    {
+        rig.velocity = new Vector2(transform.GetChild(0).GetComponent<SpriteRenderer>().flipX ? -1 : 1, 0) * DeshSpeed;
+        plpo = GameSystem.instance.Ply.position;
+    }
+    public void StopM()
+    {
+        rig.velocity = Vector2.zero;
+    }
+    public void SetSSS()
     {
         ani.SetInteger("State", 0);
+    }
+    public void PlM()
+    {
+        rig.velocity = new Vector2(transform.position.x - plpo.x, transform.position.y - plpo.y);
+    }
+    public void FrPly()
+    {
+        if((transform.GetChild(0).GetComponent<SpriteRenderer>().flipX ? -1 : 1) * transform.position.x < GameSystem.instance.Ply.position.x)
+        {
+
+            ani.SetInteger("State", 0);
+        }
     }
     private void FixedUpdate()
     {
@@ -362,12 +403,20 @@ public class angelica : Enemy01
     {
         WaterOn[2].SetActive(true);
     }
-    public void Shotss()
+    int SSh = 0;
+    public void RanSS()
     {
+        SSh = Random.Range(0, 2);
+    }
+    public void Shotss(int a)
+    {
+        if (a < 2) ; 
+        else SSh = a;
         OnDownT = false;
         transform.GetChild(4).localScale = new Vector3(transform.GetChild(0).GetComponent<SpriteRenderer>().flipX ? -1 : 1, 1, 1);
-        transform.GetChild(4).GetChild(0).GetComponent<Animator>().SetTrigger("Att");
-        transform.GetChild(4).GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(4).GetChild(SSh).GetComponent<Animator>().SetTrigger("Att");
+        transform.GetChild(4).GetChild(SSh).gameObject.SetActive(true);
+        SSh = ++SSh % 2;
     }
     protected override void Dieset()
     {

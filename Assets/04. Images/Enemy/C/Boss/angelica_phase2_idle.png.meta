@@ -1,43 +1,43 @@
 fileFormatVersion: 2
-guid: bc6660df5914b294c8429fa4b7a475a8
+guid: 05289185db76db548bb7295a44c835a8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2558637936297490144
-    second: angelica_phase2_move_0
+      213: 1973028062086616246
+    second: angelica_phase2_idle_0
   - first:
-      213: -704016244175024236
-    second: angelica_phase2_move_1
+      213: 6679429583897260167
+    second: angelica_phase2_idle_1
   - first:
-      213: 7455257246718563723
-    second: angelica_phase2_move_2
+      213: 6109132156761479740
+    second: angelica_phase2_idle_2
   - first:
-      213: -1395873265101709932
-    second: angelica_phase2_move_3
+      213: 6262664394981068979
+    second: angelica_phase2_idle_3
   - first:
-      213: 6187219739398144169
-    second: angelica_phase2_move_4
+      213: 4253540623776307685
+    second: angelica_phase2_idle_4
   - first:
-      213: 552209319378364807
-    second: angelica_phase2_move_5
+      213: -2403333171033312592
+    second: angelica_phase2_idle_5
   - first:
-      213: 7203698394420626102
-    second: angelica_phase2_move_6
+      213: -2110248490519525817
+    second: angelica_phase2_idle_6
   - first:
-      213: 9000359132246977877
-    second: angelica_phase2_move_7
+      213: -371696200222106475
+    second: angelica_phase2_idle_7
   - first:
-      213: -4395888679063341182
-    second: angelica_phase2_move_8
+      213: 5328296947817934301
+    second: angelica_phase2_idle_8
   - first:
-      213: -8108804738139913569
-    second: angelica_phase2_move_9
+      213: 1510450876544177451
+    second: angelica_phase2_idle_9
   - first:
-      213: 5767736703378758364
-    second: angelica_phase2_move_10
+      213: 7671602754712130862
+    second: angelica_phase2_idle_10
   - first:
-      213: -4454484441702631331
-    second: angelica_phase2_move_11
+      213: 3542987515495132366
+    second: angelica_phase2_idle_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -147,7 +147,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: angelica_phase2_move_0
+      name: angelica_phase2_idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 029462a6a54ed7cd0800000000000000
-      internalID: -2558637936297490144
+      spriteID: 6b4dc84a19a916b10800000000000000
+      internalID: 1973028062086616246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angelica_phase2_move_1
+      name: angelica_phase2_idle_1
       rect:
         serializedVersion: 2
         x: 288
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49fc7d9b4f4da36f0800000000000000
-      internalID: -704016244175024236
+      spriteID: 7807e6241d912bc50800000000000000
+      internalID: 6679429583897260167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angelica_phase2_move_2
+      name: angelica_phase2_idle_2
       rect:
         serializedVersion: 2
         x: 576
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8511db57f4667760800000000000000
-      internalID: 7455257246718563723
+      spriteID: c3a1fa9345ff7c450800000000000000
+      internalID: 6109132156761479740
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angelica_phase2_move_3
+      name: angelica_phase2_idle_3
       rect:
         serializedVersion: 2
         x: 864
@@ -224,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49dd52a39acd0ace0800000000000000
-      internalID: -1395873265101709932
+      spriteID: 3b05552161479e650800000000000000
+      internalID: 6262664394981068979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angelica_phase2_move_4
+      name: angelica_phase2_idle_4
       rect:
         serializedVersion: 2
         x: 1152
@@ -245,14 +245,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a08c1a529b6dd550800000000000000
-      internalID: 6187219739398144169
+      spriteID: 5e951ed39ac970b30800000000000000
+      internalID: 4253540623776307685
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angelica_phase2_move_5
+      name: angelica_phase2_idle_5
       rect:
         serializedVersion: 2
         x: 1440
@@ -266,14 +266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78925334377d9a700800000000000000
-      internalID: 552209319378364807
+      spriteID: 0b275afd635a5aed0800000000000000
+      internalID: -2403333171033312592
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angelica_phase2_move_6
+      name: angelica_phase2_idle_6
       rect:
         serializedVersion: 2
         x: 1728
@@ -287,14 +287,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b24e7cd58da8f360800000000000000
-      internalID: 7203698394420626102
+      spriteID: 74687cead24e6b2e0800000000000000
+      internalID: -2110248490519525817
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angelica_phase2_move_7
+      name: angelica_phase2_idle_7
       rect:
         serializedVersion: 2
         x: 2016
@@ -308,14 +308,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55d2680e1f2b7ec70800000000000000
-      internalID: 9000359132246977877
+      spriteID: 59c1665764877daf0800000000000000
+      internalID: -371696200222106475
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angelica_phase2_move_8
+      name: angelica_phase2_idle_8
       rect:
         serializedVersion: 2
         x: 2304
@@ -329,14 +329,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 287b44c698aaef2c0800000000000000
-      internalID: -4395888679063341182
+      spriteID: ddd6c70f7d9e1f940800000000000000
+      internalID: 5328296947817934301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angelica_phase2_move_9
+      name: angelica_phase2_idle_9
       rect:
         serializedVersion: 2
         x: 2592
@@ -350,14 +350,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f928a2e8d0db77f80800000000000000
-      internalID: -8108804738139913569
+      spriteID: b25d71bc11336f410800000000000000
+      internalID: 1510450876544177451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angelica_phase2_move_10
+      name: angelica_phase2_idle_10
       rect:
         serializedVersion: 2
         x: 2880
@@ -371,14 +371,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cda9fd219fd1b0050800000000000000
-      internalID: 5767736703378758364
+      spriteID: e25568c3f02077a60800000000000000
+      internalID: 7671602754712130862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: angelica_phase2_move_11
+      name: angelica_phase2_idle_11
       rect:
         serializedVersion: 2
         x: 3168
@@ -392,8 +392,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d587fca400e7e22c0800000000000000
-      internalID: -4454484441702631331
+      spriteID: ecc2bb0bf583b2130800000000000000
+      internalID: 3542987515495132366
       vertices: []
       indices: 
       edges: []
