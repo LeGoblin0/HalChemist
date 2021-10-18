@@ -818,7 +818,7 @@ public class Player : Life
         transform.GetChild(1).gameObject.SetActive(false);
         transform.GetChild(2).gameObject.SetActive(false);
         transform.GetChild(3).gameObject.SetActive(false);
-        ///transform.GetChild(4).gameObject.SetActive(false);
+        transform.GetChild(4).gameObject.SetActive(false);
         GetComponent<Rigidbody2D>().gravityScale = 0;
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         //rig.bodyType = RigidbodyType2D.Static;

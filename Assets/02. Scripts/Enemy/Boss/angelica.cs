@@ -94,6 +94,14 @@ public class angelica : Enemy01
     // Update is called once per frame
     override protected void Update()
     {
+        if (ani.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Ang_Att08-2") &&( GameSystem.instance.Ply.position.y+1 >= transform.position.y|| (421 >= transform.position.x || 437 <= transform.position.x)))
+        {
+            FrPly();
+        }
+        if (ani.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Ang_Att08-3") && (421 >= transform.position.x || 437 <= transform.position.x)) 
+        {
+            SetSSS();
+        }
         ani.SetBool("PlySen", SenserPly);
         if (Die) return;
         base.Update();
@@ -126,7 +134,7 @@ public class angelica : Enemy01
             }
             else
             {
-                StopCoolTime = COOLDOWN/2;
+                StopCoolTime = COOLDOWN / 2;
                 ani.SetInteger("State", 0);
                 //transform.GetChild(0).GetChild(3).GetChild(0).parent = transform.GetChild(0).GetChild(0);
                 //transform.GetChild(0).GetChild(4).GetChild(0).parent = transform.GetChild(0).GetChild(1);
@@ -153,13 +161,14 @@ public class angelica : Enemy01
         else if ((NowPatt == 6 || NowPatt == 7) && StopCoolTime < -1001f)
         {
             //Debug.Log(NowPatt);
-            StopCoolTime = COOLDOWN+13.5f;
+            StopCoolTime = COOLDOWN + 13.5f;
             //ani.SetInteger("State", 0);
         }
-        else if ((NowPatt == 8 || NowPatt == 9) && StopCoolTime < -1001.1f)
+        else if ((NowPatt == 8 || NowPatt == 9) && StopCoolTime < -1001.1f) 
         {
             //Debug.Log(NowPatt);
-            StopCoolTime = COOLDOWN + 1;
+            StopCoolTime = COOLDOWN;
+            ani.SetInteger("State", 0);
             //Invoke("SetSSS", BeemTime);
         }
         else if (StopCoolTime < -1030f)
@@ -170,11 +179,18 @@ public class angelica : Enemy01
         }
         else if (StopCoolTime <= -100 && StopCoolTime > -1000)//이동
         {
+
+            if (NowPatt == 8)
+            {
+                return;
+            }
+            Debug.Log(NowPatt - 1);
             if (new Vector3(PPPP[NowPatt-1].position.x - transform.position.x, PPPP[NowPatt-1].position.y - transform.position.y).sqrMagnitude <= 0.1)//이동끝 1번
             {
                 NNMM = false;
                 rig.velocity = Vector2.zero;
                 MoveTrue(false);
+                StopCoolTime = -1000;
                 if (430 < transform.position.x)
                 {
                     transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = false;
@@ -183,7 +199,6 @@ public class angelica : Enemy01
                 {
                     transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
                 }
-                StopCoolTime = -1000;
                 if (NowPatt == 1 || NowPatt == 2)
                 {
                     ani.SetInteger("State", 1);
@@ -265,10 +280,6 @@ public class angelica : Enemy01
             }
             else
             {
-                if (NowPatt == 8)
-                {
-                    return;
-                }
                 if (PPPP[NowPatt-1].position.x < transform.position.x)
                 {
                     transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = false;
@@ -286,8 +297,24 @@ public class angelica : Enemy01
             MoveNow = true;
             if (AngBossN) NowPatt = Random.Range(6, 9);
             else NowPatt = Random.Range(1, 4);
+            if (NowPatt == 8)
+            {
+                plpo = GameSystem.instance.Ply.position+new Vector3(0,1);
+                ani.SetInteger("State", NowPatt);
+                if (plpo.x < transform.position.x)
+                {
+                    transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = false;
+                }
+                else if (plpo.x > transform.position.x)
+                {
+                    transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
+                }
+            }
+            else
+            {
+                rig.velocity = new Vector2(Random.Range(-CaveSpeed, CaveSpeed), Random.Range(-CaveSpeed, CaveSpeed));
+            }
             MoveTrue(true);
-            rig.velocity = new Vector2(Random.Range(-CaveSpeed, CaveSpeed), Random.Range(-CaveSpeed, CaveSpeed));
         }
 
 
@@ -297,13 +324,13 @@ public class angelica : Enemy01
 
     public void upM()
     {
-        rig.velocity = new Vector2(0, 1);
+        rig.velocity = new Vector2(0, 1)* DeshSpeed;
     }
     Vector3 plpo;
     public void FrM()
     {
-        rig.velocity = new Vector2(transform.GetChild(0).GetComponent<SpriteRenderer>().flipX ? -1 : 1, 0) * DeshSpeed;
-        plpo = GameSystem.instance.Ply.position;
+        rig.velocity = new Vector2(transform.GetChild(0).GetComponent<SpriteRenderer>().flipX ? -1 : 1, 0) * -DeshSpeed;
+    
     }
     public void StopM()
     {
@@ -311,18 +338,27 @@ public class angelica : Enemy01
     }
     public void SetSSS()
     {
+        rig.velocity = Vector2.zero;
+        NowPatt = 8;
         ani.SetInteger("State", 0);
+        StopCoolTime = COOLDOWN+1;
     }
     public void PlM()
     {
-        rig.velocity = new Vector2(transform.position.x - plpo.x, transform.position.y - plpo.y);
+        rig.velocity = new Vector2(transform.position.x - plpo.x, transform.position.y - plpo.y).normalized * -DeshSpeed;
     }
     public void FrPly()
     {
-        if((transform.GetChild(0).GetComponent<SpriteRenderer>().flipX ? -1 : 1) * transform.position.x < GameSystem.instance.Ply.position.x)
+        if((transform.GetChild(0).GetComponent<SpriteRenderer>().flipX ? transform.position.x >= GameSystem.instance.Ply.position.x : transform.position.x <= GameSystem.instance.Ply.position.x) )
         {
-
+            rig.velocity = Vector2.zero;
+            NowPatt = 0;
             ani.SetInteger("State", 0);
+            StopCoolTime = COOLDOWN;
+        }
+        else
+        {
+            ani.SetInteger("State", 9);
         }
     }
     private void FixedUpdate()
