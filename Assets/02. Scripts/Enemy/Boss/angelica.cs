@@ -35,6 +35,8 @@ public class angelica : Enemy01
     
     public void MakeShoot()
     {
+        NowPatt = 0;
+        StopCoolTime = COOLDOWN;
         ani.SetInteger("State", 0);
         int af = 0;
         Transform ff;
