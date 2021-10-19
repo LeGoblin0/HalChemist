@@ -187,6 +187,7 @@ public class angelica : Enemy01
             Debug.Log(NowPatt - 1);
             if (new Vector3(PPPP[NowPatt-1].position.x - transform.position.x, PPPP[NowPatt-1].position.y - transform.position.y).sqrMagnitude <= 0.1)//이동끝 1번
             {
+                transform.position = new Vector3(PPPP[NowPatt - 1].position.x, PPPP[NowPatt - 1].position.y, transform.position.z);
                 NNMM = false;
                 rig.velocity = Vector2.zero;
                 MoveTrue(false);

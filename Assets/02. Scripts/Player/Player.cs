@@ -802,7 +802,10 @@ public class Player : Life
         GGGodMod = false;
         GodMode = true;
         OnStory = true;
-        //DontMove = true;
+
+        DontMove = false;
+
+
         rig.velocity = Vector2.zero;
 
         Handani.SetTrigger("Die");
