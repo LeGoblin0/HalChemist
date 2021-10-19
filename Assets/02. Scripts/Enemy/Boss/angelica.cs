@@ -22,7 +22,9 @@ public class angelica : Enemy01
 
     public float BeemTime = 0;
 
-    public float DeshSpeed = 3;
+    public float Speed1 = 3;
+    public float Speed2 = 3;
+    public float Speed3 = 3;
 
     bool PlySS = false;
     public Transform AttShoots;
@@ -94,9 +96,12 @@ public class angelica : Enemy01
     // Update is called once per frame
     override protected void Update()
     {
-        if (ani.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Ang_Att08-2") &&( GameSystem.instance.Ply.position.y+1 >= transform.position.y|| (421 >= transform.position.x || 437 <= transform.position.x)))
+        if (ani.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Ang_Att08-2") &&( 8 >= transform.position.y|| (421 >= transform.position.x || 437 <= transform.position.x)))
         {
-            FrPly();
+            ani.SetInteger("State", 77);
+            //Debug.Log(0);
+            //transform.position = new Vector3(transform.position.x, 8, transform.position.z);
+            
         }
         if (ani.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Ang_Att08-3") && (421 >= transform.position.x || 437 <= transform.position.x)) 
         {
@@ -185,7 +190,12 @@ public class angelica : Enemy01
                 return;
             }
             Debug.Log(NowPatt - 1);
-            if (new Vector3(PPPP[NowPatt-1].position.x - transform.position.x, PPPP[NowPatt-1].position.y - transform.position.y).sqrMagnitude <= 0.1)//이동끝 1번
+            if (PPPP.Length <= NowPatt - 1 || NowPatt <= 0) 
+            {
+                StopCoolTime = COOLDOWN;
+                ani.SetInteger("State", 0);
+            }
+            else if (new Vector3(PPPP[NowPatt-1].position.x - transform.position.x, PPPP[NowPatt-1].position.y - transform.position.y).sqrMagnitude <= 0.1)//이동끝 1번
             {
                 transform.position = new Vector3(PPPP[NowPatt - 1].position.x, PPPP[NowPatt - 1].position.y, transform.position.z);
                 NNMM = false;
@@ -296,11 +306,16 @@ public class angelica : Enemy01
         {
             StopCoolTime = -101;
             MoveNow = true;
-            if (AngBossN) NowPatt = Random.Range(6, 9);
-            else NowPatt = Random.Range(1, 4);
+            while (ff == NowPatt)
+            {
+                if (AngBossN) NowPatt = Random.Range(6, 9);
+                else NowPatt = Random.Range(1, 4);
+               
+            }
+            ff = NowPatt;
             if (NowPatt == 8)
             {
-                plpo = GameSystem.instance.Ply.position+new Vector3(0,1);
+                plpo = new Vector3(GameSystem.instance.Ply.position.x, 8);
                 ani.SetInteger("State", NowPatt);
                 if (plpo.x < transform.position.x)
                 {
@@ -313,7 +328,7 @@ public class angelica : Enemy01
             }
             else
             {
-                rig.velocity = new Vector2(Random.Range(-CaveSpeed, CaveSpeed), Random.Range(-CaveSpeed, CaveSpeed));
+                rig.velocity = new Vector2(Random.Range(-CaveSpeed, CaveSpeed), Random.Range(CaveSpeed * (8 - transform.position.y) / 4, CaveSpeed));
             }
             MoveTrue(true);
         }
@@ -321,16 +336,17 @@ public class angelica : Enemy01
 
         base.Start();
     }
+    int ff = 0;
     bool NNMM = false;
 
     public void upM()
     {
-        rig.velocity = new Vector2(0, 1)* DeshSpeed;
+        rig.velocity = new Vector2(0, 1)* Speed1;
     }
     Vector3 plpo;
     public void FrM()
     {
-        rig.velocity = new Vector2(transform.GetChild(0).GetComponent<SpriteRenderer>().flipX ? -1 : 1, 0) * -DeshSpeed;
+        rig.velocity = new Vector2(transform.GetChild(0).GetComponent<SpriteRenderer>().flipX ? -1 : 1, 0) * -Speed3;
     
     }
     public void StopM()
@@ -346,14 +362,13 @@ public class angelica : Enemy01
     }
     public void PlM()
     {
-        rig.velocity = new Vector2(transform.position.x - plpo.x, transform.position.y - plpo.y).normalized * -DeshSpeed;
+        rig.velocity = new Vector2(transform.position.x - plpo.x, transform.position.y - plpo.y).normalized * -Speed2;
     }
     public void FrPly()
     {
         if((transform.GetChild(0).GetComponent<SpriteRenderer>().flipX ? transform.position.x >= GameSystem.instance.Ply.position.x : transform.position.x <= GameSystem.instance.Ply.position.x) )
         {
             rig.velocity = Vector2.zero;
-            NowPatt = 0;
             ani.SetInteger("State", 0);
             StopCoolTime = COOLDOWN;
         }
