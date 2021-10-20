@@ -216,6 +216,7 @@ public class Player : Life
             transform.position += new Vector3(trapsavepoint.x - transform.position.x, trapsavepoint.y - transform.position.y, 0).normalized * TrapReset * Time.deltaTime * ((TimeTrapS > 2) ? 1 : (TimeTrapS / 2));
             if (new Vector3(trapsavepoint.x - transform.position.x, trapsavepoint.y - transform.position.y, 0).sqrMagnitude < 0.1f)
             {
+                transform.position = new Vector3(trapsavepoint.x, trapsavepoint.y, transform.position.z);
                 TrapMove = false;
                 rig.velocity = Vector2.zero;
                 ani.SetInteger("State", 100);
@@ -766,7 +767,11 @@ public class Player : Life
 
         if (collision.tag == "TrapSavePoint")
         {
-            trapsavepoint = transform.position;//+new Vector3(0,0.2f);
+            if (collision.GetComponent<TrapSavePoint>() != null)
+            {
+                trapsavepoint = new Vector3(collision.transform.position.x, collision.transform.position.y, transform.position.z);
+            }
+            else trapsavepoint = transform.position;//+new Vector3(0,0.2f);
         }
         else if (!GodMode && collision.tag == "TrapGround")
         {
@@ -846,10 +851,6 @@ public class Player : Life
 
 
         
-        //Debug.Log(trapsavepoint);
-        //transform.position = trapsavepoint;
-        //transform.position = new Vector3(transform.position.x, transform.position.y, PlYLAYER_NUM);
-        //rig.bodyType = RigidbodyType2D.Dynamic;
         Time.timeScale = 1;
         //NowDie = false;
     }
@@ -858,10 +859,6 @@ public class Player : Life
         GodMode = false;
         OnStory = false;
         DontMove = false;
-        //Debug.Log(trapsavepoint);
-        //transform.position = trapsavepoint;
-        //transform.position = new Vector3(transform.position.x, transform.position.y, PlYLAYER_NUM);
-        //rig.bodyType = RigidbodyType2D.Dynamic;
         Time.timeScale = 1;
         //NowDie = false;
     }
@@ -972,7 +969,11 @@ public class Player : Life
         }
         else if (collision.tag == "TrapSavePoint")
         {
-            trapsavepoint = transform.position;//+new Vector3(0,0.2f);
+            if (collision.GetComponent<TrapSavePoint>() != null)
+            {
+                trapsavepoint = new Vector3(collision.transform.position.x, collision.transform.position.y, transform.position.z);
+            }
+            else trapsavepoint = transform.position;//+new Vector3(0,0.2f);
         }
     }
 

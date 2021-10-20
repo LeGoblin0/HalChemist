@@ -80,29 +80,6 @@ public class FlyEnemy : Enemy01
    public int XXX = 0, YYY = 0;
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        //base.OnTriggerEnter2D(collision);
-
-        if (collision.tag == "Att" && collision.GetComponent<Att>() != null && collision.GetComponent<Att>().Set)
-        {
-            if (collision.GetComponent<Att>().AttCode == -1 || collision.GetComponent<Att>().AttCode != LastAtt)
-            {
-                LastAtt = collision.GetComponent<Att>().AttCode;
-                if (collision.GetComponent<Att>().AttCode == -1 || collision.GetComponent<Att>().AttCode != LastAtt)
-                {
-                    LastAtt = collision.GetComponent<Att>().AttCode;
-                    Hp -= collision.GetComponent<Att>().AttDamage;
-                }
-            }
-            if (Hp != 0)
-            {
-                HHIITime = .5f;
-                if (HitAni) ani.SetTrigger("Hit");
-            }
-
-        }
-        if (collision.tag == "TrapGround")
-        {
-            Hp = 0;
-        }
+        base.OnTriggerEnter2D(collision);
     }
 }

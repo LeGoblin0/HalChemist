@@ -8,7 +8,7 @@ public class angelica : Enemy01
     override protected void Start()
     {
         base.Start();
-        MakeShoot();
+        //MakeShoot();
         rig = GetComponent<Rigidbody2D>();
     }
     float StopCoolTime = 5;
@@ -96,8 +96,28 @@ public class angelica : Enemy01
     bool AngBossN = false;//페이즈 
     bool OnDownT = false;//Down
     // Update is called once per frame
+    public Transform DeDeshPr;
+    public Color DeshCol;
+    public float DeshPrTime = 0.03f;
+    public float DeshPrStayTime = 0.3f;
+    float cool=0;
     override protected void Update()
     {
+        if (cool<=0&&(ani.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Ang_Att08-2") || ani.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Ang_Att08-3"))) 
+        {
+            cool = DeshPrTime;
+            Transform aa = Instantiate(DeDeshPr);
+            aa.GetComponent<SpriteRenderer>().sprite = transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+            aa.GetComponent<SpriteRenderer>().flipX = transform.GetChild(0).GetComponent<SpriteRenderer>().flipX;
+            aa.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.1f);
+
+            aa.GetComponent<SpriteRenderer>().material.SetColor("_Desh", DeshCol);
+            Destroy(aa.gameObject, DeshPrStayTime);
+        }
+        else
+        {
+            cool -= Time.deltaTime;
+        }
         if (ani.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Ang_Att08-2") &&( 8 >= transform.position.y|| (421 >= transform.position.x || 437 <= transform.position.x)))
         {
             ani.SetInteger("State", 77);
@@ -119,7 +139,11 @@ public class angelica : Enemy01
             //Invoke("Water2On", 10);
             //Invoke("Water3On", 20);
         }
-        if (SenserPly) PlySS = true;
+        if (SenserPly && !PlySS)
+        {
+            ani.SetInteger("State", 0);
+            PlySS = true;
+        }
         if (!PlySS) return;
         StopCoolTime -= Time.deltaTime;
 
@@ -171,7 +195,7 @@ public class angelica : Enemy01
             StopCoolTime = COOLDOWN + 13.5f;
             //ani.SetInteger("State", 0);
         }
-        else if ((NowPatt == 8 || NowPatt == 9) && StopCoolTime < -1001.1f) 
+        else if ((NowPatt == 8 || NowPatt == 9) && StopCoolTime < -1001.1f)
         {
             //Debug.Log(NowPatt);
             StopCoolTime = COOLDOWN;
@@ -192,12 +216,12 @@ public class angelica : Enemy01
                 return;
             }
             Debug.Log(NowPatt - 1);
-            if (PPPP.Length <= NowPatt - 1 || NowPatt <= 0) 
+            if (PPPP.Length <= NowPatt - 1 || NowPatt <= 0)
             {
                 StopCoolTime = COOLDOWN;
                 ani.SetInteger("State", 0);
             }
-            else if (new Vector3(PPPP[NowPatt-1].position.x - transform.position.x, PPPP[NowPatt-1].position.y - transform.position.y).sqrMagnitude <= 0.1)//이동끝 1번
+            else if (new Vector3(PPPP[NowPatt - 1].position.x - transform.position.x, PPPP[NowPatt - 1].position.y - transform.position.y).sqrMagnitude <= 0.1)//이동끝 1번
             {
                 transform.position = new Vector3(PPPP[NowPatt - 1].position.x, PPPP[NowPatt - 1].position.y, transform.position.z);
                 NNMM = false;
@@ -215,9 +239,9 @@ public class angelica : Enemy01
                 if (NowPatt == 1 || NowPatt == 2)
                 {
                     ani.SetInteger("State", 1);
-                    float[] a = { .5f, 1.2f, 1.9f ,2};
+                    float[] a = { .5f, 1.2f, 1.9f, 2 };
 
-                    for(int i = 0; i < 100; i++)
+                    for (int i = 0; i < 100; i++)
                     {
                         int ch1 = Random.Range(0, 3);
                         int ch2 = Random.Range(0, 3);
@@ -293,11 +317,11 @@ public class angelica : Enemy01
             }
             else
             {
-                if (PPPP[NowPatt-1].position.x < transform.position.x)
+                if (PPPP[NowPatt - 1].position.x < transform.position.x)
                 {
                     transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = false;
                 }
-                else if (PPPP[NowPatt-1].position.x > transform.position.x)
+                else if (PPPP[NowPatt - 1].position.x > transform.position.x)
                 {
                     transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
                 }
@@ -312,7 +336,7 @@ public class angelica : Enemy01
             {
                 if (AngBossN) NowPatt = Random.Range(6, 9);
                 else NowPatt = Random.Range(1, 4);
-               
+
             }
             ff = NowPatt;
             if (NowPatt == 8)
@@ -330,13 +354,17 @@ public class angelica : Enemy01
             }
             else
             {
-                rig.velocity = new Vector2(Random.Range(-CaveSpeed, CaveSpeed), Random.Range(CaveSpeed * (8 - transform.position.y) / 4, CaveSpeed));
+                rig.velocity = new Vector2(Random.Range(-CaveSpeed, CaveSpeed), Random.Range(0, CaveSpeed));
             }
             MoveTrue(true);
         }
+        else if (StopCoolTime >0) //대기시간 끝나면 패턴 설정
+        {
+            rig.velocity = Vector3.zero;
+        }
 
 
-        base.Start();
+            base.Start();
     }
     int ff = 0;
     bool NNMM = false;
