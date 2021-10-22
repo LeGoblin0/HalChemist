@@ -17,7 +17,6 @@ public class angelica : Enemy01
     public float DisSpeed = 0.2f;
 
     public float DownTime = 2;
-    bool MoveNow = false;
     int NowPatt = 0;
 
     public float BeemTime = 0;
@@ -36,7 +35,8 @@ public class angelica : Enemy01
     public void MakeShoot()
     {
         NowPatt = 0;
-        StopCoolTime = COOLDOWN;
+
+        StopCoolTime = COOLDOWN_1_2;
         ani.SetInteger("State", 0);
         int af = 0;
         Transform ff;
@@ -92,7 +92,13 @@ public class angelica : Enemy01
     {
         StopCoolTime = a;
     }
-    public int COOLDOWN = 2;//cooltime
+    public int COOLDOWN_1_1 = 2;//cooltime
+    public int COOLDOWN_1_2 = 2;//cooltime
+    public int COOLDOWN_1_3 = 2;//cooltime
+    public int COOLDOWN_2_1 = 2;//cooltime
+    public int COOLDOWN_2_2 = 2;//cooltime
+    public int COOLDOWN_Trans = 2;//cooltime
+    public int COOLDOWN_7 = 2;//cooltime
     bool AngBossN = false;//페이즈 
     bool OnDownT = false;//Down
     // Update is called once per frame
@@ -154,58 +160,52 @@ public class angelica : Enemy01
             NowPatt = 5;
         }
         //Debug.Log(StopCoolTime+"  "+ NowPatt);
-        if ((NowPatt == 1 || NowPatt == 2) && StopCoolTime < -1003)
+        if ((NowPatt == 1 || NowPatt == 2) && StopCoolTime < -1001)
         {
-            if (transform.GetChild(0).GetChild(0).childCount == 0 && transform.GetChild(0).GetChild(4).childCount == 0)
-            {
-                StopCoolTime = -100;
-                NowPatt = 4;
-                ani.SetInteger("State", 0);
-
-            }
-            else
-            {
-                StopCoolTime = COOLDOWN / 2;
+          
+            
+            
+                StopCoolTime = COOLDOWN_1_1;
                 ani.SetInteger("State", 0);
                 //transform.GetChild(0).GetChild(3).GetChild(0).parent = transform.GetChild(0).GetChild(0);
                 //transform.GetChild(0).GetChild(4).GetChild(0).parent = transform.GetChild(0).GetChild(1);
                 //transform.GetChild(0).GetChild(5).GetChild(0).parent = transform.GetChild(0).GetChild(2);
-            }
+            
         }
-        else if ((NowPatt == 3) && StopCoolTime < -1002.3f)
+        else if ((NowPatt == 3) && StopCoolTime < -1002.5f)
         {
-            StopCoolTime = COOLDOWN;
+            StopCoolTime = .5f;
             ani.SetInteger("State", 0);
+            StopCoolTime = COOLDOWN_1_3;
 
         }
-        else if ((NowPatt == 4) && StopCoolTime < -1003)
+        else if ((NowPatt == 4) && StopCoolTime < -1000.8f)
         {
-            StopCoolTime = COOLDOWN;
             ani.SetInteger("State", 0);
         }
         else if ((NowPatt == 5) && StopCoolTime < -1002.3f)
         {
             //Debug.Log(NowPatt);
-            StopCoolTime = COOLDOWN;
+            StopCoolTime = COOLDOWN_Trans;
             ani.SetInteger("State", 0);
         }
-        else if ((NowPatt == 6 || NowPatt == 7) && StopCoolTime < -1001f)
+        else if ((NowPatt == 6 || NowPatt == 7) && StopCoolTime < -1014.5f)
         {
             //Debug.Log(NowPatt);
-            StopCoolTime = COOLDOWN + 13.5f;
+            StopCoolTime = COOLDOWN_2_1;
             //ani.SetInteger("State", 0);
         }
-        else if ((NowPatt == 8 || NowPatt == 9) && StopCoolTime < -1001.1f)
+        else if ((NowPatt == 8 || NowPatt == 9) && StopCoolTime < -1001f)
         {
             //Debug.Log(NowPatt);
-            StopCoolTime = COOLDOWN;
+            StopCoolTime = COOLDOWN_2_2;
             ani.SetInteger("State", 0);
             //Invoke("SetSSS", BeemTime);
         }
-        else if (StopCoolTime < -1030f)
+        else if (StopCoolTime < -1020f)
         {
             //Debug.Log(NowPatt);
-            StopCoolTime = COOLDOWN;
+            StopCoolTime = 1;
             ani.SetInteger("State", 0);
         }
         else if (StopCoolTime <= -100 && StopCoolTime > -1000)//이동
@@ -215,10 +215,10 @@ public class angelica : Enemy01
             {
                 return;
             }
-            Debug.Log(NowPatt - 1);
+            //Debug.Log(NowPatt - 1);
             if (PPPP.Length <= NowPatt - 1 || NowPatt <= 0)
             {
-                StopCoolTime = COOLDOWN;
+                StopCoolTime = 1;
                 ani.SetInteger("State", 0);
             }
             else if (new Vector3(PPPP[NowPatt - 1].position.x - transform.position.x, PPPP[NowPatt - 1].position.y - transform.position.y).sqrMagnitude <= 0.1)//이동끝 1번
@@ -331,14 +331,24 @@ public class angelica : Enemy01
         else if (StopCoolTime <= 0 && StopCoolTime > -100) //대기시간 끝나면 패턴 설정
         {
             StopCoolTime = -101;
-            MoveNow = true;
-            while (ff == NowPatt)
+            while (ff == NowPatt || NowPatt == 0) 
             {
                 if (AngBossN) NowPatt = Random.Range(6, 9);
-                else NowPatt = Random.Range(1, 4);
+                else
+                {
+                    NowPatt = Random.Range(1, 4);
+                    int a = 0;
+                    if (transform.GetChild(0).GetChild(a++).childCount == 0 && transform.GetChild(0).GetChild(a++).childCount == 0 && transform.GetChild(0).GetChild(a++).childCount == 0 && transform.GetChild(0).GetChild(a++).childCount == 0 && transform.GetChild(0).GetChild(a++).childCount == 0 && transform.GetChild(0).GetChild(a++).childCount == 0)
+                    {
+                        NowPatt = 4;
+                        rig.velocity = new Vector2(0, 5);
+
+                    }
+                }
 
             }
             ff = NowPatt;
+            Debug.Log(ff);
             if (NowPatt == 8)
             {
                 plpo = new Vector3(GameSystem.instance.Ply.position.x, 8);
@@ -352,7 +362,7 @@ public class angelica : Enemy01
                     transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
                 }
             }
-            else
+            else if (NowPatt != 4) 
             {
                 rig.velocity = new Vector2(Random.Range(-CaveSpeed, CaveSpeed), Random.Range(0, CaveSpeed));
             }
@@ -388,7 +398,7 @@ public class angelica : Enemy01
         rig.velocity = Vector2.zero;
         NowPatt = 8;
         ani.SetInteger("State", 0);
-        StopCoolTime = COOLDOWN+1;
+        StopCoolTime = COOLDOWN_2_2;
     }
     public void PlM()
     {
@@ -400,7 +410,7 @@ public class angelica : Enemy01
         {
             rig.velocity = Vector2.zero;
             ani.SetInteger("State", 0);
-            StopCoolTime = COOLDOWN;
+            StopCoolTime = COOLDOWN_2_2;
         }
         else
         {

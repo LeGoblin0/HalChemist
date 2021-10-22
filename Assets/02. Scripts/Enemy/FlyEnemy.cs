@@ -83,3 +83,4 @@ public class FlyEnemy : Enemy01
         base.OnTriggerEnter2D(collision);
     }
 }
+ 

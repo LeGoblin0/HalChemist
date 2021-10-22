@@ -775,6 +775,7 @@ public class Player : Life
         }
         else if (!GodMode && collision.tag == "TrapGround")
         {
+            if (nowGodTime > 0) Hp++;
             if (Hp > 1)
             {
                 TrapSaveDie();
@@ -783,10 +784,12 @@ public class Player : Life
         }
         else if (!GodMode && collision.tag == "Water")
         {
+            if (nowGodTime > 0) Hp++;
             if (Hp > 1)
             {
                 TrapSaveDie();
             }
+            
             Hp--; HPUI();
             //rig.mass = 2;
             //if(!GodMode) rig.gravityScale = WatergravityScale;
