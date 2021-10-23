@@ -1356,6 +1356,7 @@ public class Player : Life
     }
     public void MakeStone()
     {
+        Debug.Log(Tcode);
         ThrowStone = Instantiate(GameSystem.instance.AllSton[Tcode]).transform;
 
         if (ShootStone == null) ShootStone = new Transform[100];
@@ -1370,13 +1371,17 @@ public class Player : Life
             ShootStone[ShootStoneNum++] = ThrowStone.GetChild(0).GetChild(2);
             ShootStone[ShootStoneNum++] = ThrowStone.GetChild(0).GetChild(3);
         }
-        if (ThrowStone.GetComponent<StoneDieAni>() != null) ThrowStone.GetComponent<StoneDieAni>().DieSet = true;
+        if (ThrowStone.GetComponent<StoneDieAni>() != null)
+        {
+            ThrowStone.GetComponent<StoneDieAni>().DieSet = true;
+            ThrowStone.GetComponent<Rigidbody2D>().gravityScale = ThrowStone.GetComponent<StoneDieAni>().Grascale;
+            AngNum += ThrowStone.GetComponent<StoneDieAni>().AngNum;
+        }
         ThrowStone.GetComponent<Animator>().SetInteger("Set", 1);
         ThrowStone.position = Hand.GetChild(0).position + new Vector3(0, 0.5f, -.1f);
         ThrowStone.parent = Hand.GetChild(0);
-        ThrowStone.GetComponent<Rigidbody2D>().gravityScale = 0;
         if (ThrowStone.GetComponent<Att>() != null && ThrowStone.GetComponent<Att>().SelfDesTime != 0) ThrowStone.GetComponent<Att>().SelfDie();
-        AngNum += ThrowStone.GetComponent<StoneDieAni>().AngNum;
+    
         Ang_Down_Time_Now = Ang_Down_Time;
         AngImgF.fillAmount = AngNum / 100f;
         if (AngNum >= 100)
@@ -1403,7 +1408,7 @@ public class Player : Life
         ThrowStone.parent = GameObject.Find("NowMapEnemy").transform;
         ThrowStone.gameObject.layer = 8;
         ThrowStone.GetComponent<Att>().Set = true;
-        ThrowStone.GetComponent<Att>().GroundDes = true;
+        ThrowStone.GetComponent<Att>().GroundDes = ThrowStone.GetComponent<StoneDieAni>().GroundDie;
         ThrowStone.GetComponent<Rigidbody2D>().velocity = new Vector2(PlyLook * ThrowStone.GetComponent<StoneDieAni>().ThrowSpeed, 0);
 
         ThrowStone.gameObject.AddComponent<StoneThrow>().Speed = ThrowStone.GetComponent<StoneDieAni>().ThrowSpeed;

@@ -410,11 +410,31 @@ public class angelica : Enemy01
         {
             rig.velocity = Vector2.zero;
             ani.SetInteger("State", 0);
-            StopCoolTime = COOLDOWN_2_2;
+            StopCoolTime = COOLDOWN_2_2; 
+            
+            plpo = new Vector3(GameSystem.instance.Ply.position.x, 8);
+            if (plpo.x < transform.position.x)
+            {
+                transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else if (plpo.x > transform.position.x)
+            {
+                transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
+            }
         }
         else
         {
             ani.SetInteger("State", 9);
+            
+            plpo = new Vector3(GameSystem.instance.Ply.position.x, 8);
+            if (plpo.x < transform.position.x)
+            {
+                transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else if (plpo.x > transform.position.x)
+            {
+                transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
+            }
         }
     }
     private void FixedUpdate()

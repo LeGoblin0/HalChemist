@@ -12,7 +12,7 @@ public class StoneThrow : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (rig != null)
+        if (rig != null && rig.gravityScale == 0) 
         {
             Vector2 rign = rig.velocity.normalized;
             if (rign.x >= 0.92387f)

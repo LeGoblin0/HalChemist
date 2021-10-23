@@ -18,6 +18,10 @@ public class StoneDieAni : MonoBehaviour
     public int AngNum = 5;
     [Header("상점가격")]
     public int MoneyBuy = 10;
+    [Header("중력크기")]
+    public float Grascale = 0;
+    [Header("벽충돌 사망")]
+    public bool GroundDie = true;
     void Start()
     {
 
