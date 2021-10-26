@@ -1356,7 +1356,7 @@ public class Player : Life
     }
     public void MakeStone()
     {
-        Debug.Log(Tcode);
+        //Debug.Log(Tcode);
         ThrowStone = Instantiate(GameSystem.instance.AllSton[Tcode]).transform;
 
         if (ShootStone == null) ShootStone = new Transform[100];
