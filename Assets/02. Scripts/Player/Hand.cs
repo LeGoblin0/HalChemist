@@ -41,7 +41,8 @@ public class Hand : MonoBehaviour
 
         if (ani.GetCurrentAnimatorStateInfo(0).IsName("Hit") || ani.GetCurrentAnimatorStateInfo(0).IsName("Ang_Hit") || ani.GetCurrentAnimatorStateInfo(0).IsName("Hand_Hit")) 
         {
-            SubOffset = new Vector3(-.5f, -.5f, 0);
+
+            SubOffset = new Vector3(-.5f, 0 - offset.y, 0);
         }
         else 
         {
