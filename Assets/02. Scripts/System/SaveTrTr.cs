@@ -6,7 +6,8 @@ public class SaveTrTr : MonoBehaviour
 {
     [HideInInspector]
     public int ObjCode;
-    Animator ani;
+    [HideInInspector]
+    public Animator ani;
     Player ply;
     public int BGSound = 0;
     private void Start()
@@ -88,7 +89,10 @@ public class SaveTrTr : MonoBehaviour
 
 
     public Transform MovePos;
-
+    public void ReSaveAni()
+    {
+        ani.SetTrigger("On2");
+    }
     public bool SaveOn()
     {
         
