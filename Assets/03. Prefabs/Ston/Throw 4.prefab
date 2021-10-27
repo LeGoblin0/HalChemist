@@ -175,6 +175,7 @@ MonoBehaviour:
   DesDesTime: 0
   SelfDesTime: 14
   HitDesT: 0
+  AttCode: -1
   HitNum: 1
   AttArrow: -1
   attObj: {fileID: 0}
@@ -201,6 +202,9 @@ MonoBehaviour:
   SpDesTime: 5
   StoneSpecialNum: 0
   AngNum: 5
+  MoneyBuy: 10
+  Grascale: 0
+  GroundDie: 1
   DieObj: {fileID: 4870061418998596664, guid: 1ba55a90ec502b540af8e86db62b4ff5, type: 3}
   Code: 4
   StonImg: {fileID: -2689840773800953785, guid: b61f4dc4647c69c4f813f814f4d51daf,
@@ -346,6 +350,7 @@ MonoBehaviour:
   DesDesTime: 0
   SelfDesTime: 14
   HitDesT: 0
+  AttCode: -1
   HitNum: 1
   AttArrow: -1
   attObj: {fileID: 0}
@@ -372,6 +377,9 @@ MonoBehaviour:
   SpDesTime: 5
   StoneSpecialNum: 0
   AngNum: 5
+  MoneyBuy: 10
+  Grascale: 0
+  GroundDie: 1
   DieObj: {fileID: 4870061418998596664, guid: 1ba55a90ec502b540af8e86db62b4ff5, type: 3}
   Code: 4
   StonImg: {fileID: -2689840773800953785, guid: b61f4dc4647c69c4f813f814f4d51daf,
@@ -448,6 +456,7 @@ MonoBehaviour:
   DesDesTime: 0
   SelfDesTime: 14
   HitDesT: 0
+  AttCode: -1
   HitNum: 2
   AttArrow: -1
   attObj: {fileID: 0}
@@ -540,11 +549,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d358ed769cab544985e2a5e4f5a81f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThrowSpeed: 6
+  ThrowSpeed: 9
   RollSpeed: 0
   SpDesTime: 5
   StoneSpecialNum: 0
   AngNum: 10
+  MoneyBuy: 10
+  Grascale: 0
+  GroundDie: 1
   DieObj: {fileID: 4870061418998596664, guid: 0eb05de11ad73de4db66e1e9928971e1, type: 3}
   Code: 5
   StonImg: {fileID: 21300000, guid: 8ba0f65d449074c4a8432d452e05c10f, type: 3}
@@ -673,6 +685,7 @@ MonoBehaviour:
   DesDesTime: 0
   SelfDesTime: 14
   HitDesT: 0
+  AttCode: -1
   HitNum: 1
   AttArrow: -1
   attObj: {fileID: 0}
@@ -699,6 +712,9 @@ MonoBehaviour:
   SpDesTime: 5
   StoneSpecialNum: 0
   AngNum: 5
+  MoneyBuy: 10
+  Grascale: 0
+  GroundDie: 1
   DieObj: {fileID: 4870061418998596664, guid: 1ba55a90ec502b540af8e86db62b4ff5, type: 3}
   Code: 4
   StonImg: {fileID: -2689840773800953785, guid: b61f4dc4647c69c4f813f814f4d51daf,
@@ -941,6 +957,7 @@ MonoBehaviour:
   DesDesTime: 0
   SelfDesTime: 14
   HitDesT: 0
+  AttCode: -1
   HitNum: 1
   AttArrow: -1
   attObj: {fileID: 0}
@@ -967,6 +984,9 @@ MonoBehaviour:
   SpDesTime: 5
   StoneSpecialNum: 0
   AngNum: 5
+  MoneyBuy: 10
+  Grascale: 0
+  GroundDie: 1
   DieObj: {fileID: 4870061418998596664, guid: 1ba55a90ec502b540af8e86db62b4ff5, type: 3}
   Code: 4
   StonImg: {fileID: -2689840773800953785, guid: b61f4dc4647c69c4f813f814f4d51daf,
