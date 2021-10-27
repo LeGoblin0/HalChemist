@@ -105,7 +105,8 @@ public class Enemy01 : Life
                     aa.position = new Vector3(transform.position.x, transform.position.y, 2);
                     aa.parent = transform.parent;
                     aa.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(0, 1f), Random.Range(0, 1f)) * 5 * transform.GetChild(0).localScale.x;
-                    Destroy(aa.gameObject, 5);
+                    aa.GetComponent<ItemCode>().DesTime = 5;
+                    //Destroy(aa.gameObject, 5);
                 }
                 if (GetComponent<Rigidbody2D>() != null) GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 gameObject.layer = 19;

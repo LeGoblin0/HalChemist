@@ -279,6 +279,7 @@ public class GameSystem : MonoBehaviour
         ResetMap();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    public RectTransform[] ItemGoUITr;//아이템이 UI따라가기
     public Vector3 DiePos()
     {
         return SavePos[gameData.SavePoint].transform.position;
@@ -287,13 +288,17 @@ public class GameSystem : MonoBehaviour
     {
         if (gameData.SavePoint == ii)
         {
+            Ply.GetComponent<Player>().SaveHp();
+            SavePos[ii].ReSaveAni();
             return false;
         }
         for (int i = 0; i < SavePos.Length; i++)
         {
             if (SavePos[i] != null) SavePos[i].GetComponent<Animator>().SetInteger("State", 1);
         }
+        gameData.LostMoneyBag = false;
         Ply.GetComponent<Player>().SaveHp();
+        Ply.GetComponent<Player>().DrowMoneyBag();
         gameData.SavePoint = ii;
 
 

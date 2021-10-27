@@ -65,13 +65,17 @@ public class Player : Life
         Money2 = saveMoneyInt[1];
         LookMoney();
 
-        MoneyBagImg.sprite = MoneyBag[GameSystem.instance.GiveMoneyBag() ? 1 : 0];
-
+        DrowMoneyBag();
 
         //인장 테스트
         INJHave[2] = 2;
         INJHave[5] = 5;
         INJHave[8] = 8;
+    }
+
+    public void DrowMoneyBag()
+    {
+        MoneyBagImg.sprite = MoneyBag[GameSystem.instance.GiveMoneyBag() ? 1 : 0];
     }
 
     public Sprite[] MoneyBag;
@@ -371,8 +375,8 @@ public class Player : Life
                 transform.GetChild(0).GetChild(0).GetComponent<Att>().AttDamage = 100;
                 transform.GetChild(0).GetChild(1).GetComponent<Att>().AttDamage = 100;
                 transform.GetChild(0).GetChild(2).GetComponent<Att>().AttDamage = 100;
-                transform.GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetComponent<Att>().AttDamage = 10;
-                transform.GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(1).GetComponent<Att>().AttDamage = 20;
+                Hand.GetChild(0).GetChild(0).GetChild(0).GetComponent<Att>().AttDamage = 10;
+                Hand.GetChild(0).GetChild(0).GetChild(1).GetComponent<Att>().AttDamage = 20;
             }
             else
             {
@@ -728,18 +732,6 @@ public class Player : Life
             }
             else if (NowChooseObj != null && NowChooseObj.tag == "Save" && NowChooseObj.GetComponent<SaveTrTr>() != null)
             {
-                //if (Money2 > 0) MonyBagAni.SetTrigger("On");
-                //int[] ss = new int[HaveStone.Length];
-                //for (int i = 0; i < ss.Length; i++)
-                //{
-                //    ss[i] = HaveStone[i];
-                //}
-                //if (NowChooseObj.GetComponent<SaveTrTr>().SaveOn())
-                //{
-                //    GameSystem.instance.GiveMoneyBag(false);
-
-                //    MoneyBagImg.sprite = MoneyBag[GameSystem.instance.GiveMoneyBag() ? 1 : 0];
-                //}
                 ShootThrowUI.SetActive(false);
                 NowChooseObj.GetComponent<SaveTrTr>().openUI();
             }

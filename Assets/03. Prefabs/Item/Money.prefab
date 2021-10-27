@@ -204,6 +204,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemCodeNum: 0
+  DesTrap: 1
+  DesTime: 100
+  targetRect: {fileID: 0}
+  DeshTr: {fileID: 8324965340121475168, guid: 19ca3d3a9e56d0642af2a9499f4c653e, type: 3}
+  DeshCol: {r: 1, g: 0.89228785, b: 0.2216981, a: 0.59607846}
+  GoUIcode: 0
   DieAni: 0
 --- !u!95 &8339748634734221124
 Animator:
