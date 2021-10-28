@@ -23,7 +23,6 @@ public class StoneDieAni : MonoBehaviour
     [Header("벽충돌 사망")]
     public bool GroundDie = true;
     [Header("체력하트 확률")]
-    [Range(-200,100f)]
     public float HPDropPer = 5;
     void Start()
     {

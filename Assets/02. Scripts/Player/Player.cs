@@ -1288,12 +1288,12 @@ public class Player : Life
             else if (AngNum >= 90)
             {
                 Handani.SetInteger("State", 1);
-                HpMakerPer = 100;
+
             }
             else
             {
                 Handani.SetInteger("State", 0);
-                HpMakerPer = 0;
+               
             }
             AngImgF.fillAmount = AngNum / 100f;
             
@@ -1352,9 +1352,12 @@ public class Player : Life
     float HpMakerPer = 0;
     public void MakeStone()
     {
-        //Debug.Log(Tcode);
         ThrowStone = Instantiate(GameSystem.instance.AllSton[Tcode]).transform;
-        ThrowStone.GetComponent<StoneDieAni>().HPDropPer += HpMakerPer;//원석 기본 확률에 플레이어 확률 합산
+        if (AngNum >= 90) HpMakerPer = 200;
+        else HpMakerPer = 0;
+        //Debug.Log(HpMakerPer+"   "+ ThrowStone.GetComponent<StoneDieAni>().HPDropPer+"   "+ AngNum);
+        ThrowStone.GetComponent<StoneDieAni>().HPDropPer = ThrowStone.GetComponent<StoneDieAni>().HPDropPer+ HpMakerPer;//원석 기본 확률에 플레이어 확률 합산
+
         if (ShootStone == null) ShootStone = new Transform[100];
         if (Tcode == 4)
         {
