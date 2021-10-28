@@ -171,7 +171,7 @@ public class Player : Life
 
     [Header("과열 시스템")]
     public float Ang_Down_Time = 3;
-    int AngNum = 0;
+    int AngNum = 0;//핸도게이지
     public float Ang_Down_Speed_Time = .5f;
     float Ang_Down_Time_Now = 0;
     bool AngMax = false;
@@ -1288,10 +1288,12 @@ public class Player : Life
             else if (AngNum >= 90)
             {
                 Handani.SetInteger("State", 1);
+                HpMakerPer = 100;
             }
             else
             {
                 Handani.SetInteger("State", 0);
+                HpMakerPer = 0;
             }
             AngImgF.fillAmount = AngNum / 100f;
             
@@ -1346,11 +1348,13 @@ public class Player : Life
         HaveStone[0] = 1;
         StoneUI();
     }
+    [Tooltip("원석에서 추가체력 만들 퍼센트")]
+    float HpMakerPer = 0;
     public void MakeStone()
     {
         //Debug.Log(Tcode);
         ThrowStone = Instantiate(GameSystem.instance.AllSton[Tcode]).transform;
-
+        ThrowStone.GetComponent<StoneDieAni>().HPDropPer += HpMakerPer;//원석 기본 확률에 플레이어 확률 합산
         if (ShootStone == null) ShootStone = new Transform[100];
         if (Tcode == 4)
         {

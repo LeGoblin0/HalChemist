@@ -336,6 +336,7 @@ MonoBehaviour:
   MoneyBuy: 10
   Grascale: 0
   GroundDie: 1
+  HPDropPer: -100
   DieObj: {fileID: 8067755592219803995, guid: e108c2f77731a2d408148535708550dd, type: 3}
   Code: 1
   StonImg: {fileID: 1520301436557814811, guid: b61f4dc4647c69c4f813f814f4d51daf, type: 3}

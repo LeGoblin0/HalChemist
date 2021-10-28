@@ -22,6 +22,9 @@ public class StoneDieAni : MonoBehaviour
     public float Grascale = 0;
     [Header("벽충돌 사망")]
     public bool GroundDie = true;
+    [Header("체력하트 확률")]
+    [Range(-200,100f)]
+    public float HPDropPer = 5;
     void Start()
     {
 
@@ -43,6 +46,17 @@ public class StoneDieAni : MonoBehaviour
         {
             Transform aa = Instantiate(DieObj);
             aa.position = transform.position;
+            if (Random.Range(0, 100f) < HPDropPer)
+            {
+                if (transform.parent != null)
+                {
+                    Transform hphp = Instantiate(GameSystem.instance.ItemPre[1]);
+                    hphp.position = transform.position;
+                    hphp.parent = transform.parent;
+                    Destroy(hphp, 180);
+                    Debug.Log(0);
+                }
+            }
             Destroy(aa.gameObject, .5f);
         }
     }

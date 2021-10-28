@@ -209,6 +209,7 @@ MonoBehaviour:
   Set: 0
   DieAni: 0
   DieCollDes: 1
+  Test: 0
 --- !u!114 &4551014918239076005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +301,7 @@ MonoBehaviour:
   MoneyBuy: 10
   Grascale: 0
   GroundDie: 1
+  HPDropPer: 5
   DieObj: {fileID: 4870061418998596664, guid: 112af9cb21be7c84884f2974d9d5e3bd, type: 3}
   Code: 3
   StonImg: {fileID: -2689840773800953785, guid: b61f4dc4647c69c4f813f814f4d51daf,

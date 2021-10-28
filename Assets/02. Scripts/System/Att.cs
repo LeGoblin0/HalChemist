@@ -64,6 +64,8 @@ public class Att : MonoBehaviour
 
     public bool DieAni = false;
     public bool DieCollDes = true;
+
+    public bool Test = false;
     public void DDD()
     {
         Destroy(gameObject, DesDesTime);
@@ -83,9 +85,11 @@ public class Att : MonoBehaviour
             }
             else Destroy(gameObject, DesDesTime);
         }
-        if (Set && (collision.tag == "Att") && nowhit != null)
+        if (Test) Debug.Log(collision.tag + "  1." + (collision.tag == "Att")+ "    2."+ collision.name + "  3. " + Set + "   4." + nowhit + "   " );
+        if (Set && (collision.tag == "Att"))
         {
-            nowhit.DieHit();
+            if (Test) Debug.Log(collision.tag + "  " + collision.name);
+            if(nowhit!=null) nowhit.DieHit();
             HitNum--;
             if (HitNum <= 0 && HitDesT)
             {
