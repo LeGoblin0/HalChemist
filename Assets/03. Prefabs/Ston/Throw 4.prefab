@@ -185,6 +185,7 @@ MonoBehaviour:
   Set: 0
   DieAni: 0
   DieCollDes: 1
+  Test: 0
 --- !u!114 &5553417448035432618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +206,7 @@ MonoBehaviour:
   MoneyBuy: 10
   Grascale: 0
   GroundDie: 1
+  HPDropPer: 5
   DieObj: {fileID: 4870061418998596664, guid: 1ba55a90ec502b540af8e86db62b4ff5, type: 3}
   Code: 4
   StonImg: {fileID: -2689840773800953785, guid: b61f4dc4647c69c4f813f814f4d51daf,
@@ -360,6 +362,7 @@ MonoBehaviour:
   Set: 0
   DieAni: 0
   DieCollDes: 1
+  Test: 0
 --- !u!114 &2146792643363719640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +383,7 @@ MonoBehaviour:
   MoneyBuy: 10
   Grascale: 0
   GroundDie: 1
+  HPDropPer: 5
   DieObj: {fileID: 4870061418998596664, guid: 1ba55a90ec502b540af8e86db62b4ff5, type: 3}
   Code: 4
   StonImg: {fileID: -2689840773800953785, guid: b61f4dc4647c69c4f813f814f4d51daf,
@@ -466,6 +470,7 @@ MonoBehaviour:
   Set: 0
   DieAni: 0
   DieCollDes: 1
+  Test: 0
 --- !u!114 &2892320407157724409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,6 +562,7 @@ MonoBehaviour:
   MoneyBuy: 10
   Grascale: 0
   GroundDie: 1
+  HPDropPer: 5
   DieObj: {fileID: 4870061418998596664, guid: 0eb05de11ad73de4db66e1e9928971e1, type: 3}
   Code: 5
   StonImg: {fileID: 21300000, guid: 8ba0f65d449074c4a8432d452e05c10f, type: 3}
@@ -695,6 +701,7 @@ MonoBehaviour:
   Set: 0
   DieAni: 0
   DieCollDes: 1
+  Test: 0
 --- !u!114 &3600201151748688304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,6 +722,7 @@ MonoBehaviour:
   MoneyBuy: 10
   Grascale: 0
   GroundDie: 1
+  HPDropPer: 5
   DieObj: {fileID: 4870061418998596664, guid: 1ba55a90ec502b540af8e86db62b4ff5, type: 3}
   Code: 4
   StonImg: {fileID: -2689840773800953785, guid: b61f4dc4647c69c4f813f814f4d51daf,
@@ -967,6 +975,7 @@ MonoBehaviour:
   Set: 0
   DieAni: 0
   DieCollDes: 1
+  Test: 0
 --- !u!114 &8959552533788301716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -987,6 +996,7 @@ MonoBehaviour:
   MoneyBuy: 10
   Grascale: 0
   GroundDie: 1
+  HPDropPer: 5
   DieObj: {fileID: 4870061418998596664, guid: 1ba55a90ec502b540af8e86db62b4ff5, type: 3}
   Code: 4
   StonImg: {fileID: -2689840773800953785, guid: b61f4dc4647c69c4f813f814f4d51daf,
